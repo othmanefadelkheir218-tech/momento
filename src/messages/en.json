@@ -1,0 +1,34 @@
+{
+  "HomePage": {
+    "title": "Home",
+    "welcome": "Welcome to Momento",
+    "description": "Capturing moments, creating memories."
+  },
+  "AboutPage": {
+    "title": "About Us",
+    "description": "We are a team of passionate creators."
+  },
+  "FAQPage": {
+    "title": "FAQ",
+    "description": "Frequently Asked Questions"
+  },
+  "MenuPage": {
+    "title": "Menu",
+    "description": "Our delicious offerings"
+  },
+  "ContactPage": {
+    "title": "Contact Us",
+    "description": "Get in touch with us"
+  },
+  "Navigation": {
+    "home": "Home",
+    "about": "About",
+    "faq": "FAQ",
+    "menu": "Menu",
+    "contact": "Contact"
+  },
+  "Common": {
+    "toggleTheme": "Toggle Theme",
+    "changeLanguage": "Change Language"
+  }
+}

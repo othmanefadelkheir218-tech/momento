@@ -1,0 +1,34 @@
+{
+    "HomePage": {
+        "title": "Startseite",
+        "welcome": "Willkommen bei Momento",
+        "description": "Momente festhalten, Erinnerungen schaffen."
+    },
+    "AboutPage": {
+        "title": "Über Uns",
+        "description": "Wir sind ein Team leidenschaftlicher Schöpfer."
+    },
+    "FAQPage": {
+        "title": "FAQ",
+        "description": "Häufig gestellte Fragen"
+    },
+    "MenuPage": {
+        "title": "Speisekarte",
+        "description": "Unsere köstlichen Angebote"
+    },
+    "ContactPage": {
+        "title": "Kontakt",
+        "description": "Kontaktieren Sie uns"
+    },
+    "Navigation": {
+        "home": "Startseite",
+        "about": "Über Uns",
+        "faq": "FAQ",
+        "menu": "Speisekarte",
+        "contact": "Kontakt"
+    },
+    "Common": {
+        "toggleTheme": "Thema wechseln",
+        "changeLanguage": "Sprache ändern"
+    }
+}
