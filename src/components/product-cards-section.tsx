@@ -115,7 +115,7 @@ export default function ProductCardsSection() {
     return (
         <section
             ref={sectionRef}
-            className="relative w-full bg-[#FAE8D8] py-12 md:py-16 lg:py-20 px-4 md:px-8 lg:px-12 overflow-hidden"
+            className="relative w-full bg-[#FBE8EA] py-12 md:py-16 lg:py-20 px-4 md:px-8 lg:px-12 overflow-hidden"
             onMouseEnter={() => setIsInSection(true)}
             onMouseLeave={() => {
                 setIsInSection(false)

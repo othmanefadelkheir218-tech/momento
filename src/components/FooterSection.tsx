@@ -114,7 +114,7 @@ export default function FooterSection() {
 
   return (
     <>
-      <div className="h-screen shadow-2xl bg-primaryLighter/20 flex flex-col items-center justify-between px-6 py-12 md:py-20 relative overflow-hidden">
+      <div className="h-screen  bg-primaryLighter/20 flex flex-col items-center justify-between px-6 py-12 md:py-20 relative overflow-hidden">
         {/* Decorative background elements */}
         <div ref={decorRef} className="absolute inset-0 pointer-events-none">
           {/* Scattered dots pattern */}
