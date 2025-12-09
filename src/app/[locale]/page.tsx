@@ -11,6 +11,7 @@ import CostumButton from "@/components/CostumButton";
 import OneTimeIntroduction from "@/components/OneTimeIntroduction";
 import FooterSection from "@/components/FooterSection";
 import FooterSection2 from "@/components/FooterSection2";
+import ProductCardsSection from "@/components/product-cards-section";
 
 export default function HomePage() {
     const t = useTranslations("HomePage");
@@ -26,6 +27,7 @@ export default function HomePage() {
                 ContentTwo={<HeroMarquee />}
                 ContentThree={<ProductShowcase />}
             />
+            <ProductCardsSection />
             {/* <div className="h-[120vh] w-full bg-primary"></div> */}
             <FooterSection />
             <FooterSection2 />
