@@ -90,7 +90,7 @@ export default function ZoomParallax(props: ZoomParallaxProps) {
             </section>
 
             <section className="relative z-10  w-full bg-[#FBE8EA] flex items-center justify-center pt-10">
-                <div className="flex items-center justify-center w-full h-fullcd">
+                <div className="flex items-center justify-center w-full">
                     {props.ContentThree}
                 </div>
             </section>

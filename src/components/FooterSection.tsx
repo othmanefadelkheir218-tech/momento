@@ -12,9 +12,9 @@ import Magnetic from "./Magnetic"
 
 gsap.registerPlugin(ScrollTrigger)
 
-
-
-
+const IceCreamDot = ({ className = "", delay = 0 }: { className?: string; delay?: number }) => (
+  <div className={`absolute rounded-full bg-primary/10 ${className}`} style={{ animationDelay: `${delay}s` }} />
+)
 
 export default function FooterSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -22,18 +22,23 @@ export default function FooterSection() {
   const textRef = useRef<HTMLParagraphElement>(null)
   const linksRef = useRef<HTMLDivElement>(null)
   const formRef = useRef<HTMLFormElement>(null)
+  const decorRef = useRef<HTMLDivElement>(null)
   const [email, setEmail] = useState("")
   const [showPopup, setShowPopup] = useState(false)
-  const t = useTranslations("Navigation");
-
+  const t = useTranslations("Navigation")
 
   const pages = [
     { name: t("home"), href: "/" },
     { name: t("menu"), href: "/menu" },
     { name: t("faq"), href: "/faq" },
     { name: t("contact"), href: "/contact" },
-  ];
+  ]
 
+  const Languages = [
+    { name: "Instagram", icon: "IG", href: "#" },
+    { name: "Facebook", icon: "FB", href: "#" },
+    { name: "TikTok", icon: "TK", href: "#" },
+  ]
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -84,6 +89,17 @@ export default function FooterSection() {
           },
           "-=0.2",
         )
+        .from(
+          decorRef.current?.querySelectorAll(".decor-item") || [],
+          {
+            opacity: 0,
+            scale: 0,
+            stagger: 0.05,
+            duration: 0.4,
+            ease: "back.out(1.7)",
+          },
+          "-=0.5",
+        )
     }, sectionRef)
 
     return () => ctx.revert()
@@ -98,28 +114,72 @@ export default function FooterSection() {
 
   return (
     <>
-      <div className='h-screen bg-primaryLighter/20 flex flex-col items-center justify-center px-6 py-20'>
-        <div className="max-w-4xl w-full text-center space-y-12">
+      <div className="h-screen shadow-2xl bg-primaryLighter/20 flex flex-col items-center justify-between px-6 py-12 md:py-20 relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div ref={decorRef} className="absolute inset-0 pointer-events-none">
+          {/* Scattered dots pattern */}
+          <IceCreamDot className="decor-item w-3 h-3 top-[10%] left-[5%]" delay={0} />
+          <IceCreamDot className="decor-item w-5 h-5 top-[15%] left-[12%]" delay={0.1} />
+          <IceCreamDot className="decor-item w-2 h-2 top-[8%] left-[20%]" delay={0.2} />
+          <IceCreamDot className="decor-item w-4 h-4 top-[20%] right-[8%]" delay={0.15} />
+          <IceCreamDot className="decor-item w-3 h-3 top-[12%] right-[15%]" delay={0.25} />
+          <IceCreamDot className="decor-item w-6 h-6 top-[25%] right-[5%]" delay={0.1} />
+          <IceCreamDot className="decor-item w-4 h-4 bottom-[30%] left-[8%]" delay={0.2} />
+          <IceCreamDot className="decor-item w-2 h-2 bottom-[25%] left-[15%]" delay={0.3} />
+          <IceCreamDot className="decor-item w-5 h-5 bottom-[35%] right-[10%]" delay={0.15} />
+          <IceCreamDot className="decor-item w-3 h-3 bottom-[20%] right-[18%]" delay={0.25} />
+
+          {/* Decorative curved lines */}
+          <svg
+            className="decor-item absolute top-[5%] left-[25%] w-32 h-32 text-primary/5"
+            viewBox="0 0 100 100"
+            fill="none"
+          >
+            <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="2" strokeDasharray="10 5" />
+          </svg>
+          <svg
+            className="decor-item absolute bottom-[15%] right-[20%] w-24 h-24 text-primary/5"
+            viewBox="0 0 100 100"
+            fill="none"
+          >
+            <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="2" strokeDasharray="8 4" />
+          </svg>
+        </div>
+
+        {/* Top section - can add tagline or badge */}
+        <div className="text-center">
+          <span className="inline-block px-4 py-2 text-xs tracking-[0.3em] text-primary/60 uppercase trispace-font">
+            Join the Momento Family
+          </span>
+        </div>
+
+        {/* Main content */}
+        <div className="max-w-4xl w-full text-center space-y-8 md:space-y-10 relative z-10">
           {/* Logo */}
           <div ref={logoRef} className="w-full flex justify-center">
-            <img src="/images/Logo.png" alt="" />
+            <img src="/images/Logo.png" alt="Momento" className="h-16 md:h-auto" />
+          </div>
+
+          {/* Decorative divider */}
+          <div className="flex items-center justify-center gap-4">
+            <span className="w-12 h-px bg-primary/20"></span>
+            <span className="w-2 h-2 rounded-full bg-primary/30"></span>
+            <span className="w-12 h-px bg-primary/20"></span>
           </div>
 
           {/* Simple Text */}
-          <p ref={textRef} className="text-lg md:text-xl text-primary/80 max-w-2xl mx-auto leading-relaxed">
+          <p ref={textRef} className="text-base md:text-xl text-primary/80 max-w-2xl mx-auto leading-relaxed">
             We are dedicated to providing exceptional experiences and building lasting relationships with our community.
             Join us on this adventure.
           </p>
 
           {/* Pages Links */}
-          <div ref={linksRef} className="flex flex-wrap justify-center gap-6 md:gap-10">
+          <div ref={linksRef} className="flex flex-wrap justify-center gap-4 md:gap-10">
             {pages.map((page) => (
-              <Magnetic
-                key={page.name}
-              >
+              <Magnetic key={page.name}>
                 <a
                   href={page.href}
-                  className="text-primary hover:text-primaryLight transition-colors duration-300 text-lg font-medium relative group"
+                  className="text-primary hover:text-primaryLight transition-colors duration-300 text-base md:text-lg font-medium relative group"
                 >
                   {page.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
@@ -144,13 +204,27 @@ export default function FooterSection() {
               hoverTextColor="white"
               className="w-[120px] h-[70px] rounded-none bg-white text-primary border-primary border"
             >
-              <p className="font-bold">
-                Subscribe
-              </p>
+              <p className="font-bold">Subscribe</p>
             </CostumButton>
           </form>
+
+          {/* Social Links */}
+          <div className="flex justify-center gap-6 pt-4">
+            {Languages.map((social) => (
+              <Magnetic key={social.name}>
+                <a
+                  href={social.href}
+                  className="w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center text-primary/70 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 text-xs font-bold"
+                  aria-label={social.name}
+                >
+                  {social.icon}
+                </a>
+              </Magnetic>
+            ))}
+          </div>
         </div>
       </div>
+
       <SuccessPopup
         isOpen={showPopup}
         onClose={() => setShowPopup(false)}

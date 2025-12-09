@@ -26,6 +26,7 @@ export default function HomePage() {
                 ContentTwo={<HeroMarquee />}
                 ContentThree={<ProductShowcase />}
             />
+            {/* <div className="h-[120vh] w-full bg-primary"></div> */}
             <FooterSection />
             <FooterSection2 />
         </>
