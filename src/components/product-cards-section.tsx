@@ -3,9 +3,10 @@
 import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
 import { ShoppingBag } from "lucide-react"
+import gsap from "gsap"
 import BigWavyCircle from "./BigWavyCircle"
-import Magnetic from "./Magnetic"
 import CostumButton from "./CostumButton"
+import { useTransitionRouter } from "@/hooks/useTransitionRouter"
 
 interface Product {
     id: number
@@ -16,140 +17,87 @@ interface Product {
     isNew?: boolean
 }
 
-const products: Product[] = [
-    {
-        id: 1,
-        name: "RASPBERRY MOCHI",
-        weight: "80г",
-        price: "140 UAH.",
-        image: "/raspberry-mochi-ice-cream-pink-red-cut-in-half.jpg",
-        isNew: true,
-    },
-    {
-        id: 2,
-        name: "MANGO - PASSION FRUIT MOCHI",
-        weight: "75г",
-        price: "140 UAH.",
-        image: "/mango-passion-fruit-mochi-ice-cream-yellow-orange-.jpg",
-        isNew: true,
-    },
-    {
-        id: 3,
-        name: "PISTACHIO-RASPBERRY MOCHI",
-        weight: "80г",
-        price: "140 UAH.",
-        image: "/pistachio-raspberry-mochi-ice-cream-green-pink-cut.jpg",
-        isNew: true,
-    },
-    {
-        id: 4,
-        name: "CHOCOLATE MOCHI",
-        weight: "75г",
-        price: "140 UAH.",
-        image: "/chocolate-mochi-ice-cream-brown-stacked.jpg",
-        isNew: true,
-    },
-    {
-        id: 5,
-        name: "MATCHA MOCHI",
-        weight: "80г",
-        price: "140 UAH.",
-        image: "/matcha-green-tea-mochi-ice-cream.jpg",
-        isNew: false,
-    },
-    {
-        id: 6,
-        name: "STRAWBERRY MOCHI",
-        weight: "75г",
-        price: "140 UAH.",
-        image: "/strawberry-mochi-ice-cream-pink.jpg",
-        isNew: false,
-    },
-    {
-        id: 7,
-        name: "VANILLA MOCHI",
-        weight: "80г",
-        price: "140 UAH.",
-        image: "/vanilla-mochi-ice-cream-white-cream.jpg",
-        isNew: false,
-    },
-    {
-        id: 8,
-        name: "CARAMEL MOCHI",
-        weight: "75г",
-        price: "140 UAH.",
-        image: "/caramel-mochi-ice-cream-brown-golden.jpg",
-        isNew: false,
-    },
-]
+interface ProductCardsSectionProps {
+    products: Product[]
+}
 
-export default function ProductCardsSection() {
-    const sectionRef = useRef<HTMLDivElement>(null)
+export default function ProductCardsSection({ products }: ProductCardsSectionProps) {
     const [hoveredProductId, setHoveredProductId] = useState<number | null>(null)
-    const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
-    const [isInSection, setIsInSection] = useState(false)
+    const router = useTransitionRouter();
+
+    // Fixed: Added | null and initialized with null
+    const cursor = useRef<HTMLDivElement | null>(null)
+    const cursorLabel = useRef<HTMLDivElement | null>(null)
+    const xToCursor = useRef<gsap.QuickToFunc | null>(null)
+    const yToCursor = useRef<gsap.QuickToFunc | null>(null)
+    const xToLabel = useRef<gsap.QuickToFunc | null>(null)
+    const yToLabel = useRef<gsap.QuickToFunc | null>(null)
 
     useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
-            if (sectionRef.current) {
-                const rect = sectionRef.current.getBoundingClientRect()
-                setCursorPosition({
-                    x: e.clientX - rect.left,
-                    y: e.clientY - rect.top,
-                })
-            }
-        }
+        if (cursor.current && cursorLabel.current) {
+            // Initial position
+            gsap.set(cursor.current, { xPercent: -50, yPercent: -50, scale: 0 })
+            gsap.set(cursorLabel.current, { xPercent: -50, yPercent: -50, scale: 0 })
 
-        const section = sectionRef.current
-        if (section) {
-            section.addEventListener("mousemove", handleMouseMove)
-        }
+            // Different durations create the "magnetic" / delayed separation effect
+            xToCursor.current = gsap.quickTo(cursor.current, "x", { duration: 0.5, ease: "power3" })
+            yToCursor.current = gsap.quickTo(cursor.current, "y", { duration: 0.5, ease: "power3" })
 
-        return () => {
-            if (section) {
-                section.removeEventListener("mousemove", handleMouseMove)
-            }
+            xToLabel.current = gsap.quickTo(cursorLabel.current, "x", { duration: 0.45, ease: "power3" })
+            yToLabel.current = gsap.quickTo(cursorLabel.current, "y", { duration: 0.45, ease: "power3" })
         }
     }, [])
 
+    useEffect(() => {
+        if (hoveredProductId !== null) {
+            gsap.to(cursor.current, { scale: 1, duration: 0.4, ease: "back.out(1.7)" })
+            gsap.to(cursorLabel.current, { scale: 1, duration: 0.4, ease: "back.out(1.7)" })
+        } else {
+            gsap.to(cursor.current, { scale: 0, duration: 0.3, ease: "power3.in" })
+            gsap.to(cursorLabel.current, { scale: 0, duration: 0.3, ease: "power3.in" })
+        }
+    }, [hoveredProductId])
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (xToCursor.current && yToCursor.current && xToLabel.current && yToLabel.current) {
+            xToCursor.current(e.clientX)
+            yToCursor.current(e.clientY)
+            xToLabel.current(e.clientX)
+            yToLabel.current(e.clientY)
+        }
+    }
+
     return (
         <section
-            ref={sectionRef}
             className="relative w-full bg-[#FBE8EA] py-12 md:py-16 lg:py-20 px-4 md:px-8 lg:px-12 overflow-hidden"
-            onMouseEnter={() => setIsInSection(true)}
-            onMouseLeave={() => {
-                setIsInSection(false)
-                setHoveredProductId(null)
-            }}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={() => setHoveredProductId(null)}
         >
-            {/* Cursor follower - only visible when hovering a product */}
+            {/* 
+                Cursor Follower
+                - 'fixed' allows it to move relative to the window
+                - 'pointer-events-none' ensures clicks pass through to the card
+                - Removed '-translate-x-1/2' classes because GSAP handles centering now
+            */}
             <div
-                className="fixed pointer-events-none z-50 transition-opacity duration-200 hidden lg:flex items-center justify-center"
-                style={{
-                    left: cursorPosition.x,
-                    top: cursorPosition.y,
-                    transform: "translate(-50%, -50%)",
-                    opacity: isInSection && hoveredProductId !== null ? 1 : 0,
-                    position: "absolute",
-                }}
+                ref={cursor}
+                className="fixed top-0 left-0 pointer-events-none z-50 hidden lg:block w-20 h-20 rounded-full bg-white shadow-lg"
+            />
+            <div
+                ref={cursorLabel}
+                className="fixed top-0 left-0 pointer-events-none z-50 hidden lg:flex items-center justify-center w-20 h-20 text-4xl"
             >
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-lg flex items-center justify-center text-3xl md:text-4xl transition-transform duration-150 ease-out">
-                    <span>
-                        😋
-                    </span>
-                </div>
+                <span>😋</span>
             </div>
 
-            {/* Section Title */}
             <div className="text-center mb-8 md:mb-12">
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary trispace-font uppercase">
                     Our Products
                 </h2>
             </div>
 
-            {/* Product Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full mx-auto ">
-                {products.map((product) => (
+            <div className="grid grid-cols-2  lg:grid-cols-4 gap-4 md:gap-6 w-full mx-auto ">
+                {products.slice(0, 8).map((product) => (
                     <ProductCard
                         key={product.id}
                         product={product}
@@ -158,6 +106,29 @@ export default function ProductCardsSection() {
                         onMouseLeave={() => setHoveredProductId(null)}
                     />
                 ))}
+            </div>
+
+            <div className="w-full flex justify-center lg:py-17 py-6">
+                <BigWavyCircle
+                    rotate={true}
+                    rotateSpeed={5}
+                    rotateDirection="counter-clockwise"
+                    isButton={true}
+                    hoverTextColor="white"
+                    onClick={() => {
+                        console.log("Catalogue clicked");
+                        router.push("/menu")
+                    }}
+                    // Made smaller on mobile (w-24), kept original size on desktop (lg:w-40)
+                    className="w-24 h-24 lg:w-45 lg:h-45 text-primary shrink-0"
+                    fill="transparent"
+                    stroke="#DB212F"
+                    strokeWidth={2}
+                >
+                    <span className="text-xs xlmax:text-lg lg:text-sm font-bold trispace-font uppercase">
+                        Menu
+                    </span>
+                </BigWavyCircle>
             </div>
         </section>
     )
@@ -177,7 +148,6 @@ function ProductCard({ product, isHovered, onMouseEnter, onMouseLeave }: Product
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
         >
-            {/* NEW Badge */}
             {product.isNew && (
                 <div className="absolute top-3 right-3 md:top-4 md:right-4 z-10">
                     <BigWavyCircle
@@ -194,7 +164,6 @@ function ProductCard({ product, isHovered, onMouseEnter, onMouseLeave }: Product
                 </div>
             )}
 
-            {/* Product Image Container */}
             <div className="relative aspect-square p-4 md:p-6 lg:p-8 flex items-center justify-center">
                 <div
                     className={`relative w-full h-full transition-transform duration-500 ${isHovered ? "scale-110" : "scale-100"
@@ -204,7 +173,6 @@ function ProductCard({ product, isHovered, onMouseEnter, onMouseLeave }: Product
                 </div>
             </div>
 
-            {/* Product Info */}
             <div className="p-3 md:p-4 flex items-end justify-between border-t border-[#F0E0D0]">
                 <div className="flex-1 pr-2">
                     <h3 className="text-xs md:text-sm lg:text-base font-bold text-gray-900 trispace-font uppercase leading-tight mb-1">
@@ -214,11 +182,9 @@ function ProductCard({ product, isHovered, onMouseEnter, onMouseLeave }: Product
                     <p className="text-sm md:text-base lg:text-lg font-bold text-primary trispace-font">{product.price}</p>
                 </div>
 
-                {/* Add to Cart Button */}
                 <div className={`shrink-0 transition-all duration-300 ${isHovered ? "scale-110" : "scale-100"}`}>
                     <CostumButton
                         backgroundColor="#DB212F"
-                        // hoverTextColor="#ffffff"
                         className="w-10 h-10 md:w-12 md:h-12 lg:w-20 lg:h-20 bg-primaryLighter border-primaryLighter text-white hover:border-white">
                         <ShoppingBag
                             className={`w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 ${isHovered ? "scale-110" : "scale-100"
@@ -226,9 +192,8 @@ function ProductCard({ product, isHovered, onMouseEnter, onMouseLeave }: Product
                         />
                     </CostumButton>
                 </div>
-
-
             </div>
+
         </div>
     )
 }

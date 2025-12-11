@@ -7,12 +7,13 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { ArrowRight } from "lucide-react"
 import { Reveal } from "../animation/Reveal"
 import BigWavyCircle from "../BigWavyCircle"
+import { useTransitionRouter } from "@/hooks/useTransitionRouter"
 
 
 gsap.registerPlugin(ScrollTrigger)
 
 const ProductShowcase = () => {
-  const router = useRouter()
+   const router = useTransitionRouter();
   const sectionRef = useRef<HTMLElement>(null)
   const mainImageRef = useRef<HTMLImageElement>(null)
   const mainImageContainerRef = useRef<HTMLDivElement>(null)
@@ -172,7 +173,6 @@ const ProductShowcase = () => {
                   isButton={true}
                   hoverTextColor="black"
                   onClick={() => {
-                    console.log("About Us clicked")
                     router.push("/about")
                   }}
                   className="w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 text-white shrink-0"

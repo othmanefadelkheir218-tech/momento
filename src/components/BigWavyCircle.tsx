@@ -112,6 +112,7 @@ export default function BigWavyCircle({
             if (hoverTextColor && containerRef.current) {
                 gsap.to(containerRef.current.querySelector(".content-container"), {
                     color: "inherit", // Or revert to original color if known
+                    delay: 0.3,
                     duration: 0.4,
                 });
             }

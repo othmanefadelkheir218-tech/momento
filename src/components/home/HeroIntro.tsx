@@ -3,11 +3,11 @@
 import { CornerRightDown } from "lucide-react";
 import BigWavyCircle from "../BigWavyCircle"; // Adjust path as needed
 import { Reveal } from "../animation/Reveal";
-import { useRouter } from "@/i18n/navigation";
+import { useTransitionRouter } from "@/hooks/useTransitionRouter";
 
 
 const HeroIntro = () => {
-  const router = useRouter();
+  const router = useTransitionRouter();
 
   return (
     // Changed h-screen to min-h-screen to prevent content cutoff on small mobile screens
