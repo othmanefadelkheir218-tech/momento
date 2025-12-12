@@ -15,7 +15,8 @@ const slider1: Project[] = [
     { color: "#EE636E", src: "/images/c2.jpg" },
     { color: "#F7CCD0", src: "/images/decimal.jpg" },
     { color: "#EC8990", src: "/images/funny.jpg" },
-    { color: "#F1D1D4", src: "/images/google.jpg" }
+    { color: "#F1D1D4", src: "/images/google.jpg" } , 
+    { color: "#EE636E", src: "/images/wix.jpg" }
 ];
 
 const slider2: Project[] = [
@@ -48,7 +49,7 @@ export default function SlidingImages() {
 
             // Equivalent to: x1 = useTransform(scrollYProgress, [0, 1], [0, 150])
             timeline.to(slider1Ref.current, {
-                x: 150,
+                x: 50,
                 ease: "none",
             }, 0);
 
@@ -84,7 +85,7 @@ export default function SlidingImages() {
                 {slider1.map((project, index) => (
                     <div
                         key={index}
-                        className="lg:w-[25%] lg:h-[20vw] w-[500px] h-[300px] flex items-center justify-center"
+                        className="lg:w-[25%] lg:h-[20vw] w-[300px] sm:w-[500px] h-[300px] flex-shrink-0 flex items-center justify-center"
                         style={{ backgroundColor: project.color }}
                     >
                         <div className="relative w-[90%] h-[90%]">
@@ -107,7 +108,7 @@ export default function SlidingImages() {
                 {slider2.map((project, index) => (
                     <div
                         key={index}
-                        className="lg:w-[25%] lg:h-[20vw] w-[500px] h-[300px] flex items-center justify-center"
+                        className="lg:w-[25%] lg:h-[20vw] w-[300px] sm:w-[500px] h-[300px] shrink-0 flex items-center justify-center"
                         style={{ backgroundColor: project.color }}
                     >
                         <div className="relative w-[90%] h-[90%]">
@@ -121,7 +122,7 @@ export default function SlidingImages() {
                     </div>
                 ))}
             </div>
-        
+
         </div>
     );
 }
