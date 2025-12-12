@@ -13,6 +13,7 @@ import FooterSection from "@/components/FooterSection";
 import FooterSection2 from "@/components/FooterSection2";
 import ProductCardsSection from "@/components/product-cards-section";
 import SlidingImages from "@/components/SlidingImages";
+import RotatingModelSection from "@/components/RotatingModel";
 
 interface Product {
     id: number;
@@ -165,14 +166,6 @@ export default function HomePage() {
             image: "/images/prod17.png",
             isNew: true,
         },
-        {
-            id: 18,
-            name: "Tiramisu",
-            weight: "80г",
-            price: "140 UAH.",
-            image: "/images/prod18.png",
-            isNew: true,
-        },
     ]
 
 
@@ -191,7 +184,7 @@ export default function HomePage() {
                 products={products}
             />
             <SlidingImages />
-            {/* <div className="h-[120vh] w-full bg-primary"></div> */}
+            <RotatingModelSection/>
             <FooterSection />
             <FooterSection2 />
         </>

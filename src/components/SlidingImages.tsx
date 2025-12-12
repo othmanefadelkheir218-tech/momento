@@ -74,7 +74,7 @@ export default function SlidingImages() {
     return (
         <div
             ref={containerRef}
-            className="flex flex-col gap-[3vw] relative   z-1 overflow-hidden "
+            className="flex flex-col gap-[3vw] relative   z-1 overflow-hidden my-10 "
         >
             {/* Slider 1 */}
             <div
@@ -84,10 +84,10 @@ export default function SlidingImages() {
                 {slider1.map((project, index) => (
                     <div
                         key={index}
-                        className="w-[25%] h-[20vw] flex items-center justify-center"
+                        className="lg:w-[25%] lg:h-[20vw] w-[300px] h-[300px] flex items-center justify-center"
                         style={{ backgroundColor: project.color }}
                     >
-                        <div className="relative w-[4/5] h-[4/5]">
+                        <div className="relative w-full h-full">
                             <Image
                                 fill={true}
                                 alt="image"
@@ -107,10 +107,10 @@ export default function SlidingImages() {
                 {slider2.map((project, index) => (
                     <div
                         key={index}
-                        className="w-[25%] h-[20vw] flex items-center justify-center"
+                        className="lg:w-[25%] lg:h-[20vw] w-[300px] h-[300px] flex items-center justify-center"
                         style={{ backgroundColor: project.color }}
                     >
-                        <div className="relative w-[80%] h-[80%]">
+                        <div className="relative w-full h-full">
                             <Image
                                 fill={true}
                                 alt="image"
@@ -121,18 +121,7 @@ export default function SlidingImages() {
                     </div>
                 ))}
             </div>
-
-            {/* Circle Container */}
-            {/* Starting height set to 50px via inline style or arbitrary class to match Framer start value */}
-            <div
-                ref={circleContainerRef}
-                className="relative mt-[100px] bg-red-500" // bg-red-500 kept for debugging/visualization based on your original code
-                style={{ height: '50px' }}
-            >
-                <div
-                    className="h-[1550%] w-[120%] -left-[10%] rounded-b-[50%] bg-[#FBE8EA] z-1 absolute shadow-[0_60px_50px_rgba(0,0,0,0.748)]"
-                ></div>
-            </div>
+        
         </div>
     );
 }
