@@ -12,17 +12,17 @@ interface Project {
 }
 
 const slider1: Project[] = [
-    { color: "#e3e5e7", src: "c2.jpg" },
-    { color: "#d6d7dc", src: "decimal.jpg" },
-    { color: "#e3e3e3", src: "funny.jpg" },
-    { color: "#21242b", src: "google.jpg" }
+    { color: "#EE636E", src: "/images/c2.jpg" },
+    { color: "#F7CCD0", src: "/images/decimal.jpg" },
+    { color: "#EC8990", src: "/images/funny.jpg" },
+    { color: "#F1D1D4", src: "/images/google.jpg" }
 ];
 
 const slider2: Project[] = [
-    { color: "#d4e3ec", src: "maven.jpg" },
-    { color: "#e5e0e1", src: "panda.jpg" },
-    { color: "#d7d4cf", src: "powell.jpg" },
-    { color: "#e1dad6", src: "wix.jpg" }
+    { color: "#F1D1D4", src: "/images/maven.jpg" },
+    { color: "#F7CCD0", src: "/images/panda.jpg" },
+    { color: "#EC8990", src: "/images/powell.jpg" },
+    { color: "#EE636E", src: "/images/wix.jpg" }
 ];
 
 export default function SlidingImages() {
@@ -84,14 +84,14 @@ export default function SlidingImages() {
                 {slider1.map((project, index) => (
                     <div
                         key={index}
-                        className="lg:w-[25%] lg:h-[20vw] w-[300px] h-[300px] flex items-center justify-center"
+                        className="lg:w-[25%] lg:h-[20vw] w-[500px] h-[300px] flex items-center justify-center"
                         style={{ backgroundColor: project.color }}
                     >
-                        <div className="relative w-full h-full">
+                        <div className="relative w-[90%] h-[90%]">
                             <Image
                                 fill={true}
                                 alt="image"
-                                src={`/images/${project.src}`}
+                                src={`${project.src}`}
                                 className="object-cover"
                             />
                         </div>
@@ -107,14 +107,14 @@ export default function SlidingImages() {
                 {slider2.map((project, index) => (
                     <div
                         key={index}
-                        className="lg:w-[25%] lg:h-[20vw] w-[300px] h-[300px] flex items-center justify-center"
+                        className="lg:w-[25%] lg:h-[20vw] w-[500px] h-[300px] flex items-center justify-center"
                         style={{ backgroundColor: project.color }}
                     >
-                        <div className="relative w-full h-full">
+                        <div className="relative w-[90%] h-[90%]">
                             <Image
                                 fill={true}
                                 alt="image"
-                                src={`/images/${project.src}`}
+                                src={`${project.src}`}
                                 className="object-cover"
                             />
                         </div>
