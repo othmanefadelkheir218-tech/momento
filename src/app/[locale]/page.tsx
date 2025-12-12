@@ -12,6 +12,7 @@ import OneTimeIntroduction from "@/components/OneTimeIntroduction";
 import FooterSection from "@/components/FooterSection";
 import FooterSection2 from "@/components/FooterSection2";
 import ProductCardsSection from "@/components/product-cards-section";
+import SlidingImages from "@/components/SlidingImages";
 
 interface Product {
     id: number;
@@ -189,9 +190,11 @@ export default function HomePage() {
             <ProductCardsSection
                 products={products}
             />
+            <SlidingImages />
             {/* <div className="h-[120vh] w-full bg-primary"></div> */}
             <FooterSection />
             <FooterSection2 />
         </>
     );
 }
+ 
