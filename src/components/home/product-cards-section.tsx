@@ -4,8 +4,8 @@ import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
 import { ShoppingBag } from "lucide-react"
 import gsap from "gsap"
-import BigWavyCircle from "./BigWavyCircle"
-import CostumButton from "./CostumButton"
+import BigWavyCircle from "../BigWavyCircle"
+import CostumButton from "../CostumButton"
 import { useTransitionRouter } from "@/hooks/useTransitionRouter"
 
 interface Product {
@@ -19,13 +19,18 @@ interface Product {
 
 interface ProductCardsSectionProps {
     products: Product[]
+    ShowTitle: boolean
+    showAll: boolean
+    bgcolor ?: string
 }
 
-export default function ProductCardsSection({ products }: ProductCardsSectionProps) {
+export default function ProductCardsSection({ products , ShowTitle , showAll , bgcolor }: ProductCardsSectionProps) {
     const [hoveredProductId, setHoveredProductId] = useState<number | null>(null)
     const router = useTransitionRouter();
 
-    // Fixed: Added | null and initialized with null
+    const containerRef = useRef<HTMLElement>(null)
+    const mousePos = useRef({ x: 0, y: 0 })
+
     const cursor = useRef<HTMLDivElement | null>(null)
     const cursorLabel = useRef<HTMLDivElement | null>(null)
     const xToCursor = useRef<gsap.QuickToFunc | null>(null)
@@ -33,13 +38,17 @@ export default function ProductCardsSection({ products }: ProductCardsSectionPro
     const xToLabel = useRef<gsap.QuickToFunc | null>(null)
     const yToLabel = useRef<gsap.QuickToFunc | null>(null)
 
+    // 1. Setup GSAP with autoAlpha (Visibility + Opacity)
     useEffect(() => {
         if (cursor.current && cursorLabel.current) {
-            // Initial position
-            gsap.set(cursor.current, { xPercent: -50, yPercent: -50, scale: 0 })
-            gsap.set(cursorLabel.current, { xPercent: -50, yPercent: -50, scale: 0 })
+            // Initial state: Hide completely with autoAlpha: 0
+            gsap.set([cursor.current, cursorLabel.current], { 
+                xPercent: -50, 
+                yPercent: -50, 
+                scale: 0, 
+                autoAlpha: 0 // <--- CRITICAL FIX: Ensures visibility: hidden
+            })
 
-            // Different durations create the "magnetic" / delayed separation effect
             xToCursor.current = gsap.quickTo(cursor.current, "x", { duration: 0.5, ease: "power3" })
             yToCursor.current = gsap.quickTo(cursor.current, "y", { duration: 0.5, ease: "power3" })
 
@@ -48,17 +57,56 @@ export default function ProductCardsSection({ products }: ProductCardsSectionPro
         }
     }, [])
 
+    // 2. Scroll Handler: Force hide if mouse is physically outside the section bounds
+    useEffect(() => {
+        const handleScroll = () => {
+            if (hoveredProductId === null || !containerRef.current) return;
+            
+            const rect = containerRef.current.getBoundingClientRect();
+            const { x, y } = mousePos.current;
+
+            // Check if mouse is outside the section
+            const isOutside = 
+                x < rect.left || 
+                x > rect.right || 
+                y < rect.top || 
+                y > rect.bottom;
+
+            if (isOutside) {
+                setHoveredProductId(null);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [hoveredProductId]);
+
+    // 3. Hover Animation: Use autoAlpha to toggle visibility cleanly
     useEffect(() => {
         if (hoveredProductId !== null) {
-            gsap.to(cursor.current, { scale: 1, duration: 0.4, ease: "back.out(1.7)" })
-            gsap.to(cursorLabel.current, { scale: 1, duration: 0.4, ease: "back.out(1.7)" })
+            // SHOW
+            gsap.to([cursor.current, cursorLabel.current], { 
+                scale: 1, 
+                autoAlpha: 1, // Becomes visible
+                duration: 0.4, 
+                ease: "back.out(1.7)",
+                overwrite: "auto" // Prevents conflicts if mouse moves fast
+            })
         } else {
-            gsap.to(cursor.current, { scale: 0, duration: 0.3, ease: "power3.in" })
-            gsap.to(cursorLabel.current, { scale: 0, duration: 0.3, ease: "power3.in" })
+            // HIDE
+            gsap.to([cursor.current, cursorLabel.current], { 
+                scale: 0, 
+                autoAlpha: 0, // Becomes hidden (visibility: hidden) at end of tween
+                duration: 0.3, 
+                ease: "power3.in",
+                overwrite: "auto"
+            })
         }
     }, [hoveredProductId])
 
     const handleMouseMove = (e: React.MouseEvent) => {
+        mousePos.current = { x: e.clientX, y: e.clientY };
+
         if (xToCursor.current && yToCursor.current && xToLabel.current && yToLabel.current) {
             xToCursor.current(e.clientX)
             yToCursor.current(e.clientY)
@@ -69,35 +117,35 @@ export default function ProductCardsSection({ products }: ProductCardsSectionPro
 
     return (
         <section
-            className="relative w-full bg-[#FBE8EA] py-12 md:py-16 lg:py-20 px-4 md:px-8 lg:px-12 overflow-hidden"
+            ref={containerRef}
+            className={`relative w-full ${bgcolor ? bgcolor : "bg-[#FBE8EA]"} py-12 md:py-16 lg:py-20 px-4 md:px-8 lg:px-12 overflow-hidden`}
             onMouseMove={handleMouseMove}
             onMouseLeave={() => setHoveredProductId(null)}
         >
             {/* 
-                Cursor Follower
-                - 'fixed' allows it to move relative to the window
-                - 'pointer-events-none' ensures clicks pass through to the card
-                - Removed '-translate-x-1/2' classes because GSAP handles centering now
+               Updated classes:
+               1. Removed 'hidden lg:block' (GSAP handles visibility now)
+               2. Ensure opacity-0 is set initially in CSS to prevent flash before JS loads
             */}
             <div
                 ref={cursor}
-                className="fixed top-0 left-0 pointer-events-none z-50 hidden lg:block w-20 h-20 rounded-full bg-white shadow-lg"
+                className="fixed top-0 left-0 pointer-events-none z-50 w-20 h-20 rounded-full bg-white shadow-lg opacity-0 invisible lg:visible"
             />
             <div
                 ref={cursorLabel}
-                className="fixed top-0 left-0 pointer-events-none z-50 hidden lg:flex items-center justify-center w-20 h-20 text-4xl"
+                className="fixed top-0 left-0 pointer-events-none z-50 flex items-center justify-center w-20 h-20 text-4xl opacity-0 invisible lg:visible"
             >
                 <span>😋</span>
             </div>
 
             <div className="text-center mb-8 md:mb-12">
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary trispace-font uppercase">
+                {ShowTitle && <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary trispace-font uppercase">
                     Our Products
-                </h2>
+                </h2>}
             </div>
 
-            <div className="grid grid-cols-2  lg:grid-cols-4 gap-4 md:gap-6 w-full mx-auto ">
-                {products.slice(0, 8).map((product) => (
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full mx-auto">
+                {products.map((product) => (
                     <ProductCard
                         key={product.id}
                         product={product}
@@ -108,18 +156,14 @@ export default function ProductCardsSection({ products }: ProductCardsSectionPro
                 ))}
             </div>
 
-            <div className="w-full flex justify-center lg:py-17 py-6">
+            {!showAll && <div className="w-full flex justify-center lg:py-17 py-6">
                 <BigWavyCircle
                     rotate={true}
                     rotateSpeed={5}
                     rotateDirection="counter-clockwise"
                     isButton={true}
                     hoverTextColor="white"
-                    onClick={() => {
-                        console.log("Catalogue clicked");
-                        router.push("/menu")
-                    }}
-                    // Made smaller on mobile (w-24), kept original size on desktop (lg:w-40)
+                    onClick={() => router.push("/menu")}
                     className="w-24 h-24 lg:w-45 lg:h-45 text-primary shrink-0"
                     fill="transparent"
                     stroke="#DB212F"
@@ -129,7 +173,7 @@ export default function ProductCardsSection({ products }: ProductCardsSectionPro
                         Menu
                     </span>
                 </BigWavyCircle>
-            </div>
+            </div>}
         </section>
     )
 }
@@ -166,8 +210,7 @@ function ProductCard({ product, isHovered, onMouseEnter, onMouseLeave }: Product
 
             <div className="relative aspect-square p-4 md:p-6 lg:p-8 flex items-center justify-center">
                 <div
-                    className={`relative w-full h-full transition-transform duration-500 ${isHovered ? "scale-110" : "scale-100"
-                        }`}
+                    className={`relative w-full h-full transition-transform duration-500 ${isHovered ? "scale-110" : "scale-100"}`}
                 >
                     <Image src={product.image || "/placeholder.svg"} alt={product.name} fill className="object-contain" />
                 </div>
@@ -187,13 +230,11 @@ function ProductCard({ product, isHovered, onMouseEnter, onMouseLeave }: Product
                         backgroundColor="#DB212F"
                         className="w-10 h-10 md:w-12 md:h-12 lg:w-20 lg:h-20 bg-primaryLighter border-primaryLighter text-white hover:border-white">
                         <ShoppingBag
-                            className={`w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 ${isHovered ? "scale-110" : "scale-100"
-                                }`}
+                            className={`w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 ${isHovered ? "scale-110" : "scale-100"}`}
                         />
                     </CostumButton>
                 </div>
             </div>
-
         </div>
     )
 }

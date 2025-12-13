@@ -32,7 +32,7 @@ export const Reveal = ({ children, className = "", delay = 0, rotate = true }: P
                     // opacity: 1,
                     y: 0,
                     rotation: 0,
-                    duration: 1.2,
+                    duration: 0.5,
                     delay: delay,
                     ease: "power2.out",
                     scrollTrigger: {

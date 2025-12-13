@@ -2,11 +2,12 @@
 
 import { useRef, useEffect, useState } from "react"
 import { Canvas } from "@react-three/fiber"
-import { PerspectiveCamera, OrbitControls, GizmoHelper, GizmoViewport, Text3D, Center } from "@react-three/drei"
+import { PerspectiveCamera, Text3D, Center } from "@react-three/drei"
 import * as THREE from "three"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import useWidth from "@/hooks/Width"
+import { Reveal } from "../animation/Reveal"
 
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger)
@@ -14,7 +15,7 @@ if (typeof window !== "undefined") {
 
 // 3D Model Component (Letter M)
 function RotatingModel() {
-    const meshRef = useRef<THREE.Group>(null)
+    const meshRef = useRef<THREE.Object3D>(null)
     const rotationRef = useRef({ x: 0, y: 0, z: 0 })
 
     useEffect(() => {
@@ -78,7 +79,7 @@ function RotatingModel() {
 function ModelScene() {
     return (
         <Canvas className="w-full h-full"
-        
+
         >
             {/* <OrbitControls /> */}
             <PerspectiveCamera
@@ -155,14 +156,19 @@ export default function RotatingModelSection() {
                             <div
                                 key={section.id}
                                 className={`h-screen w-full flex items-end pb-24 px-12 lg:px-24 pointer-events-auto
-                  ${index % 2 === 0 ? 'justify-start' : 'justify-end'}
-                `}
+                                ${index % 2 === 0 ? 'justify-start' : 'justify-end'}
+                                `}
                             >
-                                <div className="max-w-lg bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-sm">
-                                    <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4 trispace-font">
-                                        {section.title}
-                                    </h2>
-                                    <p className="text-lg text-primary/80 leading-relaxed">
+                                <div className="max-w-lg  backdrop-blur-sm p-8 rounded-2xl ">
+                                    <Reveal
+                                        rotate={false}
+                                        // delay={-0.5}
+                                    >
+                                        <h2 className="text-4xl uppercase trispace-font  lg:text-7xl font-bold text-primary mb-4 trispace-font">
+                                            {section.title}
+                                        </h2>
+                                    </Reveal>
+                                    <p className="text-lg lg:text-2xl sriracha-regular text-primary/80 leading-relaxed">
                                         {section.description}
                                     </p>
                                 </div>

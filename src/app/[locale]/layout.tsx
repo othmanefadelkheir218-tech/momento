@@ -3,12 +3,13 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import Header from "@/components/Header";
+import Header from "@/components/layout/Header/Header";
 import { Geist, Geist_Mono } from "next/font/google";
 import TransitionWrapper from "@/components/TransitionWrapper";
 import ReactLenis from "lenis/react";
 
 import "../globals.css";
+import Footer from "@/components/layout/Footer/Footer";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -58,6 +59,7 @@ export default async function LocaleLayout({
                                 <main className="min-h-screen">
                                     {children}
                                 </main>
+                                <Footer />
                             </TransitionWrapper>
                         </ThemeProvider>
                     </ReactLenis>

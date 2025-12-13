@@ -5,10 +5,10 @@ import type React from "react"
 import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { SuccessPopup } from "./success-popup"
-import CostumButton from "./CostumButton"
+import { SuccessPopup } from "../../success-popup"
+import CostumButton from "../../CostumButton"
 import { useTranslations } from "next-intl"
-import Magnetic from "./Magnetic"
+import Magnetic from "../../Magnetic"
 
 gsap.registerPlugin(ScrollTrigger)
 

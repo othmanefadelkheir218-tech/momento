@@ -5,10 +5,11 @@ import type React from "react"
 import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { SuccessPopup } from "./success-popup"
 import { Facebook, Instagram, Twitter, Youtube, Linkedin } from "lucide-react"
-import CostumButton from "./CostumButton"
-import Magnetic from "./Magnetic"
+import Magnetic from "@/components/Magnetic"
+import CostumButton from "@/components/CostumButton"
+import { SuccessPopup } from "@/components/success-popup"
+
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -294,7 +295,7 @@ const Forms = () => {
     )
 }
 
-export default function Footer() {
+export default function FooterSection2() {
     return (
         <div className="relative h-[900px] bg-black" style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}>
             <div className="relative h-[calc(100vh+900px)] -top-[calc(100vh)]">

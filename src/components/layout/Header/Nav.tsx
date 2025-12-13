@@ -5,8 +5,8 @@ import { useGSAP } from "@gsap/react";
 
 
 import Curve from "./Curve";
-import Footer from "./Footer";
-import NavLink from "./Link";
+import Footer from "../Footer/Footer";
+import NavLink from "../../Link";
 import { usePathname } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useLenis } from "lenis/react";
@@ -31,6 +31,7 @@ export default function Nav({ isActive, setIsActive }: NavProps) {
     const navItems = [
         { title: t("home"), href: "/" },
         { title: t("menu"), href: "/menu" },
+        { title: t("about"), href: "/about" },
         { title: t("faq"), href: "/faq" },
         { title: t("contact"), href: "/contact" },
     ];

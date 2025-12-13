@@ -13,7 +13,7 @@ import { useTransitionRouter } from "@/hooks/useTransitionRouter"
 gsap.registerPlugin(ScrollTrigger)
 
 const ProductShowcase = () => {
-   const router = useTransitionRouter();
+  const router = useTransitionRouter();
   const sectionRef = useRef<HTMLElement>(null)
   const mainImageRef = useRef<HTMLImageElement>(null)
   const mainImageContainerRef = useRef<HTMLDivElement>(null)
@@ -107,11 +107,11 @@ const ProductShowcase = () => {
             <h1>An ice-cream dessert</h1>
           </Reveal>
 
-          <Reveal rotate={false} delay={0.1}>
+          <Reveal rotate={false} delay={0}>
             <h1>that melts every heart</h1>
           </Reveal>
 
-          <Reveal rotate={false} delay={0.2}>
+          <Reveal rotate={false} delay={0}>
             <h1>even the stubborn ones.</h1>
           </Reveal>
         </div>
@@ -136,9 +136,11 @@ const ProductShowcase = () => {
         <div className="w-full">
           <div className="flex flex-col lg:flex-row lg:justify-around items-center lg:items-start gap-8 lg:gap-4">
             {/* Left Image - Hidden on mobile, shown on desktop */}
-            <div className="hidden lg:flex lg:order-1 justify-center lg:justify-end lg:mt-32">
+            <div
+              ref={rightImageRef}
+              className="hidden lg:flex lg:order-1 justify-center lg:justify-end lg:mt-32">
               <div className="overflow-hidden w-full max-w-[400px] rounded-tl-[100px]" ref={leftImageRef}>
-                <img src="/images/image-1.png" alt="Woman enjoying ice cream" className="w-full h-auto object-cover" />
+                <img src="/images/secondSection2.png" alt="Woman enjoying ice cream" className="w-full h-auto object-cover" />
               </div>
             </div>
 
@@ -194,7 +196,7 @@ const ProductShowcase = () => {
               className="hidden lg:flex lg:order-3 justify-center lg:justify-start lg:-mt-48"
             >
               <div className="overflow-hidden w-full max-w-[400px] rounded-tr-[100px]">
-                <img src="/images/image-1.png" alt="Woman tasting ice cream" className="w-full h-auto object-cover" />
+                <img src="/images/secondSection1.png" alt="Woman tasting ice cream" className="w-full h-auto object-cover" />
               </div>
             </div>
           </div>

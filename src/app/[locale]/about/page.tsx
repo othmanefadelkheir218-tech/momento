@@ -1,6 +1,8 @@
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import CurveLoading from "@/components/CurveLoading";
+import OriginStory from "./Parts/OriginStory";
+import InANutshell from "./Parts/InANutshell";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
@@ -15,14 +17,10 @@ export default function AboutPage() {
     const t = useTranslations("AboutPage");
 
     return (
-        <CurveLoading FilColor="#DB212F" backgroundColor="">
-            <div className="w-full bg-red-500 mx-auto px-4 py-12">
-                <h1 className="text-4xl font-bold mb-6">{t("title")}</h1>
-                <p className="text-xl text-gray-600 dark:text-gray-300">
-                    {t("description")}
-                </p>
-            </div>
-        </CurveLoading>
+        <>
+            <InANutshell />
+            <OriginStory />
+        </>
 
     );
 }

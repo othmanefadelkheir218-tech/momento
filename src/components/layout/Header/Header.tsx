@@ -1,20 +1,20 @@
 "use client";
 
-import { Link, usePathname } from "@/i18n/navigation";
+import { usePathname } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import ThemeToggle from "./ThemeToggle";
-import LangSwitcher from "./LangSwitcher";
-import Magnetic from "./Magnetic";
+import ThemeToggle from "../../ThemeToggle";
+import LangSwitcher from "../../LangSwitcher";
+import Magnetic from "../../Magnetic";
 import { useState, useRef } from "react";
 import Nav from "./Nav";
 import useScroll from "@/hooks/useScroll";
 import { Dot, Minus } from "lucide-react";
-import CostumButton from "./CostumButton";
+import CostumButton from "../../CostumButton";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import useScrollToTop from "@/hooks/useScrollToTop";
 import useWidth from "@/hooks/Width";
-import TransitionLink from "./TransitionLink";
+import TransitionLink from "../../TransitionLink";
 
 export default function Header() {
     useScrollToTop();
@@ -63,6 +63,7 @@ export default function Header() {
         { href: "/", label: t("home") },
         { href: "/menu", label: t("menu") },
         { href: "/faq", label: t("faq") },
+        { href: "/about", label: t("about") },
         { href: "/contact", label: t("contact") },
     ];
 
@@ -78,7 +79,7 @@ export default function Header() {
                             const isActiveLink = pathname === link.href;
                             return (
                                 <Magnetic key={link.href}>
-                                    <TransitionLink 
+                                    <TransitionLink
                                         // label={link.label}
                                         href={link.href}
                                         className="text-white flex flex-col items-center text-lg trispace-font group"
@@ -119,8 +120,8 @@ export default function Header() {
                 </CostumButton>
             </div>
             <Nav isActive={isActive} setIsActive={setIsActive} />
-    
-     
+
+
         </>
     );
 }
