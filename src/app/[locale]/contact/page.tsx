@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
+import ContactPagePart from "./Parts/ContactPage";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
     const t = await getTranslations({ locale, namespace: "ContactPage" });
@@ -13,11 +14,10 @@ export default function ContactPage() {
     const t = useTranslations("ContactPage");
 
     return (
-        <div className="w-full bg-red-500 mx-auto px-4 py-12">
-            <h1 className="text-4xl font-bold mb-6">{t("title")}</h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300">
-                {t("description")}
-            </p>
+        <div className="bg-[#F7D6D9] mx-auto px-4 py-12">
+            <ContactPagePart
+                title={t("title")}
+            />
         </div>
 
     );

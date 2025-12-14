@@ -67,9 +67,13 @@ export default function Header() {
         { href: "/contact", label: t("contact") },
     ];
 
+
+    const itsHome = (pathname === "/");
+
     return (
         <>
-            <header ref={headerRef} className="fixed top-0 w-full z-20 py-2 bg-black/10 backdrop-blur-lg shadow-lg transition-transform duration-300">
+            {/* if its not home make the heeader backgroudn more dark  */}
+            <header ref={headerRef} className={`fixed top-0 w-full z-20 py-2   backdrop-blur-lg shadow-lg transition-transform duration-300 ${itsHome ? "bg-black/10" : "bg-primary/50"}`}>
                 <div className="container mx-auto px-4 h-16 flex items-center justify-between">
                     <TransitionLink href="/" className="">
                         <img src="/images/LogoWhite.png" className="md:w-48 w-32" alt="Momento Logo" />

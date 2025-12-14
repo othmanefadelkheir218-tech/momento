@@ -5,40 +5,32 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { MotionPathPlugin } from "gsap/MotionPathPlugin"
 import DirectionSvg from "@/components/DirectionSvg"
+import CostumButton from "@/components/CostumButton"
+import { useTransitionRouter } from "@/hooks/useTransitionRouter"
 
-// Register plugins
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
 
 export default function OriginStory() {
   const containerRef = useRef<HTMLDivElement>(null)
   const followerRef = useRef<HTMLDivElement>(null)
+  const router = useTransitionRouter()
+  // Section refs for animations
+  const section1Ref = useRef<HTMLDivElement>(null)
+  const section2Ref = useRef<HTMLDivElement>(null)
+  const section3Ref = useRef<HTMLDivElement>(null)
+  const section4Ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-
       // Initial state: Hidden
       gsap.set(followerRef.current, { autoAlpha: 0, scale: 0.5 })
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          // -----------------------------------------------------------
-          // 1. SPEED & DURATION CONTROL
-          // -----------------------------------------------------------
-          // 'start': When top of container hits 80% of viewport height
-          // 'end': When bottom of container hits 20% of viewport height
           start: "top 80%",
-          end: "bottom 20%",
-
-          // 'scrub': This controls the "Lag" or "Physics".
-          // 1.5 = Slow/Floaty. 
-          // 0.1 = Very Fast/Responsive. 
-          // Change this number to control how fast it catches up to the scroll.
-          scrub: 0.05,
-
-          // -----------------------------------------------------------
-          // 2. VISIBILITY CONTROL (Show only when in view)
-          // -----------------------------------------------------------
+          end: "bottom 120%",
+          scrub: 0.01,
           onEnter: () => gsap.to(followerRef.current, { autoAlpha: 1, scale: 1, duration: 0.5 }),
           onLeave: () => gsap.to(followerRef.current, { autoAlpha: 0, scale: 0.5, duration: 0.5 }),
           onEnterBack: () => gsap.to(followerRef.current, { autoAlpha: 1, scale: 1, duration: 0.5 }),
@@ -46,119 +38,432 @@ export default function OriginStory() {
         },
       })
 
-      // Animate the "M" logo along the path
       tl.to(followerRef.current, {
         motionPath: {
           path: "#my-custom-path",
           align: "#my-custom-path",
           alignOrigin: [0.5, 0.5],
           autoRotate: true,
-          start: 0, // 0 = Beginning of SVG path
-          end: 1,   // 1 = End of SVG path
+          start: 0,
+          end: 1,
         },
-        ease: "none", // IMPORTANT: Keep 'none' for linear movement tied to scroll
+        ease: "none",
       })
 
+      // SECTION 1: Staggered reveal with parallax
+      const section1 = section1Ref.current
+      if (section1) {
+        const image = section1.querySelector(".section-image")
+        const badge = section1.querySelector(".section-badge")
+        const title = section1.querySelector(".section-title")
+        const subtitle = section1.querySelector(".section-subtitle")
+        const text = section1.querySelector(".section-text")
+        const decorLine = section1.querySelector(".decor-line")
+
+        gsap.set([badge, title, subtitle, text, decorLine], {
+          autoAlpha: 0,
+          y: 60,
+        })
+        gsap.set(image, {
+          autoAlpha: 0,
+          scale: 1.1,
+          clipPath: "inset(100% 0% 0% 0%)",
+        })
+
+        const tl1 = gsap.timeline({
+          scrollTrigger: {
+            trigger: section1,
+            start: "top 75%",
+            end: "top 25%",
+            toggleActions: "play none none reverse",
+          },
+        })
+
+        tl1
+          .to(image, {
+            autoAlpha: 1,
+            scale: 1,
+            clipPath: "inset(0% 0% 0% 0%)",
+            duration: 1.2,
+            ease: "power3.out",
+          })
+          .to(badge, { autoAlpha: 1, y: 0, duration: 0.6, ease: "back.out(1.7)" }, "-=0.6")
+          .to(title, { autoAlpha: 1, y: 0, duration: 0.8, ease: "power3.out" }, "-=0.4")
+          .to(decorLine, { autoAlpha: 1, y: 0, scaleX: 1, duration: 0.5, ease: "power2.out" }, "-=0.5")
+          .to(subtitle, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.3")
+          .to(text, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.4")
+
+        // Parallax on image
+        gsap.to(image, {
+          yPercent: -15,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section1,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+        })
+      }
+
+      // SECTION 2: Horizontal slide in with counter animation
+      const section2 = section2Ref.current
+      if (section2) {
+        const image = section2.querySelector(".section-image")
+        const content = section2.querySelector(".section-content")
+        const stats = section2.querySelectorAll(".stat-item")
+
+        gsap.set(image, { autoAlpha: 0, x: 100, rotateY: 15 })
+        gsap.set(content, { autoAlpha: 0, x: -60 })
+        gsap.set(stats, { autoAlpha: 0, y: 40, scale: 0.8 })
+
+        const tl2 = gsap.timeline({
+          scrollTrigger: {
+            trigger: section2,
+            start: "top 70%",
+            end: "top 20%",
+            toggleActions: "play none none reverse",
+          },
+        })
+
+        tl2
+          .to(content, { autoAlpha: 1, x: 0, duration: 1, ease: "power3.out" })
+          .to(image, { autoAlpha: 1, x: 0, rotateY: 0, duration: 1.2, ease: "power3.out" }, "-=0.8")
+          .to(
+            stats,
+            {
+              autoAlpha: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.6,
+              stagger: 0.15,
+              ease: "back.out(1.7)",
+            },
+            "-=0.6",
+          )
+      }
+
+      // SECTION 3: Scale and fade with floating elements
+      const section3 = section3Ref.current
+      if (section3) {
+        const images = section3.querySelectorAll(".gallery-image")
+        const content = section3.querySelector(".section-content")
+        const floatingElements = section3.querySelectorAll(".floating-element")
+
+        gsap.set(images, { autoAlpha: 0, scale: 0.8, y: 50 })
+        gsap.set(content, { autoAlpha: 0, y: 80 })
+        gsap.set(floatingElements, { autoAlpha: 0, scale: 0 })
+
+        const tl3 = gsap.timeline({
+          scrollTrigger: {
+            trigger: section3,
+            start: "top 70%",
+            toggleActions: "play none none reverse",
+          },
+        })
+
+        tl3
+          .to(images, {
+            autoAlpha: 1,
+            scale: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "power3.out",
+          })
+          .to(content, { autoAlpha: 1, y: 0, duration: 0.8, ease: "power3.out" }, "-=0.5")
+          .to(
+            floatingElements,
+            {
+              autoAlpha: 1,
+              scale: 1,
+              duration: 0.5,
+              stagger: 0.1,
+              ease: "elastic.out(1, 0.5)",
+            },
+            "-=0.4",
+          )
+
+        // Continuous floating animation
+        floatingElements.forEach((el, i) => {
+          gsap.to(el, {
+            y: "random(-20, 20)",
+            x: "random(-10, 10)",
+            rotation: "random(-10, 10)",
+            duration: "random(2, 4)",
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+            delay: i * 0.2,
+          })
+        })
+      }
+
+      // SECTION 4: Grand finale with split reveal
+      const section4 = section4Ref.current
+      if (section4) {
+        const leftPanel = section4.querySelector(".left-panel")
+        const rightPanel = section4.querySelector(".right-panel")
+        const centerContent = section4.querySelector(".center-content")
+        const cta = section4.querySelector(".cta-button")
+
+        gsap.set(leftPanel, { xPercent: -100, autoAlpha: 0 })
+        gsap.set(rightPanel, { xPercent: 100, autoAlpha: 0 })
+        gsap.set(centerContent, { autoAlpha: 0, y: 60, scale: 0.9 })
+        gsap.set(cta, { autoAlpha: 0, y: 30 })
+
+        const tl4 = gsap.timeline({
+          scrollTrigger: {
+            trigger: section4,
+            start: "top 65%",
+            toggleActions: "play none none reverse",
+          },
+        })
+
+        tl4
+          .to([leftPanel, rightPanel], {
+            xPercent: 0,
+            autoAlpha: 1,
+            duration: 1,
+            ease: "power4.out",
+          })
+          .to(
+            centerContent,
+            {
+              autoAlpha: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.8,
+              ease: "power3.out",
+            },
+            "-=0.5",
+          )
+          .to(
+            cta,
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.6,
+              ease: "back.out(1.7)",
+            },
+            "-=0.3",
+          )
+      }
     }, containerRef)
 
     return () => ctx.revert()
   }, [])
 
   return (
-    <div ref={containerRef}
-      // -----------------------------------------------------------
-      // 3. PADDING CONTROL
-      // -----------------------------------------------------------
-      // Changed py-26 to py-48 (roughly 12rem/192px). 
-      // Increase this if you want more empty space at start/end.
-      className="relative z-20 w-full bg-[#FFF5F0] overflow-hidden py-48"
-    >
-
+    <div ref={containerRef} className="relative z-20 w-full bg-[#FFF5F0] overflow-hidden py-32 md:py-48">
       {/* SVG LAYER */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none z-0 mt-20">
-        <DirectionSvg className="w-full h-[95%]" />
+      <div className="absolute inset-0 w-full h-[95.2%] pointer-events-none z-0">
+        <DirectionSvg className="w-full h-full" />
       </div>
 
-      {/* THE FLOATING "M" FOLLOWER (Visibility controlled by GSAP now) */}
+      {/* THE FLOATING "M" FOLLOWER */}
       <div
         ref={followerRef}
-        className="hidden md:flex absolute top-0 left-0 z-10 w-20 h-20 lg:w-28 lg:h-28 rounded-full bg-gradient-to-br from-[#C41E3A] to-[#8B1428] items-center justify-center text-white shadow-2xl border-4 border-white/20 opacity-0"
+        className="hidden md:flex absolute top-0 left-0 z-10 w-20 h-20 lg:w-28 lg:h-28 rounded-full bg-[#C41E3A] items-center justify-center text-white shadow-2xl border-4 border-white/20 opacity-0"
         style={{ willChange: "transform, opacity" }}
       >
-        <div className="relative h-full w-full flex items-center justify-center">
+        <div className="relative h-full w-full flex items-center justify-center ">
           <div className="absolute inset-0 rounded-full bg-[#C41E3A] opacity-20 blur-xl"></div>
           <div className="absolute inset-3 border-2 border-white/40 rounded-full"></div>
-          <span className="text-5xl lg:text-7xl font-bold font-serif text-white relative z-10" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.3)" }}>
+          <span
+            className="text-5xl lg:text-7xl font-bold font-serif text-white relative z-10"
+            style={{ textShadow: "0 2px 10px rgba(0,0,0,0.3)" }}
+          >
             M
           </span>
         </div>
       </div>
 
-      {/* CONTENT SECTION */}
-      <div className="relative z-15 container mx-auto px-6 md:px-10 lg:px-16 flex flex-col gap-40 md:gap-48">
-
-        {/* SECTION 1 */}
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center h-[85vh]">
-          <div className="w-full lg:w-1/2 relative h-[450px] md:h-[600px] lg:h-[750px] group">
-            <div className="w-full h-full bg-gray-200 overflow-hidden relative rounded-2xl shadow-2xl group-hover:scale-[1.02] transition-transform duration-500">
+      {/* ========== CONTENT SECTIONS ========== */}
+      <div className="relative z-15 container mx-auto px-6 md:px-10 lg:px-16 flex flex-col gap-32 md:gap-48 lg:gap-64">
+        {/* SECTION 1: THE BEGINNING */}
+        <section ref={section1Ref} className="min-h-screen flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+          {/* Image Side */}
+          <div className="w-full lg:w-1/2 relative">
+            <div className="section-image relative h-[500px] md:h-[650px] lg:h-[750px] rounded-3xl overflow-hidden shadow-[0_25px_80px_-20px_rgba(196,30,58,0.3)]">
               <img
-                src="https://images.unsplash.com/photo-1550950158-d0d960dff51b?q=80&w=2680&auto=format&fit=crop"
-                alt="Man holding popsicles"
-                className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
+                src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=2127&auto=format&fit=crop"
+                alt="Artisan ice cream making"
+                className="object-cover w-full h-full"
               />
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 bg-linear-to-t from-[#8B1428]/40 via-transparent to-transparent" />
+            </div>
+            {/* Decorative badge */}
+            <div className="section-badge absolute -bottom-6 -right-4 md:right-8 bg-white rounded-2xl p-5 shadow-xl">
+              <span className="text-[#C41E3A] font-bold text-4xl md:text-5xl">2019</span>
+              <p className="text-[#5A1A1F]/70 text-sm">Est.</p>
             </div>
           </div>
+
+          {/* Text Side */}
           <div className="w-full lg:w-1/2 lg:pl-8">
-            <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold text-[#C41E3A] leading-[0.9] uppercase mb-10 tracking-tight">
-              How <br /><span className="text-[#8B1428]">Originated</span><br /> Idea
+            <div className="section-badge inline-block mb-6 px-4 py-2 bg-[#C41E3A]/10 rounded-full">
+              <span className="text-[#C41E3A] font-semibold text-sm tracking-wider uppercase">Our Story</span>
+            </div>
+            <h2 className="section-title text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-[#1A0A0C] leading-[0.95] mb-6">
+              Where <span className="text-[#C41E3A]">Sweet</span>
+              <br />
+              Dreams Begin
             </h2>
-            <p className="text-[#5A1A1F] text-lg md:text-xl leading-relaxed max-w-lg font-light">
-              In America, there is such a product—popsicle. It is something like our popsicle on a stick, but on a fruit basis.
+            <div className="decor-line w-24 h-1.5 bg-linear-to-r from-[#C41E3A] to-[#FF6B6B] rounded-full mb-8 origin-left" />
+            <p className="section-subtitle text-xl md:text-2xl text-[#5A1A1F] font-medium mb-6">
+              A passion born from childhood memories
+            </p>
+            <p className="section-text text-[#5A1A1F]/80 text-lg leading-relaxed max-w-xl">
+              It all started in a small kitchen in Brooklyn, where our founder Maria discovered the magic of
+              transforming simple ingredients into extraordinary frozen delights. Each scoop tells a story of
+              dedication, creativity, and an unwavering commitment to bringing joy through artisan desserts.
             </p>
           </div>
-        </div>
+        </section>
 
-        {/* SECTION 2 */}
-        <div className="flex flex-col lg:flex-row-reverse gap-12 lg:gap-16 items-center min-h-[70vh]">
-          <div className="w-full lg:w-1/2 group">
-            <div className="relative w-full aspect-video bg-gray-200 rounded-2xl overflow-hidden shadow-2xl group-hover:scale-[1.02] transition-transform duration-500">
+        {/* SECTION 2: OUR PHILOSOPHY */}
+        <section
+          ref={section2Ref}
+          className="min-h-[80vh] flex flex-col lg:flex-row-reverse gap-12 lg:gap-20 items-center"
+        >
+          {/* Image Side */}
+          <div className="section-image w-full lg:w-1/2 relative perspective-1000">
+            <div className="relative aspect-4/3 rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1481391319719-62d2259a61ca?q=80&w=2680&auto=format&fit=crop"
-                alt="Ingredients"
-                className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
+                src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?q=80&w=2070&auto=format&fit=crop"
+                alt="Fresh ingredients"
+                className="object-cover w-full h-full"
               />
             </div>
+            {/* Floating ingredient cards */}
+            <div className="absolute -top-8 -left-4 md:left-4 bg-white rounded-xl p-4 shadow-lg -rotate-6">
+              <span className="text-3xl">🍓</span>
+            </div>
+            <div className="absolute -bottom-4 right-8 bg-white rounded-xl p-4 shadow-lg rotate-[8deg]">
+              <span className="text-3xl">🫐</span>
+            </div>
           </div>
-          <div className="w-full lg:w-1/2 lg:pr-8">
-            <h3 className="text-5xl md:text-6xl font-bold text-[#C41E3A] uppercase mb-8 tracking-tight leading-tight">
-              Pure <span className="text-[#8B1428]">Fruits</span>
+
+          {/* Text Side */}
+          <div className="section-content w-full lg:w-1/2">
+            <div className="inline-block mb-6 px-4 py-2 bg-[#C41E3A]/10 rounded-full">
+              <span className="text-[#C41E3A] font-semibold text-sm tracking-wider uppercase">Philosophy</span>
+            </div>
+            <h3 className="section-title text-4xl md:text-5xl lg:text-6xl font-bold text-[#1A0A0C] leading-tight mb-8">
+              Pure <span className="text-[#C41E3A]">Ingredients</span>,<br />
+              Pure Happiness
             </h3>
-            <p className="text-[#5A1A1F] text-lg md:text-xl leading-relaxed max-w-lg font-light">
-              We decided to forgo artificial flavorings entirely.
+            <p className="section-text text-[#5A1A1F]/80 text-lg leading-relaxed mb-10 max-w-lg">
+              We believe in the power of simplicity. No artificial flavors, no shortcuts. Just farm-fresh fruits,
+              premium dairy, and recipes perfected over generations.
+            </p>
+
+            {/* Stats */}
+            <div className="flex flex-wrap gap-8">
+              <div className="stat-item text-center">
+                <span className="block text-4xl md:text-5xl font-bold text-[#C41E3A]">100%</span>
+                <span className="text-[#5A1A1F]/70 text-sm">Natural</span>
+              </div>
+              <div className="stat-item text-center">
+                <span className="block text-4xl md:text-5xl font-bold text-[#C41E3A]">50+</span>
+                <span className="text-[#5A1A1F]/70 text-sm">Flavors</span>
+              </div>
+              <div className="stat-item text-center">
+                <span className="block text-4xl md:text-5xl font-bold text-[#C41E3A]">1M+</span>
+                <span className="text-[#5A1A1F]/70 text-sm">Happy Customers</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 3: THE CRAFT */}
+        <section ref={section3Ref} className="min-h-[90vh] flex flex-col items-center">
+          {/* Section header */}
+          <div className="section-content text-center mb-16 max-w-3xl">
+            <div className="inline-block mb-6 px-4 py-2 bg-[#C41E3A]/10 rounded-full">
+              <span className="text-[#C41E3A] font-semibold text-sm tracking-wider uppercase">The Craft</span>
+            </div>
+            <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1A0A0C] leading-tight mb-6">
+              Handcrafted With <span className="text-[#C41E3A]">Love</span>
+            </h3>
+            <p className="text-[#5A1A1F]/80 text-lg md:text-xl leading-relaxed">
+              Every batch is made in small quantities to ensure the highest quality. Our artisans pour their heart into
+              creating textures that melt perfectly on your tongue.
             </p>
           </div>
-        </div>
 
-        {/* SECTION 3 */}
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center min-h-[70vh] pb-20">
-          <div className="w-full lg:w-1/2 group">
-            <div className="relative w-full aspect-square bg-gray-200 rounded-2xl overflow-hidden shadow-2xl group-hover:scale-[1.02] transition-transform duration-500">
+          {/* Image Gallery */}
+          <div className="relative w-full grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            <div className="gallery-image relative aspect-3/4 rounded-2xl overflow-hidden shadow-xl group">
+              <img
+                src="https://images.unsplash.com/photo-1570197788417-0e82375c9371?q=80&w=2037&auto=format&fit=crop"
+                alt="Ice cream making process"
+                className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-[#1A0A0C]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                <span className="text-white font-semibold text-lg">Churning</span>
+              </div>
+            </div>
+            <div className="gallery-image relative aspect-3/4 rounded-2xl overflow-hidden shadow-xl group md:-mt-12">
               <img
                 src="https://images.unsplash.com/photo-1560008581-09826d1de69e?q=80&w=2544&auto=format&fit=crop"
-                alt="Final Product"
-                className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
+                alt="Ice cream scoops"
+                className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700"
               />
+              <div className="absolute inset-0 bg-linear-to-t from-[#1A0A0C]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                <span className="text-white font-semibold text-lg">Perfecting</span>
+              </div>
+            </div>
+            <div className="gallery-image relative aspect-3/4 rounded-2xl overflow-hidden shadow-xl group">
+              <img
+                src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?q=80&w=1887&auto=format&fit=crop"
+                alt="Final ice cream cone"
+                className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-[#1A0A0C]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                <span className="text-white font-semibold text-lg">Serving</span>
+              </div>
+            </div>
+
+            {/* Floating decorative elements */}
+            <div className="floating-element absolute -top-10 left-[20%] w-16 h-16 bg-[#FFD4D4] rounded-full opacity-60" />
+            <div className="floating-element absolute top-1/3 -right-8 w-12 h-12 bg-[#C41E3A]/20 rounded-full" />
+            <div className="floating-element absolute bottom-20 left-[10%] w-8 h-8 bg-[#FF6B6B]/30 rounded-full" />
+          </div>
+        </section>
+
+        {/* SECTION 4: THE PROMISE */}
+        <section ref={section4Ref} className="min-h-[70vh] relative flex items-center justify-center py-20">
+          {/* Split background panels */}
+          <div className="left-panel absolute left-0 top-0 w-1/2 h-full bg-linear-to-r from-[#C41E3A] to-[#E84A5F] rounded-r-[3rem] z-0" />
+          <div className="right-panel absolute right-0 top-0 w-1/2 h-full bg-linear-to-l from-[#8B1428] to-[#C41E3A] rounded-l-[3rem] z-0" />
+
+          {/* Center content */}
+          <div className="center-content relative z-10 text-center px-8 py-16 max-w-3xl">
+            <div className="inline-block mb-6 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full">
+              <span className="text-white font-semibold text-sm tracking-wider uppercase">Our Promise</span>
+            </div>
+            <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-8 text-balance">
+              Every Scoop, a Moment of <span className="text-[#FFD4D4]">Pure Joy</span>
+            </h3>
+            <p className="text-white/90 text-lg md:text-xl leading-relaxed mb-10 max-w-xl mx-auto">
+              We are not just making desserts. We are creating memories, celebrating moments, and spreading happiness
+              one delicious bite at a time.
+            </p>
+            <div className="flex justify-center w-full">
+              <CostumButton
+                onClick={() => router.push("/menu")}
+                backgroundColor="#DB212F"
+                hoverTextColor="white"
+                className="w-[250px] h-[70px] rounded-none bg-white text-primary border-primary border"
+              >
+                <p className="font-bold">Explore Our Menu</p>
+              </CostumButton>
             </div>
           </div>
-          <div className="w-full lg:w-1/2 lg:pl-8">
-            <h3 className="text-5xl md:text-6xl font-bold text-[#C41E3A] uppercase mb-8 tracking-tight leading-tight">
-              The <span className="text-[#8B1428]">Result</span>
-            </h3>
-            <p className="text-[#5A1A1F] text-lg md:text-xl leading-relaxed max-w-lg font-light">
-              The result was a texture that is neither ice nor sorbet, but something creamy.
-            </p>
-          </div>
-        </div>
+        </section>
       </div>
     </div>
   )

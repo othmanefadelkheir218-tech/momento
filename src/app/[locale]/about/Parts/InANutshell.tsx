@@ -1,6 +1,7 @@
 "use client"
 
-import {  useRef } from "react"
+import { Reveal } from "@/components/animation/Reveal"
+import { useRef } from "react"
 
 export default function InANutshell() {
   const textRef = useRef<SVGGElement>(null)
@@ -42,24 +43,32 @@ export default function InANutshell() {
   return (
     <section className="w-full bg-[#FFF5F0] min-h-screen">
       {/* Red Section */}
-      <div className="w-full bg-[#B01228] text-white rounded-b-[50vh] h-screen flex items-start pt-40 px-4 md:px-12 lg:px-20 relative">
+      <div className="w-full bg-[#B01228] text-white md:rounded-b-[50vh] md:h-[130vh]  flex items-start pt-40 px-4 md:px-12 lg:px-20 relative">
         <div className="container mx-auto">
           {/* Text Content... */}
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 mb-24 lg:mb-40">
             <div className="w-full lg:w-1/2">
-              <h2 className="text-5xl md:text-7xl lg:text-5xl font-black uppercase leading-[0.9] tracking-tighter font-sans">
-                In a nutshell -<br />
-                Ice cream that will
-                <br />
-                appeal even to those
-                <br />
-                who thought they
-                <br />
-                were completely
-                <br />
-                indifferent to it.
-              </h2>
+              {
+                [
+                  "Ice cream that will",
+                  "appeal even to those",
+                  "who thought they",
+                  "were completely",
+                  "indifferent to it.",
+                ].map((line, index) => (
+                  <Reveal
+                    key={index}
+                    rotate={false}
+                    delay={index * 0.2}
+                  >
+                    <h1 className="text-2xl md:text-5xl lg:text-5xl font-black uppercase trispace-font">
+                      {line}
+                    </h1>
+                  </Reveal>
+                ))
+              }
             </div>
+
             <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-6 text-base md:text-lg lg:text-xl font-medium opacity-90">
               <p>And in general - the business of people with absolutely "unfrozen" experience. To Mr.Pops.</p>
               <p>Now we feel like experimenters, actually, as in the beginning.</p>
@@ -73,7 +82,7 @@ export default function InANutshell() {
       </div>
 
       {/* Image container */}
-      <div className="relative w-full flex justify-center" style={{ marginTop: "-280px" }}>
+      <div className="relative w-full flex justify-center" style={{ marginTop: "-450px" }}>
 
         {/* Desktop version */}
         <div
@@ -94,7 +103,7 @@ export default function InANutshell() {
             <g ref={textRef} className="origin-center">
               <text fill="white" fontSize="18" fontWeight="bold" letterSpacing="5px" dy={config.textOffset}>
                 <textPath href="#textCirclePath" className="uppercase font-sans drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]" startOffset="0%">
-                  • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • 
+                  • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM •
                 </textPath>
               </text>
             </g>
