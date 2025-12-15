@@ -5,37 +5,37 @@ import BigWavyCircle from "../BigWavyCircle"; // Adjust path as needed
 import { Reveal } from "../animation/Reveal";
 import { useTransitionRouter } from "@/hooks/useTransitionRouter";
 
-
 const HeroIntro = () => {
   const router = useTransitionRouter();
 
   return (
-    // Changed h-screen to min-h-screen to prevent content cutoff on small mobile screens
-    <section className="min-h-screen pt-16 lg:pt-0 w-full flex items-center justify-center p-6 lg:p-12 overflow-hidden  relative">
-      {/* Added bg color just for visibility in example, remove if you have a background image */}
-
+    // FIX APPLIED HERE:
+    // 1. Removed 'lg:pt-0'. We need padding even on desktop to handle the 150% zoom overflow.
+    // 2. Changed 'p-6' to 'px-6' and handled vertical padding via 'py-'.
+    // 3. Added 'lg:py-20'. This ensures that if the screen is zoomed in and height shrinks, the text has breathing room at the top.
+    <section className="min-h-screen w-full flex items-center justify-center px-6 py-24 lg:py-28 overflow-hidden relative">
+      
       {/* Main Content Wrapper */}
-      <div className="xlmax:container w-full flex flex-col items-center lg:items-start justify-center gap-4 lg:gap-0">
+      <div className="w-full flex flex-col items-center lg:items-start justify-center gap-4 lg:gap-0">
 
         {/* --- Top Section: Header & Paragraph --- */}
-        {/* Mobile: Flex Column (stack), Desktop: Flex Row (side by side) */}
         <div className="flex flex-col lg:flex-row w-full h-full items-center lg:items-start">
 
           {/* --- LEFT SIDE: "TAKE YOUR SWEET" --- */}
           <div className="w-full lg:w-[80%] xlmax:w-[60%] relative flex flex-col items-center lg:block overflow-hidden">
+            
             {/* Header Text: TAKE YOUR */}
-
             <Reveal delay={0.2}>
-              <h1 className="trispace-font font-bold text-white text-[13vw] xlmax:text-[10em] lg:text-[9vw] leading-[1.2] text-center lg:text-end z-10 tracking-tight ">
+              {/* Added 'lg:leading-tight' to prevent line-height overlap on zoom */}
+              <h1 className="trispace-font font-bold text-white text-[13vw] xlmax:text-[10em] lg:text-[9vw] leading-[1.2] lg:leading-tight text-center lg:text-end z-10 tracking-tight">
                 TAKE YOUR
               </h1>
             </Reveal>
-            {/* Row: SWEET + Button */}
-            {/* Mobile: Justify Center, Desktop: Justify End */}
-            <div className="flex items-center justify-center lg:justify-end w-full gap-4 lg:gap-0">
 
+            {/* Row: SWEET + Button */}
+            <div className="flex items-center justify-center lg:justify-end w-full gap-4 lg:gap-0">
               <Reveal delay={0.3}>
-                <h1 className="trispace-font font-bold text-white text-[13vw] xlmax:text-[10em] lg:text-[9vw] leading-[1.2] text-center lg:text-left tracking-tight">
+                <h1 className="trispace-font font-bold text-white text-[13vw] xlmax:text-[10em] lg:text-[9vw] leading-[1.2] lg:leading-tight text-center lg:text-left tracking-tight">
                   SWEET
                 </h1>
               </Reveal>
@@ -50,7 +50,6 @@ const HeroIntro = () => {
                   console.log("Catalogue clicked");
                   router.push("/menu")
                 }}
-                // Made smaller on mobile (w-24), kept original size on desktop (lg:w-40)
                 className="w-24 h-24 xlmax:w-40 xlmax:h-40 lg:w-32 lg:h-32 text-white shrink-0"
                 fill="transparent"
                 stroke="white"
@@ -63,14 +62,13 @@ const HeroIntro = () => {
             </div>
 
             <Reveal delay={0.3}>
-              <h1 className="sriracha-regular lg:hidden block font-bold text-white text-[16vw]  xlmax:text-[13em] leading-[1.2] text-center lg:text-left tracking-tight">
+              <h1 className="sriracha-regular lg:hidden block font-bold text-white text-[16vw] xlmax:text-[13em] leading-[1.2] text-center lg:text-left tracking-tight">
                 MOMENT
               </h1>
             </Reveal>
           </div>
 
           {/* --- RIGHT SIDE: Paragraph --- */}
-          {/* Mobile: width full & centered, Desktop: width 40% & left aligned */}
           <div className="w-full lg:w-[40%] mt-6 lg:mt-2 lg:ml-10 flex items-center justify-center lg:justify-start pt-4 lg:pt-8">
             <p className="w-full max-w-[440px] lg:w-[440px] text-white text-sm md:text-lg
             sriracha-regular 
@@ -80,7 +78,7 @@ const HeroIntro = () => {
               professional the process is no shortcuts here. Wait, is that the
               mixed berry? The color is so vibrant! And that one must be the
               tropical blend? It tastes like actual fruit, not just syrup. I
-              love how careful they are with every single scoop. It's just...
+              love how careful they are with every single scoop. It&apos;s just...
               perfect. Seriously, grab me a spoon, I need to try that flavor too
             </p>
           </div>
@@ -88,14 +86,13 @@ const HeroIntro = () => {
 
         {/* --- BOTTOM SECTION: "MOMENT" + Arrow --- */}
         <div className="w-full flex items-center justify-center relative mt-4 lg:mt-0">
-          {/* Header Text */}
           <Reveal delay={0.3} className="pr-4">
-            <h1 className="sriracha-regular hidden lg:block font-bold text-white text-[16vw]  xlmax:text-[13em] leading-[1.2] text-center lg:text-left tracking-tight">
+            <h1 className="sriracha-regular hidden lg:block font-bold text-white text-[16vw] xlmax:text-[13em] leading-[1.2] lg:leading-tight text-center lg:text-left tracking-tight">
               MOMENT
             </h1>
           </Reveal>
 
-          {/* Arrow Icon - Kept hidden on mobile as per original logic, change 'hidden' to 'block' if you want it on mobile */}
+          {/* Arrow Icon */}
           <div className="hidden lg:block lg:mt-4 lg:ml-28 text-white">
             <CornerRightDown
               size={170}

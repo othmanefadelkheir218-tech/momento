@@ -2,13 +2,11 @@
 import { Reveal } from "@/components/animation/Reveal";
 import ProductCardsSection from "@/components/home/product-cards-section";
 import { ProductData, ProductInterface } from "@/Data/Const";
-import { useTranslations } from "next-intl";
 
 
 
 
 export default function Catalogue() {
-    const t = useTranslations("MenuPage");
     const products: ProductInterface[] = ProductData()
 
     return (

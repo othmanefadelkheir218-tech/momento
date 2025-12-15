@@ -1,7 +1,6 @@
 // components/TransitionLink.tsx
 "use client";
 
-
 import { forwardRef } from 'react';
 import { useTransition } from "@/Context/TransitionContext";
 import { usePathname } from "@/i18n/navigation";
@@ -39,5 +38,8 @@ const TransitionLink = forwardRef<HTMLButtonElement, TransitionLinkProps>(({ hre
     </button>
   );
 });
+
+// FIX: Explicitly set the display name here
+TransitionLink.displayName = "TransitionLink";
 
 export default TransitionLink;

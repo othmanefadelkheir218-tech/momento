@@ -30,7 +30,7 @@ const socialLinks = [
 
 function Content() {
     return (
-        <div className="bg-primary py-4 md:py-8 px-4 md:px-12 h-full w-full flex justify-center items-center">
+        <div className="bg-primary py-4 md:py-8 px-4 md:px-12 h-full w-full flex justify-center items-end">
             <div className="w-full">
                 <Section1 />
                 <Section2 />
@@ -171,13 +171,13 @@ const Forms = () => {
                     {/* Heading */}
                     <h2
                         ref={headingRef}
-                        className="text-xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-6 md:mb-16 tracking-tight"
+                        className="text-lg md:text-5xl lg:text-3xl font-bold text-white text-center mb-6 md:mb-16 tracking-tight"
                     >
                         HAVE A QUESTION? THEN THERE IS AN ANSWER!
                     </h2>
 
                     {/* Form */}
-                    <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 md:space-y-8 ">
+                    <form ref={formRef} onSubmit={handleSubmit} className="space-y-2 md:space-y-4 ">
                         {/* Row 1: Cooperation type - full width on mobile */}
                         <div className="form-field">
                             <label className="block text-white/70 text-xs md:text-sm mb-1 md:mb-2">Cooperation type</label>
@@ -279,7 +279,7 @@ const Forms = () => {
                                 onClick={handleSubmit}
                                 backgroundColor="white"
                                 hoverTextColor="#DB212F"
-                                className="w-[100px] h-[50px] rounded-none bg-primary text-white border-white border"
+                                className="md:w-[120px] md:h-[50px] w-[100px] h-[50px] rounded-none bg-primary text-white border-white border"
                             >
                                 <p className="font-bold">
                                     Send
@@ -297,9 +297,9 @@ const Forms = () => {
 
 export default function FooterSection2() {
     return (
-        <div className="relative h-[900px] bg-black" style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}>
-            <div className="relative h-[calc(100vh+900px)] -top-[calc(100vh)]">
-                <div className="h-[900px] sticky top-[calc(100vh-900px)]">
+        <div className="relative h-[800px] bg-black" style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}>
+            <div className="relative h-[calc(100vh+800px)] -top-[calc(100vh)]">
+                <div className="h-[800px] sticky top-[calc(100vh-800px)]">
                     <Content />
                 </div>
             </div>

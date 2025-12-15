@@ -2,8 +2,8 @@
 
 import { usePathname } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import ThemeToggle from "../../ThemeToggle";
-import LangSwitcher from "../../LangSwitcher";
+// import ThemeToggle from "../../ThemeToggle";
+// import LangSwitcher from "../../LangSwitcher";
 import Magnetic from "../../Magnetic";
 import { useState, useRef } from "react";
 import Nav from "./Nav";

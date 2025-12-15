@@ -10,6 +10,7 @@ import NavLink from "../../Link";
 import { usePathname } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useLenis } from "lenis/react";
+import Magnetic from "@/components/Magnetic";
 
 
 interface NavProps {
@@ -127,7 +128,21 @@ export default function Nav({ isActive, setIsActive }: NavProps) {
                         </div>
                     </div>
 
-                    <Footer />
+                    <div className="w-full flex justify-around mt-10 trispace-font ">
+                        {
+                            [
+                                "Facebook",
+                                "Instagram",
+                                "TikTok",
+                                "Twitter"
+                            ].map((data, index) => (
+                                <Magnetic key={index}>
+                                    <a href="#" className="text-white">{data}</a>
+                                </Magnetic>
+                            ))
+                        }
+
+                    </div>
                 </div>
 
                 {/* SVG Curve Component */}

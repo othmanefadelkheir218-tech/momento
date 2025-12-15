@@ -87,15 +87,21 @@ export const logoAnim = (element: SVGPathElement) => {
         },
         exit: () => {
             // Draw the logo
-            tl.to(element, {
-                strokeDashoffset: 0,
-                duration: duration,
-                ease: "power2.inOut"
-            })
-            .to(element, {
-                scale: 0,
-                duration: 0.2,
-                ease: "power1.in"
+            return new Promise<void>((resolve) => {
+                const tlExit = gsap.timeline({
+                    onComplete: () => resolve()
+                });
+
+                tlExit.to(element, {
+                    strokeDashoffset: 0,
+                    duration: duration,
+                    ease: "power2.inOut"
+                })
+                    .to(element, {
+                        scale: 0,
+                        duration: 0.2,
+                        ease: "power1.in"
+                    });
             });
         }
     };

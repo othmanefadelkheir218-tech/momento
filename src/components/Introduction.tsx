@@ -1,7 +1,6 @@
 'use client';
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import gsap from 'gsap';
-
 import { useLenis } from "lenis/react";
 
 const words = ["Hello", "Bonjour", "Ciao", "Olà", "やあ", "Hallå", "Guten tag", "Hallo"];
@@ -15,52 +14,22 @@ export default function Introduction() {
     const [index, setIndex] = useState<number>(0);
     const [dimension, setDimension] = useState<Dimension>({ width: 0, height: 0 });
     const [isVisible, setIsVisible] = useState<boolean>(true);
+
     const containerRef = useRef<HTMLDivElement>(null);
     const svgRef = useRef<SVGSVGElement>(null);
     const textRef = useRef<HTMLParagraphElement>(null);
+    
+    // We use this Ref to access dimensions inside animateExit 
+    // without adding 'dimension' as a dependency (which would break the logic on resize)
+    const dimensionRef = useRef<Dimension>({ width: 0, height: 0 });
+    
     const lenis = useLenis();
 
-    useEffect(() => {
-        // Set initial dimension
-        setDimension({ width: window.innerWidth, height: window.innerHeight });
+    // 1. Wrap animateExit in useCallback so it's stable
+    const animateExit = useCallback(() => {
+        // Read dimensions from Ref (always current, doesn't trigger re-creation of function)
+        const { width, height } = dimensionRef.current;
 
-        // Handle resize
-        const handleResize = () => {
-            setDimension({ width: window.innerWidth, height: window.innerHeight });
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    useEffect(() => {
-        // Word animation
-        if (index === words.length - 1) {
-            // Start exit animation after last word
-            setTimeout(() => {
-                animateExit();
-            }, 1000);
-            return;
-        }
-
-        const timeout = setTimeout(() => {
-            setIndex(index + 1);
-        }, index === 0 ? 1000 : 150);
-
-        return () => clearTimeout(timeout);
-    }, [index]);
-
-    useEffect(() => {
-        // Initial text fade in
-        if (textRef.current && dimension.width > 0) {
-            gsap.fromTo(textRef.current,
-                { opacity: 0 },
-                { opacity: 0.75, duration: 1, delay: 0.2 }
-            );
-        }
-    }, [dimension.width]);
-
-    const animateExit = () => {
         // Animate container sliding up
         if (containerRef.current) {
             gsap.to(containerRef.current, {
@@ -72,16 +41,13 @@ export default function Introduction() {
         }
 
         // Animate SVG curve
-        if (svgRef.current && dimension.width > 0) {
-            const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height + 300} 0 ${dimension.height} L0 0`;
-            const targetPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height} L0 0`;
+        if (svgRef.current && width > 0) {
+            const initialPath = `M0 0 L${width} 0 L${width} ${height} Q${width / 2} ${height + 300} 0 ${height} L0 0`;
+            const targetPath = `M0 0 L${width} 0 L${width} ${height} Q${width / 2} ${height} 0 ${height} L0 0`;
 
             const path = svgRef.current.querySelector('path');
             if (path) {
-                // Set initial state
                 path.setAttribute('d', initialPath);
-
-                // Animate to target
                 gsap.to(path, {
                     attr: { d: targetPath },
                     duration: 0.7,
@@ -91,15 +57,62 @@ export default function Introduction() {
             }
         }
 
-        // Hide component after animation
         setTimeout(() => {
             setIsVisible(false);
         }, 1500);
-    };
+    }, []); // No dependencies needed thanks to Refs
 
+    useEffect(() => {
+        // Handle resize
+        const handleResize = () => {
+            const newDim = { width: window.innerWidth, height: window.innerHeight };
+            
+            // Update State (for DOM rendering)
+            setDimension(newDim);
+            // Update Ref (for Animation logic)
+            dimensionRef.current = newDim;
+        };
+
+        // 2. Fix "Synchronous setState" error
+        // Using requestAnimationFrame pushes the update to the next frame, 
+        // preventing the "cascading render" warning.
+        requestAnimationFrame(() => {
+            handleResize();
+        });
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    useEffect(() => {
+        // Word animation
+        if (index === words.length - 1) {
+            // Start exit animation after last word
+            const timeout = setTimeout(() => {
+                animateExit();
+            }, 1000);
+            return () => clearTimeout(timeout);
+        }
+
+        const timeout = setTimeout(() => {
+            setIndex(index + 1);
+        }, index === 0 ? 1000 : 150);
+
+        return () => clearTimeout(timeout);
+    }, [index, animateExit]); // 3. animateExit is now a safe dependency
+
+    useEffect(() => {
+        // Initial text fade in
+        if (textRef.current && dimension.width > 0) {
+            gsap.fromTo(textRef.current,
+                { opacity: 0 },
+                { opacity: 0.75, duration: 1, delay: 0.2 }
+            );
+        }
+    }, [dimension.width]);
 
     // Lock Body Scroll (Lenis + Native)
-    React.useEffect(() => {
+    useEffect(() => {
         if (isVisible) {
             lenis?.stop();
             document.body.style.overflow = "hidden";
@@ -115,6 +128,7 @@ export default function Introduction() {
 
     if (!isVisible) return null;
 
+    // Use state for rendering the initial SVG path (needs to be reactive)
     const initialPath = dimension.width > 0
         ? `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height + 300} 0 ${dimension.height} L0 0`
         : '';
@@ -122,62 +136,23 @@ export default function Introduction() {
     return (
         <div
             ref={containerRef}
-            className="
-        fixed 
-        top-0 
-        left-0 
-        w-screen 
-        h-screen 
-        flex 
-        items-center 
-        justify-center 
-        z-55 
-        bg-primary
-      "
+            className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center z-55 bg-primary"
         >
             {dimension.width > 0 && (
                 <>
                     <p
                         ref={textRef}
-                        className="
-              flex 
-              items-center 
-              absolute 
-              z-10 
-              text-white 
-              text-4xl 
-              md:text-5xl 
-              lg:text-6xl
-              opacity-0
-            "
+                        className="flex items-center absolute z-10 text-white text-4xl md:text-5xl lg:text-6xl opacity-0"
                     >
-                        <span className="
-              block 
-              w-2.5 
-              h-2.5 
-              md:w-3 
-              md:h-3 
-              bg-white 
-              rounded-full 
-              mr-2 
-              md:mr-3
-            "></span>
+                        <span className="block w-2.5 h-2.5 md:w-3 md:h-3 bg-white rounded-full mr-2 md:mr-3"></span>
                         {words[index]}
                     </p>
 
                     <svg
                         ref={svgRef}
-                        className="
-              absolute 
-              top-0 
-              w-full 
-              h-[calc(100%+300px)]
-            "
+                        className="absolute top-0 w-full h-[calc(100%+300px)]"
                     >
-                        <path
-                            d={initialPath}
-                            fill="#DB212F"
-                        />
+                        <path d={initialPath} fill="#DB212F" />
                     </svg>
                 </>
             )}

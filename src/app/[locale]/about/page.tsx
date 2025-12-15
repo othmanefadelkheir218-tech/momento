@@ -1,6 +1,4 @@
-import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
-import CurveLoading from "@/components/CurveLoading";
 import OriginStory from "./Parts/OriginStory";
 import InANutshell from "./Parts/InANutshell";
 
@@ -14,7 +12,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default function AboutPage() {
-    const t = useTranslations("AboutPage");
 
     return (
         <>

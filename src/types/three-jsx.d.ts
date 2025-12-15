@@ -1,6 +1,6 @@
 import type { ThreeElements } from '@react-three/fiber'
 import type { Object3DNode } from '@react-three/fiber'
-import type { Group, Mesh, Points, Line, BufferGeometry, Material, MeshStandardMaterial, PerspectiveCamera, AmbientLight, DirectionalLight } from 'three'
+import type { Group, Mesh, Points, Line, MeshStandardMaterial, PerspectiveCamera, AmbientLight, DirectionalLight } from 'three'
 
 declare global {
     namespace JSX {

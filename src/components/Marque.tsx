@@ -11,14 +11,34 @@ if (typeof window !== "undefined") {
 interface MarqueProps {
   PartOne: string;
   PartTwo: string;
-  Direction?: number; 
-  speed?:number
+  Direction?: number;
+  speed?: number
 }
 
-export default function Marque({ PartOne, PartTwo, Direction = 1 , speed=0.1 }: MarqueProps) {
+export default function Marque({ PartOne, PartTwo, Direction = 1, speed = 0.1 }: MarqueProps) {
   const firstBlock = useRef(null);
   const secondBlock = useRef(null);
   const slider = useRef(null);
+
+
+  const animation = () => {
+    // 4. Wrap logic handles both directions automatically
+    if (xPercent.current <= -100) {
+      xPercent.current = 0;
+    }
+    if (xPercent.current > 0) {
+      xPercent.current = -100;
+    }
+
+    gsap.set(firstBlock.current, { xPercent: xPercent.current });
+    gsap.set(secondBlock.current, { xPercent: xPercent.current });
+
+    // Speed constant (0.1)
+    xPercent.current += speed * direction.current;
+    requestAnimationFrame(animation);
+  };
+
+
 
   // 1. Initialize direction based on prop. 
   // If Direction is 1, we start moving left (-1). If -1, we start moving right (1).
@@ -45,28 +65,12 @@ export default function Marque({ PartOne, PartTwo, Direction = 1 , speed=0.1 }: 
           },
         },
         // 3. Optional: Flip the parallax movement direction too
-        x: `${-300 * Direction}px`, 
+        x: `${-300 * Direction}px`,
       });
     },
     { scope: slider }
   );
 
-  const animation = () => {
-    // 4. Wrap logic handles both directions automatically
-    if (xPercent.current <= -100) {
-      xPercent.current = 0;
-    }
-    if (xPercent.current > 0) {
-      xPercent.current = -100;
-    }
-
-    gsap.set(firstBlock.current, { xPercent: xPercent.current });
-    gsap.set(secondBlock.current, { xPercent: xPercent.current });
-
-    // Speed constant (0.1)
-    xPercent.current += speed * direction.current;
-    requestAnimationFrame(animation);
-  };
 
   return (
     <main className="relative flex h-[200px] w-[120vw] overflow-hidden">

@@ -1,6 +1,7 @@
 "use client"
 
 import { Reveal } from "@/components/animation/Reveal"
+import Image from "next/image"
 import { useRef } from "react"
 
 export default function InANutshell() {
@@ -10,19 +11,14 @@ export default function InANutshell() {
   // 🎛️ SHAPE CONTROLS
   // ==========================================
   const config = {
-    width: 700, // Fixed calculations (400 * 1.5)
-    height: 850, // Fixed calculations (500 * 1.5)
-    gap: 25,     // Space between image and text
+    width: 700, 
+    height: 850, 
+    gap: 25,    
     textOffset: -8,
-    imageBorderRadius: 200, // The radius of the image
+    imageBorderRadius: 200, 
   }
 
-  // 1. Calculate the Radius for the Text Path
-  // To keep curves parallel, outer radius = inner radius + gap
   const outerRadius = config.imageBorderRadius + config.gap
-
-  // 2. Create a Rounded Rectangle Path Data String
-  // This draws: Top-Line -> Right-Arc -> Right-Line -> Bottom-Arc -> Bottom-Line -> Left-Arc -> Left-Line -> Top-Arc
   const w = config.width
   const h = config.height
   const r = outerRadius
@@ -42,11 +38,18 @@ export default function InANutshell() {
 
   return (
     <section className="w-full bg-[#FFF5F0] min-h-screen">
-      {/* Red Section */}
-      <div className="w-full bg-[#B01228] text-white md:rounded-b-[50vh] md:h-[130vh]  flex items-start pt-40 px-4 md:px-12 lg:px-20 relative">
+      
+      {/* 
+         FIX 1: THE RED SECTION
+         - Removed 'md:h-[130vh]'. We don't want a fixed height limit.
+         - Added 'min-h-[80vh]' just for base aesthetic.
+         - Added 'pb-[400px] lg:pb-[500px]'. This creates the empty space at the bottom 
+           specifically for the image to overlap into, regardless of how much text there is above it.
+      */}
+      <div className="w-full bg-[#B01228] text-white md:rounded-b-[100px] lg:rounded-b-[200px] min-h-[80vh] flex items-start pt-40 px-4 md:px-12 lg:px-20 relative pb-[200px] md:pb-[400px] lg:pb-[500px]">
         <div className="container mx-auto">
           {/* Text Content... */}
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 mb-24 lg:mb-40">
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
             <div className="w-full lg:w-1/2">
               {
                 [
@@ -70,7 +73,7 @@ export default function InANutshell() {
             </div>
 
             <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-6 text-base md:text-lg lg:text-xl font-medium opacity-90">
-              <p>And in general - the business of people with absolutely "unfrozen" experience. To Mr.Pops.</p>
+              <p>And in general - the business of people with absolutely &quot;unfrozen&quot; experience. To Mr.Pops.</p>
               <p>Now we feel like experimenters, actually, as in the beginning.</p>
               <p>
                 We are like in a laboratory, where the result is tasted. If it suits us, it means it will definitely
@@ -81,12 +84,18 @@ export default function InANutshell() {
         </div>
       </div>
 
-      {/* Image container */}
-      <div className="relative w-full flex justify-center" style={{ marginTop: "-450px" }}>
+      {/* 
+         FIX 2: THE IMAGE CONTAINER
+         - Used negative margin relative to the padding we added above.
+         - Added 'transform scale-...' classes. 
+           Since your JS config calculates width=700px, on a zoomed screen that might be too wide.
+           The scale classes (scale-75 md:scale-90 xl:scale-100) ensure it shrinks gracefully without breaking your JS math.
+      */}
+      <div className="relative w-full flex justify-center -mt-[180px] md:-mt-[350px] lg:-mt-[450px] pointer-events-none">
 
         {/* Desktop version */}
         <div
-          className="hidden md:flex relative items-center justify-center"
+          className="hidden md:flex relative items-center justify-center transform scale-[0.6] md:scale-[0.7] lg:scale-[0.85] xl:scale-100 origin-top pointer-events-auto"
           style={{ width: config.width, height: config.height }}
         >
           {/* 1. The Rotating Text Ring */}
@@ -95,11 +104,9 @@ export default function InANutshell() {
             className="absolute inset-0 w-full h-full overflow-visible z-10 pointer-events-none"
           >
             <defs>
-              {/* CHANGED: From Ellipse to Rounded Rectangle Path */}
               <path id="textCirclePath" d={roundedRectPath} />
             </defs>
 
-            {/* Added animate-spin class for rotation effect */}
             <g ref={textRef} className="origin-center">
               <text fill="white" fontSize="18" fontWeight="bold" letterSpacing="5px" dy={config.textOffset}>
                 <textPath href="#textCirclePath" className="uppercase font-sans drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]" startOffset="0%">
@@ -111,14 +118,15 @@ export default function InANutshell() {
 
           {/* 2. The Central Rectangle Image */}
           <div
-            className="relative overflow-hidden border-4 border-[#B01228] z-0 shadow-xl"
+            className="relative overflow-hidden border-4 border-[#B01228] z-0 shadow-xl bg-white"
             style={{
               width: `${config.width - config.gap * 2}px`,
               height: `${config.height - config.gap * 2}px`,
-              borderRadius: `${config.imageBorderRadius}px`, // Matches the path geometry
+              borderRadius: `${config.imageBorderRadius}px`,
             }}
           >
-            <img
+            <Image
+              fill
               src="/images/maven.jpg"
               alt="Smiling woman eating ice cream"
               className="w-full h-full object-cover"
@@ -138,7 +146,7 @@ export default function InANutshell() {
         </div>
       </div>
 
-      <div className="h-10" />
+      <div className="h-20" />
     </section>
   )
 }

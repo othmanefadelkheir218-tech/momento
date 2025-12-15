@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react"
 import gsap from "gsap"
-import { Link } from "@/i18n/navigation"
 import CostumButton from "@/components/CostumButton"
 import { useTransitionRouter } from "@/hooks/useTransitionRouter"
 

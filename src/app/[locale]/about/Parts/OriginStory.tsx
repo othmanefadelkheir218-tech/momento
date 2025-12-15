@@ -7,6 +7,7 @@ import { MotionPathPlugin } from "gsap/MotionPathPlugin"
 import DirectionSvg from "@/components/DirectionSvg"
 import CostumButton from "@/components/CostumButton"
 import { useTransitionRouter } from "@/hooks/useTransitionRouter"
+import Image from "next/image"
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
 
@@ -194,7 +195,7 @@ export default function OriginStory() {
             repeat: -1,
             yoyo: true,
             ease: "sine.inOut",
-            delay: i * 0.2,
+            delay: i * 0.1,
           })
         })
       }
@@ -286,7 +287,8 @@ export default function OriginStory() {
           {/* Image Side */}
           <div className="w-full lg:w-1/2 relative">
             <div className="section-image relative h-[500px] md:h-[650px] lg:h-[750px] rounded-3xl overflow-hidden shadow-[0_25px_80px_-20px_rgba(196,30,58,0.3)]">
-              <img
+              <Image
+                fill
                 src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=2127&auto=format&fit=crop"
                 alt="Artisan ice cream making"
                 className="object-cover w-full h-full"
@@ -331,7 +333,8 @@ export default function OriginStory() {
           {/* Image Side */}
           <div className="section-image w-full lg:w-1/2 relative perspective-1000">
             <div className="relative aspect-4/3 rounded-3xl overflow-hidden shadow-2xl">
-              <img
+              <Image
+                fill
                 src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?q=80&w=2070&auto=format&fit=crop"
                 alt="Fresh ingredients"
                 className="object-cover w-full h-full"
@@ -397,7 +400,8 @@ export default function OriginStory() {
           {/* Image Gallery */}
           <div className="relative w-full grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             <div className="gallery-image relative aspect-3/4 rounded-2xl overflow-hidden shadow-xl group">
-              <img
+              <Image
+                fill
                 src="https://images.unsplash.com/photo-1570197788417-0e82375c9371?q=80&w=2037&auto=format&fit=crop"
                 alt="Ice cream making process"
                 className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700"
@@ -407,7 +411,8 @@ export default function OriginStory() {
               </div>
             </div>
             <div className="gallery-image relative aspect-3/4 rounded-2xl overflow-hidden shadow-xl group md:-mt-12">
-              <img
+              <Image
+                fill
                 src="https://images.unsplash.com/photo-1560008581-09826d1de69e?q=80&w=2544&auto=format&fit=crop"
                 alt="Ice cream scoops"
                 className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700"
@@ -417,7 +422,8 @@ export default function OriginStory() {
               </div>
             </div>
             <div className="gallery-image relative aspect-3/4 rounded-2xl overflow-hidden shadow-xl group">
-              <img
+              <Image
+                fill
                 src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?q=80&w=1887&auto=format&fit=crop"
                 alt="Final ice cream cone"
                 className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700"

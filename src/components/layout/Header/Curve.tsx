@@ -1,44 +1,56 @@
-"use client";
-import React, { useRef, useEffect, useState } from "react";
+'use client';
 
+import React, { useEffect, useState } from 'react';
+
+// Assuming you have props like this
 interface CurveProps {
-  isActive: boolean;
+    isActive: boolean;
 }
 
 export default function Curve({ isActive }: CurveProps) {
-  const svgPath = useRef<SVGPathElement>(null);
-  const [currentPath, setCurrentPath] = useState<string>("");
+    // 1. We only need state for window dimensions
+    const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
-  useEffect(() => {
-    const height = window.innerHeight;
-    const initialPath = `M100 0 L100 ${height} Q-100 ${height / 2} 100 0`;
+    useEffect(() => {
+        const resize = () => {
+            setDimensions({
+                width: window.innerWidth,
+                height: window.innerHeight
+            });
+        };
 
-    // Set initial path on mount
-    if (!currentPath && svgPath.current) {
-      svgPath.current.setAttribute("d", initialPath);
-      setCurrentPath(initialPath);
-    }
-  }, []);
+        // Initialize dimensions
+        resize();
 
-  useEffect(() => {
-    if (!svgPath.current) return;
+        window.addEventListener("resize", resize);
+        return () => window.removeEventListener("resize", resize);
+    }, []);
 
-    const height = window.innerHeight;
-    const initialPath = `M100 0 L100 ${height} Q-100 ${height / 2} 100 0`;
-    const targetPath = `M100 0 L100 ${height} Q100 ${height / 2} 100 0`;
+    // 2. Calculate paths directly in the render body
+    // If width is 0 (SSR or initial load), return empty paths
+    const initialPath = dimensions.width > 0 
+        ? `M100 0 L100 ${dimensions.height} Q-100 ${dimensions.height / 2} 100 0` 
+        : "";
 
-    const newPath = isActive ? targetPath : initialPath;
-    
-    // Apply CSS transition
-    svgPath.current.style.transition = `d ${isActive ? 1000 : 800}ms cubic-bezier(0.76, 0, 0.24, 1)`;
-    svgPath.current.setAttribute("d", newPath);
-    setCurrentPath(newPath);
+    const targetPath = dimensions.width > 0 
+        ? `M100 0 L100 ${dimensions.height} Q100 ${dimensions.height / 2} 100 0` 
+        : "";
 
-  }, [isActive]);
+    // 3. Determine the current path based on props
+    // No "useEffect" needed -> React handles the switch automatically
+    const currentPath = isActive ? targetPath : initialPath;
 
-  return (
-    <svg className="absolute top-0 -left-[99px] w-[100px] h-full fill-primary stroke-none pointer-events-none">
-      <path ref={svgPath} />
-    </svg>
-  );
+    // 4. Define the transition style dynamically
+    const transitionStyle = {
+        transition: `d ${isActive ? 1000 : 800}ms cubic-bezier(0.76, 0, 0.24, 1)`
+    };
+
+    return (
+        <svg className="absolute top-0 -left-[99px] w-[100px] h-full fill-primary stroke-none">
+            <path 
+                d={currentPath} 
+                style={transitionStyle}
+            />
+        </svg>
+    );
 }

@@ -34,11 +34,7 @@ export default function FooterSection() {
     { name: t("contact"), href: "/contact" },
   ]
 
-  const Languages = [
-    { name: "Instagram", icon: "IG", href: "#" },
-    { name: "Facebook", icon: "FB", href: "#" },
-    { name: "TikTok", icon: "TK", href: "#" },
-  ]
+
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -207,21 +203,6 @@ export default function FooterSection() {
               <p className="font-bold">Subscribe</p>
             </CostumButton>
           </form>
-
-          {/* Social Links */}
-          <div className="flex justify-center gap-6 pt-4">
-            {Languages.map((social) => (
-              <Magnetic key={social.name}>
-                <a
-                  href={social.href}
-                  className="w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center text-primary/70 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 text-xs font-bold"
-                  aria-label={social.name}
-                >
-                  {social.icon}
-                </a>
-              </Magnetic>
-            ))}
-          </div>
         </div>
       </div>
 
