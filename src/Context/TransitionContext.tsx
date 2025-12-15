@@ -30,17 +30,16 @@ export const TransitionProvider = ({
 }) => {
   const router = useRouter();
   const pathname = usePathname();
-  
+
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
   const [introSeen, setIntroSeen] = useState<boolean>(pathname !== "/");
 
-  // FIX: Use a Ref to track the previous pathname
-  const prevPathname = useRef(pathname);
+  const [prevPathname, setPrevPathname] = useState(pathname);
 
   // FIX: Check for path change during the render phase
-  // This replaces the useEffect. If the path has changed, we reset isAnimating immediately.
-  if (prevPathname.current !== pathname) {
-    prevPathname.current = pathname;
+  // If the path has changed, we reset isAnimating immediately.
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
     if (isAnimating) {
       setIsAnimating(false);
     }

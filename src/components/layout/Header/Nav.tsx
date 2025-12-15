@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react";
 
 
 import Curve from "./Curve";
-import Footer from "../Footer/Footer";
+
 import NavLink from "../../Link";
 import { usePathname } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";

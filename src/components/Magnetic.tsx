@@ -2,6 +2,7 @@ import React, { useEffect, useRef, ReactElement, RefObject, MutableRefObject } f
 import gsap from 'gsap';
 
 interface MagneticProps {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     children: ReactElement<any>;
     trigger?: RefObject<HTMLElement | null>;
 }
@@ -58,6 +59,7 @@ export default function Magnetic({ children, trigger }: MagneticProps) {
                 existingRef(node);
             } else if (existingRef) {
                 // Cast to MutableRefObject to allow assignment
+                // eslint-disable-next-line react-hooks/immutability
                 (existingRef as MutableRefObject<HTMLElement | null>).current = node;
             }
         }

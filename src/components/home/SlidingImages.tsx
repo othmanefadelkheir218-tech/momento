@@ -85,7 +85,7 @@ export default function SlidingImages() {
                 {slider1.map((project, index) => (
                     <div
                         key={index}
-                        className="lg:w-[25%] lg:h-[20vw] w-[300px] sm:w-[500px] h-[300px] flex-shrink-0 flex items-center justify-center"
+                        className="lg:w-[25%] lg:h-[20vw] w-[300px] sm:w-[500px] h-[300px] shrink-0 flex items-center justify-center"
                         style={{ backgroundColor: project.color }}
                     >
                         <div className="relative w-[90%] h-[90%]">
