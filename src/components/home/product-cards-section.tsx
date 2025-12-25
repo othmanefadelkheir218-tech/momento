@@ -15,10 +15,10 @@ interface ProductCardsSectionProps {
     products: DessertInterface[]
     ShowTitle: boolean
     showAll: boolean
-    bgcolor ?: string
+    bgcolor?: string
 }
 
-export default function ProductCardsSection({ products , ShowTitle , showAll , bgcolor }: ProductCardsSectionProps) {
+export default function ProductCardsSection({ products, ShowTitle, showAll, bgcolor }: ProductCardsSectionProps) {
     const [hoveredProductId, setHoveredProductId] = useState<number | null>(null)
     const router = useTransitionRouter();
 
@@ -36,10 +36,10 @@ export default function ProductCardsSection({ products , ShowTitle , showAll , b
     useEffect(() => {
         if (cursor.current && cursorLabel.current) {
             // Initial state: Hide completely with autoAlpha: 0
-            gsap.set([cursor.current, cursorLabel.current], { 
-                xPercent: -50, 
-                yPercent: -50, 
-                scale: 0, 
+            gsap.set([cursor.current, cursorLabel.current], {
+                xPercent: -50,
+                yPercent: -50,
+                scale: 0,
                 autoAlpha: 0 // <--- CRITICAL FIX: Ensures visibility: hidden
             })
 
@@ -55,15 +55,15 @@ export default function ProductCardsSection({ products , ShowTitle , showAll , b
     useEffect(() => {
         const handleScroll = () => {
             if (hoveredProductId === null || !containerRef.current) return;
-            
+
             const rect = containerRef.current.getBoundingClientRect();
             const { x, y } = mousePos.current;
 
             // Check if mouse is outside the section
-            const isOutside = 
-                x < rect.left || 
-                x > rect.right || 
-                y < rect.top || 
+            const isOutside =
+                x < rect.left ||
+                x > rect.right ||
+                y < rect.top ||
                 y > rect.bottom;
 
             if (isOutside) {
@@ -79,19 +79,19 @@ export default function ProductCardsSection({ products , ShowTitle , showAll , b
     useEffect(() => {
         if (hoveredProductId !== null) {
             // SHOW
-            gsap.to([cursor.current, cursorLabel.current], { 
-                scale: 1, 
+            gsap.to([cursor.current, cursorLabel.current], {
+                scale: 1,
                 autoAlpha: 1, // Becomes visible
-                duration: 0.4, 
+                duration: 0.4,
                 ease: "back.out(1.7)",
                 overwrite: "auto" // Prevents conflicts if mouse moves fast
             })
         } else {
             // HIDE
-            gsap.to([cursor.current, cursorLabel.current], { 
-                scale: 0, 
+            gsap.to([cursor.current, cursorLabel.current], {
+                scale: 0,
                 autoAlpha: 0, // Becomes hidden (visibility: hidden) at end of tween
-                duration: 0.3, 
+                duration: 0.3,
                 ease: "power3.in",
                 overwrite: "auto"
             })
@@ -146,6 +146,7 @@ export default function ProductCardsSection({ products , ShowTitle , showAll , b
                         isHovered={hoveredProductId === product.id}
                         onMouseEnter={() => setHoveredProductId(product.id)}
                         onMouseLeave={() => setHoveredProductId(null)}
+                        onClick={() => router.push(`/menu/${product.id}`)}
                     />
                 ))}
             </div>
@@ -177,14 +178,16 @@ interface ProductCardProps {
     isHovered: boolean
     onMouseEnter: () => void
     onMouseLeave: () => void
+    onClick: () => void
 }
 
-function ProductCard({ product, isHovered, onMouseEnter, onMouseLeave }: ProductCardProps) {
+function ProductCard({ product, isHovered, onMouseEnter, onMouseLeave, onClick }: ProductCardProps) {
     return (
         <div
             className="relative bg-[#FDF5F0] rounded-sm overflow-hidden cursor-pointer group transition-all duration-300 rounded-tl-4xl"
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
+            onClick={onClick}
         >
             {product.isNew && (
                 <div className="absolute top-3 right-3 md:top-4 md:right-4 z-10">
