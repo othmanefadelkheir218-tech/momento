@@ -9,6 +9,7 @@ interface RoundedButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     backgroundColor?: string;
     className?: string;
     hoverTextColor?: string;
+    disabled?: boolean;
 }
 
 export default function CostumButton({
@@ -16,6 +17,7 @@ export default function CostumButton({
     backgroundColor = "#455CE9",
     className = "",
     hoverTextColor,
+    disabled,
     ...attributes
 }: RoundedButtonProps) {
 
@@ -45,6 +47,7 @@ export default function CostumButton({
     }, []);
 
     const manageMouseEnter = () => {
+        if (disabled) return;
         if (timeoutId.current) clearTimeout(timeoutId.current);
         timeline.current?.tweenFromTo('enter', 'exit');
 
@@ -79,6 +82,10 @@ export default function CostumButton({
                 onMouseEnter={manageMouseEnter}
                 onMouseLeave={manageMouseLeave}
                 {...attributes}
+                onClick={(e) => {
+                    if (disabled) return;
+                    attributes.onClick?.(e);
+                }}
             >
                 {/* 
             The Inner Magnetic uses the 'overflow' div as its trigger area,

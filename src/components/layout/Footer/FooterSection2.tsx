@@ -83,6 +83,8 @@ const Forms = () => {
     const formRef = useRef<HTMLFormElement>(null)
     const socialRef = useRef<HTMLDivElement>(null)
     const [showPopup, setShowPopup] = useState(false)
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
     const [formData, setFormData] = useState({
         cooperation: cooperationOptions[0],
         city: "",
@@ -155,10 +157,48 @@ const Forms = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        console.log("Form submitted:", formData)
-        setShowPopup(true)
+        setIsSubmitting(true)
+        setSubmitStatus('idle')
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+
+            if (!response.ok) {
+                throw new Error('Failed to send message')
+            }
+
+            setSubmitStatus('success')
+            setShowPopup(true)
+            setFormData({
+                cooperation: cooperationOptions[0],
+                city: "",
+                name: "",
+                phone: "",
+                email: "",
+                message: "",
+            })
+        } catch (error) {
+            console.error('Error submitting form:', error)
+            setSubmitStatus('error')
+            alert('Failed to send message. Please try again later.')
+        } finally {
+            setIsSubmitting(false)
+        }
+    }
+
+    const triggerSubmit = (e: React.MouseEvent) => {
+        e.preventDefault() // prevent default if needed, though div doesn't have default click
+        if (formRef.current) {
+            formRef.current.requestSubmit()
+        }
     }
 
     return (
@@ -276,13 +316,14 @@ const Forms = () => {
                         {/* Submit Button */}
                         <div className="form-field pt-2 md:pt-4">
                             <CostumButton
-                                onClick={handleSubmit}
+                                onClick={triggerSubmit}
+                                disabled={isSubmitting}
                                 backgroundColor="white"
                                 hoverTextColor="#DB212F"
-                                className="md:w-[120px] md:h-[50px] w-[100px] h-[50px] rounded-none bg-primary text-white border-white border"
+                                className={`md:w-[120px] md:h-[50px] w-[100px] h-[50px] rounded-none bg-primary text-white border-white border ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                             >
                                 <p className="font-bold">
-                                    Send
+                                    {isSubmitting ? 'Sending...' : 'Send'}
                                 </p>
                             </CostumButton>
                         </div>

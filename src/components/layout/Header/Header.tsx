@@ -1,11 +1,11 @@
 "use client";
 
 import { usePathname } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 // import ThemeToggle from "../../ThemeToggle";
 // import LangSwitcher from "../../LangSwitcher";
 import Magnetic from "../../Magnetic";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Nav from "./Nav";
 import useScroll from "@/hooks/useScroll";
 import { Dot, Minus } from "lucide-react";
@@ -20,6 +20,7 @@ export default function Header() {
     useScrollToTop();
     const [isActive, setIsActive] = useState(false);
     const isScrolled = useScroll();
+    const locale = useLocale();
     const width = useWidth();
     const t = useTranslations("Navigation");
     const pathname = usePathname();
@@ -31,7 +32,7 @@ export default function Header() {
     const buttonRef = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
-        gsap.set([topLine.current, bottomLine.current], { xPercent: -50, yPercent: -50 });
+        gsap.set([topLine.current, bottomLine.current], { yPercent: -50 });
     }, { scope: containerRef });
 
     useGSAP(() => {
@@ -42,7 +43,7 @@ export default function Header() {
             gsap.to(topLine.current, { y: -5, rotation: 0, duration: 0.3, ease: "power2.inOut" });
             gsap.to(bottomLine.current, { y: 5, rotation: 0, duration: 0.3, ease: "power2.inOut" });
         }
-    }, { scope: containerRef, dependencies: [isActive] });
+    }, { scope: containerRef, dependencies: [isActive , locale] });
 
     useGSAP(() => {
         if (width > 768) {
@@ -67,6 +68,12 @@ export default function Header() {
         { href: "/contact", label: t("contact") },
     ];
 
+
+
+    // Close menu when route changes
+    useEffect(() => {
+        if (isActive) setIsActive(false);
+    }, [pathname]);
 
     const itsHome = (pathname === "/");
 
@@ -114,10 +121,10 @@ export default function Header() {
                     // hoverTextColor="#ffffff"
                     className="w-full shadow-md h-full bg-primaryLighter border-primaryLighter text-white hover:border-white">
                     <div ref={containerRef} className="relative w-full h-full">
-                        <div ref={topLine} className="absolute top-1/2 left-1/2">
+                        <div ref={topLine} className="absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2">
                             <Minus size={35} strokeWidth={1.5} />
                         </div>
-                        <div ref={bottomLine} className="absolute top-1/2 left-1/2">
+                        <div ref={bottomLine} className="absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2">
                             <Minus size={35} strokeWidth={1.5} />
                         </div>
                     </div>

@@ -1,0 +1,13 @@
+1 - remove the Mneu and the home from the main nav 
+2 - change the nav social media to icones and add the lanaguage swithcer and activate the logic 
+3 - for the hero section the third part make the images more close and change the images 
+4 - for the product is not ecomerce its just presentation 
+5 - you have a glithc on the "we Love you section" try to handle some time the effect git out 
+6 - the 3d part chech the responsive mode i think the desing git change/
+7 - make the subsiciption work and the form contact too 
+8 - for the menu page present the product as catalogue 
+9 - for the about page change the content reduct the images size remove the play video from the hero seciton 
+and make the svg path more simple and made the content more close they the marging is so big
+10 - for all the contact and the location informatin insert them in single file then export them 
+and use them inside your website
+11 - fixe the content of all pages

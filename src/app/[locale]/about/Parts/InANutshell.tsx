@@ -132,16 +132,6 @@ export default function InANutshell() {
               className="w-full h-full object-cover"
             />
 
-            {/* Play Button Overlay */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-20 h-20 rounded-full bg-[#B01228]/80 border-2 border-white/30 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
-                <div className="w-16 h-16 rounded-full border border-dashed border-white/50 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

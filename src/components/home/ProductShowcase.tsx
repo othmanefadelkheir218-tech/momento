@@ -98,7 +98,7 @@ const ProductShowcase = () => {
     <section className="w-full flex items-center justify-center">
       <section
         ref={sectionRef}
-        className="w-full bg-primary text-primary-foreground py-12 md:py-20 px-4 md:px-8 lg:px-16 overflow-hidden"
+        className="w-full bg-primary text-primary-foreground py-12 md:py-20 px-4 md:px-8 lg:px-4 overflow-hidden"
       >
         {/* Header */}
         <div className="relative z-10 text-white trispace-font text-center text-xl sm:text-2xl md:text-3xl lg:text-6xl xl:text-8xl font-bold uppercase leading-[0.9] mx-auto">
@@ -133,12 +133,12 @@ const ProductShowcase = () => {
 
         {/* Main Content Grid */}
         <div className="w-full">
-          <div className="flex flex-col lg:flex-row lg:justify-around items-center lg:items-start gap-8 lg:gap-4">
+          <div className="flex flex-col lg:flex-row lg:justify-between items-center lg:items-start gap-8 lg:gap-0 space-x-2.5">
             {/* Left Image - Hidden on mobile, shown on desktop */}
             <div
               ref={rightImageRef}
-              className="hidden lg:flex lg:order-1 justify-center lg:justify-end lg:mt-32">
-              <div className="overflow-hidden w-full max-w-[400px] rounded-tl-[100px]" ref={leftImageRef}>
+              className="hidden lg:flex lg:order-1 lg:flex-1 justify-center lg:justify-end lg:mt-32">
+              <div className="overflow-hidden w-full max-w-[400px] lg:max-w-full rounded-tl-[100px]" ref={leftImageRef}>
                 <img src="/images/secondSection2.png" alt="Woman enjoying ice cream" className="w-full h-auto object-cover" />
               </div>
             </div>
@@ -192,9 +192,9 @@ const ProductShowcase = () => {
             {/* Right Image - Hidden on mobile, shown on desktop */}
             <div
               ref={rightImageContainerRef}
-              className="hidden lg:flex lg:order-3 justify-center lg:justify-start lg:-mt-48"
+              className="hidden lg:flex lg:order-3 lg:flex-1 justify-center lg:justify-start lg:-mt-48"
             >
-              <div className="overflow-hidden w-full max-w-[400px] rounded-tr-[100px]">
+              <div className="overflow-hidden w-full max-w-[400px] lg:max-w-full rounded-tr-[100px]">
                 <img src="/images/secondSection1.png" alt="Woman tasting ice cream" className="w-full h-auto object-cover" />
               </div>
             </div>

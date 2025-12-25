@@ -32,10 +32,10 @@ export default function OriginStory() {
           start: "top 80%",
           end: "bottom 120%",
           scrub: 0.01,
-          onEnter: () => gsap.to(followerRef.current, { autoAlpha: 1, scale: 1, duration: 0.5 }),
-          onLeave: () => gsap.to(followerRef.current, { autoAlpha: 0, scale: 0.5, duration: 0.5 }),
-          onEnterBack: () => gsap.to(followerRef.current, { autoAlpha: 1, scale: 1, duration: 0.5 }),
-          onLeaveBack: () => gsap.to(followerRef.current, { autoAlpha: 0, scale: 0.5, duration: 0.5 }),
+          onEnter: () => gsap.to(followerRef.current, { autoAlpha: 1, scale: 1, duration: 0.3 }),
+          onLeave: () => gsap.to(followerRef.current, { autoAlpha: 0, scale: 0.5, duration: 0.3 }),
+          onEnterBack: () => gsap.to(followerRef.current, { autoAlpha: 1, scale: 1, duration: 0.3 }),
+          onLeaveBack: () => gsap.to(followerRef.current, { autoAlpha: 0, scale: 0.5, duration: 0.3 }),
         },
       })
 
@@ -85,14 +85,14 @@ export default function OriginStory() {
             autoAlpha: 1,
             scale: 1,
             clipPath: "inset(0% 0% 0% 0%)",
-            duration: 1.2,
+            duration: 0.8,
             ease: "power3.out",
           })
-          .to(badge, { autoAlpha: 1, y: 0, duration: 0.6, ease: "back.out(1.7)" }, "-=0.6")
-          .to(title, { autoAlpha: 1, y: 0, duration: 0.8, ease: "power3.out" }, "-=0.4")
-          .to(decorLine, { autoAlpha: 1, y: 0, scaleX: 1, duration: 0.5, ease: "power2.out" }, "-=0.5")
-          .to(subtitle, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.3")
-          .to(text, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.4")
+          .to(badge, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.7)" }, "-=0.4")
+          .to(title, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, "-=0.3")
+          .to(decorLine, { autoAlpha: 1, y: 0, scaleX: 1, duration: 0.3, ease: "power2.out" }, "-=0.3")
+          .to(subtitle, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, "-=0.2")
+          .to(text, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, "-=0.2")
 
         // Parallax on image
         gsap.to(image, {
@@ -128,15 +128,15 @@ export default function OriginStory() {
         })
 
         tl2
-          .to(content, { autoAlpha: 1, x: 0, duration: 1, ease: "power3.out" })
-          .to(image, { autoAlpha: 1, x: 0, rotateY: 0, duration: 1.2, ease: "power3.out" }, "-=0.8")
+          .to(content, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" })
+          .to(image, { autoAlpha: 1, x: 0, rotateY: 0, duration: 0.8, ease: "power3.out" }, "-=0.5")
           .to(
             stats,
             {
               autoAlpha: 1,
               y: 0,
               scale: 1,
-              duration: 0.6,
+              duration: 0.4,
               stagger: 0.15,
               ease: "back.out(1.7)",
             },
@@ -168,17 +168,17 @@ export default function OriginStory() {
             autoAlpha: 1,
             scale: 1,
             y: 0,
-            duration: 0.8,
-            stagger: 0.2,
+            duration: 0.6,
+            stagger: 0.15,
             ease: "power3.out",
           })
-          .to(content, { autoAlpha: 1, y: 0, duration: 0.8, ease: "power3.out" }, "-=0.5")
+          .to(content, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, "-=0.3")
           .to(
             floatingElements,
             {
               autoAlpha: 1,
               scale: 1,
-              duration: 0.5,
+              duration: 0.4,
               stagger: 0.1,
               ease: "elastic.out(1, 0.5)",
             },
@@ -225,7 +225,7 @@ export default function OriginStory() {
           .to([leftPanel, rightPanel], {
             xPercent: 0,
             autoAlpha: 1,
-            duration: 1,
+            duration: 0.7,
             ease: "power4.out",
           })
           .to(
@@ -234,17 +234,17 @@ export default function OriginStory() {
               autoAlpha: 1,
               y: 0,
               scale: 1,
-              duration: 0.8,
+              duration: 0.6,
               ease: "power3.out",
             },
-            "-=0.5",
+            "-=0.4",
           )
           .to(
             cta,
             {
               autoAlpha: 1,
               y: 0,
-              duration: 0.6,
+              duration: 0.4,
               ease: "back.out(1.7)",
             },
             "-=0.3",
@@ -281,7 +281,7 @@ export default function OriginStory() {
       </div>
 
       {/* ========== CONTENT SECTIONS ========== */}
-      <div className="relative z-15 container mx-auto px-6 md:px-10 lg:px-16 flex flex-col gap-32 md:gap-48 lg:gap-64">
+      <div className="relative z-15 container mx-auto px-6 md:px-10 lg:px-16 flex flex-col  gap-16 md:gap-24 lg:gap-32">
         {/* SECTION 1: THE BEGINNING */}
         <section ref={section1Ref} className="min-h-screen flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
           {/* Image Side */}

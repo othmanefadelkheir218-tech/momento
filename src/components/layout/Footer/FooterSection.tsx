@@ -101,11 +101,41 @@ export default function FooterSection() {
     return () => ctx.revert()
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Subscribed:", email)
-    setShowPopup(true)
-    setEmail("")
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to subscribe')
+      }
+
+      console.log("Subscribed:", email)
+      setShowPopup(true)
+      setEmail("")
+    } catch (error) {
+      console.error('Error subscribing:', error)
+      alert('Failed to subscribe. Please try again later.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const triggerSubmit = (e: React.MouseEvent) => {
+    e.preventDefault()
+    if (formRef.current) {
+      formRef.current.requestSubmit()
+    }
   }
 
   return (
@@ -195,12 +225,13 @@ export default function FooterSection() {
               required
             />
             <CostumButton
-              onClick={handleSubmit}
+              onClick={triggerSubmit}
+              disabled={isSubmitting}
               backgroundColor="#DB212F"
               hoverTextColor="white"
-              className="w-[120px] h-[70px] rounded-none bg-white text-primary border-primary border"
+              className={`w-[120px] h-[70px] rounded-none bg-white text-primary border-primary border ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
             >
-              <p className="font-bold">Subscribe</p>
+              <p className="font-bold">{isSubmitting ? 'Sending...' : 'Subscribe'}</p>
             </CostumButton>
           </form>
         </div>

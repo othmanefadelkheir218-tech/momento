@@ -185,11 +185,11 @@ export default function RotatingModelSection() {
                     </div>
 
                     {/* Mobile Content */}
-                    <div className=" px-6 space-y-24 relative z-10  pb-24">
+                    <div className=" px-6 space-y-16 relative z-10  pb-12">
                         {sections.map((section) => (
                             <div
                                 key={section.id}
-                                className="bg-white/90 backdrop-blur-md p-6 rounded-xl shadow-lg"
+                                className="backdrop-blur-md p- rounded-xl"
                             >
                                 <h2 className="text-3xl font-bold text-primary mb-3 trispace-font">
                                     {section.title}
