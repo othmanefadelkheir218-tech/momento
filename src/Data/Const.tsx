@@ -551,7 +551,7 @@ export const DessertData = (): DessertInterface[] => {
             id: 13,
             "name": "Oreo Crumble",
             "category": "La gamme verrine",
-            "weight":   "105g",
+            "weight": "105g",
             "isNew": true,
             "description": "Basé sur la recette autentique du tiramisu avec un crumble Oreo.",
             "allergens": "Amande*, Oeuf, Gluten, Noisette*, Lactose, Lait, Noix de pécan*, Seigle* Soja*, Blé, Noix de cajou*, Orge*, Avoine*, Blé de khorasan*, Noix de macadamia* Fruits à coque*, Pistaches*, Sésame*, Épeautre*, Noix* *Peut contenir des traces de contaminations croisées",

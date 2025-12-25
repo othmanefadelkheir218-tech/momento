@@ -1,13 +1,13 @@
 "use client"
 import { Reveal } from "@/components/animation/Reveal";
 import ProductCardsSection from "@/components/home/product-cards-section";
-import { ProductData, ProductInterface } from "@/Data/Const";
+import { DessertData, DessertInterface } from "@/Data/Const";
 
 
 
 
 export default function Catalogue() {
-    const products: ProductInterface[] = ProductData()
+    const products: DessertInterface[] = DessertData()
 
     return (
         <div className="w-full bg-[#F7D6D9] mx-auto px-4 py-26  ">
