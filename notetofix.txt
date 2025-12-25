@@ -1,0 +1,16 @@
+1 - for the header remove the faq and the home ==> done 
+2 - for the nacvabere keep the chnange make the social media icones , 
+and add the language switcher  ==> done 
+3 - home third section , make the images more close for the 2 parallel sections and change the images the images are almose same 
+ ==> done (change the images not yet)
+4 - reduce the images size they are so big  
+5 - fixe the product is more like a menu is not a store 
+6 - home section We Love Partner ship they are small glitch remove it , 
+7 - the 3d , fixe the responsive 
+8 - header and the navare change the menu to catalogue , and we going to made the change in the routing too i think 
+9 - about page , fixe images and reduct the size and made the sectio more close , and fixe the svg path to more simple one ,
+10 - social media , fixe data like the phone number and this stuff they neeed to cone from the same place 
+11 - activate the contact from and the subscribe form 
+12 - fixe the contect in defferent langauges depend on the catalogue 
+13 - in the responsive mode check the menu button have the same position with the logo 
+14 - add fixed language switcher to the site , plus the navigate to the top button 

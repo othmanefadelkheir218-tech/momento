@@ -7,18 +7,12 @@ import gsap from "gsap"
 import BigWavyCircle from "../BigWavyCircle"
 import CostumButton from "../CostumButton"
 import { useTransitionRouter } from "@/hooks/useTransitionRouter"
+import { DessertInterface } from "@/Data/Const"
 
-interface Product {
-    id: number
-    name: string
-    weight: string
-    price: string
-    image: string
-    isNew?: boolean
-}
+
 
 interface ProductCardsSectionProps {
-    products: Product[]
+    products: DessertInterface[]
     ShowTitle: boolean
     showAll: boolean
     bgcolor ?: string
@@ -179,7 +173,7 @@ export default function ProductCardsSection({ products , ShowTitle , showAll , b
 }
 
 interface ProductCardProps {
-    product: Product
+    product: DessertInterface
     isHovered: boolean
     onMouseEnter: () => void
     onMouseLeave: () => void
@@ -212,7 +206,7 @@ function ProductCard({ product, isHovered, onMouseEnter, onMouseLeave }: Product
                 <div
                     className={`relative w-full h-full transition-transform duration-500 ${isHovered ? "scale-110" : "scale-100"}`}
                 >
-                    <Image src={product.image || "/placeholder.svg"} alt={product.name} fill className="object-contain" />
+                    <Image src={product.main_image || "/placeholder.svg"} alt={product.name} fill className="object-contain" />
                 </div>
             </div>
 
@@ -222,7 +216,7 @@ function ProductCard({ product, isHovered, onMouseEnter, onMouseLeave }: Product
                         {product.name}
                     </h3>
                     <p className="text-[10px] md:text-xs text-gray-500 mb-1">Serving weight: {product.weight}</p>
-                    <p className="text-sm md:text-base lg:text-lg font-bold text-primary trispace-font">{product.price}</p>
+                    {/* <p className="text-sm md:text-base lg:text-lg font-bold text-primary trispace-font">{product.category}</p> */}
                 </div>
 
                 <div className={`shrink-0 transition-all duration-300 ${isHovered ? "scale-110" : "scale-100"}`}>
@@ -237,4 +231,4 @@ function ProductCard({ product, isHovered, onMouseEnter, onMouseLeave }: Product
             </div>
         </div>
     )
-}
+} 

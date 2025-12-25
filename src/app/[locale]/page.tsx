@@ -7,7 +7,7 @@ import OneTimeIntroduction from "@/components/OneTimeIntroduction";
 import SlidingImages from "@/components/home/SlidingImages";
 import RotatingModelSection from "@/components/home/RotatingModel";
 import WeLoveYou from "@/components/home/WeLoveYou";
-import { ProductData, ProductInterface } from "@/Data/Const";
+import { DessertData, DessertInterface, ProductData, ProductInterface } from "@/Data/Const";
 import ProductCardsSection from "@/components/home/product-cards-section";
 
 
@@ -15,7 +15,7 @@ import ProductCardsSection from "@/components/home/product-cards-section";
 
 export default function HomePage() {
 
-    const products: ProductInterface[] = ProductData()
+    const products: DessertInterface[] = DessertData()
 
     return (
         <>
