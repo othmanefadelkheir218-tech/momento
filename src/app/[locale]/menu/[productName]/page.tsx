@@ -1,13 +1,14 @@
-import { DessertData } from "@/Data/Const";
+import { getProductBySlug } from "@/lib/utils";
 import ProductDetail from "../Parts/ProductDetail";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string, productId: string }> }) {
-    const { locale, productId } = await params;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string, productName: string }> }) {
+    const { locale, productName } = await params;
 
-    const products = DessertData();
-    const product = products.find((p) => p.id === Number(productId));
+    // productName is already the slug from URL
+
+    const product = getProductBySlug(productName);
 
     if (!product) {
         return {
@@ -30,10 +31,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     };
 }
 
-export default async function ProductPage({ params }: { params: Promise<{ productId: string }> }) {
-    const { productId } = await params;
-    const products = DessertData();
-    const product = products.find((p) => p.id === Number(productId));
+export default async function ProductPage({ params }: { params: Promise<{ productName: string }> }) {
+    const { productName } = await params;
+    const product = getProductBySlug(productName);
 
     if (!product) {
         return notFound();

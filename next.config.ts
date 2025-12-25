@@ -18,4 +18,4 @@ const nextConfig: NextConfig = {
   // reactCompiler: true, // React Compiler might be experimental or causing issues, but let's keep it if it was there. Actually, let's keep it.
 };
 
-export default withNextIntl(nextConfig);
+export default withNextIntl(nextConfig); // Force Restart

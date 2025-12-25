@@ -8,6 +8,7 @@ import BigWavyCircle from "../BigWavyCircle"
 import CostumButton from "../CostumButton"
 import { useTransitionRouter } from "@/hooks/useTransitionRouter"
 import { DessertInterface } from "@/Data/Const"
+import { slugify } from "@/lib/utils"
 
 
 
@@ -146,7 +147,7 @@ export default function ProductCardsSection({ products, ShowTitle, showAll, bgco
                         isHovered={hoveredProductId === product.id}
                         onMouseEnter={() => setHoveredProductId(product.id)}
                         onMouseLeave={() => setHoveredProductId(null)}
-                        onClick={() => router.push(`/menu/${product.id}`)}
+                        onClick={() => router.push(`/menu/${slugify(product.name)}`)}
                     />
                 ))}
             </div>
