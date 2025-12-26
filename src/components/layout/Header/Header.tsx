@@ -43,7 +43,7 @@ export default function Header() {
             gsap.to(topLine.current, { y: -5, rotation: 0, duration: 0.3, ease: "power2.inOut" });
             gsap.to(bottomLine.current, { y: 5, rotation: 0, duration: 0.3, ease: "power2.inOut" });
         }
-    }, { scope: containerRef, dependencies: [isActive , locale] });
+    }, { scope: containerRef, dependencies: [isActive, locale] });
 
     useGSAP(() => {
         if (width > 768) {
@@ -61,9 +61,7 @@ export default function Header() {
     }, { dependencies: [isScrolled, width] });
 
     const Links = [
-        { href: "/", label: t("home") },
         { href: "/menu", label: t("menu") },
-        { href: "/faq", label: t("faq") },
         { href: "/about", label: t("about") },
         { href: "/contact", label: t("contact") },
     ];
@@ -75,7 +73,7 @@ export default function Header() {
         if (isActive) setIsActive(false);
     }, [pathname]);
 
-    const itsHome = (pathname === "/");
+    const itsHome = (pathname === "/" || pathname.startsWith("/menu/"));
 
     return (
         <>

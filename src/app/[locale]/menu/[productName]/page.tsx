@@ -1,7 +1,7 @@
 import { getProductBySlug } from "@/lib/utils";
-import ProductDetail from "../Parts/ProductDetail";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
+import { ProductShowcase } from "../Parts/ProductDetail";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string, productName: string }> }) {
     const { locale, productName } = await params;
@@ -39,5 +39,7 @@ export default async function ProductPage({ params }: { params: Promise<{ produc
         return notFound();
     }
 
-    return <ProductDetail product={product} />;
+    return <ProductShowcase
+        dessert={product}
+    />;
 }

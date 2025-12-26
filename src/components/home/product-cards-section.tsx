@@ -17,9 +17,10 @@ interface ProductCardsSectionProps {
     ShowTitle: boolean
     showAll: boolean
     bgcolor?: string
+    title: string
 }
 
-export default function ProductCardsSection({ products, ShowTitle, showAll, bgcolor }: ProductCardsSectionProps) {
+export default function ProductCardsSection({ products, ShowTitle, showAll, bgcolor, title }: ProductCardsSectionProps) {
     const [hoveredProductId, setHoveredProductId] = useState<number | null>(null)
     const router = useTransitionRouter();
 
@@ -135,7 +136,7 @@ export default function ProductCardsSection({ products, ShowTitle, showAll, bgco
 
             <div className="text-center mb-8 md:mb-12">
                 {ShowTitle && <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary trispace-font uppercase">
-                    Our Products
+                    {title}
                 </h2>}
             </div>
 

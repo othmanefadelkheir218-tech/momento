@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { gsap } from "gsap"
+import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -11,49 +11,31 @@ interface AllergensSectionProps {
 }
 
 export function AllergensSection({ allergens }: AllergensSectionProps) {
-  const sectionRef = useRef<HTMLElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
-  const contentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title animation
       if (titleRef.current) {
-        gsap.fromTo(
-          titleRef.current,
-          { y: 40, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top 80%",
-            },
-          },
-        )
-      }
+        const text = "ALLERGÈNES"
+        const chars = text.split("")
+        titleRef.current.innerHTML = chars
+          .map((char) => `<span class="allergen-char inline-block">${char === " " ? "&nbsp;" : char}</span>`)
+          .join("")
 
-      // Content animation
-      if (contentRef.current) {
-        gsap.fromTo(
-          contentRef.current,
-          { y: 30, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: "power2.out",
-            delay: 0.2,
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top 80%",
-            },
+        gsap.from(".allergen-char", {
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 85%",
           },
-        )
+          opacity: 0,
+          y: 30,
+          rotateX: 90,
+          duration: 0.6,
+          stagger: 0.03,
+          ease: "back.out(1.7)",
+        })
       }
-    }, sectionRef)
+    })
 
     return () => ctx.revert()
   }, [])
@@ -61,25 +43,28 @@ export function AllergensSection({ allergens }: AllergensSectionProps) {
   const allergensList = allergens.split(",").map((a) => a.trim())
 
   return (
-    <section ref={sectionRef} className="w-full bg-white py-20 lg:py-32">
-      <div className="mx-auto max-w-4xl px-6 lg:px-12">
-        <h2 ref={titleRef} className="mb-8 font-serif text-3xl font-bold text-primary md:text-4xl">
+    <section className="w-full bg-white py-8 md:py-12 lg:py-16 px-6 md:px-12 lg:px-20 xl:px-32">
+      <div className="max-w-5xl mx-auto">
+        <h2
+          ref={titleRef}
+          className="text-3xl md:text-5xl lg:text-6xl font-bold text-primary mb-10 md:mb-16 text-center"
+          style={{ fontFamily: "var(--font-sans)" }}
+        >
           ALLERGÈNES
         </h2>
-        <div ref={contentRef}>
-          <div className="flex flex-wrap gap-2">
-            {allergensList.map((allergen, index) => (
+
+        <div className="allergen-content bg-[#FBE8EA] border-4 border-primary rounded-3xl p-8 md:p-12 lg:p-16">
+          <div className="flex flex-wrap gap-3 md:gap-4 justify-center">
+            {allergensList.map((allergen, idx) => (
               <span
-                key={index}
-                className="rounded-full border border-primary/20 bg-primary/5 px-4 py-2 font-sans text-sm text-foreground/80"
+                key={idx}
+                className="bg-white text-primary px-6 md:px-8 py-3 md:py-4 rounded-full font-bold text-sm md:text-base border-2 border-primary hover:bg-primary hover:text-white transition-all duration-300 cursor-default shadow-md hover:shadow-xl hover:scale-105"
+                style={{ fontFamily: "var(--font-sans)" }}
               >
                 {allergen}
               </span>
             ))}
           </div>
-          <p className="mt-6 font-sans text-xs text-foreground/50">
-            *Peut contenir des traces de contaminations croisées
-          </p>
         </div>
       </div>
     </section>

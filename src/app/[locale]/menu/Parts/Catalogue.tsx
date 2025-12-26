@@ -11,19 +11,28 @@ export default function Catalogue() {
 
     return (
         <div className="w-full bg-[#F7D6D9] mx-auto px-4 py-26  ">
-            <Reveal
-                rotate={false}
-                delay={0}
-            >
-                <h1 className="lg:text-8xl lg:my:10 font-bold mb-6 uppercase text-center trispace-font text-primary ">
-                    Catalogue
-                </h1>
-            </Reveal>
             <ProductCardsSection
-                products={products}
-                ShowTitle={false}
+                products={products.filter((product) => product.category === "Dubai Chocolat")}
+                ShowTitle={true}
                 showAll={true}
                 bgcolor="bg-[#F7D6D9]"
+                title="Dubai Chocolat"
+            />
+
+             <ProductCardsSection
+                products={products.filter((product) => product.category === "Gamme Glace")}
+                ShowTitle={true}
+                showAll={true}
+                bgcolor="bg-[#F7D6D9]"
+                title="Gamme Glace"
+            />
+
+            <ProductCardsSection
+                products={products.filter((product) => product.category === "La gamme verrine")}
+                ShowTitle={true}
+                showAll={true}
+                bgcolor="bg-[#F7D6D9]"
+                title="La gamme verrine"
             />
         </div>
     );

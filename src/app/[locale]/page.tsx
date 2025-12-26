@@ -7,7 +7,7 @@ import OneTimeIntroduction from "@/components/OneTimeIntroduction";
 import SlidingImages from "@/components/home/SlidingImages";
 import RotatingModelSection from "@/components/home/RotatingModel";
 import WeLoveYou from "@/components/home/WeLoveYou";
-import { DessertData, DessertInterface, ProductData, ProductInterface } from "@/Data/Const";
+import { DessertData, DessertInterface } from "@/Data/Const";
 import ProductCardsSection from "@/components/home/product-cards-section";
 
 
@@ -27,9 +27,17 @@ export default function HomePage() {
                 ContentThree={<ProductShowcase />}
             />
             <ProductCardsSection
-                products={products.slice(0, 8)}
+                products={products.slice(0, 8).filter((product) => product.category === "Gamme Glace")}
+                ShowTitle={true}
+                showAll={true}
+                title="Gamme Glace"
+                
+            />
+            <ProductCardsSection
+                products={products.slice(0, 8).filter((product) => product.category === "Dubai Chocolat")}
                 ShowTitle={true}
                 showAll={false}
+                title="Dubai Chocolat"
             />
             <SlidingImages />
             <WeLoveYou />
