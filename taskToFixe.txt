@@ -1,0 +1,58 @@
+1. Header & Navbar
+Remove Home and Menu from the main navigation.
+Rename Menu to Catalogue.
+Update routing to match the new Catalogue naming.
+Replace social media text links with icons.
+Add and activate the language switcher.
+In responsive mode:
+Ensure the menu button aligns with the logo.
+Add a fixed language switcher (visible across the site).
+
+2. Home Page
+Hero / Sections
+Third section:
+Make the two parallel images closer.
+Replace images (current ones are too similar).
+Reduce image sizes across the home page.
+Fix the “We Love Partnership” section glitch (animation/effect overflow issue).
+Ensure the 3D section is fully responsive on all screen sizes.
+Add a “scroll to top” button.
+
+3. Products / Catalogue
+Products are not e-commerce:
+Present them as a catalogue / menu, not a store.
+Update product layout and wording to reflect presentation only.
+Ensure product content changes correctly based on language / catalogue.
+
+4. About Page
+Reduce image sizes.
+Make sections closer (reduce large margins/paddings).
+Simplify the SVG paths.
+Remove the video / play button from the hero section.
+Clean and fix the overall content structure.
+
+5. Forms & Interactions
+Activate and validate:
+Contact form
+Subscribe form
+Ensure proper handling (submission, feedback, errors).
+
+6. Global Data Management
+Centralize all contact & social data:
+Phone number
+Email
+Address
+Social media links
+Store them in one single config/data file.
+Import and reuse this data across the entire site.
+
+7. Multilingual Content
+Fix content so it:
+Changes correctly per language
+Matches the correct catalogue
+Review and correct translations and text consistency.
+
+8. General Cleanup
+Fix content issues on all pages.
+Remove visual glitches and spacing inconsistencies.
+Ensure consistent behavior across desktop and mobile.
