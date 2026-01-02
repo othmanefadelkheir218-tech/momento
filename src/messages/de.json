@@ -1,16 +1,200 @@
 {
+    "Header": {
+        "navigation": "Navigation",
+        "followUs": "Folgen Sie uns",
+        "CopyRight": "Alle Rechte vorbehalten."
+    },
+    "Footer": {
+        "joingMomento": "ERLEBEN SIE MOMENTO",
+        "textMomento": "Das Dessert, das Ihre Momente neu definiert. Werden Sie Teil unserer Welt und verpassen Sie keine unserer handwerklichen Kreationen und gefrorenen Neuheiten.",
+        "placeholder": "Ihre E-Mail-Adresse",
+        "subscribe": "Abonnieren",
+        "sending": "Wird gesendet...",
+        "failed": "Abonnement fehlgeschlagen. Bitte versuchen Sie es später erneut.",
+        "popup": {
+            "title": "VIELEN DANK FÜR IHRE ANMELDUNG!",
+            "message": "Sie sind jetzt Teil der MOMENTO-Community. Freuen Sie sich auf unsere neuesten Kreationen und exklusive Angebote!"
+        },
+        "contact": {
+            "heading": "HABEN SIE EINE FRAGE? WIR HABEN DIE ANTWORT!",
+            "doneTitle": "ABGESCHLOSSEN: IHRE ANFRAGE WIRD BEARBEITET",
+            "doneMessage": "Wir haben Ihnen das auszufüllende Formular an Ihre E-Mail-Adresse gesendet. Seien Sie versichert, dass Ihre Angaben in Kürze geprüft werden. Vielen Dank, dass Sie Teil dieses spannenden Abenteuers sind!",
+            "labels": {
+                "cooperation": "Art der Zusammenarbeit",
+                "city": "Stadt",
+                "name": "Ihr Name",
+                "phone": "Telefon",
+                "email": "E-Mail",
+                "message": "Nachricht"
+            },
+            "options": {
+                "distributor": "Zusammenarbeit mit Vertriebspartnern oder Distributoren",
+                "commercial": "Geschäftliche Anfrage",
+                "partnership": "Partnerschaftsmöglichkeit",
+                "general": "Allgemeine Anfrage"
+            },
+            "placeholders": {
+                "city": "Ihre Stadt",
+                "name": "Geben Sie Ihren Namen ein",
+                "message": "Wie können wir Ihnen helfen?",
+                "email": "ihre@email.com",
+                "phone": "+380 99 999 9999"
+            },
+            "button": "Senden",
+            "sending": "Wird gesendet...",
+            "error": "Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es später erneut."
+        },
+        "bottom": {
+            "rights": "Alle Rechte vorbehalten.",
+            "createdBy": "Erstellt von"
+        }
+    },
     "HomePage": {
         "title": "Startseite",
         "welcome": "Willkommen bei Momento",
-        "description": "Momente festhalten, Erinnerungen schaffen."
+        "description": "Momente einfangen, Erinnerungen schaffen.",
+        "catalogueButton": "Katalog",
+        "MainHeading1": "Take Your Sweet",
+        "MainHeading2": "Moments",
+        "MainDescription": "Bei MOMENTO spiegelt jede Kreation meisterhaftes Handwerk und größte Liebe zum Detail wider. Die Texturen sind präzise, die Aromen ausgewogen, und jede Zutat wird sorgfältig ausgewählt. Keine Kompromisse – nur Desserts, die den wahren Geschmack des Genusses offenbaren, den Moment veredeln und jede Verkostung zu einem unvergesslichen Erlebnis machen.",
+        "HeroMarquee": {
+            "row1Part1": "TAKE YOUR MOMENT *",
+            "row1Part2": "Kleine Momente, große Erinnerungen *",
+            "row2Part1": "Das Geheimnis liegt in der Creme *",
+            "row2Part2": "Handwerkliche Rezepte *",
+            "row3Part1": "Tradition & Kreativität *",
+            "row3Part2": "100% halal *"
+        },
+        "ProductCards": {
+            "menuButton": "Menü",
+            "newBadge": "NEU",
+            "weightLabel": "Gewicht"
+        },
+        "BannerSection": {
+            "line1": "Ein gefrorenes Dessert",
+            "line2": "das",
+            "line3": "jeden Moment schmelzen lässt.",
+            "titleLine1": "Wer probiert hat, weiß es bereits.",
+            "titleLine2": "Die anderen werden es bald verstehen.",
+            "description1": "Unsere Ambition geht weit über die Herstellung eines gefrorenen Desserts hinaus. Wir möchten die Sinne wecken und jeden Bissen zu einem emotionalen Erlebnis machen.",
+            "description2": "Bei MOMENTO gibt es keine Abkürzungen – weder bei den Aromen noch bei den Zutaten oder im Handwerk. Jede Kreation wird mit höchstem Anspruch entwickelt, um ein authentisches und unvergessliches Erlebnis zu bieten.",
+            "about_us_button": "Über uns"
+        },
+        "PartnershipSection": {
+            "titleLine1": "Wir lieben",
+            "titleLine2": "Partnerschaften",
+            "descriptionPart1": "Stellen Sie sich Ihr Unternehmen vor – Café, Restaurant oder Verkaufsfläche – das weit mehr als nur ein Dessert anbietet.",
+            "descriptionPart2": "Mit MOMENTO bieten Sie handwerkliche Kreationen, die das Erlebnis Ihrer Kundinnen und Kunden veredeln und Ihr Angebot einfach und wirkungsvoll aufwerten."
+        },
+        "Features": {
+            "section1": {
+                "title": "Mit Sorgfalt gefertigt",
+                "description": "Jede MOMENTO-Kreation wird mit Präzision und Hingabe hergestellt und folgt echtem handwerklichem Können. Die Texturen werden sorgfältig ausgearbeitet, um ein perfektes Gleichgewicht zwischen Zartheit, Cremigkeit und Genuss zu erreichen."
+            },
+            "section2": {
+                "title": "Aromen, die inspirieren",
+                "description": "Von der Tradition inspiriert und von Kreativität getragen, bieten unsere Rezepte eine reichhaltige und ausgewogene Aromenvielfalt. Jede Verkostung lädt dazu ein, neue Sinneseindrücke zu entdecken und dabei der Authentizität treu zu bleiben."
+            },
+            "section3": {
+                "title": "Momente zum Teilen",
+                "description": "MOMENTO ist mehr als ein Dessert – es ist ein Moment zum Erleben und Teilen. Zu jedem Anlass begleiten unsere Kreationen die kleinen Augenblicke, aus denen bleibende Erinnerungen entstehen."
+            }
+        }
     },
     "AboutPage": {
-        "title": "Über Uns",
-        "description": "Wir sind ein Team leidenschaftlicher Schöpfer."
+        "title": "Über uns",
+        "description": "Wir sind ein Team leidenschaftlicher Kreativer.",
+        "InANutshell": {
+            "titles": [
+                "ERLEBEN SIE IHREN",
+                "MOMENT",
+                "JEDER BISS",
+                "ERZÄHLT",
+                "EINE GESCHICHTE"
+            ],
+            "description1": "MOMENTO ist weit mehr als eine Dessert- und Eiscrememarke – es ist eine Einladung, außergewöhnliche Genussmomente zu erleben.",
+            "description2": "Inspiriert vom Handwerk und getragen von der Leidenschaft für Qualität kreieren wir innovative und originale Rezepte, die Ihre Sinne wecken.",
+            "description3": "Jede Kreation wird mit größter Sorgfalt entwickelt, um ein perfektes Gleichgewicht aus Aromen, Texturen und Genuss zu bieten.",
+            "rotatingText": "MOMENTO • HANDWERKLICHER EISMEISTER • HANDWERKLICHER EISMEISTER • MOMENTO • HANDWERKLICHER EISMEISTER • MOMENTO • HANDWERKLICHER EISMEISTER • MOMENTO • HANDWERKLICHER EISMEISTER • MOMENTO • HANDWERKLICHER EISMEISTER • MOMENTO • HANDWERKLICHER EISMEISTER • MOMENTO •"
+        },
+        "section1": {
+            "badge": "Unsere Geschichte",
+            "est": "Gegr.",
+            "title": "Wo genussvolle <instants>Momente</instants> zum Leben erwachen",
+            "subtitle": "Eine Leidenschaft, geboren aus der Liebe zu außergewöhnlichen Desserts",
+            "text": "Die MOMENTO-Reise begann mit einem einfachen Wunsch: jeden Bissen in einen unvergesslichen Moment zu verwandeln. Inspiriert vom Handwerk und von Kreativität geprägt, haben wir unsere Techniken perfektioniert, um Desserts und Eiscremes zu kreieren, die unsere Liebe zum Detail widerspiegeln."
+        },
+        "philosophy": {
+            "badge": "Philosophie",
+            "title": "<authentiques>Authentische</authentiques> Zutaten, echter Genuss",
+            "text": "Bei MOMENTO glauben wir, dass Exzellenz in der Einfachheit und im Respekt gegenüber den Zutaten liegt. Jedes Rezept wird ohne Kompromisse entwickelt, um reine und natürliche Aromen hervorzuheben.",
+            "stats": {
+                "artisanal": "Handwerklich",
+                "artisanalSub": "Know-how",
+                "quality": "Qualität",
+                "qualitySub": "Sorgfältige Auswahl",
+                "creativity": "Kreativität",
+                "creativitySub": "Originelle Rezepte"
+            }
+        },
+        "craft": {
+            "badge": "Handwerkskunst",
+            "title": "Mit Leidenschaft kreierte <artisanales>handwerkliche</artisanales> Kreationen",
+            "text": "Jedes Dessert wird mit größter Sorgfalt und im Respekt des handwerklichen Könnens hergestellt. Besonderes Augenmerk legen wir auf die Texturen, um ein einzigartig zartschmelzendes Genusserlebnis zu bieten.",
+            "gallery": {
+                "step1": "Rühren",
+                "step2": "Perfektion",
+                "step3": "Servieren"
+            }
+        },
+        "promise": {
+            "badge": "Unser Versprechen",
+            "title": "Jeder Bissen, <moment>ein Moment des Genusses</moment>",
+            "text": "Wir kreieren nicht einfach Desserts. Wir erschaffen Genussmomente, die kleine Augenblicke in große Erinnerungen verwandeln.",
+            "button": "Unser Menü entdecken"
+        }
     },
     "FAQPage": {
-        "title": "FAQ",
-        "description": "Häufig gestellte Fragen"
+        "description": "Häufig gestellte Fragen",
+        "title": "Fragen",
+        "items": {
+            "history": {
+                "question": "Wie alles begann",
+                "answer": [
+                    "Die MOMENTO-Reise entstand aus einer Leidenschaft für außergewöhnliche Desserts und Eiscremes.",
+                    "Getrieben von dem Wunsch, Tradition und Kreativität zu vereinen, begannen wir mit einer einfachen Idee: jeden Bissen in einen unvergesslichen Moment zu verwandeln.",
+                    "Im Laufe der Zeit haben wir unsere Rezepte und Techniken verfeinert, um Kreationen anzubieten, die unsere Liebe zum Detail und unser Streben nach Exzellenz widerspiegeln."
+                ]
+            },
+            "partnership": {
+                "question": "Unser Ansatz für Partnerschaften",
+                "answer": [
+                    "MOMENTO ist eine handwerkliche Marke, die großen Wert auf Qualität und die Kohärenz ihres Universums legt. Deshalb wählen wir unsere Partner mit großer Sorgfalt aus.",
+                    "Wir bevorzugen Betriebe, die unsere Werte, unseren Qualitätsanspruch und unseren Fokus auf das Kundenerlebnis teilen."
+                ]
+            },
+            "ingredients": {
+                "question": "Unsere Zutaten",
+                "answer": [
+                    "Wir legen besonderen Wert auf die Auswahl der Zutaten und setzen auf Qualität, Authentizität und die Wahrung unserer Rezepte.",
+                    "Jede Kreation ist darauf ausgelegt, ein ausgewogenes Zusammenspiel von Aromen, Texturen und Genuss zu bieten – ohne Kompromisse bei den Ansprüchen."
+                ]
+            },
+            "events": {
+                "question": "Bestellungen und Veranstaltungen",
+                "answer": [
+                    "MOMENTO begleitet besondere Anlässe auch durch maßgeschneiderte Bestellungen für geschäftliche oder private Events.",
+                    "Für spezielle Anfragen laden wir Sie ein, uns zu kontaktieren, damit wir gemeinsam die Möglichkeiten entsprechend Ihren Bedürfnissen besprechen können."
+                ]
+            },
+            "locations": {
+                "question": "Wo Sie MOMENTO finden",
+                "answer": [
+                    "MOMENTO-Kreationen sind bei unseren ausgewählten Partnern und Verkaufsstellen erhältlich.",
+                    "Wir erweitern unsere Präsenz schrittweise, um eine gleichbleibende Qualität und ein Markenerlebnis zu gewährleisten, das dem Geist der Marke treu bleibt."
+                ]
+            }
+        }
     },
     "MenuPage": {
         "title": "Speisekarte",

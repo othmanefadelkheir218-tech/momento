@@ -2,8 +2,6 @@
 
 import { usePathname } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
-// import ThemeToggle from "../../ThemeToggle";
-// import LangSwitcher from "../../LangSwitcher";
 import Magnetic from "../../Magnetic";
 import { useState, useRef, useEffect } from "react";
 import Nav from "./Nav";
@@ -60,6 +58,9 @@ export default function Header() {
         }
     }, { dependencies: [isScrolled, width] });
 
+
+
+
     const Links = [
         { href: "/menu", label: t("menu") },
         { href: "/about", label: t("about") },
@@ -78,12 +79,12 @@ export default function Header() {
     return (
         <>
             {/* if its not home make the heeader backgroudn more dark  */}
-            <header ref={headerRef} className={`fixed top-0 w-full z-20 py-2   backdrop-blur-lg shadow-lg transition-transform duration-300 ${itsHome ? "bg-black/10" : "bg-primary/50"}`}>
+            <header ref={headerRef} className={`fixed top-0 w-full z-20 py-1   backdrop-blur-lg shadow-lg transition-transform duration-300 ${itsHome ? "bg-black/20" : "bg-primary/50"}`}>
                 <div className="container mx-auto px-4 h-16 flex items-center justify-between">
                     <TransitionLink href="/" className="">
-                        <img src="/images/LogoWhite.png" className="md:w-48 w-32" alt="Momento Logo" />
+                        <img src="/images/LogoWhite.png" className="md:w-40 w-32" alt="Momento Logo" />
                     </TransitionLink>
-                    <nav className="hidden md:flex items-center gap-8">
+                    <nav className="hidden md:flex items-center gap-8 relative">
                         {Links.map((link) => {
                             const isActiveLink = pathname === link.href;
                             return (
@@ -91,9 +92,8 @@ export default function Header() {
                                     <TransitionLink
                                         // label={link.label}
                                         href={link.href}
-                                        className="text-white flex flex-col items-center text-lg trispace-font group"
+                                        className="text-white flex   items-center text-lg trispace-font group "
                                     >
-                                        <span>{link.label}</span>
 
                                         {/* Dot centered under the text */}
                                         <span
@@ -101,8 +101,12 @@ export default function Header() {
                                                 ${isActiveLink ? "opacity-100 scale-100" : "opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100"}
                                             `}
                                         >
-                                            <Dot className="w-8 h-8 -mt-3" />
+                                            <Dot className="w-8 h-8 " />
                                         </span>
+
+                                        <span>{link.label}</span>
+
+
                                     </TransitionLink>
                                 </Magnetic>
                             );
@@ -112,7 +116,16 @@ export default function Header() {
             </header>
 
             {/* nav button controller  */}
-            <div ref={buttonRef} className="fixed z-40 top-4 right-2 flex items-center justify-center w-16 h-16 rounded-full scale-0">
+            <div ref={buttonRef}
+                className="
+                    fixed z-40 top-4 right-2
+                    flex items-center justify-center
+                    w-12 h-12        /* mobile */
+                    sm:w-14 sm:h-14 /* small screens */
+                    md:w-16 md:h-16 /* desktop */
+                    rounded-full scale-0
+                "
+            >
                 <CostumButton
                     onClick={() => setIsActive(!isActive)}
                     backgroundColor="#DB212F"

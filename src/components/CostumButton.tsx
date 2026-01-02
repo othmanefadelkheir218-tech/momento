@@ -26,8 +26,11 @@ export default function CostumButton({
     const textRef = useRef<HTMLDivElement>(null);
     const timeline = useRef<gsap.core.Timeline | null>(null);
 
-    // Use a Ref for the timeout ID so it persists across re-renders
-    const timeoutId = useRef<NodeJS.Timeout | null>(null);
+    // Separate refs for timeline and text timeouts to prevent overwriting
+    const timelineTimeoutId = useRef<NodeJS.Timeout | null>(null);
+    const textTimeoutId = useRef<NodeJS.Timeout | null>(null);
+    // Track hover state to handle rapid interactions
+    const isHovered = useRef<boolean>(false);
 
     useEffect(() => {
         timeline.current = gsap.timeline({ paused: true });
@@ -41,14 +44,31 @@ export default function CostumButton({
 
         // Cleanup on unmount to prevent memory leaks
         return () => {
-            if (timeoutId.current) clearTimeout(timeoutId.current);
+            if (timelineTimeoutId.current) clearTimeout(timelineTimeoutId.current);
+            if (textTimeoutId.current) clearTimeout(textTimeoutId.current);
             if (timeline.current) timeline.current.kill();
         }
     }, []);
 
     const manageMouseEnter = () => {
         if (disabled) return;
-        if (timeoutId.current) clearTimeout(timeoutId.current);
+        isHovered.current = true;
+
+        // Clear any pending leave timeouts
+        if (timelineTimeoutId.current) {
+            clearTimeout(timelineTimeoutId.current);
+            timelineTimeoutId.current = null;
+        }
+        if (textTimeoutId.current) {
+            clearTimeout(textTimeoutId.current);
+            textTimeoutId.current = null;
+        }
+
+        // Kill any ongoing text animations and restart timeline from beginning
+        if (textRef.current) {
+            gsap.killTweensOf(textRef.current);
+        }
+
         timeline.current?.tweenFromTo('enter', 'exit');
 
         if (hoverTextColor && textRef.current) {
@@ -57,15 +77,23 @@ export default function CostumButton({
     };
 
     const manageMouseLeave = () => {
-        timeoutId.current = setTimeout(() => {
-            timeline.current?.play();
+        if (disabled) return;
+        isHovered.current = false;
+
+        timelineTimeoutId.current = setTimeout(() => {
+            // Only play if still not hovered
+            if (!isHovered.current) {
+                timeline.current?.play();
+            }
         }, 300);
 
         if (hoverTextColor && textRef.current) {
-            timeoutId.current = setTimeout(() => {
-                gsap.to(textRef.current, { color: "inherit", duration: 0.7 });
+            textTimeoutId.current = setTimeout(() => {
+                // Only animate text color back if still not hovered
+                if (!isHovered.current) {
+                    gsap.to(textRef.current, { color: "inherit", duration: 0.7 });
+                }
             }, 300);
-
         }
     };
 

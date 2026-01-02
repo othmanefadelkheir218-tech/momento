@@ -1,16 +1,205 @@
 {
+    "NotFound": {
+        "title": "Oups ! Page Introuvable",
+        "description": "Il semblerait que cette saveur n'existe pas encore. Laissez-nous vous ramener vers nos délices sucrés.",
+        "button": "Retour à l'accueil"
+    },
+    "Header": {
+        "navigation": "Navigation",
+        "followUs": "Suivez-nous",
+        "CopyRight": "Tous droits réservés."
+    },
+    "Footer": {
+        "joingMomento": "REJOIGNEZ L'EXPÉRIENCE MOMENTO",
+        "textMomento": "Le dessert qui redéfinit vos instants. Rejoignez-nous pour ne rien manquer de nos créations artisanales et de nos nouveautés glacées.",
+        "placeholder": "Votre adresse e-mail",
+        "subscribe": "S'abonner",
+        "sending": "Envoi...",
+        "failed": "Echec de l'abonnement. Veuillez réessayer plus tard.",
+        "popup": {
+            "title": "MERCI DE VOTRE INSCRIPTION !",
+            "message": "Vous faites maintenant partie de la communauté MOMENTO. Préparez-vous à recevoir nos dernières nouveautés et offres exclusives !"
+        },
+        "contact": {
+            "heading": "VOUS AVEZ UNE QUESTION ? NOUS AVONS LA RÉPONSE !",
+            "doneTitle": "TERMINÉ : VOTRE DEMANDE EST EN COURS DE TRAITEMENT",
+            "doneMessage": "Nous avons envoyé le formulaire à remplir à votre adresse e-mail. Soyez assuré que vos réponses seront bientôt examinées. Merci de participer à cette véritable aventure !",
+            "labels": {
+                "cooperation": "Type de coopération",
+                "city": "Ville",
+                "name": "Votre nom",
+                "phone": "Téléphone",
+                "email": "Email",
+                "message": "Message"
+            },
+            "options": {
+                "distributor": "Coopération pour partenaires de vente ou distributeurs",
+                "commercial": "Demande commerciale",
+                "partnership": "Opportunité de partenariat",
+                "general": "Question générale"
+            },
+            "placeholders": {
+                "city": "Votre ville",
+                "name": "Entrez votre nom",
+                "message": "Comment pouvons-nous vous aider ?",
+                "email": "votre@email.com",
+                "phone": "+380 99 999 9999"
+            },
+            "button": "Envoyer",
+            "sending": "Envoi...",
+            "error": "Échec de l'envoi du message. Veuillez réessayer plus tard."
+        },
+        "bottom": {
+            "rights": "Tous droits réservés.",
+            "createdBy": "Créé par"
+        }
+    },
     "HomePage": {
         "title": "Accueil",
         "welcome": "Bienvenue chez Momento",
-        "description": "Capturer des moments, créer des souvenirs."
+        "description": "Capturer des moments, créer des souvenirs.",
+        "catalogueButton": "Catalogue",
+        "MainHeading1": "Take Your Sweet",
+        "MainHeading2": "Moments",
+        "MainDescription": "Chez MOMENTO, chaque création reflète un savoir-faire maîtrisé et une attention portée au moindre détail.  Les textures sont justes, les saveurs équilibrées, et chaque ingrédient est sélectionné avec soin.  Ici, pas de compromis : seulement des desserts pensés pour révéler le vrai goût du plaisir,  transformer l’instant présent et faire de chaque dégustation un moment inoubliable.",
+        "HeroMarquee": {
+            "row1Part1": "PRENEZ VOTRE MOMENT *",
+            "row1Part2": "Petits moments, grands souvenirs *",
+            "row2Part1": "Le secret est dans la crème *",
+            "row2Part2": "Recettes artisanales *",
+            "row3Part1": "Tradition & créativité *",
+            "row3Part2": "100% halal *"
+        },
+        "ProductCards": {
+            "menuButton": "Menu",
+            "newBadge": "NOUVEAU",
+            "weightLabel": "Poids"
+        },
+        "BannerSection": {
+            "line1": "Un dessert glacé",
+            "line2": "qui fait fondre",
+            "line3": "chaque instant.",
+            "titleLine1": "Ceux qui ont goûté savent déjà.",
+            "titleLine2": "Les autres vont bientôt comprendre.",
+            "description1": "Notre ambition ne se limite pas à créer un dessert glacé. Nous voulons éveiller les sens et faire ressentir quelque chose à chaque bouchée.",
+            "description2": "Chez MOMENTO, aucun raccourci n’est toléré. Ni dans les saveurs, ni dans les ingrédients, ni dans le savoir-faire. Chaque création est pensée avec exigence pour offrir une expérience authentique et mémorable.",
+            "about_us_button": "About Us"
+        },
+        "PartnershipSection": {
+            "titleLine1": "Nous aimons",
+            "titleLine2": "les partenariats",
+            "descriptionPart1": "Imaginez votre établissement  café, restaurant ou point de vente  offrant bien plus qu’un simple dessert.",
+            "descriptionPart2": "Avec MOMENTO, vous proposez des créations artisanales pensées pour sublimer l’expérience de vos clients et valoriser votre offre, simplement et efficacement."
+        },
+        "Features": {
+            "section1": {
+                "title": "Conçus avec soin",
+                "description": "Chaque création MOMENTO est élaborée avec attention et précision, dans le respect du savoir-faire artisanal. Les textures sont travaillées avec exigence afin d’offrir un équilibre parfait entre douceur, fondant et plaisir."
+            },
+            "section2": {
+                "title": "Des saveurs qui inspirent",
+                "description": "Inspirées par la tradition et portées par la créativité, nos recettes offrent une palette de saveurs riches et équilibrées. Chaque dégustation est une invitation à découvrir de nouvelles sensations, tout en restant fidèle à l’authenticité."
+            },
+            "section3": {
+                "title": "Des moments à partager",
+                "description": "MOMENTO, ce n’est pas seulement un dessert, c’est un instant à vivre et à partager. À chaque occasion, nos créations accompagnent les petits moments qui deviennent de grands souvenirs."
+            }
+        }
     },
     "AboutPage": {
         "title": "À Propos",
-        "description": "Nous sommes une équipe de créateurs passionnés."
+        "description": "Nous sommes une équipe de créateurs passionnés.",
+        "InANutshell": {
+            "titles": [
+                "VIVEZ VOTRE",
+                "MOMENT",
+                "CHAQUE BOUCHÉE",
+                "RACONTE",
+                "UNE HISTOIRE"
+            ],
+            "description1": "MOMENTO est bien plus qu'une marque de desserts et de glaces ; c'est une invitation à vivre des instants gourmands exceptionnels.",
+            "description2": "Inspirés par l'artisanat et portés par une passion pour la qualité, nous créons des recettes innovantes et originales pour éveiller vos sens.",
+            "description3": "Chaque création est pensée avec soin pour offrir un équilibre parfait entre saveurs, textures et plaisir.",
+            "rotatingText": "MOMENTO • ARTISAN GLACIER • ARTISAN GLACIER • MOMENTO • ARTISAN GLACIER • MOMENTO • ARTISAN GLACIER • MOMENTO • ARTISAN GLACIER • MOMENTO • ARTISAN GLACIER • MOMENTO • ARTISAN GLACIER • MOMENTO •"
+        },
+        "section1": {
+            "badge": "Notre Histoire",
+            "est": "Est.",
+            "title": "Là où les <instants>instants</instants> gourmands prennent vie",
+            "subtitle": "Une passion née de l’amour des desserts d’exception",
+            "text": "L’aventure MOMENTO est née d’une envie simple : transformer chaque bouchée en un moment mémorable. Inspirés par l’artisanat et la créativité, nous avons perfectionné nos techniques pour offrir des desserts et des glaces qui reflètent notre amour du détail."
+        },
+        "philosophy": {
+            "badge": "Philosophie",
+            "title": "Des ingrédients <authentiques>authentiques</authentiques>, un plaisir sincère",
+            "text": "Chez MOMENTO, nous croyons que l’excellence réside dans la simplicité et le respect des ingrédients. Chaque recette est élaborée sans compromis pour révéler des saveurs justes et naturelles.",
+            "stats": {
+                "artisanal": "Artisanal",
+                "artisanalSub": "Savoir-faire",
+                "quality": "Qualité",
+                "qualitySub": "Sélection rigoureuse",
+                "creativity": "Créativité",
+                "creativitySub": "Recettes originales"
+            }
+        },
+        "craft": {
+            "badge": "Le Savoir-Faire",
+            "title": "Des créations <artisanales>artisanales</artisanales> pensées avec passion",
+            "text": "Chaque dessert est élaboré avec soin, dans le respect du geste artisanal. Nous accordons une attention particulière aux textures afin d’offrir une expérience fondante unique.",
+            "gallery": {
+                "step1": "Brassage",
+                "step2": "Perfection",
+                "step3": "Service"
+            }
+        },
+        "promise": {
+            "badge": "Notre Promesse",
+            "title": "Chaque bouchée, <moment>un moment de plaisir</moment>",
+            "text": "Nous ne créons pas simplement des desserts. Nous imaginons des instants gourmands pour transformer les petits moments en grands souvenirs.",
+            "button": "Découvrir notre menu"
+        }
     },
     "FAQPage": {
-        "title": "FAQ",
-        "description": "Questions Fréquemment Posées"
+        "description": "Häufig gestellte Fragen",
+        "title": "Questions",
+        "items": {
+            "history": {
+                "question": "Comment tout a commencé",
+                "answer": [
+                    "L’aventure MOMENTO est née d’une passion pour les desserts et les glaces d’exception.",
+                    "Animés par l’envie d’allier tradition et créativité, nous avons commencé avec une idée simple : transformer chaque bouchée en un moment mémorable.",
+                    "Au fil du temps, nous avons perfectionné nos recettes et nos techniques pour proposer des créations qui reflètent notre amour du détail et notre quête d’excellence."
+                ]
+            },
+            "partnership": {
+                "question": "Notre approche du partenariat",
+                "answer": [
+                    "MOMENTO est une marque artisanale, attachée à la qualité et à la cohérence de son univers. C’est pourquoi nous sélectionnons nos partenaires avec soin.",
+                    "Nous privilégions les établissements qui partagent nos valeurs, notre exigence de qualité et notre attention portée à l’expérience client."
+                ]
+            },
+            "ingredients": {
+                "question": "Nos ingrédients",
+                "answer": [
+                    "Nous accordons une importance particulière à la sélection des ingrédients, en privilégiant la qualité, l’authenticité et le respect des recettes.",
+                    "Chaque création est pensée pour offrir un équilibre juste entre saveurs, textures et plaisir, sans compromis sur l’exigence."
+                ]
+            },
+            "events": {
+                "question": "Commandes et événements",
+                "answer": [
+                    "MOMENTO accompagne également les moments spéciaux à travers des commandes dédiées pour des événements professionnels ou privés.",
+                    "Pour toute demande spécifique, nous vous invitons à nous contacter afin d’étudier ensemble les possibilités selon vos besoins."
+                ]
+            },
+            "locations": {
+                "question": "Où trouver MOMENTO",
+                "answer": [
+                    "Les créations MOMENTO sont disponibles auprès de nos partenaires et points de vente sélectionnés.",
+                    "Nous développons notre présence progressivement afin de garantir une qualité constante et une expérience fidèle à l’univers de la marque."
+                ]
+            }
+        }
     },
     "MenuPage": {
         "title": "Menu",

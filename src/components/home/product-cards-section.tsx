@@ -9,6 +9,7 @@ import CostumButton from "../CostumButton"
 import { useTransitionRouter } from "@/hooks/useTransitionRouter"
 import { DessertInterface } from "@/Data/Const"
 import { slugify } from "@/lib/utils"
+import { useTranslations } from "next-intl"
 
 
 
@@ -23,7 +24,7 @@ interface ProductCardsSectionProps {
 export default function ProductCardsSection({ products, ShowTitle, showAll, bgcolor, title }: ProductCardsSectionProps) {
     const [hoveredProductId, setHoveredProductId] = useState<number | null>(null)
     const router = useTransitionRouter();
-
+    const t = useTranslations("HomePage.ProductCards");
     const containerRef = useRef<HTMLElement>(null)
     const mousePos = useRef({ x: 0, y: 0 })
 
@@ -167,7 +168,7 @@ export default function ProductCardsSection({ products, ShowTitle, showAll, bgco
                     strokeWidth={2}
                 >
                     <span className="text-xs xlmax:text-lg lg:text-sm font-bold trispace-font uppercase">
-                        Menu
+                        {t("menuButton")}
                     </span>
                 </BigWavyCircle>
             </div>}
@@ -184,6 +185,7 @@ interface ProductCardProps {
 }
 
 function ProductCard({ product, isHovered, onMouseEnter, onMouseLeave, onClick }: ProductCardProps) {
+    const t = useTranslations("HomePage.ProductCards");
     return (
         <div
             className="relative bg-[#FDF5F0] rounded-sm overflow-hidden cursor-pointer group transition-all duration-300 rounded-tl-4xl"
@@ -202,7 +204,9 @@ function ProductCard({ product, isHovered, onMouseEnter, onMouseLeave, onClick }
                         stroke="#C41E3A"
                         strokeWidth={1.5}
                     >
-                        <span className="text-[10px] md:text-xs font-bold text-primary trispace-font uppercase">NEW</span>
+                        <span className="text-[10px] md:text-xs font-bold text-primary trispace-font uppercase">
+                            {t("newBadge")}
+                        </span>
                     </BigWavyCircle>
                 </div>
             )}
@@ -220,7 +224,7 @@ function ProductCard({ product, isHovered, onMouseEnter, onMouseLeave, onClick }
                     <h3 className="text-xs md:text-sm lg:text-base font-bold text-gray-900 trispace-font uppercase leading-tight mb-1">
                         {product.name}
                     </h3>
-                    <p className="text-[10px] md:text-xs text-gray-500 mb-1">Serving weight: {product.weight}</p>
+                    <p className="text-[10px] md:text-xs text-gray-500 mb-1">{t("weightLabel")}: {product.weight}</p>
                     {/* <p className="text-sm md:text-base lg:text-lg font-bold text-primary trispace-font">{product.category}</p> */}
                 </div>
 

@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Reveal } from "../animation/Reveal";
+import { useTranslations } from "next-intl";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,7 +13,7 @@ const WeLovePartnership = () => {
     const bgImageRef = useRef<HTMLDivElement>(null); // New ref for the background
     const titleRef = useRef<HTMLHeadingElement>(null);
     const textRef = useRef<HTMLParagraphElement>(null);
-
+    const t = useTranslations("HomePage.PartnershipSection");
     useEffect(() => {
         const ctx = gsap.context(() => {
 
@@ -103,9 +104,9 @@ const WeLovePartnership = () => {
                     >
                         <h1
                             ref={titleRef}
-                            className="text-6xl md:text-8xl lg:text-[7rem] leading-[0.9] font-bold text-white uppercase tracking-tight"
+                            className="text-6xl md:text-8xl lg:text-[6rem] leading-[0.9] font-bold text-white uppercase tracking-tight"
                         >
-                            We Love
+                            {t("titleLine1")}
                         </h1>
                     </Reveal>
 
@@ -114,9 +115,9 @@ const WeLovePartnership = () => {
                         rotate={false}
                     >
                         <h1
-                            className="text-6xl md:text-8xl lg:text-[7rem] leading-[0.9] font-bold text-white uppercase tracking-tight"
+                            className="text-6xl md:text-8xl lg:text-[6rem] leading-[0.9] font-bold text-white uppercase tracking-tight"
                         >
-                            Partnership
+                            {t("titleLine2")}
                         </h1>
                     </Reveal>
                 </div>
@@ -127,12 +128,10 @@ const WeLovePartnership = () => {
                         ref={textRef}
                         className="text-white text-base md:text-lg lg:text-xl font-medium leading-relaxed max-w-md"
                     >
-                        Picture this: your venue — be it a city café, deli, or bar — already
-                        has everything. Almost.
+                        {t("descriptionPart1")}
                         <br />
                         <br />
-                        It’s possible that the one thing missing is mr.pops. And this can be
-                        fixed.
+                        {t("descriptionPart2")}
                     </p>
                 </div>
             </div>

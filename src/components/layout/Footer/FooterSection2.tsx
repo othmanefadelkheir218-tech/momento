@@ -9,23 +9,20 @@ import { Facebook, Instagram, Twitter, Youtube, Linkedin } from "lucide-react"
 import Magnetic from "@/components/Magnetic"
 import CostumButton from "@/components/CostumButton"
 import { SuccessPopup } from "@/components/success-popup"
+import { COMPANY_FACEBOOK, COMPANY_INSTAGRAM, COMPANY_LINKEDIN, COMPANY_TWITTER, COMPANY_YOUTUBE } from "@/Data/socialmedia"
+import { useTranslations } from "next-intl"
 
 
 gsap.registerPlugin(ScrollTrigger)
 
-const cooperationOptions = [
-    "Cooperation for retail partners or distributors",
-    "Business inquiry",
-    "Partnership opportunity",
-    "General question",
-]
+
 
 const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Youtube, href: "#", label: "Youtube" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
+    { icon: Facebook, href: COMPANY_FACEBOOK, label: "Facebook" },
+    { icon: Instagram, href: COMPANY_INSTAGRAM, label: "Instagram" },
+    { icon: Twitter, href: COMPANY_TWITTER, label: "Twitter" },
+    { icon: Youtube, href: COMPANY_YOUTUBE, label: "Youtube" },
+    { icon: Linkedin, href: COMPANY_LINKEDIN, label: "LinkedIn" },
 ]
 
 function Content() {
@@ -48,9 +45,10 @@ const Section1 = () => {
 }
 
 const Section2 = () => {
+    const t = useTranslations("Footer.bottom");
     return (
         <div className="flex w-full md:justify-between flex-col md:flex-row  items-center  gap-2 text-center text-white/60 text-sm pb-4 md:mt-10 mt-5">
-            <p>©{new Date().getFullYear()} Momemt. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} MOMENTO. {t("rights")}</p>
             <div className="flex gap-6">
                 {
                     socialLinks.map((link) => (
@@ -63,7 +61,7 @@ const Section2 = () => {
                 }
             </div>
             <p>
-                Made by{" "}
+                {t("createdBy")}{" "}
                 <a
                     href="https://zakariyazouazou.com"
                     target="_blank"
@@ -78,12 +76,23 @@ const Section2 = () => {
 }
 
 const Forms = () => {
+    const t = useTranslations("Footer.contact");
     const sectionRef = useRef<HTMLElement>(null)
     const headingRef = useRef<HTMLHeadingElement>(null)
     const formRef = useRef<HTMLFormElement>(null)
     const socialRef = useRef<HTMLDivElement>(null)
     const [showPopup, setShowPopup] = useState(false)
     const [isSubmitting, setIsSubmitting] = useState(false)
+
+
+    const cooperationOptions = [
+        t("options.distributor"),
+        t("options.commercial"),
+        t("options.partnership"),
+        t("options.general"),
+    ]
+
+
     const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
     const [formData, setFormData] = useState({
         cooperation: cooperationOptions[0],
@@ -172,7 +181,7 @@ const Forms = () => {
             })
 
             if (!response.ok) {
-                throw new Error('Failed to send message')
+                throw new Error('Échec de l\'envoi du message')
             }
 
             setSubmitStatus('success')
@@ -188,7 +197,7 @@ const Forms = () => {
         } catch (error) {
             console.error('Error submitting form:', error)
             setSubmitStatus('error')
-            alert('Failed to send message. Please try again later.')
+            alert(t("error"))
         } finally {
             setIsSubmitting(false)
         }
@@ -213,14 +222,14 @@ const Forms = () => {
                         ref={headingRef}
                         className="text-lg md:text-5xl lg:text-3xl font-bold text-white text-center mb-6 md:mb-16 tracking-tight"
                     >
-                        HAVE A QUESTION? THEN THERE IS AN ANSWER!
+                        {t("heading")}
                     </h2>
 
                     {/* Form */}
                     <form ref={formRef} onSubmit={handleSubmit} className="space-y-2 md:space-y-4 ">
                         {/* Row 1: Cooperation type - full width on mobile */}
                         <div className="form-field">
-                            <label className="block text-white/70 text-xs md:text-sm mb-1 md:mb-2">Cooperation type</label>
+                            <label className="block text-white/70 text-xs md:text-sm mb-1 md:mb-2">{t("labels.cooperation")}</label>
                             <select
                                 name="cooperation"
                                 value={formData.cooperation}
@@ -244,27 +253,27 @@ const Forms = () => {
                         {/* Row 2: City + Name - side by side on mobile */}
                         <div className="grid grid-cols-2 gap-4 md:gap-8">
                             <div className="form-field">
-                                <label className="block text-white/70 text-xs md:text-sm mb-1 md:mb-2">City</label>
+                                <label className="block text-white/70 text-xs md:text-sm mb-1 md:mb-2">{t("labels.city")}</label>
                                 <input
                                     type="text"
                                     name="city"
                                     value={formData.city}
                                     onChange={handleChange}
                                     className="w-full bg-transparent text-white text-sm md:text-base border-b-2 border-white/50 py-2 md:py-3 focus:outline-none focus:border-white transition-colors duration-300 placeholder:text-white/30"
-                                    placeholder="Your city"
+                                    placeholder={t("placeholders.city")}
                                     required
                                 />
                             </div>
 
                             <div className="form-field">
-                                <label className="block text-white/70 text-xs md:text-sm mb-1 md:mb-2">Your name</label>
+                                <label className="block text-white/70 text-xs md:text-sm mb-1 md:mb-2">{t("labels.name")}</label>
                                 <input
                                     type="text"
                                     name="name"
                                     value={formData.name}
                                     onChange={handleChange}
                                     className="w-full bg-transparent text-white text-sm md:text-base border-b-2 border-white/50 py-2 md:py-3 focus:outline-none focus:border-white transition-colors duration-300 placeholder:text-white/30"
-                                    placeholder="Enter your name"
+                                    placeholder={t("placeholders.name")}
                                     required
                                 />
                             </div>
@@ -273,27 +282,27 @@ const Forms = () => {
                         {/* Row 3: Phone + Email - side by side */}
                         <div className="grid grid-cols-2 gap-4 md:gap-8">
                             <div className="form-field">
-                                <label className="block text-white/70 text-xs md:text-sm mb-1 md:mb-2">Phone</label>
+                                <label className="block text-white/70 text-xs md:text-sm mb-1 md:mb-2">{t("labels.phone")}</label>
                                 <input
                                     type="tel"
                                     name="phone"
                                     value={formData.phone}
                                     onChange={handleChange}
                                     className="w-full bg-transparent text-white text-sm md:text-base border-b-2 border-white/50 py-2 md:py-3 focus:outline-none focus:border-white transition-colors duration-300 placeholder:text-white/30"
-                                    placeholder="+380 99 999 9999"
+                                    placeholder={t("placeholders.phone")}
                                     required
                                 />
                             </div>
 
                             <div className="form-field">
-                                <label className="block text-white/70 text-xs md:text-sm mb-1 md:mb-2">Email</label>
+                                <label className="block text-white/70 text-xs md:text-sm mb-1 md:mb-2">{t("labels.email")}</label>
                                 <input
                                     type="email"
                                     name="email"
                                     value={formData.email}
                                     onChange={handleChange}
                                     className="w-full bg-transparent text-white text-sm md:text-base border-b-2 border-white/50 py-2 md:py-3 focus:outline-none focus:border-white transition-colors duration-300 placeholder:text-white/30"
-                                    placeholder="your@email.com"
+                                    placeholder={t("placeholders.email")}
                                     required
                                 />
                             </div>
@@ -301,14 +310,14 @@ const Forms = () => {
 
                         {/* Row 4: Message */}
                         <div className="form-field">
-                            <label className="block text-white/70 text-xs md:text-sm mb-1 md:mb-2">Message</label>
+                            <label className="block text-white/70 text-xs md:text-sm mb-1 md:mb-2">{t("labels.message")}</label>
                             <textarea
                                 name="message"
                                 value={formData.message}
                                 onChange={handleChange}
                                 rows={1}
                                 className="w-full bg-transparent text-white text-sm md:text-base border-b-2 border-white/50 py-2 md:py-3 focus:outline-none focus:border-white transition-colors duration-300 placeholder:text-white/30 resize-none"
-                                placeholder="Your message..."
+                                placeholder={t("placeholders.message")}
                                 required
                             />
                         </div>
@@ -323,7 +332,7 @@ const Forms = () => {
                                 className={`md:w-[120px] md:h-[50px] w-[100px] h-[50px] rounded-none bg-primary text-white border-white border ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                             >
                                 <p className="font-bold">
-                                    {isSubmitting ? 'Sending...' : 'Send'}
+                                    {isSubmitting ? t("sending") : t("button")}
                                 </p>
                             </CostumButton>
                         </div>
@@ -331,7 +340,11 @@ const Forms = () => {
                 </div>
             </section>
 
-            <SuccessPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />
+            <SuccessPopup
+                title={t("doneTitle")}
+                message={t("doneMessage")}
+                isOpen={showPopup} onClose={() => setShowPopup(false)}
+            />
         </>
     )
 }

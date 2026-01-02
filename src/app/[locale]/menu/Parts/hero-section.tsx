@@ -78,7 +78,7 @@ export function HeroSection({ dessert }: HeroSectionProps) {
     <section ref={sectionRef} className="relative w-full h-[90vh]  overflow-hidden">
       <div ref={imageRef} className="absolute inset-0 -top-[10%] h-[110%]">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat "
           style={{ backgroundImage: `url(${heroImage})` }}
         />
       </div>

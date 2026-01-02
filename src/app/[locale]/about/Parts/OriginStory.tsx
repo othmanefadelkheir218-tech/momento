@@ -8,6 +8,7 @@ import DirectionSvg from "@/components/DirectionSvg"
 import CostumButton from "@/components/CostumButton"
 import { useTransitionRouter } from "@/hooks/useTransitionRouter"
 import Image from "next/image"
+import { useTranslations } from "next-intl"
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
 
@@ -15,6 +16,7 @@ export default function OriginStory() {
   const containerRef = useRef<HTMLDivElement>(null)
   const followerRef = useRef<HTMLDivElement>(null)
   const router = useTransitionRouter()
+  const t = useTranslations("AboutPage")
   // Section refs for animations
   const section1Ref = useRef<HTMLDivElement>(null)
   const section2Ref = useRef<HTMLDivElement>(null)
@@ -299,30 +301,35 @@ export default function OriginStory() {
             {/* Decorative badge */}
             <div className="section-badge absolute -bottom-6 -right-4 md:right-8 bg-white rounded-2xl p-5 shadow-xl">
               <span className="text-[#C41E3A] font-bold text-4xl md:text-5xl">2019</span>
-              <p className="text-[#5A1A1F]/70 text-sm">Est.</p>
+              <p className="text-[#5A1A1F]/70 text-sm">{t("section1.est")}</p>
             </div>
           </div>
 
           {/* Text Side */}
           <div className="w-full lg:w-1/2 lg:pl-8">
             <div className="section-badge inline-block mb-6 px-4 py-2 bg-[#C41E3A]/10 rounded-full">
-              <span className="text-[#C41E3A] font-semibold text-sm tracking-wider uppercase">Our Story</span>
+              <span className="text-[#C41E3A] font-semibold text-sm tracking-wider uppercase">
+                {t("section1.badge")}
+              </span>
             </div>
-            <h2 className="section-title text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-[#1A0A0C] leading-[0.95] mb-6">
-              Where <span className="text-[#C41E3A]">Sweet</span>
-              <br />
-              Dreams Begin
+
+            <h2 className="section-title text-5xl md:text-6xl lg:text-6xl font-bold text-[#1A0A0C] leading-[0.95] mb-6">
+              {t.rich("section1.title", {
+                instants: (chunks) => <span className="text-[#C41E3A]">{chunks}</span>
+              })}
             </h2>
+
             <div className="decor-line w-24 h-1.5 bg-linear-to-r from-[#C41E3A] to-[#FF6B6B] rounded-full mb-8 origin-left" />
+
             <p className="section-subtitle text-xl md:text-2xl text-[#5A1A1F] font-medium mb-6">
-              A passion born from childhood memories
+              {t("section1.subtitle")}
             </p>
+
             <p className="section-text text-[#5A1A1F]/80 text-lg leading-relaxed max-w-xl">
-              It all started in a small kitchen in Brooklyn, where our founder Maria discovered the magic of
-              transforming simple ingredients into extraordinary frozen delights. Each scoop tells a story of
-              dedication, creativity, and an unwavering commitment to bringing joy through artisan desserts.
+              {t("section1.text")}
             </p>
           </div>
+
         </section>
 
         {/* SECTION 2: OUR PHILOSOPHY */}
@@ -352,33 +359,36 @@ export default function OriginStory() {
           {/* Text Side */}
           <div className="section-content w-full lg:w-1/2">
             <div className="inline-block mb-6 px-4 py-2 bg-[#C41E3A]/10 rounded-full">
-              <span className="text-[#C41E3A] font-semibold text-sm tracking-wider uppercase">Philosophy</span>
+              <span className="text-[#C41E3A] font-semibold text-sm tracking-wider uppercase">
+                {t("philosophy.badge")}
+              </span>
             </div>
+
             <h3 className="section-title text-4xl md:text-5xl lg:text-6xl font-bold text-[#1A0A0C] leading-tight mb-8">
-              Pure <span className="text-[#C41E3A]">Ingredients</span>,<br />
-              Pure Happiness
+              {t.rich("philosophy.title", {
+                authentiques: (chunks) => <span className="text-[#C41E3A]">{chunks}</span>
+              })}
             </h3>
+
             <p className="section-text text-[#5A1A1F]/80 text-lg leading-relaxed mb-10 max-w-lg">
-              We believe in the power of simplicity. No artificial flavors, no shortcuts. Just farm-fresh fruits,
-              premium dairy, and recipes perfected over generations.
+              {t("philosophy.text")}
             </p>
 
             {/* Stats */}
-            <div className="flex flex-wrap gap-8">
-              <div className="stat-item text-center">
-                <span className="block text-4xl md:text-5xl font-bold text-[#C41E3A]">100%</span>
-                <span className="text-[#5A1A1F]/70 text-sm">Natural</span>
-              </div>
-              <div className="stat-item text-center">
-                <span className="block text-4xl md:text-5xl font-bold text-[#C41E3A]">50+</span>
-                <span className="text-[#5A1A1F]/70 text-sm">Flavors</span>
-              </div>
-              <div className="stat-item text-center">
-                <span className="block text-4xl md:text-5xl font-bold text-[#C41E3A]">1M+</span>
-                <span className="text-[#5A1A1F]/70 text-sm">Happy Customers</span>
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+              {[
+                { val: t("philosophy.stats.artisanal"), sub: t("philosophy.stats.artisanalSub") },
+                { val: t("philosophy.stats.quality"), sub: t("philosophy.stats.qualitySub") },
+                { val: t("philosophy.stats.creativity"), sub: t("philosophy.stats.creativitySub") }
+              ].map((stat, i) => (
+                <div key={i} className="stat-item">
+                  <span className="block text-4xl font-semibold text-primary uppercase tracking-tighter">{stat.val}</span>
+                  <span className="text-[#5A1A1F]/60 text-lg font-bold">{stat.sub}</span>
+                </div>
+              ))}
             </div>
           </div>
+
         </section>
 
         {/* SECTION 3: THE CRAFT */}
@@ -386,57 +396,36 @@ export default function OriginStory() {
           {/* Section header */}
           <div className="section-content text-center mb-16 max-w-3xl">
             <div className="inline-block mb-6 px-4 py-2 bg-[#C41E3A]/10 rounded-full">
-              <span className="text-[#C41E3A] font-semibold text-sm tracking-wider uppercase">The Craft</span>
+              <span className="text-[#C41E3A] font-semibold text-sm tracking-wider uppercase">
+                {t("craft.badge")}
+              </span>
             </div>
+
             <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1A0A0C] leading-tight mb-6">
-              Handcrafted With <span className="text-[#C41E3A]">Love</span>
+              {t.rich("craft.title", {
+                artisanales: (chunks) => <span className="text-[#C41E3A]">{chunks}</span>
+              })}
             </h3>
+
             <p className="text-[#5A1A1F]/80 text-lg md:text-xl leading-relaxed">
-              Every batch is made in small quantities to ensure the highest quality. Our artisans pour their heart into
-              creating textures that melt perfectly on your tongue.
+              {t("craft.text")}
             </p>
           </div>
 
           {/* Image Gallery */}
-          <div className="relative w-full grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            <div className="gallery-image relative aspect-3/4 rounded-2xl overflow-hidden shadow-xl group">
-              <Image
-                fill
-                src="https://images.unsplash.com/photo-1570197788417-0e82375c9371?q=80&w=2037&auto=format&fit=crop"
-                alt="Ice cream making process"
-                className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-[#1A0A0C]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                <span className="text-white font-semibold text-lg">Churning</span>
+          <div className="w-full mt-10 grid grid-cols-1 md:grid-cols-3 gap-10">
+            {[
+              { img: "https://images.unsplash.com/photo-1570197788417-0e82375c9371", label: t("craft.gallery.step1") },
+              { img: "https://images.unsplash.com/photo-1560008581-09826d1de69e", label: t("craft.gallery.step2") },
+              { img: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f", label: t("craft.gallery.step3") }
+            ].map((item, i) => (
+              <div key={i} className={`gallery-image relative aspect-3/4 rounded-[3rem] overflow-hidden shadow-2xl group ${i === 1 ? 'md:-mt-20' : ''}`}>
+                <Image fill src={item.img} alt="Craft" className="object-cover group-hover:scale-110 transition-transform duration-1000" />
+                <div className="absolute inset-0 bg-linear-to-t from-[#C41E3A] via-transparent to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-500 flex items-end p-12">
+                  <span className="text-white font-black text-4xl uppercase tracking-widest">{item.label}</span>
+                </div>
               </div>
-            </div>
-            <div className="gallery-image relative aspect-3/4 rounded-2xl overflow-hidden shadow-xl group md:-mt-12">
-              <Image
-                fill
-                src="https://images.unsplash.com/photo-1560008581-09826d1de69e?q=80&w=2544&auto=format&fit=crop"
-                alt="Ice cream scoops"
-                className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-[#1A0A0C]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                <span className="text-white font-semibold text-lg">Perfecting</span>
-              </div>
-            </div>
-            <div className="gallery-image relative aspect-3/4 rounded-2xl overflow-hidden shadow-xl group">
-              <Image
-                fill
-                src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?q=80&w=1887&auto=format&fit=crop"
-                alt="Final ice cream cone"
-                className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-[#1A0A0C]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                <span className="text-white font-semibold text-lg">Serving</span>
-              </div>
-            </div>
-
-            {/* Floating decorative elements */}
-            <div className="floating-element absolute -top-10 left-[20%] w-16 h-16 bg-[#FFD4D4] rounded-full opacity-60" />
-            <div className="floating-element absolute top-1/3 -right-8 w-12 h-12 bg-[#C41E3A]/20 rounded-full" />
-            <div className="floating-element absolute bottom-20 left-[10%] w-8 h-8 bg-[#FF6B6B]/30 rounded-full" />
+            ))}
           </div>
         </section>
 
@@ -449,15 +438,21 @@ export default function OriginStory() {
           {/* Center content */}
           <div className="center-content relative z-10 text-center px-8 py-16 max-w-3xl">
             <div className="inline-block mb-6 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full">
-              <span className="text-white font-semibold text-sm tracking-wider uppercase">Our Promise</span>
+              <span className="text-white font-semibold text-sm tracking-wider uppercase">
+                {t("promise.badge")}
+              </span>
             </div>
+
             <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-8 text-balance">
-              Every Scoop, a Moment of <span className="text-[#FFD4D4]">Pure Joy</span>
+              {t.rich("promise.title", {
+                moment: (chunks) => <span className="text-[#FFD4D4]">{chunks}</span>
+              })}
             </h3>
+
             <p className="text-white/90 text-lg md:text-xl leading-relaxed mb-10 max-w-xl mx-auto">
-              We are not just making desserts. We are creating memories, celebrating moments, and spreading happiness
-              one delicious bite at a time.
+              {t("promise.text")}
             </p>
+
             <div className="flex justify-center w-full">
               <CostumButton
                 onClick={() => router.push("/menu")}
@@ -465,7 +460,7 @@ export default function OriginStory() {
                 hoverTextColor="white"
                 className="w-[250px] h-[70px] rounded-none bg-white text-primary border-primary border"
               >
-                <p className="font-bold">Explore Our Menu</p>
+                <p className="font-bold">  {t("promise.button")}</p>
               </CostumButton>
             </div>
           </div>

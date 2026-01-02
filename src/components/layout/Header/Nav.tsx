@@ -12,6 +12,7 @@ import { useTranslations, useLocale } from "next-intl"
 import { useLenis } from "lenis/react"
 import Magnetic from "@/components/Magnetic"
 import CostumButton from "@/components/CostumButton"
+import { COMPANY_FACEBOOK, COMPANY_INSTAGRAM, COMPANY_LINKEDIN, COMPANY_TWITTER } from "@/Data/socialmedia"
 
 interface NavProps {
     isActive: boolean
@@ -26,9 +27,10 @@ const languages = [
 
 export default function Nav({ isActive, setIsActive }: NavProps) {
     const t = useTranslations("Navigation")
+    const t2 = useTranslations("Header")
     const locale = useLocale()
     const router = useRouter()
-    const [isPending, startTransition] = useTransition()
+    const [_ , startTransition] = useTransition()
     const container = useRef<HTMLDivElement>(null)
     const backdrop = useRef<HTMLDivElement>(null)
     const pathname = usePathname()
@@ -133,7 +135,9 @@ export default function Nav({ isActive, setIsActive }: NavProps) {
                 className="fixed top-0 -right-56 md:-right-26 h-screen w-full md:w-[650px] bg-primary backdrop-blur-lg shadow-lg text-white z-30 translate-x-full"
             >
                 {/* Inner Content - Redesigned */}
-                <div className="h-full px-10 md:px-20 py-16 flex flex-col justify-between box-border relative">
+                <div className="h-full 
+                w-[300px]  md:w-full
+                px-10 md:px-20 py-16 flex flex-col justify-between box-border relative">
                     {/* Language Switcher - Top Right */}
                     {langMenuOpen && (
                         <div
@@ -183,7 +187,7 @@ export default function Nav({ isActive, setIsActive }: NavProps) {
                     <div className="flex flex-col gap-4 mt-24">
                         {/* Section Label */}
                         <div className="mb-8">
-                            <p className="text-white/40 uppercase text-[10px] tracking-[0.3em] trispace-font">Navigation</p>
+                            <p className="text-white/40 uppercase text-[10px] tracking-[0.3em] trispace-font">{t2("navigation")}</p>
                             <div className="w-12 h-px bg-linear-to-r from-white/60 to-transparent mt-3" />
                         </div>
 
@@ -208,13 +212,13 @@ export default function Nav({ isActive, setIsActive }: NavProps) {
 
                         {/* Social Links */}
                         <div className="flex flex-col items-center gap-6">
-                            <p className="text-white/40 uppercase text-[10px] tracking-[0.3em] trispace-font">Follow Us</p>
+                            <p className="text-white/40 uppercase text-[10px] tracking-[0.3em] trispace-font">{t2("followUs")}</p>
                             <div className="flex items-center gap-6">
                                 {[
-                                    { Icon: Facebook, href: "#", label: "Facebook" },
-                                    { Icon: Instagram, href: "#", label: "Instagram" },
-                                    { Icon: Linkedin, href: "#", label: "LinkedIn" },
-                                    { Icon: Twitter, href: "#", label: "Twitter" },
+                                    { Icon: Facebook, href: COMPANY_FACEBOOK, label: "Facebook" },
+                                    { Icon: Instagram, href: COMPANY_INSTAGRAM, label: "Instagram" },
+                                    { Icon: Linkedin, href: COMPANY_LINKEDIN, label: "LinkedIn" },
+                                    { Icon: Twitter, href: COMPANY_TWITTER, label: "Twitter" },
                                 ].map(({ Icon, href, label }, index) => (
                                     <Magnetic key={index}>
                                         <a
@@ -235,7 +239,7 @@ export default function Nav({ isActive, setIsActive }: NavProps) {
 
                         {/* Copyright / Tagline */}
                         <p className="text-center text-white/30 text-[11px] tracking-wider trispace-font">
-                            © 2025 — All Rights Reserved
+                            © {new Date().getFullYear()} — {t2("CopyRight")}
                         </p>
                     </div>
                 </div>

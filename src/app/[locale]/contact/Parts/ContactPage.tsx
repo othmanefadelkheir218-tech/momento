@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { Reveal } from "@/components/animation/Reveal"
+import { COMPANY_EMAIL, COMPANY_PHONE } from "@/Data/socialmedia"
 
 export default function ContactPage({ title }: { title: string }) {
     const containerRef = useRef<HTMLDivElement>(null)
@@ -42,7 +43,7 @@ export default function ContactPage({ title }: { title: string }) {
                         href="tel:+380970422400"
                         className="block  text-2xl md:text-4xl lg:text-5xl tracking-wider hover:opacity-70 transition-opacity"
                     >
-                        +38 097 042 24 00
+                        {COMPANY_PHONE}
                     </a>
 
                     <a
@@ -50,7 +51,7 @@ export default function ContactPage({ title }: { title: string }) {
                         href="mailto:mrpopsua@gmail.com"
                         className="block  text-xl md:text-3xl lg:text-4xl tracking-wider uppercase hover:opacity-70 transition-opacity"
                     >
-                        mrpopsua@gmail.com
+                        {COMPANY_EMAIL}
                     </a>
                 </div>
             </div>

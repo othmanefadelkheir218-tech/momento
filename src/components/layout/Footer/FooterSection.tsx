@@ -26,6 +26,7 @@ export default function FooterSection() {
   const [email, setEmail] = useState("")
   const [showPopup, setShowPopup] = useState(false)
   const t = useTranslations("Navigation")
+  const t2 = useTranslations("Footer")
 
   const pages = [
     { name: t("home"), href: "/" },
@@ -125,7 +126,7 @@ export default function FooterSection() {
       setEmail("")
     } catch (error) {
       console.error('Error subscribing:', error)
-      alert('Failed to subscribe. Please try again later.')
+      alert(t("failed"))
     } finally {
       setIsSubmitting(false)
     }
@@ -175,9 +176,10 @@ export default function FooterSection() {
         {/* Top section - can add tagline or badge */}
         <div className="text-center">
           <span className="inline-block px-4 py-2 text-xs tracking-[0.3em] text-primary/60 uppercase trispace-font">
-            Join the Momento Family
+            {t2("joingMomento")}
           </span>
         </div>
+
 
         {/* Main content */}
         <div className="max-w-4xl w-full text-center space-y-8 md:space-y-10 relative z-10">
@@ -194,10 +196,13 @@ export default function FooterSection() {
           </div>
 
           {/* Simple Text */}
-          <p ref={textRef} className="text-base md:text-xl text-primary/80 max-w-2xl mx-auto leading-relaxed">
-            We are dedicated to providing exceptional experiences and building lasting relationships with our community.
-            Join us on this adventure.
+          <p
+            ref={textRef}
+            className="text-base md:text-xl text-primary/80 max-w-2xl mx-auto leading-relaxed"
+          >
+            {t2("textMomento")}
           </p>
+
 
           {/* Pages Links */}
           <div ref={linksRef} className="flex flex-wrap justify-center gap-4 md:gap-10">
@@ -220,7 +225,7 @@ export default function FooterSection() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
+              placeholder={t2("placeholder")}
               className="flex-1 px-6 py-4 border-2 border-primary/30 bg-white/50 text-primary placeholder:text-primary/50 focus:outline-none focus:border-primary transition-colors duration-300"
               required
             />
@@ -231,7 +236,7 @@ export default function FooterSection() {
               hoverTextColor="white"
               className={`w-[120px] h-[70px] rounded-none bg-white text-primary border-primary border ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
             >
-              <p className="font-bold">{isSubmitting ? 'Sending...' : 'Subscribe'}</p>
+              <p className="font-bold">{isSubmitting ? t2("sending") : t2("subscribe")}</p>
             </CostumButton>
           </form>
         </div>
@@ -240,8 +245,8 @@ export default function FooterSection() {
       <SuccessPopup
         isOpen={showPopup}
         onClose={() => setShowPopup(false)}
-        title="THANK YOU FOR SUBSCRIBING!"
-        message="You have successfully subscribed to our newsletter. Stay tuned for the latest updates and exclusive offers!"
+        title={t2("popup.title")}
+        message={t2("popup.message")}
       />
     </>
   )

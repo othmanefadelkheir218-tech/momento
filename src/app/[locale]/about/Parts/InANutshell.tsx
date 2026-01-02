@@ -1,21 +1,22 @@
 "use client"
 
 import { Reveal } from "@/components/animation/Reveal"
+import { useTranslations } from "next-intl"
 import Image from "next/image"
 import { useRef } from "react"
 
 export default function InANutshell() {
   const textRef = useRef<SVGGElement>(null)
-
+  const t = useTranslations("AboutPage.InANutshell")
   // ==========================================
   // 🎛️ SHAPE CONTROLS
   // ==========================================
   const config = {
-    width: 700, 
-    height: 850, 
-    gap: 25,    
+    width: 700,
+    height: 850,
+    gap: 25,
     textOffset: -8,
-    imageBorderRadius: 200, 
+    imageBorderRadius: 200,
   }
 
   const outerRadius = config.imageBorderRadius + config.gap
@@ -36,9 +37,11 @@ export default function InANutshell() {
     Z
   `
 
+  const titleLines = t.raw("titles") as string[]
+
   return (
     <section className="w-full bg-[#FFF5F0] min-h-screen">
-      
+
       {/* 
          FIX 1: THE RED SECTION
          - Removed 'md:h-[130vh]'. We don't want a fixed height limit.
@@ -52,18 +55,8 @@ export default function InANutshell() {
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
             <div className="w-full lg:w-1/2">
               {
-                [
-                  "Ice cream that will",
-                  "appeal even to those",
-                  "who thought they",
-                  "were completely",
-                  "indifferent to it.",
-                ].map((line, index) => (
-                  <Reveal
-                    key={index}
-                    rotate={false}
-                    delay={index * 0.2}
-                  >
+                titleLines.map((line, index) => (
+                  <Reveal key={index} rotate={false} delay={index * 0.2}>
                     <h1 className="text-2xl md:text-5xl lg:text-5xl font-black uppercase trispace-font">
                       {line}
                     </h1>
@@ -73,11 +66,14 @@ export default function InANutshell() {
             </div>
 
             <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-6 text-base md:text-lg lg:text-xl font-medium opacity-90">
-              <p>And in general - the business of people with absolutely &quot;unfrozen&quot; experience. To Mr.Pops.</p>
-              <p>Now we feel like experimenters, actually, as in the beginning.</p>
               <p>
-                We are like in a laboratory, where the result is tasted. If it suits us, it means it will definitely
-                suit one of you!
+                {t("description1")}
+              </p>
+              <p>
+                {t("description2")}
+              </p>
+              <p>
+                {t("description3")}
               </p>
             </div>
           </div>
@@ -91,7 +87,7 @@ export default function InANutshell() {
            Since your JS config calculates width=700px, on a zoomed screen that might be too wide.
            The scale classes (scale-75 md:scale-90 xl:scale-100) ensure it shrinks gracefully without breaking your JS math.
       */}
-      <div className="relative w-full flex justify-center -mt-[180px] md:-mt-[350px] lg:-mt-[450px] pointer-events-none">
+      <div className="relative w-full flex justify-center -mt-[180px] md:-mt-[350px] lg:-mt-[350px] pointer-events-none">
 
         {/* Desktop version */}
         <div
@@ -110,7 +106,7 @@ export default function InANutshell() {
             <g ref={textRef} className="origin-center">
               <text fill="white" fontSize="18" fontWeight="bold" letterSpacing="5px" dy={config.textOffset}>
                 <textPath href="#textCirclePath" className="uppercase font-sans drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]" startOffset="0%">
-                  • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM • TRU ICE CREAM •
+                  {t("rotatingText")}
                 </textPath>
               </text>
             </g>

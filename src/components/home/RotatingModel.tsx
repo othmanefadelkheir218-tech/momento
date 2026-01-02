@@ -8,6 +8,7 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import useWidth from "@/hooks/Width"
 import { Reveal } from "../animation/Reveal"
+import { useTranslations } from "next-intl"
 
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger)
@@ -94,35 +95,38 @@ function ModelScene() {
     )
 }
 
-// Section content data
-const sections = [
-    {
-        id: 1,
-        title: "Crafted with Care",
-        description:
-            "Every mochi is handcrafted using traditional Japanese techniques, ensuring the perfect balance of chewy texture and creamy ice cream filling. We source only the finest ingredients to create an authentic taste experience.",
-        alignment: "left" as const,
-    },
-    {
-        id: 2,
-        title: "Flavors that Inspire",
-        description:
-            "From classic vanilla to adventurous matcha and exotic mango-passion fruit, our diverse flavor palette celebrates both tradition and innovation. Each bite is a journey through taste and texture.",
-        alignment: "right" as const,
-    },
-    {
-        id: 3,
-        title: "Shared Moments",
-        description:
-            "Momento is more than just a treat—it's about creating memories with those you love. Whether it's a summer day or a cozy evening, our mochi brings people together for moments worth savoring.",
-        alignment: "left" as const,
-    },
-]
+
+
 
 export default function RotatingModelSection() {
     const [isDesktop, setIsDesktop] = useState(false)
     const containerRef = useRef<HTMLDivElement>(null)
     const width = useWidth()
+    const t = useTranslations("HomePage.Features");
+
+
+    // Section content data
+    const sections = [
+        {
+            id: 1,
+            title: t("section1.title"),
+            description: t("section1.description"),
+            alignment: "left" as const,
+        },
+        {
+            id: 2,
+            title: t("section2.title"),
+            description: t("section2.description"),
+            alignment: "right" as const,
+        },
+        {
+            id: 3,
+            title: t("section3.title"),
+            description: t("section3.description"),
+            alignment: "left" as const,
+        },
+    ];
+
 
     useEffect(() => {
         const checkDesktop = () => {
@@ -162,7 +166,7 @@ export default function RotatingModelSection() {
                                 <div className="max-w-lg  backdrop-blur-sm p-8 rounded-2xl ">
                                     <Reveal
                                         rotate={false}
-                                        // delay={-0.5}
+                                    // delay={-0.5}
                                     >
                                         <h2 className="text-4xl uppercase trispace-font  lg:text-7xl font-bold text-primary mb-4 trispace-font">
                                             {section.title}

@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import CostumButton from "@/components/CostumButton"
 import { useTransitionRouter } from "@/hooks/useTransitionRouter"
+import { useTranslations } from "next-intl"
 
 export default function NotFound() {
     const router = useTransitionRouter()
@@ -11,6 +12,7 @@ export default function NotFound() {
     const numberRef = useRef<HTMLHeadingElement>(null)
     const textRef = useRef<HTMLDivElement>(null)
     const linkRef = useRef<HTMLAnchorElement>(null)
+    const t = useTranslations("NotFound")
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -57,10 +59,10 @@ export default function NotFound() {
 
                 <div ref={textRef} className="mt-4 md:mt-8 space-y-2">
                     <p className=" text-2xl md:text-4xl uppercase tracking-wide">
-                        Oops! Page Not Found
+                        {t("title")}
                     </p>
                     <p className="text-base md:text-lg max-w-md mx-auto">
-                        Looks like this flavor doesn&apos;t exist. Let&apos;s get you back to the sweet stuff.
+                        {t("description")}
                     </p>
                 </div>
 
@@ -74,7 +76,7 @@ export default function NotFound() {
                         className="w-[250px] h-[50px] rounded-none bg-primary text-white border-white border"
                     >
                         <p className="font-bold">
-                            Home
+                            {t("button")}
                         </p>
                     </CostumButton>
                 </div>

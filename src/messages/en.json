@@ -1,16 +1,200 @@
 {
+  "Header": {
+    "navigation": "Navigation",
+    "followUs": "Follow us",
+    "CopyRight": "All rights reserved."
+  },
+  "Footer": {
+    "joingMomento": "JOIN THE MOMENTO EXPERIENCE",
+    "textMomento": "The dessert that redefines your moments. Join us and stay up to date with our artisanal creations and frozen innovations.",
+    "placeholder": "Your email address",
+    "subscribe": "Subscribe",
+    "sending": "Sending...",
+    "failed": "Subscription failed. Please try again later.",
+    "popup": {
+      "title": "THANK YOU FOR SUBSCRIBING!",
+      "message": "You are now part of the MOMENTO community. Get ready to receive our latest creations and exclusive offers!"
+    },
+    "contact": {
+      "heading": "HAVE A QUESTION? WE HAVE THE ANSWER!",
+      "doneTitle": "COMPLETED: YOUR REQUEST IS BEING PROCESSED",
+      "doneMessage": "We have sent the form to your email address for completion. Rest assured that your responses will be reviewed shortly. Thank you for being part of this exciting journey!",
+      "labels": {
+        "cooperation": "Type of cooperation",
+        "city": "City",
+        "name": "Your name",
+        "phone": "Phone",
+        "email": "Email",
+        "message": "Message"
+      },
+      "options": {
+        "distributor": "Sales partner or distributor cooperation",
+        "commercial": "Commercial inquiry",
+        "partnership": "Partnership opportunity",
+        "general": "General question"
+      },
+      "placeholders": {
+        "city": "Your city",
+        "name": "Enter your name",
+        "message": "How can we help you?",
+        "email": "your@email.com",
+        "phone": "+380 99 999 9999"
+      },
+      "button": "Send",
+      "sending": "Sending...",
+      "error": "Failed to send the message. Please try again later."
+    },
+    "bottom": {
+      "rights": "All rights reserved.",
+      "createdBy": "Created by"
+    }
+  },
   "HomePage": {
     "title": "Home",
     "welcome": "Welcome to Momento",
-    "description": "Capturing moments, creating memories."
+    "description": "Capturing moments, creating memories.",
+    "catalogueButton": "Catalogue",
+    "MainHeading1": "Take Your Sweet",
+    "MainHeading2": "Moments",
+    "MainDescription": "At MOMENTO, every creation reflects refined craftsmanship and close attention to the smallest detail. Textures are precise, flavors are balanced, and every ingredient is carefully selected. No compromises here only desserts designed to reveal the true taste of pleasure, transform the present moment, and make every tasting an unforgettable experience.",
+    "HeroMarquee": {
+      "row1Part1": "TAKE YOUR MOMENT *",
+      "row1Part2": "Small moments, great memories *",
+      "row2Part1": "The secret is in the cream *",
+      "row2Part2": "Artisan recipes *",
+      "row3Part1": "Tradition & creativity *",
+      "row3Part2": "100% halal *"
+    },
+    "ProductCards": {
+      "menuButton": "Menu",
+      "newBadge": "NEW",
+      "weightLabel": "Weight"
+    },
+    "BannerSection": {
+      "line1": "A frozen dessert",
+      "line2": "that melts",
+      "line3": "every moment.",
+      "titleLine1": "Those who have tasted already know.",
+      "titleLine2": "The others will soon understand.",
+      "description1": "Our ambition goes beyond creating a frozen dessert. We aim to awaken the senses and make every bite an emotional experience.",
+      "description2": "At MOMENTO, no shortcuts are allowedneither in flavors, nor in ingredients, nor in craftsmanship. Every creation is thoughtfully designed to deliver an authentic and memorable experience.",
+      "about_us_button": "About Us"
+    },
+    "PartnershipSection": {
+      "titleLine1": "We love",
+      "titleLine2": "partnerships",
+      "descriptionPart1": "Imagine your establishment café, restaurant, or retail space offering much more than just a dessert.",
+      "descriptionPart2": "With MOMENTO, you offer artisan creations designed to elevate your customers’ experience and enhance your offering, simply and effectively."
+    },
+    "Features": {
+      "section1": {
+        "title": "Crafted with care",
+        "description": "Every MOMENTO creation is made with precision and care, respecting true artisanal craftsmanship. Textures are carefully refined to achieve the perfect balance between softness, creaminess, and indulgence."
+      },
+      "section2": {
+        "title": "Flavors that inspire",
+        "description": "Inspired by tradition and driven by creativity, our recipes offer a rich and balanced range of flavors. Every tasting is an invitation to discover new sensations while staying true to authenticity."
+      },
+      "section3": {
+        "title": "Moments to share",
+        "description": "MOMENTO is more than a dessertit’s a moment to experience and share. For every occasion, our creations accompany the small moments that become lasting memories."
+      }
+    }
   },
   "AboutPage": {
     "title": "About Us",
-    "description": "We are a team of passionate creators."
+    "description": "We are a team of passionate creators.",
+    "InANutshell": {
+      "titles": [
+        "LIVE YOUR",
+        "MOMENT",
+        "EVERY BITE",
+        "TELLS",
+        "A STORY"
+      ],
+      "description1": "MOMENTO is much more than a dessert and ice cream brand; it is an invitation to experience exceptional gourmet moments.",
+      "description2": "Inspired by craftsmanship and driven by a passion for quality, we create innovative and original recipes designed to awaken your senses.",
+      "description3": "Each creation is carefully crafted to offer a perfect balance of flavors, textures, and indulgence.",
+      "rotatingText": "MOMENTO • ARTISAN ICE CREAM MAKER • ARTISAN ICE CREAM MAKER • MOMENTO • ARTISAN ICE CREAM MAKER • MOMENTO • ARTISAN ICE CREAM MAKER • MOMENTO • ARTISAN ICE CREAM MAKER • MOMENTO • ARTISAN ICE CREAM MAKER • MOMENTO • ARTISAN ICE CREAM MAKER • MOMENTO •"
+    },
+    "section1": {
+      "badge": "Our Story",
+      "est": "Est.",
+      "title": "Where gourmet <instants>moments</instants> come to life",
+      "subtitle": "A passion born from a love of exceptional desserts",
+      "text": "The MOMENTO journey was born from a simple desire: to turn every bite into a memorable moment. Inspired by craftsmanship and creativity, we have refined our techniques to offer desserts and ice creams that reflect our love for detail."
+    },
+    "philosophy": {
+      "badge": "Philosophy",
+      "title": "<authentiques>Authentic</authentiques> ingredients, genuine pleasure",
+      "text": "At MOMENTO, we believe that excellence lies in simplicity and respect for ingredients. Every recipe is created without compromise to reveal pure and natural flavors.",
+      "stats": {
+        "artisanal": "Artisanal",
+        "artisanalSub": "Craftsmanship",
+        "quality": "Quality",
+        "qualitySub": "Careful selection",
+        "creativity": "Creativity",
+        "creativitySub": "Original recipes"
+      }
+    },
+    "craft": {
+      "badge": "Craftsmanship",
+      "title": "Passionately crafted <artisanales>artisan</artisanales> creations",
+      "text": "Each dessert is carefully prepared, respecting true artisanal techniques. We pay special attention to textures to deliver a uniquely smooth and indulgent experience.",
+      "gallery": {
+        "step1": "Churning",
+        "step2": "Perfection",
+        "step3": "Serving"
+      }
+    },
+    "promise": {
+      "badge": "Our Promise",
+      "title": "Every bite, <moment>a moment of pleasure</moment>",
+      "text": "We don’t simply create desserts. We imagine gourmet moments that turn small occasions into lasting memories.",
+      "button": "Discover our menu"
+    }
   },
   "FAQPage": {
-    "title": "FAQ",
-    "description": "Frequently Asked Questions"
+    "description": "Frequently Asked Questions",
+    "title": "Questions",
+    "items": {
+      "history": {
+        "question": "How it all started",
+        "answer": [
+          "The MOMENTO journey was born from a passion for exceptional desserts and ice creams.",
+          "Driven by the desire to combine tradition and creativity, we began with a simple idea: to turn every bite into a memorable moment.",
+          "Over time, we have refined our recipes and techniques to offer creations that reflect our love for detail and our pursuit of excellence."
+        ]
+      },
+      "partnership": {
+        "question": "Our partnership approach",
+        "answer": [
+          "MOMENTO is an artisanal brand, deeply committed to quality and the coherence of its universe. For this reason, we carefully select our partners.",
+          "We prioritize establishments that share our values, our high standards of quality, and our focus on customer experience."
+        ]
+      },
+      "ingredients": {
+        "question": "Our ingredients",
+        "answer": [
+          "We place great importance on the selection of ingredients, favoring quality, authenticity, and respect for our recipes.",
+          "Each creation is designed to offer a perfect balance of flavors, textures, and indulgence, without compromising on standards."
+        ]
+      },
+      "events": {
+        "question": "Orders and events",
+        "answer": [
+          "MOMENTO also supports special moments through dedicated orders for professional or private events.",
+          "For any specific request, we invite you to contact us so we can explore the possibilities together based on your needs."
+        ]
+      },
+      "locations": {
+        "question": "Where to find MOMENTO",
+        "answer": [
+          "MOMENTO creations are available through our selected partners and points of sale.",
+          "We are gradually expanding our presence to ensure consistent quality and an experience that remains true to the brand’s universe."
+        ]
+      }
+    }
   },
   "MenuPage": {
     "title": "Menu",
