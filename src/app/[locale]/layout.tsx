@@ -1,5 +1,5 @@
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -12,13 +12,22 @@ import "../globals.css";
 import Footer from "@/components/layout/Footer/Footer";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "Momento - Artisan Glacier",
-    description: "MOMENTO - Des desserts glacés artisanaux qui transforment chaque instant en un moment mémorable.",
-    icons: {
-        icon: "/icon.png",
-    },
-};
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Metadata" });
+
+    return {
+        title: t("title"),
+        description: t("description"),
+        icons: {
+            icon: "/icon.png",
+        },
+    };
+}
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
