@@ -55,7 +55,7 @@ const HeroIntro = () => {
         {/* Description Paragraph */}
         <Reveal delay={0.4}>
           <div className="w-full max-w-3xl px-4 md:px-8 lg:px-12">
-            <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed text-center font-normal opacity-90">
+            <p className="text-white text-sm sm:text-base md:text-xl leading-relaxed text-center font-normal opacity-90">
               {t("MainDescription")}
             </p>
           </div>
