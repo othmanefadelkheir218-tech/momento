@@ -226,7 +226,7 @@ const Forms = () => {
                     </h2>
 
                     {/* Form */}
-                    <form ref={formRef} onSubmit={handleSubmit} className="space-y-2 md:space-y-4 ">
+                    <form onSubmit={handleSubmit} className="space-y-2 md:space-y-4 ">
                         {/* Row 1: Cooperation type - full width on mobile */}
                         <div className="form-field">
                             <label className="block text-white/70 text-xs md:text-sm mb-1 md:mb-2">{t("labels.cooperation")}</label>
