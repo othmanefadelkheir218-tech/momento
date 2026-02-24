@@ -9,14 +9,14 @@ export default function InANutshell() {
   const textRef = useRef<SVGGElement>(null)
   const t = useTranslations("AboutPage.InANutshell")
   // ==========================================
-  // 🎛️ SHAPE CONTROLS
+  // 🎛️ SHAPE CONTROLS FOR THIS PART HERE 
   // ==========================================
   const config = {
     width: 700,
     height: 850,
     gap: 25,
     textOffset: -8,
-    imageBorderRadius: 200,
+    imageBorderRadius: 200, 
   }
 
   const outerRadius = config.imageBorderRadius + config.gap
