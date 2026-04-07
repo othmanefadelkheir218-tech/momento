@@ -33,15 +33,15 @@ export default function HomePage() {
                 ShowTitle={true}
                 showAll={true}
                 title={t("iceCreamRange")}
-                
             />
-            
+
             <ProductCardsSection
                 products={products.slice(0, 8).filter((product) => product.category === "Dubai Chocolat")}
                 ShowTitle={true}
                 showAll={false}
                 title={t("dubaiChocolate")}
             />
+            
             <SlidingImages />
             <WeLoveYou />
             <RotatingModelSection />

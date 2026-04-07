@@ -234,5 +234,119 @@
         "instagram": "Instagram",
         "linkedin": "LinkedIn",
         "twitter": "Twitter"
+    },
+    "Desserts": {
+        "Categories": {
+            "dubaiChocolat": "Dubai Schokolade",
+            "gammeGlace": "Eiscreme-Sortiment",
+            "verrineRange": "Verrine-Sortiment"
+        },
+        "Common": {
+            "storageTitle": "Lagerungsbedingungen",
+            "defrosting": "Auftauzeit im Kühlschrank bei +4°C: 4 Std.",
+            "potsPerBox": "12 Becher pro Karton",
+            "noColorants": "Ohne künstliche Farbstoffe",
+            "fishGelatin": "Fischgelatine",
+            "halal": "100% HALAL",
+            "quickService": "Bereit für den schnellen Service",
+            "longStorage": "Geeignet für die langfristige Lagerung im Kühlschrank"
+        },
+        "Products": {
+            "dubaiChocolatSnackBar": {
+                "name": "Dubai Schokolade Snack-Riegel",
+                "description": "Genussvoller Snack-Riegel mit feiner Schokolade, cremiger Pistazie und knusprigem Kunafa.",
+                "allergens": "Enthält: Milch, Soja, Pistazie, Weizen, Walnuss, Sesam."
+            },
+            "dubaiChocolatTablet": {
+                "name": "Dubai Schokolade Snack-Tafel",
+                "description": "Große Dubai-Style-Schokoladentafel mit einer reichhaltigen Pistazien- und knusprigen Kunafa-Füllung.",
+                "allergens": "Enthält: Milch, Soja, Pistazie, Weizen, Walnuss, Sesam."
+            },
+            "citron": {
+                "name": "Zitrone",
+                "description": "Erfrischendes handwerkliches Zitroneneis mit einem spritzigen Zitrus-Swirl und einem knusprigen Boden.",
+                "allergens": "Milch, Zucker, Butter, Joghurt, Sahne, Weizen, Eier, Soja."
+            },
+            "madagascarVanilla": {
+                "name": "Madagaskar-Vanille",
+                "description": "Premium-Vanilleeis aus echten Madagaskar-Bohnen für ein reiches, aromatisches Erlebnis.",
+                "allergens": "Milch, Schokoladenkekse, Weizen, Kokosnuss, Palm, Butter, Sahne, Soja."
+            },
+            "speculoos": {
+                "name": "Spekulatius",
+                "description": "Klassisches Gewürzkeks-Eis mit knusprigen Spekulatius-Stückchen und einer Note von Zimt.",
+                "allergens": "Milch, Spekulatius-Kekse, Weizen, Palm, Soja, Butter, weiße Schokolade, Sahne."
+            },
+            "supremeChocolateBrownie": {
+                "name": "Supreme Schokolade & Brownie",
+                "description": "Zartschmelzendes Schokoladeneis mit saftigen Brownie-Stückchen und einem feinen Kakao-Swirl.",
+                "allergens": "Milch, Schokolade, Brownie-Stückchen, Eier, Weizen, Butter, Soja."
+            },
+            "tiramisu": {
+                "name": "Tiramisu",
+                "description": "Handwerkliches Eis nach dem Vorbild des italienischen Klassikers, mit in Kaffee getränktem Biskuit und Mascarpone.",
+                "allergens": "Milch, Mascarpone, Butter, Sahne, Biskuit, Weizen, Eier, Kakao."
+            },
+            "classicTiramisu": {
+                "name": "Klassisches Tiramisu",
+                "description": "Authentische italienische Verrine mit Löffelbiskuit, kräftigem Kaffee und cremiger Mascarpone.",
+                "allergens": "Ei, Gluten, Haselnüsse, Laktose, Milch, Pecannüsse, Soja, Weizen, Walnüsse."
+            },
+            "chocolateMousse": {
+                "name": "Schokoladenmousse",
+                "description": "Luftig-leichte belgische Schokoladenmousse, kreiert für das ultimative Gourmeterlebnis.",
+                "allergens": "Ei, Laktose, Milch, Soja."
+            },
+            "kinderBueno": {
+                "name": "Kinder Bueno",
+                "description": "Haselnusscreme-Dessert inspiriert vom berühmten Kinder Bueno, gekrönt mit knuspriger Schokolade.",
+                "allergens": "Ei, Gluten, Haselnuss, Laktose, Milch, Soja, Weizen, Pistazien."
+            },
+            "lemonCheesecake": {
+                "name": "Zitronen-Cheesecake",
+                "description": "Cremige Cheesecake-Verrine mit einem spritzigen Zitronen-Coulis und einem mürben Keksboden.",
+                "allergens": "Ei, Gluten, Haselnüsse, Laktose, Milch, Soja, Weizen, Walnüsse."
+            },
+            "mangoCheesecake": {
+                "name": "Mango-Cheesecake",
+                "description": "Exotische Cheesecake-Verrine begleitet von einem tropischen Mango-Coulis und knusprigem Keks.",
+                "allergens": "Ei, Gluten, Haselnüsse, Laktose, Milch, Soja, Weizen, Walnüsse."
+            },
+            "oreoCrumble": {
+                "name": "Oreo-Crumble",
+                "description": "Verspielte Verrine mit Schichten aus samtiger Creme und einem großzügigen Oreo-Keks-Crumble.",
+                "allergens": "Ei, Gluten, Haselnüsse, Laktose, Milch, Soja, Weizen, Walnüsse."
+            },
+            "pistachioCream": {
+                "name": "Pistaziencreme",
+                "description": "Luxuriöse Schichten aus Pistazien- und weißer Schokoladenmousse, inspiriert von traditionellen Rezepten.",
+                "allergens": "Ei, Gluten, Haselnuss, Laktose, Milch, Soja, Weizen, Pistazien."
+            },
+            "raspberryCheesecake": {
+                "name": "Himbeer-Cheesecake",
+                "description": "Süß-säuerliche Cheesecake-Verrine mit einem lebendigen Himbeer-Coulis-Topping.",
+                "allergens": "Ei, Gluten, Haselnüsse, Laktose, Milch, Soja, Weizen, Walnüsse."
+            },
+            "redVelvetTiramisu": {
+                "name": "Red Velvet Tiramisu",
+                "description": "Der ikonische Red Velvet Cake neu interpretiert als anspruchsvolles Tiramisu-Erlebnis.",
+                "allergens": "Ei, Gluten, Haselnüsse, Laktose, Milch, Soja, Weizen, Walnüsse."
+            },
+            "saltedCaramel": {
+                "name": "Salzkaramell",
+                "description": "Zartschmelzendes Dessert mit der charakteristischen Salzkaramell-Creme von Momento.",
+                "allergens": "Ei, Gluten, Haselnuss, Laktose, Milch, Soja, Weizen, Walnüsse."
+            },
+            "snickersTiramisu": {
+                "name": "Snickers Tiramisu",
+                "description": "Eine kühne Variante des Tiramisus mit gerösteten Erdnüssen, Karamell und einer Schicht im Snickers-Stil.",
+                "allergens": "Ei, Gluten, Haselnuss, Laktose, Milch, Erdnüsse, Soja, Weizen."
+            },
+            "speculoosTiramisu": {
+                "name": "Spekulatius-Tiramisu",
+                "description": "Ein lokaler Favorit mit Schichten aus würzigem Spekulatius-Keks und feiner Mascarpone-Creme.",
+                "allergens": "Ei, Gluten, Haselnuss, Laktose, Milch, Soja, Weizen, Walnüsse."
+            }
+        }
     }
 }

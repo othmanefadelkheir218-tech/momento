@@ -234,5 +234,119 @@
         "instagram": "Instagram",
         "linkedin": "LinkedIn",
         "twitter": "Twitter"
+    },
+    "Desserts": {
+        "Categories": {
+            "dubaiChocolat": "Chocolat Dubaï",
+            "gammeGlace": "Gamme de glaces",
+            "verrineRange": "Gamme de verrines"
+        },
+        "Common": {
+            "storageTitle": "Conditions de conservation",
+            "defrosting": "Temps de décongélation au réfrigérateur à +4°C : 4 h.",
+            "potsPerBox": "12 pots par carton",
+            "noColorants": "Sans colorants artificiels",
+            "fishGelatin": "Gélatine de poisson",
+            "halal": "100% HALAL",
+            "quickService": "Prêt pour un service rapide",
+            "longStorage": "Convient pour une conservation prolongée au réfrigérateur"
+        },
+        "Products": {
+            "dubaiChocolatSnackBar": {
+                "name": "Barre snack au chocolat Dubaï",
+                "description": "Barre snack gourmande avec un chocolat fin, une pistache crémeuse et du kunafa croustillant.",
+                "allergens": "Contient : lait, soja, pistache, blé, noix, sésame."
+            },
+            "dubaiChocolatTablet": {
+                "name": "Tablette de chocolat Dubaï",
+                "description": "Grande tablette de chocolat style Dubaï avec une riche garniture à la pistache et au kunafa croustillant.",
+                "allergens": "Contient : lait, soja, pistache, blé, noix, sésame."
+            },
+            "citron": {
+                "name": "Citron",
+                "description": "Glace artisanale rafraîchissante au citron avec un tourbillon d'agrumes et une base croustillante.",
+                "allergens": "Lait, sucre, beurre, yaourt, crème, blé, œufs, soja."
+            },
+            "madagascarVanilla": {
+                "name": "Vanille de Madagascar",
+                "description": "Glace à la vanille premium élaborée avec de véritables gousses de Madagascar pour une expérience riche et aromatique.",
+                "allergens": "Lait, biscuits au chocolat, blé, noix de coco, palme, beurre, crème, soja."
+            },
+            "speculoos": {
+                "name": "Spéculoos",
+                "description": "Glace classique aux biscuits épicés avec des morceaux de spéculoos croquants et une note de cannelle.",
+                "allergens": "Lait, biscuits spéculoos, blé, palme, soja, beurre, chocolat blanc, crème."
+            },
+            "supremeChocolateBrownie": {
+                "name": "Suprême Chocolat & Brownie",
+                "description": "Glace au chocolat fondante avec des morceaux de brownie moelleux et un fin tourbillon de cacao.",
+                "allergens": "Lait, chocolat, morceaux de brownie, œufs, blé, beurre, soja."
+            },
+            "tiramisu": {
+                "name": "Tiramisu",
+                "description": "Glace artisanale inspirée du classique italien, avec biscuit imbibé de café et mascarpone.",
+                "allergens": "Lait, mascarpone, beurre, crème, biscuit, blé, œufs, cacao."
+            },
+            "classicTiramisu": {
+                "name": "Tiramisu Classique",
+                "description": "Verrine italienne authentique avec biscuits à la cuillère, café intense et mascarpone crémeux.",
+                "allergens": "Œuf, gluten, noisettes, lactose, lait, noix de pécan, soja, blé, noix."
+            },
+            "chocolateMousse": {
+                "name": "Mousse au Chocolat",
+                "description": "Mousse au chocolat belge aérienne et légère, créée pour une expérience gourmande ultime.",
+                "allergens": "Œuf, lactose, lait, soja."
+            },
+            "kinderBueno": {
+                "name": "Kinder Bueno",
+                "description": "Dessert à la crème de noisettes inspiré du célèbre Kinder Bueno, nappé de chocolat croquant.",
+                "allergens": "Œuf, gluten, noisette, lactose, lait, soja, blé, pistaches."
+            },
+            "lemonCheesecake": {
+                "name": "Cheesecake Citron",
+                "description": "Verrine de cheesecake crémeuse avec un coulis de citron acidulé et un fond de biscuit sablé.",
+                "allergens": "Œuf, gluten, noisettes, lactose, lait, soja, blé, noix."
+            },
+            "mangoCheesecake": {
+                "name": "Cheesecake Mangue",
+                "description": "Verrine de cheesecake exotique accompagnée d'un coulis de mangue tropicale et d'un biscuit croustillant.",
+                "allergens": "Œuf, gluten, noisettes, lactose, lait, soja, blé, noix."
+            },
+            "oreoCrumble": {
+                "name": "Crumble Oreo",
+                "description": "Verrine ludique avec des couches de crème veloutée et un généreux crumble de biscuits Oreo.",
+                "allergens": "Œuf, gluten, noisettes, lactose, lait, soja, blé, noix."
+            },
+            "pistachioCream": {
+                "name": "Crème de Pistache",
+                "description": "Luxueuses couches de mousse à la pistache et au chocolat blanc, inspirées de recettes traditionnelles.",
+                "allergens": "Œuf, gluten, noisette, lactose, lait, soja, blé, pistaches."
+            },
+            "raspberryCheesecake": {
+                "name": "Cheesecake Framboise",
+                "description": "Verrine de cheesecake sucrée-acidulée avec un nappage éclatant au coulis de framboise.",
+                "allergens": "Œuf, gluten, noisettes, lactose, lait, soja, blé, noix."
+            },
+            "redVelvetTiramisu": {
+                "name": "Tiramisu Red Velvet",
+                "description": "L'emblématique Red Velvet Cake réinterprété pour une expérience tiramisu sophistiquée.",
+                "allergens": "Œuf, gluten, noisettes, lactose, lait, soja, blé, noix."
+            },
+            "saltedCaramel": {
+                "name": "Caramel au beurre salé",
+                "description": "Dessert fondant avec la crème au caramel au beurre salé caractéristique de Momento.",
+                "allergens": "Œuf, gluten, noisette, lactose, lait, soja, blé, noix."
+            },
+            "snickersTiramisu": {
+                "name": "Tiramisu Snickers",
+                "description": "Une variante audacieuse du tiramisu avec des cacahuètes grillées, du caramel et une couche façon Snickers.",
+                "allergens": "Œuf, gluten, noisette, lactose, lait, cacahuètes, soja, blé."
+            },
+            "speculoosTiramisu": {
+                "name": "Tiramisu Spéculoos",
+                "description": "Un favori local avec des couches de biscuits spéculoos épicés et une fine crème au mascarpone.",
+                "allergens": "Œuf, gluten, noisette, lactose, lait, soja, blé, noix."
+            }
+        }
     }
 }

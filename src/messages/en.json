@@ -234,5 +234,119 @@
     "instagram": "Instagram",
     "linkedin": "LinkedIn",
     "twitter": "Twitter"
+  },
+  "Desserts": {
+    "Categories": {
+      "dubaiChocolat": "Dubai Chocolate",
+      "gammeGlace": "Ice Cream Range",
+      "verrineRange": "Verrine Range"
+    },
+    "Common": {
+      "storageTitle": "Storage Conditions",
+      "defrosting": "Defrosting time in the refrigerator at +4°C: 4 hours",
+      "potsPerBox": "12 cups per box",
+      "noColorants": "No artificial colorings",
+      "fishGelatin": "Fish gelatin",
+      "halal": "100% HALAL",
+      "quickService": "Ready for quick service",
+      "longStorage": "Suitable for long-term storage in the refrigerator"
+    },
+    "Products": {
+      "dubaiChocolatSnackBar": {
+        "name": "Dubai Chocolate Snack Bar",
+        "description": "Indulgent snack bar with fine chocolate, creamy pistachio, and crispy kunafa.",
+        "allergens": "Contains: milk, soy, pistachio, wheat, walnut, sesame."
+      },
+      "dubaiChocolatTablet": {
+        "name": "Dubai Chocolate Tablet",
+        "description": "Large Dubai-style chocolate bar with a rich pistachio and crispy kunafa filling.",
+        "allergens": "Contains: milk, soy, pistachio, wheat, walnut, sesame."
+      },
+      "citron": {
+        "name": "Lemon",
+        "description": "Refreshing artisanal lemon ice cream with a tangy citrus swirl and a crunchy base.",
+        "allergens": "Milk, sugar, butter, yogurt, cream, wheat, eggs, soy."
+      },
+      "madagascarVanilla": {
+        "name": "Madagascar Vanilla",
+        "description": "Premium vanilla ice cream made from real Madagascar beans for a rich, aromatic experience.",
+        "allergens": "Milk, chocolate biscuits, wheat, coconut, palm, butter, cream, soy."
+      },
+      "speculoos": {
+        "name": "Speculoos",
+        "description": "Classic spiced biscuit ice cream with crunchy speculoos pieces and a hint of cinnamon.",
+        "allergens": "Milk, speculoos biscuits, wheat, palm, soy, butter, white chocolate, cream."
+      },
+      "supremeChocolateBrownie": {
+        "name": "Supreme Chocolate & Brownie",
+        "description": "Smooth chocolate ice cream with fudgy brownie pieces and a fine cocoa swirl.",
+        "allergens": "Milk, chocolate, brownie pieces, eggs, wheat, butter, soy."
+      },
+      "tiramisu": {
+        "name": "Tiramisu",
+        "description": "Artisanal ice cream inspired by the Italian classic, with coffee-soaked biscuit and mascarpone.",
+        "allergens": "Milk, mascarpone, butter, cream, biscuit, wheat, eggs, cocoa."
+      },
+      "classicTiramisu": {
+        "name": "Classic Tiramisu",
+        "description": "Authentic Italian verrine with ladyfingers, strong coffee, and creamy mascarpone.",
+        "allergens": "Egg, gluten, hazelnuts, lactose, milk, pecans, soy, wheat, walnuts."
+      },
+      "chocolateMousse": {
+        "name": "Chocolate Mousse",
+        "description": "Light and airy Belgian chocolate mousse, created for the ultimate gourmet experience.",
+        "allergens": "Egg, lactose, milk, soy."
+      },
+      "kinderBueno": {
+        "name": "Kinder Bueno",
+        "description": "Hazelnut cream dessert inspired by the famous Kinder Bueno, topped with crunchy chocolate.",
+        "allergens": "Egg, gluten, hazelnut, lactose, milk, soy, wheat, pistachios."
+      },
+      "lemonCheesecake": {
+        "name": "Lemon Cheesecake",
+        "description": "Creamy cheesecake verrine with a tangy lemon coulis and a crumbly biscuit base.",
+        "allergens": "Egg, gluten, hazelnuts, lactose, milk, soy, wheat, walnuts."
+      },
+      "mangoCheesecake": {
+        "name": "Mango Cheesecake",
+        "description": "Exotic cheesecake verrine accompanied by a tropical mango coulis and crunchy biscuit.",
+        "allergens": "Egg, gluten, hazelnuts, lactose, milk, soy, wheat, walnuts."
+      },
+      "oreoCrumble": {
+        "name": "Oreo Crumble",
+        "description": "Playful verrine with layers of velvety cream and a generous Oreo biscuit crumble.",
+        "allergens": "Egg, gluten, hazelnuts, lactose, milk, soy, wheat, walnuts."
+      },
+      "pistachioCream": {
+        "name": "Pistachio Cream",
+        "description": "Luxurious layers of pistachio and white chocolate mousse, inspired by traditional recipes.",
+        "allergens": "Egg, gluten, hazelnut, lactose, milk, soy, wheat, pistachios."
+      },
+      "raspberryCheesecake": {
+        "name": "Raspberry Cheesecake",
+        "description": "Sweet and tangy cheesecake verrine with a vibrant raspberry coulis topping.",
+        "allergens": "Egg, gluten, hazelnuts, lactose, milk, soy, wheat, walnuts."
+      },
+      "redVelvetTiramisu": {
+        "name": "Red Velvet Tiramisu",
+        "description": "The iconic Red Velvet cake reinterpreted as a sophisticated tiramisu experience.",
+        "allergens": "Egg, gluten, hazelnuts, lactose, milk, soy, wheat, walnuts."
+      },
+      "saltedCaramel": {
+        "name": "Salted Caramel",
+        "description": "Meltingly soft dessert featuring Momento's signature salted caramel cream.",
+        "allergens": "Egg, gluten, hazelnut, lactose, milk, soy, wheat, walnuts."
+      },
+      "snickersTiramisu": {
+        "name": "Snickers Tiramisu",
+        "description": "A bold twist on tiramisu with roasted peanuts, caramel, and a Snickers-style layer.",
+        "allergens": "Egg, gluten, hazelnut, lactose, milk, peanuts, soy, wheat."
+      },
+      "speculoosTiramisu": {
+        "name": "Speculoos Tiramisu",
+        "description": "A local favorite with layers of spiced speculoos biscuit and fine mascarpone cream.",
+        "allergens": "Egg, gluten, hazelnut, lactose, milk, soy, wheat, walnuts."
+      }
+    }
   }
 }
