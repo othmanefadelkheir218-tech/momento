@@ -66,7 +66,7 @@ export default function ZoomParallax(props: ZoomParallaxProps) {
                                 className="h-auto w-auto object-cover block"
                             />
                             {/* Overlay is locked to the wrapper */}
-                            <div className="absolute inset-0 bg-black/50" />
+                            <div className="absolute inset-0 bg-black/60" />
                         </div>
                     </div>
 

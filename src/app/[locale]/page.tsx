@@ -2,6 +2,7 @@
 import ZoomScrollAnimation from "@/components/ZoomScrollAnimation";
 import HeroIntro from "@/components/home/HeroIntro";
 import HeroMarquee from "@/components/home/HeroMarquee";
+import { useTranslations } from "next-intl";
 import ProductShowcase from "@/components/home/ProductShowcase";
 import OneTimeIntroduction from "@/components/OneTimeIntroduction";
 import SlidingImages from "@/components/home/SlidingImages";
@@ -14,7 +15,7 @@ import ProductCardsSection from "@/components/home/product-cards-section";
 
 
 export default function HomePage() {
-
+    const t = useTranslations("HomePage.ProductCards");
     const products: DessertInterface[] = DessertData()
 
     return (
@@ -26,18 +27,20 @@ export default function HomePage() {
                 ContentTwo={<HeroMarquee />}
                 ContentThree={<ProductShowcase />}
             />
+
             <ProductCardsSection
                 products={products.slice(0, 8).filter((product) => product.category === "Gamme Glace")}
                 ShowTitle={true}
                 showAll={true}
-                title="Gamme Glace"
+                title={t("iceCreamRange")}
                 
             />
+            
             <ProductCardsSection
                 products={products.slice(0, 8).filter((product) => product.category === "Dubai Chocolat")}
                 ShowTitle={true}
                 showAll={false}
-                title="Dubai Chocolat"
+                title={t("dubaiChocolate")}
             />
             <SlidingImages />
             <WeLoveYou />

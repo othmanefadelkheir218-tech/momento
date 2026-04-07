@@ -19,17 +19,19 @@ interface NavProps {
     setIsActive: (active: boolean) => void
 }
 
-const languages = [
-    { code: "en", label: "EN", fullName: "English" },
-    { code: "fr", label: "FR", fullName: "Français" },
-    { code: "de", label: "DE", fullName: "Deutsch" },
-]
-
 export default function Nav({ isActive, setIsActive }: NavProps) {
     const t = useTranslations("Navigation")
     const t2 = useTranslations("Header")
+    const t3 = useTranslations("Languages")
+    const t4 = useTranslations("Social")
+    const t5 = useTranslations("Common")
     const locale = useLocale()
     const router = useRouter()
+    const languages = [
+        { code: "en", label: "EN", fullName: t3("en") },
+        { code: "fr", label: "FR", fullName: t3("fr") },
+        { code: "de", label: "DE", fullName: t3("de") },
+    ]
     const [_ , startTransition] = useTransition()
     const container = useRef<HTMLDivElement>(null)
     const backdrop = useRef<HTMLDivElement>(null)
@@ -149,6 +151,7 @@ export default function Nav({ isActive, setIsActive }: NavProps) {
                         <div className="relative">
                             <CostumButton
                                 onClick={() => setLangMenuOpen(!langMenuOpen)}
+                                aria-label={t5("changeLanguage")}
                                 backgroundColor="white"
                                 hoverTextColor="#DB212F"
                                 className="md:w-[120px] md:h-[50px] w-[100px] h-[50px] rounded-none bg-primary text-white border-white border"
@@ -215,10 +218,10 @@ export default function Nav({ isActive, setIsActive }: NavProps) {
                             <p className="text-white/40 uppercase text-[10px] tracking-[0.3em] trispace-font">{t2("followUs")}</p>
                             <div className="flex items-center gap-6">
                                 {[
-                                    { Icon: Facebook, href: COMPANY_FACEBOOK, label: "Facebook" },
-                                    { Icon: Instagram, href: COMPANY_INSTAGRAM, label: "Instagram" },
-                                    { Icon: Linkedin, href: COMPANY_LINKEDIN, label: "LinkedIn" },
-                                    { Icon: Twitter, href: COMPANY_TWITTER, label: "Twitter" },
+                                    { Icon: Facebook, href: COMPANY_FACEBOOK, label: t4("facebook") },
+                                    { Icon: Instagram, href: COMPANY_INSTAGRAM, label: t4("instagram") },
+                                    { Icon: Linkedin, href: COMPANY_LINKEDIN, label: t4("linkedin") },
+                                    { Icon: Twitter, href: COMPANY_TWITTER, label: t4("twitter") },
                                 ].map(({ Icon, href, label }, index) => (
                                     <Magnetic key={index}>
                                         <a

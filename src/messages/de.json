@@ -60,7 +60,7 @@
         "catalogueButton": "Katalog",
         "MainHeading1": "Take Your Sweet",
         "MainHeading2": "Moments",
-        "MainDescription": "Bei MOMENTO spiegelt jede Kreation meisterhaftes Handwerk und größte Liebe zum Detail wider. Die Texturen sind präzise, die Aromen ausgewogen, und jede Zutat wird sorgfältig ausgewählt. Keine Kompromisse  nur Desserts, die den wahren Geschmack des Genusses offenbaren, den Moment veredeln und jede Verkostung zu einem unvergesslichen Erlebnis machen.",
+        "MainDescription": "Raffinierte Desserts, genussvolle Verrines und handwerkliche Eiscremes, kreiert, um in jedem Moment ein einzigartiges Erlebnis zu bieten. Das Geheimnis liegt in der Creme.",
         "HeroMarquee": {
             "row1Part1": "TAKE YOUR MOMENT *",
             "row1Part2": "Kleine Momente, große Erinnerungen *",
@@ -72,7 +72,9 @@
         "ProductCards": {
             "menuButton": "Menü",
             "newBadge": "NEU",
-            "weightLabel": "Gewicht"
+            "weightLabel": "Gewicht",
+            "iceCreamRange": "Eissortiment",
+            "dubaiChocolate": "Dubai-Schokolade"
         },
         "BannerSection": {
             "line1": "Ein gefrorenes Dessert",
@@ -82,7 +84,10 @@
             "titleLine2": "Die anderen werden es bald verstehen.",
             "description1": "Unsere Ambition geht weit über die Herstellung eines gefrorenen Desserts hinaus. Wir möchten die Sinne wecken und jeden Bissen zu einem emotionalen Erlebnis machen.",
             "description2": "Bei MOMENTO gibt es keine Abkürzungen – weder bei den Aromen noch bei den Zutaten oder im Handwerk. Jede Kreation wird mit höchstem Anspruch entwickelt, um ein authentisches und unvergessliches Erlebnis zu bieten.",
-            "about_us_button": "Über uns"
+            "about_us_button": "Über uns",
+            "imageAlt1": "Frau genießt Mr. Pops Eis",
+            "imageAlt2": "Frau genießt Eis",
+            "imageAlt3": "Frau probiert Eis"
         },
         "PartnershipSection": {
             "titleLine1": "Wir lieben",
@@ -218,5 +223,16 @@
     "Common": {
         "toggleTheme": "Thema wechseln",
         "changeLanguage": "Sprache ändern"
+    },
+    "Languages": {
+        "en": "Englisch",
+        "fr": "Französisch",
+        "de": "Deutsch"
+    },
+    "Social": {
+        "facebook": "Facebook",
+        "instagram": "Instagram",
+        "linkedin": "LinkedIn",
+        "twitter": "Twitter"
     }
 }

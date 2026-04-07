@@ -60,7 +60,7 @@
     "catalogueButton": "Catalogue",
     "MainHeading1": "Take Your Sweet",
     "MainHeading2": "Moments",
-    "MainDescription": "At MOMENTO, every creation reflects refined craftsmanship and close attention to the smallest detail. Textures are precise, flavors are balanced, and every ingredient is carefully selected. No compromises here only desserts designed to reveal the true taste of pleasure, transform the present moment, and make every tasting an unforgettable experience.",
+    "MainDescription": "Refined desserts, indulgent verrines, and artisanal ice creams, crafted to offer a unique experience at every moment. The secret is in the crème.",
     "HeroMarquee": {
       "row1Part1": "TAKE YOUR MOMENT *",
       "row1Part2": "Small moments, great memories *",
@@ -72,7 +72,9 @@
     "ProductCards": {
       "menuButton": "Menu",
       "newBadge": "NEW",
-      "weightLabel": "Weight"
+      "weightLabel": "Weight",
+      "iceCreamRange": "Ice Cream Range",
+      "dubaiChocolate": "Dubai Chocolate"
     },
     "BannerSection": {
       "line1": "A frozen dessert",
@@ -82,7 +84,10 @@
       "titleLine2": "The others will soon understand.",
       "description1": "Our ambition goes beyond creating a frozen dessert. We aim to awaken the senses and make every bite an emotional experience.",
       "description2": "At MOMENTO, no shortcuts are allowedneither in flavors, nor in ingredients, nor in craftsmanship. Every creation is thoughtfully designed to deliver an authentic and memorable experience.",
-      "about_us_button": "About Us"
+      "about_us_button": "About Us",
+      "imageAlt1": "Woman enjoying Mr. Pops ice cream",
+      "imageAlt2": "Woman enjoying ice cream",
+      "imageAlt3": "Woman tasting ice cream"
     },
     "PartnershipSection": {
       "titleLine1": "We love",
@@ -218,5 +223,16 @@
   "Common": {
     "toggleTheme": "Toggle Theme",
     "changeLanguage": "Change Language"
+  },
+  "Languages": {
+    "en": "English",
+    "fr": "French",
+    "de": "German"
+  },
+  "Social": {
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "linkedin": "LinkedIn",
+    "twitter": "Twitter"
   }
 }

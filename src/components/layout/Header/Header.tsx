@@ -13,10 +13,11 @@ import { useGSAP } from "@gsap/react";
 import useScrollToTop from "@/hooks/useScrollToTop";
 import useWidth from "@/hooks/Width";
 import TransitionLink from "../../TransitionLink";
+import Image from "next/image";
 
 export default function Header() {
     useScrollToTop();
-    const [isActive, setIsActive] = useState(false);
+    const [isActive, setIsActive] = useState<boolean>(false);
     const isScrolled = useScroll();
     const locale = useLocale();
     const width = useWidth();
@@ -82,7 +83,10 @@ export default function Header() {
             <header ref={headerRef} className={`fixed top-0 w-full z-20 py-1   backdrop-blur-lg shadow-lg transition-transform duration-300 ${itsHome ? "bg-black/20" : "bg-primary/50"}`}>
                 <div className="container mx-auto px-4 h-16 flex items-center justify-between">
                     <TransitionLink href="/" className="">
-                        <img src="/images/LogoWhite.png" className="md:w-40 w-32" alt="Momento Logo" />
+                        <Image
+                            width={128}
+                            height={128}
+                            src="/images/LogoWhite.png" className="md:w-40 w-32" alt="Momento Logo" />
                     </TransitionLink>
                     <nav className="hidden md:flex items-center gap-8 relative">
                         {Links.map((link) => {

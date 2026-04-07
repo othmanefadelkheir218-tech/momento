@@ -16,7 +16,7 @@ const HeroIntro = () => {
       <div className="w-full max-w-7xl flex flex-col items-center justify-center relative">
 
         {/* Catalog Button - Positioned on the right */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 z-10 hidden md:block lg:right-0 xl:right-8">
+        <div className="absolute right-0 top-[60%] -translate-y-1/2 z-10 hidden lg:block lg:right-0 xl:right-8">
           <BigWavyCircle
             rotate={true}
             rotateSpeed={5}
@@ -55,14 +55,14 @@ const HeroIntro = () => {
         {/* Description Paragraph */}
         <Reveal delay={0.4}>
           <div className="w-full max-w-3xl px-4 md:px-8 lg:px-12">
-            <p className="text-white text-sm sm:text-base md:text-xl leading-relaxed text-center font-normal opacity-90">
+            <p className="text-white text-sm sm:text-base md:text-2xl leading-relaxed text-center font-normal opacity-90">
               {t("MainDescription")}
             </p>
           </div>
         </Reveal>
 
         {/* Mobile Catalog Button */}
-        <div className="mt-10 md:hidden">
+        <div className="mt-10 lg:hidden">
           <Reveal delay={0.5}>
             <BigWavyCircle
               rotate={true}
@@ -74,13 +74,13 @@ const HeroIntro = () => {
                 console.log("Catalogue clicked");
                 router.push("/menu");
               }}
-              className="w-24 h-24 text-white shrink-0"
+              className="w-30 h-30 text-white shrink-0"
               fill="transparent"
               stroke="white"
               strokeWidth={1.5}
             >
               <span className="text-xs font-bold trispace-font uppercase tracking-wider">
-                Catalog
+                {t("catalogueButton")}
               </span>
             </BigWavyCircle>
           </Reveal>

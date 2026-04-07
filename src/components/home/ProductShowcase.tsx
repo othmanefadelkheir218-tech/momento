@@ -126,8 +126,8 @@ const ProductShowcase = () => {
           >
             <img
               ref={mainImageRef}
-              src="/images/image-1.png"
-              alt="Woman enjoying Mr. Pops ice cream"
+              src="/images/image-1.jpg"
+              alt={t("imageAlt1")}
               className="w-full h-auto object-cover"
             />
             <div className="absolute inset-0 bg-black/20" />
@@ -142,7 +142,7 @@ const ProductShowcase = () => {
               ref={rightImageRef}
               className="hidden lg:flex lg:order-1 lg:flex-1 justify-center lg:justify-end lg:mt-16">
               <div className="overflow-hidden w-full max-w-[400px] lg:max-w-full rounded-tl-[100px]" ref={leftImageRef}>
-                <img src="/images/secondSection2.png" alt="Woman enjoying ice cream" className="w-full h-auto object-cover" />
+                <img src="/images/secondSection2.png" alt={t("imageAlt2")} className="w-full h-auto object-cover" />
               </div>
             </div>
 
@@ -198,7 +198,7 @@ const ProductShowcase = () => {
               className="hidden lg:flex lg:order-3 lg:flex-1 justify-center lg:justify-start lg:-mt-40"
             >
               <div className="overflow-hidden w-full max-w-[400px] lg:max-w-full rounded-tr-[100px]">
-                <img src="/images/secondSection1.png" alt="Woman tasting ice cream" className="w-full h-auto object-cover" />
+                <img src="/images/secondSection1.jpg" alt={t("imageAlt3")} className="w-full h-auto object-cover" />
               </div>
             </div>
           </div>
