@@ -1,7 +1,23 @@
 {
     "Metadata": {
-        "title": "Momento - Handwerklicher Eiscreme",
-        "description": "MOMENTO - Handwerkliche Eisdesserts, die jeden Moment in ein unvergessliches Erlebnis verwandeln."
+        "title": "Momento - Handwerkliches Eis & Desserts",
+        "description": "MOMENTO - Handwerkliche gefrorene Desserts, die jeden Moment in ein unvergessliches Erlebnis verwandeln.",
+        "home": {
+            "title": "Momento | Handwerkliche Exzellenz & Premium-Eisdesserts",
+            "description": "Entdecken Sie Momento: Gourmet-Verrines, handwerkliches Eis und einzigartige gefrorene Kreationen. Perfektion bei jedem Bissen."
+        },
+        "about": {
+            "title": "Unsere Geschichte & Werte | Die Leidenschaft hinter Momento",
+            "description": "Von traditioneller Handwerkskunst bis zu kreativer Innovation. Erfahren Sie, wie Momento Desserts neu definiert."
+        },
+        "faq": {
+            "title": "FAQ & Support | Ihre Fragen Beantwortet - Momento",
+            "description": "Haben Sie Fragen zu unseren Zutaten, Bestellungen oder Handwerkskunst? Hier finden Sie alle Antworten."
+        },
+        "contact": {
+            "title": "Kontakt | Lassen Sie uns über Genuss sprechen - Momento",
+            "description": "Kontaktieren Sie Momento für Veranstaltungen, Partnerschaften oder einfach nur um Hallo zu sagen. Wir freuen uns auf Sie."
+        }
     },
     "Header": {
         "navigation": "Navigation",

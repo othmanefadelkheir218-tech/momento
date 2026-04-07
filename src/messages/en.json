@@ -1,7 +1,23 @@
 {
   "Metadata": {
-    "title": "Momento - Artisan Ice Cream",
-    "description": "MOMENTO - Artisanal frozen desserts that transform every moment into an unforgettable experience."
+    "title": "Momento - Artisan Ice Cream & Desserts",
+    "description": "MOMENTO - Artisanal frozen desserts that transform every moment into an unforgettable experience.",
+    "home": {
+      "title": "Momento | Artisanal Ice Cream & Premium Frozen Desserts",
+      "description": "Discover Momento: gourmet verrines, handcrafted ice cream, and unique frozen creations. Perfection in every bite."
+    },
+    "about": {
+      "title": "Our Story & Values | The Passion Behind Momento",
+      "description": "From artisanal roots to creative innovation. Learn how Momento redefines frozen desserts with quality and craftsmanship."
+    },
+    "faq": {
+      "title": "FAQ & Support | Your Questions Answered - Momento",
+      "description": "Have questions about our ingredients, ordering, or craftsmanship? Find all your answers here."
+    },
+    "contact": {
+      "title": "Contact Us | Let's Talk Gourmet - Momento",
+      "description": "Reach out to Momento for events, partnerships, or just to say hello. We'd love to hear from you."
+    }
   },
   "Header": {
     "navigation": "Navigation",

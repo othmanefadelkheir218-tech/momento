@@ -20,11 +20,46 @@ export async function generateMetadata({
     const { locale } = await params;
     const t = await getTranslations({ locale, namespace: "Metadata" });
 
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://momento-artisanal.com"; // Provide a fallback if not set
+
     return {
-        title: t("title"),
+        title: {
+            default: t("title"),
+            template: `%s | ${t("title")}`
+        },
         description: t("description"),
+        metadataBase: new URL(baseUrl),
+        alternates: {
+            canonical: "/",
+            languages: {
+                "en": "/en",
+                "fr": "/fr",
+                "de": "/de",
+            },
+        },
+        openGraph: {
+            type: "website",
+            locale: locale,
+            url: baseUrl,
+            siteName: "Momento",
+            images: [
+                {
+                    url: "/images/HeroImage.png",
+                    width: 1200,
+                    height: 630,
+                    alt: t("title"),
+                },
+            ],
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: t("title"),
+            description: t("description"),
+            images: ["/images/HeroImage.png"],
+        },
         icons: {
             icon: "/icon.png",
+            apple: "/apple-icon.png",
         },
     };
 }

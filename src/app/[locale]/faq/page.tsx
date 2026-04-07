@@ -4,10 +4,14 @@ import FAQPagePart from "./Parts/FAQPage";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
-    const t = await getTranslations({ locale, namespace: "FAQPage" });
+    const t = await getTranslations({ locale, namespace: "Metadata.faq" });
     return {
         title: t("title"),
         description: t("description"),
+        openGraph: {
+            title: t("title"),
+            description: t("description"),
+        },
     };
 }
 

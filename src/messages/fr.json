@@ -1,7 +1,23 @@
 {
     "Metadata": {
-        "title": "Momento - Glace Artisanale",
-        "description": "MOMENTO - Des desserts glacés artisanaux qui transforment chaque instant en une expérience inoubliable."
+        "title": "Momento - Glacier Artisanal & Desserts",
+        "description": "MOMENTO - Des desserts givrés artisanaux qui transforment chaque instant en une expérience inoubliable.",
+        "home": {
+            "title": "Momento | Excellence Artisanale & Desserts Givrés Premium",
+            "description": "Découvrez Momento : verrines gourmandes, glaces artisanales et créations givrées uniques. La perfection à chaque bouchée."
+        },
+        "about": {
+            "title": "Notre Histoire & Nos Valeurs | La Passion Momento",
+            "description": "De l’artisanat traditionnel à l’innovation créative. Découvrez comment Momento redéfinit le dessert avec qualité et savoir-faire."
+        },
+        "faq": {
+            "title": "FAQ & Aide | Vos Questions, Nos Réponses - Momento",
+            "description": "Des questions sur nos ingrédients, nos commandes ou notre savoir-faire ? Toutes les réponses sont ici."
+        },
+        "contact": {
+            "title": "Contact | Parlons de Gourmandise - Momento",
+            "description": "Contactez l’équipe Momento pour vos événements, partenariats ou simplement pour nous saluer. Nous sommes à votre écoute."
+        }
     },
     "Header": {
         "navigation": "Navigation",
