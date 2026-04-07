@@ -17,7 +17,8 @@
         "failed": "Échec de l'abonnement. Veuillez réessayer plus tard.",
         "popup": {
             "title": "MERCI POUR VOTRE INSCRIPTION !",
-            "message": "Vous faites maintenant partie de la communauté MOMENTO. Préparez-vous à découvrir nos dernières créations et offres exclusives !"
+            "message": "Vous faites maintenant partie de la communauté MOMENTO. Préparez-vous à découvrir nos dernières créations et offres exclusives !",
+            "decorativeText": "BIENTÔT ? IL Y A ALORS UN"
         },
         "contact": {
             "heading": "UNE QUESTION ? NOUS AVONS LA RÉPONSE !",
@@ -92,7 +93,7 @@
         "PartnershipSection": {
             "titleLine1": "Nous aimons les",
             "titleLine2": "partenariats",
-            "descriptionPart1": "Imaginez votre établissement – café, restaurant ou espace de vente – offrant bien plus qu’un simple dessert.",
+            "descriptionPart1": "Imaginez votre établissement café, restaurant ou espace de vente  offrant bien plus qu’un simple dessert.",
             "descriptionPart2": "Avec MOMENTO, vous proposez des créations artisanales conçues pour sublimer l'expérience de vos clients et valoriser votre offre, simplement et efficacement."
         },
         "Features": {
@@ -121,34 +122,38 @@
                 "RACONTE",
                 "UNE HISTOIRE"
             ],
-            "description1": "MOMENTO est bien plus qu'une marque de desserts et de glaces ; c'est une invitation à vivre des instants gourmands d'exception.",
-            "description2": "Inspirés par l'artisanat et portés par la passion de la qualité, nous créons des recettes innovantes et originales conçues pour éveiller vos sens.",
-            "description3": "Chaque création est soigneusement élaborée pour offrir un équilibre parfait entre saveurs, textures et plaisir.",
-            "rotatingText": "MOMENTO • MAÎTRE ARTISAN GLACIER • MAÎTRE ARTISAN GLACIER • MOMENTO • MAÎTRE ARTISAN GLACIER • MOMENTO • MAÎTRE ARTISAN GLACIER • MOMENTO • MAÎTRE ARTISAN GLACIER • MOMENTO • MAÎTRE ARTISAN GLACIER • MOMENTO • MAÎTRE ARTISAN GLACIER • MOMENTO •"
+            "description1": "Née d’une passion pour la pâtisserie artisanale, Momento propose des desserts alliant savoir-faire et créativité, avec une attention particulière à la qualité des ingrédients.",
+            "description2": "La marque a évolué vers une gamme variée de créations gourmandes, entre classiques revisités et recettes signature, pensées pour offrir une expérience unique.",
+            "description3": "Aujourd’hui, Momento continue d’innover avec des desserts modernes, conçus pour créer des moments de plaisir simples et mémorables.",
+            "rotatingText": "MOMENTO • MAÎTRE ARTISAN GLACIER • MAÎTRE ARTISAN GLACIER • MOMENTO • MAÎTRE ARTISAN GLACIER • MOMENTO • MAÎTRE ARTISAN GLACIER • MOMENTO • MAÎTRE ARTISAN GLACIER • MOMENTO • MAÎTRE ARTISAN GLACIER • MOMENTO • MAÎTRE ARTISAN GLACIER • MOMENTO •",
+            "imageAlt": "Femme souriante dégustant une glace Momento"
         },
         "section1": {
             "badge": "Notre Histoire",
             "est": "Fondée en",
             "title": "Là où les <instants>moments</instants> gourmands prennent vie",
+            "imageAlt": "Préparation soigneuse d'une glace artisanale",
             "subtitle": "Une passion née de l'amour des desserts d'exception",
             "text": "L'aventure MOMENTO est née d'un désir simple : transformer chaque bouchée en un moment mémorable. Inspirés par l'artisanat et portés par la créativité, nous avons perfectionné nos techniques pour offrir des desserts et des glaces qui reflètent notre amour du détail."
         },
         "philosophy": {
-            "badge": "Philosophie",
-            "title": "Des ingrédients <authentiques>authentiques</authentiques>, un plaisir vrai",
-            "text": "Chez MOMENTO, nous pensons que l'excellence réside dans la simplicité et le respect des ingrédients. Chaque recette est créée sans compromis pour révéler des saveurs pures et naturelles.",
+            "badge": "NOS VALEURS",
+            "title": "L’<authentiques>authenticité</authentiques>, l’Innovation et le Savoir-faire",
+            "imageAlt": "Ingrédients frais et de qualité supérieure utilisés dans nos recettes",
+            "text": "Chez Momento, nous privilégions la qualité des ingrédients, l’innovation et le savoir-faire artisanal pour créer des desserts d’exception.",
             "stats": {
-                "artisanal": "Artisanal",
-                "artisanalSub": "Savoir-faire",
+                "artisanal": "Artisanat",
+                "artisanalSub": "Savoir-faire traditionnel",
                 "quality": "Qualité",
                 "qualitySub": "Sélection rigoureuse",
-                "creativity": "Créativité",
-                "creativitySub": "Recettes originales"
+                "creativity": "Innovation",
+                "creativitySub": "Recettes signatures"
             }
         },
         "craft": {
             "badge": "Artisanat",
             "title": "Des créations <artisanales>artisanales</artisanales> façonnées avec passion",
+            "imageAlt": "Préparation artisanale d'un dessert Momento",
             "text": "Chaque dessert est préparé avec le plus grand soin, dans le respect des techniques artisanales. Nous accordons une attention particulière aux textures pour offrir une expérience fondante et gourmande unique.",
             "gallery": {
                 "step1": "Barattage",
@@ -157,9 +162,15 @@
             }
         },
         "promise": {
-            "badge": "Notre Promesse",
-            "title": "Chaque bouchée, <moment>un moment de plaisir</moment>",
-            "text": "Nous ne créons pas simplement des desserts. Nous imaginons des instants gourmands qui transforment les petites occasions en grands souvenirs.",
+            "badge": "Pourquoi nous choisir ?",
+            "title": "Chaque bouchée, <moment>une expérience unique</moment>",
+            "text": "Momento propose des desserts artisanaux, verrines gourmandes et glaces premium. Découvrez des créations uniques alliant qualité, goût et savoir-faire",
+            "items": [
+                "Desserts artisanaux premium",
+                "Ingrédients de qualité",
+                "Large choix de verrines et glaces",
+                "Expérience gourmande unique"
+            ],
             "button": "Découvrir notre menu"
         }
     },

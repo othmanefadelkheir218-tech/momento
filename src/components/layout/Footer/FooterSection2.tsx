@@ -182,7 +182,7 @@ const Forms = () => {
             })
 
             if (!response.ok) {
-                throw new Error('Échec de l\'envoi du message')
+                throw new Error('Failed to send message')
             }
 
             setSubmitStatus('success')

@@ -1,28 +1,28 @@
-"use client"
+"use client";
 
-import { Reveal } from "@/components/animation/Reveal"
-import { useTranslations } from "next-intl"
-import Image from "next/image"
-import { useRef } from "react"
+import { Reveal } from "@/components/animation/Reveal";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { useRef } from "react";
 
 export default function InANutshell() {
-  const textRef = useRef<SVGGElement>(null)
-  const t = useTranslations("AboutPage.InANutshell")
+  const textRef = useRef<SVGGElement>(null);
+  const t = useTranslations("AboutPage.InANutshell");
   // ==========================================
-  // 🎛️ SHAPE CONTROLS FOR THIS PART HERE 
+  // 🎛️ SHAPE CONTROLS FOR THIS PART HERE
   // ==========================================
   const config = {
     width: 700,
     height: 850,
     gap: 25,
     textOffset: -8,
-    imageBorderRadius: 200, 
-  }
+    imageBorderRadius: 200,
+  };
 
-  const outerRadius = config.imageBorderRadius + config.gap
-  const w = config.width
-  const h = config.height
-  const r = outerRadius
+  const outerRadius = config.imageBorderRadius + config.gap;
+  const w = config.width;
+  const h = config.height;
+  const r = outerRadius;
 
   const roundedRectPath = `
     M ${w / 2}, 0
@@ -35,13 +35,12 @@ export default function InANutshell() {
     L 0, ${r}
     A ${r}, ${r} 0 0 1 ${r}, 0
     Z
-  `
+  `;
 
-  const titleLines = t.raw("titles") as string[]
+  const titleLines = t.raw("titles") as string[];
 
   return (
     <section className="w-full bg-[#FFF5F0] min-h-screen">
-
       {/* 
          FIX 1: THE RED SECTION
          - Removed 'md:h-[130vh]'. We don't want a fixed height limit.
@@ -54,27 +53,19 @@ export default function InANutshell() {
           {/* Text Content... */}
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
             <div className="w-full lg:w-1/2">
-              {
-                titleLines.map((line, index) => (
-                  <Reveal key={index} rotate={false} delay={index * 0.2}>
-                    <h1 className="text-2xl md:text-5xl lg:text-5xl font-black uppercase trispace-font">
-                      {line}
-                    </h1>
-                  </Reveal>
-                ))
-              }
+              {titleLines.map((line, index) => (
+                <Reveal key={index} rotate={false} delay={index * 0.2}>
+                  <h1 className="text-2xl md:text-5xl lg:text-5xl font-black uppercase trispace-font">
+                    {line}
+                  </h1>
+                </Reveal>
+              ))}
             </div>
 
             <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-6 text-base md:text-lg lg:text-xl font-medium opacity-90">
-              <p>
-                {t("description1")}
-              </p>
-              <p>
-                {t("description2")}
-              </p>
-              <p>
-                {t("description3")}
-              </p>
+              <p>{t("description1")}</p>
+              <p>{t("description2")}</p>
+              <p>{t("description3")}</p>
             </div>
           </div>
         </div>
@@ -88,7 +79,6 @@ export default function InANutshell() {
            The scale classes (scale-75 md:scale-90 xl:scale-100) ensure it shrinks gracefully without breaking your JS math.
       */}
       <div className="relative w-full flex justify-center -mt-[180px] md:-mt-[350px] lg:-mt-[350px] pointer-events-none">
-
         {/* Desktop version */}
         <div
           className="hidden md:flex relative items-center justify-center transform scale-[0.6] md:scale-[0.7] lg:scale-[0.85] xl:scale-100 origin-top pointer-events-auto"
@@ -104,8 +94,18 @@ export default function InANutshell() {
             </defs>
 
             <g ref={textRef} className="origin-center">
-              <text fill="white" fontSize="18" fontWeight="bold" letterSpacing="5px" dy={config.textOffset}>
-                <textPath href="#textCirclePath" className="uppercase font-sans drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]" startOffset="0%">
+              <text
+                fill="white"
+                fontSize="18"
+                fontWeight="bold"
+                letterSpacing="5px"
+                dy={config.textOffset}
+              >
+                <textPath
+                  href="#textCirclePath"
+                  className="uppercase font-sans drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+                  startOffset="0%"
+                >
                   {t("rotatingText")}
                 </textPath>
               </text>
@@ -124,15 +124,14 @@ export default function InANutshell() {
             <Image
               fill
               src="/images/maven.jpg"
-              alt="Smiling woman eating ice cream"
+              alt={t("imageAlt")}
               className="w-full h-full object-cover"
             />
-
           </div>
         </div>
       </div>
 
       <div className="h-20" />
     </section>
-  )
+  );
 }

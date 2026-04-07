@@ -17,7 +17,8 @@
         "failed": "Abonnement fehlgeschlagen. Bitte versuchen Sie es später erneut.",
         "popup": {
             "title": "VIELEN DANK FÜR IHRE ANMELDUNG!",
-            "message": "Sie sind jetzt Teil der MOMENTO-Community. Freuen Sie sich auf unsere neuesten Kreationen und exklusive Angebote!"
+            "message": "Sie sind jetzt Teil der MOMENTO-Community. Freuen Sie sich auf unsere neuesten Kreationen und exklusive Angebote!",
+            "decorativeText": "BALD? DANN GIBT ES EIN"
         },
         "contact": {
             "heading": "HABEN SIE EINE FRAGE? WIR HABEN DIE ANTWORT!",
@@ -83,7 +84,7 @@
             "titleLine1": "Wer probiert hat, weiß es bereits.",
             "titleLine2": "Die anderen werden es bald verstehen.",
             "description1": "Unsere Ambition geht weit über die Herstellung eines gefrorenen Desserts hinaus. Wir möchten die Sinne wecken und jeden Bissen zu einem emotionalen Erlebnis machen.",
-            "description2": "Bei MOMENTO gibt es keine Abkürzungen – weder bei den Aromen noch bei den Zutaten oder im Handwerk. Jede Kreation wird mit höchstem Anspruch entwickelt, um ein authentisches und unvergessliches Erlebnis zu bieten.",
+            "description2": "Bei MOMENTO gibt es keine Abkürzungen  weder bei den Aromen noch bei den Zutaten oder im Handwerk. Jede Kreation wird mit höchstem Anspruch entwickelt, um ein authentisches und unvergessliches Erlebnis zu bieten.",
             "about_us_button": "Über uns",
             "imageAlt1": "Frau genießt Mr. Pops Eis",
             "imageAlt2": "Frau genießt Eis",
@@ -92,7 +93,7 @@
         "PartnershipSection": {
             "titleLine1": "Wir lieben",
             "titleLine2": "Partnerschaften",
-            "descriptionPart1": "Stellen Sie sich Ihr Unternehmen vor – Café, Restaurant oder Verkaufsfläche – das weit mehr als nur ein Dessert anbietet.",
+            "descriptionPart1": "Stellen Sie sich Ihr Unternehmen vor  Café, Restaurant oder Verkaufsfläche  das weit mehr als nur ein Dessert anbietet.",
             "descriptionPart2": "Mit MOMENTO bieten Sie handwerkliche Kreationen, die das Erlebnis Ihrer Kundinnen und Kunden veredeln und Ihr Angebot einfach und wirkungsvoll aufwerten."
         },
         "Features": {
@@ -106,7 +107,7 @@
             },
             "section3": {
                 "title": "Momente zum Teilen",
-                "description": "MOMENTO ist mehr als ein Dessert – es ist ein Moment zum Erleben und Teilen. Zu jedem Anlass begleiten unsere Kreationen die kleinen Augenblicke, aus denen bleibende Erinnerungen entstehen."
+                "description": "MOMENTO ist mehr als ein Dessert  es ist ein Moment zum Erleben und Teilen. Zu jedem Anlass begleiten unsere Kreationen die kleinen Augenblicke, aus denen bleibende Erinnerungen entstehen."
             }
         }
     },
@@ -121,34 +122,38 @@
                 "ERZÄHLT",
                 "EINE GESCHICHTE"
             ],
-            "description1": "MOMENTO ist weit mehr als eine Dessert- und Eiscrememarke – es ist eine Einladung, außergewöhnliche Genussmomente zu erleben.",
-            "description2": "Inspiriert vom Handwerk und getragen von der Leidenschaft für Qualität kreieren wir innovative und originale Rezepte, die Ihre Sinne wecken.",
-            "description3": "Jede Kreation wird mit größter Sorgfalt entwickelt, um ein perfektes Gleichgewicht aus Aromen, Texturen und Genuss zu bieten.",
-            "rotatingText": "MOMENTO • HANDWERKLICHER EISMEISTER • HANDWERKLICHER EISMEISTER • MOMENTO • HANDWERKLICHER EISMEISTER • MOMENTO • HANDWERKLICHER EISMEISTER • MOMENTO • HANDWERKLICHER EISMEISTER • MOMENTO • HANDWERKLICHER EISMEISTER • MOMENTO • HANDWERKLICHER EISMEISTER • MOMENTO •"
+            "description1": "MOMENTO entstand aus der Leidenschaft für handwerkliche Konditorei und bietet Desserts, die Fachwissen und Kreativität vereinen, mit besonderem Augenmerk auf die Qualität der Zutaten.",
+            "description2": "Die Marke hat sich zu einem vielfältigen Sortiment an Gourmet-Kreationen entwickelt, das von neu interpretierten Klassikern bis hin zu Signature-Rezepten reicht und darauf ausgelegt ist, ein einzigartiges Erlebnis zu bieten.",
+            "description3": "Heute setzt MOMENTO seine Innovationen mit modernen Desserts fort, die darauf ausgelegt sind, einfache und unvergessliche Genussmomente zu schaffen.",
+            "rotatingText": "MOMENTO • HANDWERKLICHER EISMEISTER • HANDWERKLICHER EISMEISTER • MOMENTO • HANDWERKLICHER EISMEISTER • MOMENTO • HANDWERKLICHER EISMEISTER • MOMENTO • HANDWERKLICHER EISMEISTER • MOMENTO • HANDWERKLICHER EISMEISTER • MOMENTO • HANDWERKLICHER EISMEISTER • MOMENTO •",
+            "imageAlt": "Lächelnde Frau genießt ein Momento-Eis"
         },
         "section1": {
             "badge": "Unsere Geschichte",
             "est": "Gegr.",
             "title": "Wo genussvolle <instants>Momente</instants> zum Leben erwachen",
+            "imageAlt": "Sorgfältige Zubereitung von handwerklichem Eis",
             "subtitle": "Eine Leidenschaft, geboren aus der Liebe zu außergewöhnlichen Desserts",
             "text": "Die MOMENTO-Reise begann mit einem einfachen Wunsch: jeden Bissen in einen unvergesslichen Moment zu verwandeln. Inspiriert vom Handwerk und von Kreativität geprägt, haben wir unsere Techniken perfektioniert, um Desserts und Eiscremes zu kreieren, die unsere Liebe zum Detail widerspiegeln."
         },
         "philosophy": {
-            "badge": "Philosophie",
-            "title": "<authentiques>Authentische</authentiques> Zutaten, echter Genuss",
-            "text": "Bei MOMENTO glauben wir, dass Exzellenz in der Einfachheit und im Respekt gegenüber den Zutaten liegt. Jedes Rezept wird ohne Kompromisse entwickelt, um reine und natürliche Aromen hervorzuheben.",
+            "badge": "UNSERE WERTE",
+            "title": "Authentizität, <authentiques>Innovation</authentiques> & Handwerkskunst",
+            "imageAlt": "Frische, hochwertige Zutaten für unsere Rezepte",
+            "text": "Bei Momento legen wir Wert auf die Qualität der Zutaten, Innovation und handwerkliches Know-how, um außergewöhnliche Desserts zu kreieren.",
             "stats": {
-                "artisanal": "Handwerklich",
-                "artisanalSub": "Know-how",
+                "artisanal": "Handwerk",
+                "artisanalSub": "Traditionelles Können",
                 "quality": "Qualität",
-                "qualitySub": "Sorgfältige Auswahl",
-                "creativity": "Kreativität",
-                "creativitySub": "Originelle Rezepte"
+                "qualitySub": "Zutatenauswahl",
+                "creativity": "Innovation",
+                "creativitySub": "Signature-Rezepte"
             }
         },
         "craft": {
             "badge": "Handwerkskunst",
             "title": "Mit Leidenschaft kreierte <artisanales>handwerkliche</artisanales> Kreationen",
+            "imageAlt": "Handwerkliche Zubereitung eines Momento-Desserts",
             "text": "Jedes Dessert wird mit größter Sorgfalt und im Respekt des handwerklichen Könnens hergestellt. Besonderes Augenmerk legen wir auf die Texturen, um ein einzigartig zartschmelzendes Genusserlebnis zu bieten.",
             "gallery": {
                 "step1": "Rühren",
@@ -157,9 +162,15 @@
             }
         },
         "promise": {
-            "badge": "Unser Versprechen",
-            "title": "Jeder Bissen, <moment>ein Moment des Genusses</moment>",
-            "text": "Wir kreieren nicht einfach Desserts. Wir erschaffen Genussmomente, die kleine Augenblicke in große Erinnerungen verwandeln.",
+            "badge": "Warum Momento wählen?",
+            "title": "Jeder Bissen, <moment>ein einzigartiges Erlebnis</moment>",
+            "text": "Momento bietet handwerkliche Desserts, Gourmet-Verrines und Premium-Eiscremes. Entdecken Sie einzigartige Kreationen, die Qualität, Geschmack und Know-how vereinen.",
+            "items": [
+                "Premium handwerkliche Desserts",
+                "Hochwertige Zutaten",
+                "Große Auswahl an Verrines und Eiscremes",
+                "Einzigartiges Gourmet-Erlebnis"
+            ],
             "button": "Unser Menü entdecken"
         }
     },
@@ -186,7 +197,7 @@
                 "question": "Unsere Zutaten",
                 "answer": [
                     "Wir legen besonderen Wert auf die Auswahl der Zutaten und setzen auf Qualität, Authentizität und die Wahrung unserer Rezepte.",
-                    "Jede Kreation ist darauf ausgelegt, ein ausgewogenes Zusammenspiel von Aromen, Texturen und Genuss zu bieten – ohne Kompromisse bei den Ansprüchen."
+                    "Jede Kreation ist darauf ausgelegt, ein ausgewogenes Zusammenspiel von Aromen, Texturen und Genuss zu bieten  ohne Kompromisse bei den Ansprüchen."
                 ]
             },
             "events": {

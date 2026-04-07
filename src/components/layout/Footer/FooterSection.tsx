@@ -126,7 +126,7 @@ export default function FooterSection() {
       setEmail("")
     } catch (error) {
       console.error('Error subscribing:', error)
-      alert(t("failed"))
+      alert(t2("failed"))
     } finally {
       setIsSubmitting(false)
     }

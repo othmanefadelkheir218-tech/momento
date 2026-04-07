@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { X } from "lucide-react"
 import CostumButton from "./CostumButton"
+import { useTranslations } from "next-intl"
 
 interface SuccessPopupProps {
   isOpen: boolean
@@ -20,6 +21,8 @@ export function SuccessPopup({
 }: SuccessPopupProps) {
   const overlayRef = useRef<HTMLDivElement>(null)
   const popupRef = useRef<HTMLDivElement>(null)
+  const tFooter = useTranslations("Footer")
+  const tNav = useTranslations("Navigation")
 
   useEffect(() => {
     if (isOpen) {
@@ -69,8 +72,8 @@ export function SuccessPopup({
     >
       {/* Decorative background text */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-0 right-0 text-primaryLighter/30 text-[8vw] font-bold whitespace-nowrap">
-          SOON? THEN THERE IS AN
+        <div className="absolute top-1/4 left-0 right-0 text-primaryLighter/30 text-[8vw] font-bold whitespace-nowrap uppercase">
+          {tFooter("popup.decorativeText")}
         </div>
       </div>
 
@@ -106,7 +109,7 @@ export function SuccessPopup({
             className="w-[100px] h-[50px] rounded-none bg-white text-primary border-primary border"
           >
             <p className="font-bold">
-              Home
+              {tNav("home")}
             </p>
           </CostumButton>
         </div>

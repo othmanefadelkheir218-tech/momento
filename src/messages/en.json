@@ -17,7 +17,8 @@
     "failed": "Subscription failed. Please try again later.",
     "popup": {
       "title": "THANK YOU FOR SUBSCRIBING!",
-      "message": "You are now part of the MOMENTO community. Get ready to receive our latest creations and exclusive offers!"
+      "message": "You are now part of the MOMENTO community. Get ready to receive our latest creations and exclusive offers!",
+      "decorativeText": "SOON? THEN THERE IS AN"
     },
     "contact": {
       "heading": "HAVE A QUESTION? WE HAVE THE ANSWER!",
@@ -121,34 +122,38 @@
         "TELLS",
         "A STORY"
       ],
-      "description1": "MOMENTO is much more than a dessert and ice cream brand; it is an invitation to experience exceptional gourmet moments.",
-      "description2": "Inspired by craftsmanship and driven by a passion for quality, we create innovative and original recipes designed to awaken your senses.",
-      "description3": "Each creation is carefully crafted to offer a perfect balance of flavors, textures, and indulgence.",
-      "rotatingText": "MOMENTO • ARTISAN ICE CREAM MAKER • ARTISAN ICE CREAM MAKER • MOMENTO • ARTISAN ICE CREAM MAKER • MOMENTO • ARTISAN ICE CREAM MAKER • MOMENTO • ARTISAN ICE CREAM MAKER • MOMENTO • ARTISAN ICE CREAM MAKER • MOMENTO • ARTISAN ICE CREAM MAKER • MOMENTO •"
+      "description1": "Born from a passion for artisanal pastry, Momento offers desserts combining expertise and creativity, with a particular focus on the quality of ingredients.",
+      "description2": "The brand has evolved towards a diverse range of gourmet creations, from revisited classics to signature recipes, designed to offer a unique experience.",
+      "description3": "Today, Momento continues to innovate with modern desserts, designed to create simple and memorable moments of pleasure.",
+      "rotatingText": "MOMENTO • ARTISAN ICE CREAM MAKER • ARTISAN ICE CREAM MAKER • MOMENTO • ARTISAN ICE CREAM MAKER • MOMENTO • ARTISAN ICE CREAM MAKER • MOMENTO • ARTISAN ICE CREAM MAKER • MOMENTO • ARTISAN ICE CREAM MAKER • MOMENTO • ARTISAN ICE CREAM MAKER • MOMENTO •",
+      "imageAlt": "Smiling woman enjoying a Momento ice cream"
     },
     "section1": {
       "badge": "Our Story",
       "est": "Est.",
       "title": "Where gourmet <instants>moments</instants> come to life",
+      "imageAlt": "Artisan ice cream being carefully prepared",
       "subtitle": "A passion born from a love of exceptional desserts",
       "text": "The MOMENTO journey was born from a simple desire: to turn every bite into a memorable moment. Inspired by craftsmanship and creativity, we have refined our techniques to offer desserts and ice creams that reflect our love for detail."
     },
     "philosophy": {
-      "badge": "Philosophy",
-      "title": "<authentiques>Authentic</authentiques> ingredients, genuine pleasure",
-      "text": "At MOMENTO, we believe that excellence lies in simplicity and respect for ingredients. Every recipe is created without compromise to reveal pure and natural flavors.",
+      "badge": "Our Values",
+      "title": "<authentiques>Authenticity</authentiques>, Innovation & Craftsmanship",
+      "imageAlt": "Fresh, high-quality ingredients used in our recipes",
+      "text": "At Momento, we prioritize the quality of ingredients, innovation, and artisanal know-how to create exceptional desserts.",
       "stats": {
         "artisanal": "Artisanal",
-        "artisanalSub": "Craftsmanship",
+        "artisanalSub": "Traditional Skill",
         "quality": "Quality",
-        "qualitySub": "Careful selection",
-        "creativity": "Creativity",
-        "creativitySub": "Original recipes"
+        "qualitySub": "Ingredient selection",
+        "creativity": "Innovation",
+        "creativitySub": "Signature recipes"
       }
     },
     "craft": {
       "badge": "Craftsmanship",
       "title": "Passionately crafted <artisanales>artisan</artisanales> creations",
+      "imageAlt": "Artisanal preparation of a Momento dessert",
       "text": "Each dessert is carefully prepared, respecting true artisanal techniques. We pay special attention to textures to deliver a uniquely smooth and indulgent experience.",
       "gallery": {
         "step1": "Churning",
@@ -157,9 +162,15 @@
       }
     },
     "promise": {
-      "badge": "Our Promise",
-      "title": "Every bite, <moment>a moment of pleasure</moment>",
-      "text": "We don’t simply create desserts. We imagine gourmet moments that turn small occasions into lasting memories.",
+      "badge": "Why Choose Us?",
+      "title": "Every bite, <moment>a unique experience</moment>",
+      "text": "Momento offers artisanal desserts, gourmet verrines, and premium ice creams. Discover unique creations combining quality, taste, and expertise.",
+      "items": [
+        "Premium artisan desserts",
+        "High-quality ingredients",
+        "Wide choice of verrines and ice creams",
+        "Unique gourmet experience"
+      ],
       "button": "Discover our menu"
     }
   },

@@ -292,7 +292,7 @@ export default function OriginStory() {
               <Image
                 fill
                 src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=2127&auto=format&fit=crop"
-                alt="Artisan ice cream making"
+                alt={t("section1.imageAlt")}
                 className="object-cover w-full h-full"
               />
               {/* Overlay gradient */}
@@ -343,7 +343,7 @@ export default function OriginStory() {
               <Image
                 fill
                 src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?q=80&w=2070&auto=format&fit=crop"
-                alt="Fresh ingredients"
+                alt={t("philosophy.imageAlt")}
                 className="object-cover w-full h-full"
               />
             </div>
@@ -420,7 +420,7 @@ export default function OriginStory() {
               { img: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f", label: t("craft.gallery.step3") }
             ].map((item, i) => (
               <div key={i} className={`gallery-image relative aspect-3/4 rounded-[3rem] overflow-hidden shadow-2xl group ${i === 1 ? 'md:-mt-20' : ''}`}>
-                <Image fill src={item.img} alt="Craft" className="object-cover group-hover:scale-110 transition-transform duration-1000" />
+                <Image fill src={item.img} alt={item.label} className="object-cover group-hover:scale-110 transition-transform duration-1000" />
                 <div className="absolute inset-0 bg-linear-to-t from-[#C41E3A] via-transparent to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-500 flex items-end p-12">
                   <span className="text-white font-black text-4xl uppercase tracking-widest">{item.label}</span>
                 </div>
@@ -449,9 +449,21 @@ export default function OriginStory() {
               })}
             </h3>
 
-            <p className="text-white/90 text-lg md:text-xl leading-relaxed mb-10 max-w-xl mx-auto">
+            <p className="text-white/90 text-lg md:text-xl leading-relaxed mb-6 max-w-xl mx-auto">
               {t("promise.text")}
             </p>
+
+            {/* Why Choose Us List */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10 max-w-2xl mx-auto text-left">
+              {(t.raw("promise.items") as string[]).map((item, i) => (
+                <div key={i} className="flex items-center space-x-3 text-white/90">
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
+                    <span className="text-white text-sm">✔</span>
+                  </div>
+                  <span className="text-lg font-medium">{item}</span>
+                </div>
+              ))}
+            </div>
 
             <div className="flex justify-center w-full">
               <CostumButton
