@@ -348,5 +348,10 @@
                 "allergens": "Œuf, gluten, noisette, lactose, lait, soja, blé, noix."
             }
         }
+    },
+    "NotFound": {
+        "title": "Oups ! Tout a fondu.",
+        "description": "Il semble que la page que vous cherchez ait fondu ou n'ait jamais existé. Pas d'inquiétude, nos douceurs vous attendent ailleurs.",
+        "button": "Retour à la gourmandise"
     }
 }

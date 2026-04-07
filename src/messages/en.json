@@ -348,5 +348,10 @@
         "allergens": "Egg, gluten, hazelnut, lactose, milk, soy, wheat, walnuts."
       }
     }
+  },
+  "NotFound": {
+    "title": "Oops! Melted away.",
+    "description": "It looks like the page you are looking for has melted or never existed. Don't worry, our treats are waiting for you elsewhere.",
+    "button": "Back to sweetness"
   }
 }

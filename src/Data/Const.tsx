@@ -1,4 +1,3 @@
-"use client"
 import { useTranslations } from "next-intl";
 
 // 1. Interface for the nested nutritional values
@@ -18,6 +17,7 @@ export interface DessertInterface {
   id: number;
   name: string;
   category: string;
+  categoryKey: string; // Internal key for filtering (e.g., 'dubaiChocolat')
   weight: string; // e.g., "125g" or ""
   description: string;
   allergens: string;
@@ -28,9 +28,7 @@ export interface DessertInterface {
   isNew: boolean;
 }
 
-export const DessertData = (): DessertInterface[] => {
-  const t = useTranslations("Desserts");
-
+export const getDessertData = (t: any): DessertInterface[] => {
   const commonStorage = [
     t("Common.defrosting"),
     t("Common.potsPerBox"),
@@ -46,7 +44,8 @@ export const DessertData = (): DessertInterface[] => {
       id: 1,
       name: t("Products.dubaiChocolatSnackBar.name"),
       category: t("Categories.dubaiChocolat"),
-      weight: "",
+      categoryKey: "dubaiChocolat",
+      weight: "125g",
       isNew: true,
       description: t("Products.dubaiChocolatSnackBar.description"),
       allergens: t("Products.dubaiChocolatSnackBar.allergens"),
@@ -60,7 +59,7 @@ export const DessertData = (): DessertInterface[] => {
         protein: "4.3 g",
         salt: "0.35 g",
       },
-      storage_conditions: [],
+      storage_conditions: commonStorage,
       main_image: "/product_images/Dubai_Chocolat_Snack_Bar_1.png",
       other_images: [
         "/product_images/Dubai_Chocolat_Snack_Bar_2.png",
@@ -71,13 +70,13 @@ export const DessertData = (): DessertInterface[] => {
     },
     {
       id: 2,
-      name: "Dubai Chocolat Snack tablet",
-      category: "Dubai Chocolat",
-      weight: "",
+      name: t("Products.dubaiChocolatTablet.name"),
+      category: t("Categories.dubaiChocolat"),
+      categoryKey: "dubaiChocolat",
+      weight: "125g",
       isNew: true,
-      description:
-        "Ingrediënt chocolade 41% [suiker, cacaoboter, MELKpoeder (LACTOSE), cacaomassa, gekarameliseerde glucosestroop, emulgator: E322 SOJA, aroma (vanille)], PISTACHENOTEN 36% , witte chocolade 12% [suiker, cacaoboter, MELKpoeder (LACTOSE), emulgator: E322 SOJA, vanilline], kunefe 7% [water, roux [TARWEmeel (GLUTEN), palmvet], TARWEbloem (GLUTEN), zout [zout, antiklontermiddel: E535, E504]], WALNOTENolie 3% , aroma [aromapreparaat, water, draagstof: E1520, E422, karamelsuikerstroop, verstevigingsmiddel: E415, zuurteregelaar: E330, conserveermiddel: E202], margarine [plantaardige olie en vet (palm, koolzaad), water, zout, emulgator: E322, E471, conserveermiddel: E202, suiker, voedingszuur: E330, aroma, vitamine: A D3, kleurstof: E160a]",
-      allergens: "",
+      description: t("Products.dubaiChocolatTablet.description"),
+      allergens: t("Products.dubaiChocolatTablet.allergens"),
       nutritional_values: {
         energy: "2302 kj / 551 kcal",
         fat: "39.5 g",
@@ -88,7 +87,7 @@ export const DessertData = (): DessertInterface[] => {
         protein: "11.6 g",
         salt: "",
       },
-      storage_conditions: [],
+      storage_conditions: commonStorage,
       main_image: "/product_images/Dubai_Chocolat_Snack_tablet_1.png",
       other_images: [
         "/product_images/Dubai_Chocolat_Snack_tablet_2.png",
@@ -99,14 +98,13 @@ export const DessertData = (): DessertInterface[] => {
     },
     {
       id: 3,
-      name: "Citron",
-      category: "Gamme Glace",
+      name: t("Products.citron.name"),
+      category: t("Categories.gammeGlace"),
+      categoryKey: "gammeGlace",
       weight: "125g",
       isNew: true,
-      description:
-        "Un fond de biscuit croquant, une crème au goût unique, agrémentée d’un délicieux coulis de mangue.",
-      allergens:
-        "MELK, suiker, BOTER, YOGHURT (3%), ROOM, WEIpoeder, dextrose, sprits (1%) [TARWEbloem, plantaardige vetten (palm, zonnebloem), suiker, zetmeel (TARWE), zout, rijsmiddel (E503i), aroma, EIpoeder], MELKeiwitten, glucosestroop, plantaardige olie (kokos), maltodextrine, citroensappoeder, citrusvezel, stabilisatoren (E466, E401, E406, E412, E415), emulgatoren (E471, E472b, E477), voedingszuren (E331, E330), kleurstof (E160a), zout, aroma's, SOJAbloem, vanille-extract",
+      description: t("Products.citron.description"),
+      allergens: t("Products.citron.allergens"),
       nutritional_values: {
         energy: "956 kj / 228 kcal",
         fat: "9.2 g",
@@ -117,7 +115,7 @@ export const DessertData = (): DessertInterface[] => {
         protein: "4.5 g",
         salt: "",
       },
-      storage_conditions: [],
+      storage_conditions: commonStorage,
       main_image: "/product_images/Citron_1.png",
       other_images: [
         "/product_images/Citron_2.png",
@@ -128,14 +126,13 @@ export const DessertData = (): DessertInterface[] => {
     },
     {
       id: 4,
-      name: "Madagascar Vanilla",
-      category: "Gamme Glace",
+      name: t("Products.madagascarVanilla.name"),
+      category: t("Categories.gammeGlace"),
+      categoryKey: "gammeGlace",
       weight: "125g",
       isNew: true,
-      description:
-        "Un fond de biscuit croquant, une crème au goût unique, agrémentée d’un délicieux coulis de mangue.",
-      allergens:
-        "MELK, suiker, cacaokoekjes (8%) [TARWEbloem, suiker, plantaardige olieën en vetten (kokos, palm), cacaopoeder, glucosestroop, rijsmiddelen (E500ii, E503ii), zout, zuurteregelaar (E524)], BOTER, ROOM, WEIpoeder, dextrose, MELKeiwitten, plantaardige oliën (zonnebloem, palm), cacaopoeder, MELKpoeder, LACTOSE, stabilisatoren (E466, E401, E406), emulgatoren (E471, E322 (SOJA)), voedingszuren (E331, E330), kleurstof (E160a), zout, aroma's, vanille-extract",
+      description: t("Products.madagascarVanilla.description"),
+      allergens: t("Products.madagascarVanilla.allergens"),
       nutritional_values: {
         energy: "1072 kj / 256 kcal",
         fat: "11.3 g",
@@ -146,7 +143,7 @@ export const DessertData = (): DessertInterface[] => {
         protein: "4.1 g",
         salt: "0.32 g",
       },
-      storage_conditions: [],
+      storage_conditions: commonStorage,
       main_image: "/product_images/Madagascar_Vanilla_1.png",
       other_images: [
         "/product_images/Madagascar_Vanilla_2.png",
@@ -157,14 +154,13 @@ export const DessertData = (): DessertInterface[] => {
     },
     {
       id: 5,
-      name: "Spéculoos",
-      category: "Gamme Glace",
+      name: t("Products.speculoos.name"),
+      category: t("Categories.gammeGlace"),
+      categoryKey: "gammeGlace",
       isNew: true,
       weight: "125g",
-      description:
-        "Un fond de biscuit croquant, une crème au goût unique, agrémentée d’un délicieux coulis de mangue.",
-      allergens:
-        "MELK, suiker, speculoos (10%) [TARWEbloem, kandijsuiker, plantaardige oliën en vetten (palm, koolzaad), rietsuiker, SOJAbloem, invertsuikerstroop, rijsmiddel (E500ii), kaneel, nootmuskaat], BOTER, witte chocolade (4%) [suiker, cacaoboter, MELKpoeder], ROOM, WEIpoeder, dextrose, MELKeiwitten, plantaardige oliën (soja, kokos), MELKpoeder, stabilisatoren (E466, E401, E406), emulgatoren (E471, E322 (SOJA)), voedingszuren (E331, E330), kleurstof (E160a), zout, aroma's, vanille-extract",
+      description: t("Products.speculoos.description"),
+      allergens: t("Products.speculoos.allergens"),
       nutritional_values: {
         energy: "1284 kj / 307 kcal",
         fat: "17.9 g",
@@ -175,7 +171,7 @@ export const DessertData = (): DessertInterface[] => {
         protein: "4.3 g",
         salt: "0.35 g",
       },
-      storage_conditions: [],
+      storage_conditions: commonStorage,
       main_image: "/product_images/Speculoos_1.png",
       other_images: [
         "/product_images/Speculoos_2.png",
@@ -186,14 +182,13 @@ export const DessertData = (): DessertInterface[] => {
     },
     {
       id: 6,
-      name: "Supreme Chocolate & Brownie",
-      category: "Gamme Glace",
+      name: t("Products.supremeChocolateBrownie.name"),
+      category: t("Categories.gammeGlace"),
+      categoryKey: "gammeGlace",
       weight: "125g",
-      description:
-        "Un fond de biscuit croquant, une crème au goût unique, agrémentée d’un délicieux coulis de mangue.",
+      description: t("Products.supremeChocolateBrownie.description"),
       isNew: true,
-      allergens:
-        "MELK, suiker, BOTER, ROOM, WEIpoeder, dextrose, cacaopoeder, brownie (3%), [plantaardige oliën en vetten (palm, koolzaad, zonnebloem), suiker, chocolade (suiker, cacaomassa, cacaoboter, emulgator (E322 (SOJA)), aroma), EI, TARWEbloem, glucosestroop, stabilisator (E422), magere cacaopoeder, geconcentreerde BOTER, glucose-fructosestroop, maïsbloem, zout, rijsmiddel (E500ii), conserveermiddel (E202), aroma's, emulgatoren (E322, E471)], MELKeiwitten, plantaardige oliën (zonnebloem, palm), MELKpoeder, LACTOSE, stabilisatoren (E466, E401, E406), emulgatoren (E471, E322 (SOJA)), voedingszuren (E331, E330), kleurstof (E160a), zout, aroma's, vanille-extract",
+      allergens: t("Products.supremeChocolateBrownie.allergens"),
       nutritional_values: {
         energy: "940kj / 225 kcal",
         fat: "11.5 g",
@@ -204,7 +199,7 @@ export const DessertData = (): DessertInterface[] => {
         protein: "4.6 g",
         salt: "",
       },
-      storage_conditions: [],
+      storage_conditions: commonStorage,
       main_image: "/product_images/Supreme_Chocolate_&_Brownie_1.png",
       other_images: [
         "/product_images/Supreme_Chocolate_&_Brownie_2.png",
@@ -215,14 +210,13 @@ export const DessertData = (): DessertInterface[] => {
     },
     {
       id: 7,
-      name: "Tiramisu",
-      category: "Gamme Glace",
+      name: t("Products.tiramisu.name"),
+      category: t("Categories.gammeGlace"),
+      categoryKey: "gammeGlace",
       weight: "125g",
-      description:
-        "Un fond de biscuit croquant, une crème au goût unique, agrémentée d’un délicieux coulis de mangue.",
+      description: t("Products.tiramisu.description"),
       isNew: true,
-      allergens:
-        "MELK, suiker, mascarpone (7%) [ROOM, MELK, zuurteregelaar (E330)], BOTER, ROOM, WEIpoeder, dextrose, lange vingers (1%) [suiker, TARWEbloem, EI, rijsmiddelen (E503i, E500i), aroma, emulgator (E322)], MELKeiwitten, EIgeel, stabilisatoren (E466, E401, E406), emulgator (E471), voedingszuren (E331, E330), kleurstof (E160a), zout, ethylalcohol, aroma's, vanille-extract, cacaopoeder",
+      allergens: t("Products.tiramisu.allergens"),
       nutritional_values: {
         energy: "853 kj / 204 kcal",
         fat: "10.0 g",
@@ -233,7 +227,7 @@ export const DessertData = (): DessertInterface[] => {
         protein: "3.9 g",
         salt: "0.26 g",
       },
-      storage_conditions: [],
+      storage_conditions: commonStorage,
       main_image: "/product_images/Tiramisu_1.png",
       other_images: [
         "/product_images/Tiramisu_2.png",
@@ -244,14 +238,13 @@ export const DessertData = (): DessertInterface[] => {
     },
     {
       id: 8,
-      name: "Classic Tiramisu",
-      category: "La gamme verrine",
+      name: t("Products.classicTiramisu.name"),
+      category: t("Categories.verrineRange"),
+      categoryKey: "verrineRange",
       weight: "100g",
-      description:
-        "Basé sur la recette autentique du tiramisu avec du biscuit au boudoir.",
+      description: t("Products.classicTiramisu.description"),
       isNew: true,
-      allergens:
-        "Amande*, Oeuf, Gluten, Noisette*, Lactose, Lait, Noix de pécan*, Seigle* Soja*, Blé, Noix de cajou*, Orge*, Avoine*, Blé de khorasan*, Noix de macadamia* Fruits à coque*, Pistaches*, Sésame*, Épeautre*, Noix* *Peut contenir des traces de contaminations croisées",
+      allergens: t("Products.classicTiramisu.allergens"),
       nutritional_values: {
         energy: "1449 kj / 347 kcal",
         fat: "27.1 g",
@@ -262,15 +255,7 @@ export const DessertData = (): DessertInterface[] => {
         protein: "6.0 g",
         salt: "0.11 g",
       },
-      storage_conditions: [
-        "temps de dégivrage au réfrigérateur à +4°c: 4H",
-        "12 pots par boite",
-        "Sans colorants ajoutés",
-        "Gelatine de poisson",
-        "100% HALAL",
-        "Produits prêts pour un service rapide",
-        "Produits adaptés à un long stockage au réfrigérateur",
-      ],
+      storage_conditions: commonStorage,
       main_image: "/product_images/Classic_Tiramisu_1.png",
       other_images: [
         "/product_images/Classic_Tiramisu_2.png",
@@ -281,12 +266,13 @@ export const DessertData = (): DessertInterface[] => {
     },
     {
       id: 9,
-      name: "Chocolate Mousse",
-      category: "La gamme verrine",
+      name: t("Products.chocolateMousse.name"),
+      category: t("Categories.verrineRange"),
+      categoryKey: "verrineRange",
       weight: "95g",
       isNew: true,
-      description: "Une recette autentique Momento® à base de chocolate belge.",
-      allergens: "Oeuf, Lactose, Lait, Soja",
+      description: t("Products.chocolateMousse.description"),
+      allergens: t("Products.chocolateMousse.allergens"),
       nutritional_values: {
         energy: "1445 kj / 346 kcal",
         fat: "28.7 g",
@@ -297,15 +283,7 @@ export const DessertData = (): DessertInterface[] => {
         protein: "4.2 g",
         salt: "0.11 g",
       },
-      storage_conditions: [
-        "temps de dégivrage au réfrigérateur à +4°c: 4H",
-        "12 pots par boite",
-        "Sans colorants ajoutés",
-        "Gelatine de poisson",
-        "100% HALAL",
-        "Produits prêts pour un service rapide",
-        "Produits adaptés à un long stockage au réfrigérateur",
-      ],
+      storage_conditions: commonStorage,
       main_image: "/product_images/Chocolate_Mouse_1.png",
       other_images: [
         "/product_images/Chocolate_Mouse_2.png",
@@ -316,13 +294,13 @@ export const DessertData = (): DessertInterface[] => {
     },
     {
       id: 10,
-      name: "Kinder Bueno",
-      category: "La gamme verrine",
+      name: t("Products.kinderBueno.name"),
+      category: t("Categories.verrineRange"),
+      categoryKey: "verrineRange",
       weight: "105g",
       isNew: true,
-      description: "Basé sur la recette autentique du tiramisu avec Bueno.",
-      allergens:
-        "Amandes*, Oeuf, Gluten, Noisette, Lactose, Lait, Noix de pécan*, Seigle* Soja, Blé, Noix de cajou, Orge, Avoine, Blé de khorasan*, Noix de macadamia* Fruits à coque, Pistaches*, Sésame,* Épeautre*, Noix* *Peut contenir des traces de contaminations croisées",
+      description: t("Products.kinderBueno.description"),
+      allergens: t("Products.kinderBueno.allergens"),
       nutritional_values: {
         energy: "1609 kj / 385 kcal",
         fat: "31.7 g",
@@ -333,15 +311,7 @@ export const DessertData = (): DessertInterface[] => {
         protein: "5.3 g",
         salt: "0.14 g",
       },
-      storage_conditions: [
-        "temps de dégivrage au réfrigérateur à +4°c: 4H",
-        "12 pots par boite",
-        "Sans colorants ajoutés",
-        "Gelatine de poisson",
-        "100% HALAL",
-        "Produits prêts pour un service rapide",
-        "Produits adaptés à un long stockage au réfrigérateur",
-      ],
+      storage_conditions: commonStorage,
       main_image: "/product_images/Kinder_Bueno_1.png",
       other_images: [
         "/product_images/Kinder_Bueno_2.png",
@@ -352,14 +322,13 @@ export const DessertData = (): DessertInterface[] => {
     },
     {
       id: 11,
-      name: "Lemon Cheesecake",
-      category: "La gamme verrine",
+      name: t("Products.lemonCheesecake.name"),
+      category: t("Categories.verrineRange"),
+      categoryKey: "verrineRange",
       weight: "110g",
-      description:
-        "Un fond de biscuit croquant, une crème au goût unique, agrémentée d’un délicieux coulis de citron.",
+      description: t("Products.lemonCheesecake.description"),
       isNew: true,
-      allergens:
-        "Amandes*, Oeuf, Gluten, Noisette*, Lactose, Lait, Noix de pécan*, Seigle* Soja*, Blé, Noix de cajou*, Orge*, Avoine*, Blé de khorasan*, Noix de macadamia* Fruits à coque*, Pistaches*, Sésame*, Épeautre*, Noix* *Peut contenir des traces de contaminations croisées",
+      allergens: t("Products.lemonCheesecake.allergens"),
       nutritional_values: {
         energy: "1305 kj / 312 kcal",
         fat: "20.6 g",
@@ -370,15 +339,7 @@ export const DessertData = (): DessertInterface[] => {
         protein: "6.7 g",
         salt: "0.23 g",
       },
-      storage_conditions: [
-        "temps de dégivrage au réfrigérateur à +4°c: 4H",
-        "12 pots par boite",
-        "Sans colorants ajoutés",
-        "Gelatine de poisson",
-        "100% HALAL",
-        "Produits prêts pour un service rapide",
-        "Produits adaptés à un long stockage au réfrigérateur",
-      ],
+      storage_conditions: commonStorage,
       main_image: "/product_images/Lemon_cheesecake_1.png",
       other_images: [
         "/product_images/Lemon_cheesecake_2.png",
@@ -389,14 +350,13 @@ export const DessertData = (): DessertInterface[] => {
     },
     {
       id: 12,
-      name: "Mango Cheesecake",
-      category: "La gamme verrine",
+      name: t("Products.mangoCheesecake.name"),
+      category: t("Categories.verrineRange"),
+      categoryKey: "verrineRange",
       weight: "110g",
-      description:
-        "Un fond de biscuit croquant, une crème au goût unique, agrémentée d’un délicieux coulis de mangue",
+      description: t("Products.mangoCheesecake.description"),
       isNew: true,
-      allergens:
-        "Amandes*, Oeuf, Gluten, Noisette*, Lactose, Lait, Noix de pécan*, Seigle* Soja*, Blé, Noix de cajou*, Orge*, Avoine*, Blé de khorasan*, Noix de macadamia* Fruits à coque*, Pistaches*, Sésame*, Épeautre*, Noix* *Peut contenir des traces de contaminations croisées",
+      allergens: t("Products.mangoCheesecake.allergens"),
       nutritional_values: {
         energy: "1414 kj / 338 kcal",
         fat: "21.3 g",
@@ -407,15 +367,7 @@ export const DessertData = (): DessertInterface[] => {
         protein: "7.3 g",
         salt: "0.28 g",
       },
-      storage_conditions: [
-        "temps de dégivrage au réfrigérateur à +4°c: 4H",
-        "12 pots par boite",
-        "Sans colorants ajoutés",
-        "Gelatine de poisson",
-        "100% HALAL",
-        "Produits prêts pour un service rapide",
-        "Produits adaptés à un long stockage au réfrigérateur",
-      ],
+      storage_conditions: commonStorage,
       main_image: "/product_images/Mango_cheescake_1.png",
       other_images: [
         "/product_images/Mango_cheescake_2.png",
@@ -426,14 +378,13 @@ export const DessertData = (): DessertInterface[] => {
     },
     {
       id: 13,
-      name: "Oreo Crumble",
-      category: "La gamme verrine",
+      name: t("Products.oreoCrumble.name"),
+      category: t("Categories.verrineRange"),
+      categoryKey: "verrineRange",
       weight: "105g",
       isNew: true,
-      description:
-        "Basé sur la recette autentique du tiramisu avec un crumble Oreo.",
-      allergens:
-        "Amande*, Oeuf, Gluten, Noisette*, Lactose, Lait, Noix de pécan*, Seigle* Soja*, Blé, Noix de cajou*, Orge*, Avoine*, Blé de khorasan*, Noix de macadamia* Fruits à coque*, Pistaches*, Sésame*, Épeautre*, Noix* *Peut contenir des traces de contaminations croisées",
+      description: t("Products.oreoCrumble.description"),
+      allergens: t("Products.oreoCrumble.allergens"),
       nutritional_values: {
         energy: "1758 kj / 420 kcal",
         fat: "32.9 g",
@@ -444,15 +395,7 @@ export const DessertData = (): DessertInterface[] => {
         protein: "4.5 g",
         salt: "0.26 g",
       },
-      storage_conditions: [
-        "temps de dégivrage au réfrigérateur à +4°c: 4H",
-        "12 pots par boite",
-        "Sans colorants ajoutés",
-        "Gelatine de poisson",
-        "100% HALAL",
-        "Produits prêts pour un service rapide",
-        "Produits adaptés à un long stockage au réfrigérateur",
-      ],
+      storage_conditions: commonStorage,
       main_image: "/product_images/Oreo_Crumble_1.png",
       other_images: [
         "/product_images/Oreo_Crumble_2.png",
@@ -463,14 +406,13 @@ export const DessertData = (): DessertInterface[] => {
     },
     {
       id: 14,
-      name: "Pistachio Cream",
-      category: "La gamme verrine",
+      name: t("Products.pistachioCream.name"),
+      category: t("Categories.verrineRange"),
+      categoryKey: "verrineRange",
       weight: "105g",
-      description:
-        "Basé sur la recette autentique du tiramisu avec une créme vanille de chocolate blanc et une mousse à la pistache.",
+      description: t("Products.pistachioCream.description"),
       isNew: true,
-      allergens:
-        "Amandes*, Oeuf, Gluten*, Noisette*, Lactose, Lait, Noix de pécan*, Seigle* Soja, Blé,sul te, Noix de cajou*, Orge*, Avoine*, Blé de khorasan*, Noix de macadamia*, Fruits à coque*, Pistaches*, Sésame*, Épeautre*, Noix* *Peut contenir des traces de contaminations croisées",
+      allergens: t("Products.pistachioCream.allergens"),
       nutritional_values: {
         energy: "1629 kj / 390 kcal",
         fat: "31.8 g",
@@ -481,15 +423,7 @@ export const DessertData = (): DessertInterface[] => {
         protein: "3.8 g",
         salt: "0.15 g",
       },
-      storage_conditions: [
-        "temps de dégivrage au réfrigérateur à +4°c: 4H",
-        "12 pots par boite",
-        "Sans colorants ajoutés",
-        "Gelatine de poisson",
-        "100% HALAL",
-        "Produits prêts pour un service rapide",
-        "Produits adaptés à un long stockage au réfrigérateur",
-      ],
+      storage_conditions: commonStorage,
       main_image: "/product_images/Pistachio_Cream_1.png",
       other_images: [
         "/product_images/Pistachio_Cream_2.png",
@@ -500,14 +434,13 @@ export const DessertData = (): DessertInterface[] => {
     },
     {
       id: 15,
-      name: "Raspberry Cheesecake",
-      category: "La gamme verrine",
+      name: t("Products.raspberryCheesecake.name"),
+      category: t("Categories.verrineRange"),
+      categoryKey: "verrineRange",
       isNew: true,
       weight: "110g",
-      description:
-        "Un fond de biscuit croquant, une crème au goût unique, agrémentée d’un délicieux coulis de framboise.",
-      allergens:
-        "Amande*, Oeuf, Gluten, Noisette*, Lactose, Lait, Noix de pécan*, Seigle* Soja*, Blé, Noix de cajou*, Orge*, Avoine*, Blé de khorasan*, Noix de macadamia* Fruits à coque*, Pistaches*, Sésame*, Épeautre*, Noix* *Peut contenir des traces de contaminations croisées",
+      description: t("Products.raspberryCheesecake.description"),
+      allergens: t("Products.raspberryCheesecake.allergens"),
       nutritional_values: {
         energy: "1332 kj / 319 kcal",
         fat: "17.2 g",
@@ -518,15 +451,7 @@ export const DessertData = (): DessertInterface[] => {
         protein: "7.5 g",
         salt: "0.32 g",
       },
-      storage_conditions: [
-        "temps de dégivrage au réfrigérateur à +4°c: 4H",
-        "12 pots par boite",
-        "Sans colorants ajoutés",
-        "Gelatine de poisson",
-        "100% HALAL",
-        "Produits prêts pour un service rapide",
-        "Produits adaptés à un long stockage au réfrigérateur",
-      ],
+      storage_conditions: commonStorage,
       main_image: "/product_images/Raspberry_Cheesecake_1.png",
       other_images: [
         "/product_images/Raspberry_Cheesecake_2.png",
@@ -537,14 +462,13 @@ export const DessertData = (): DessertInterface[] => {
     },
     {
       id: 16,
-      name: "Red Velvet Tiramisu",
-      category: "La gamme verrine",
+      name: t("Products.redVelvetTiramisu.name"),
+      category: t("Categories.verrineRange"),
+      categoryKey: "verrineRange",
       weight: "120g",
-      description:
-        "L’incontournable cake red velvet, revisité en tiramisu Momento®.",
+      description: t("Products.redVelvetTiramisu.description"),
       isNew: false,
-      allergens:
-        "Amandes*, Oeuf, Gluten, Noisette*, Lactose, Lait, Noix de pécan*, Seigle* Soja*, Blé*, Noix de cajou*, Orge*, Avoine*, Blé de khorasan*, Noix de macadamia* Fruits à coque*, Pistaches*, Sésame*, Épeautre*, Noix* *Peut contenir des traces de contaminations croisées",
+      allergens: t("Products.redVelvetTiramisu.allergens"),
       nutritional_values: {
         energy: "1069 kj / 256 kcal",
         fat: "15.1 g",
@@ -555,15 +479,7 @@ export const DessertData = (): DessertInterface[] => {
         protein: "7.0 g",
         salt: "0.09 g",
       },
-      storage_conditions: [
-        "temps de dégivrage au réfrigérateur à +4°c: 4H",
-        "12 pots par boite",
-        "Sans colorants ajoutés",
-        "Gelatine de poisson",
-        "100% HALAL",
-        "Produits prêts pour un service rapide",
-        "Produits adaptés à un long stockage au réfrigérateur",
-      ],
+      storage_conditions: commonStorage,
       main_image: "/product_images/Red_Velvet_Tiramisu_1.png",
       other_images: [
         "/product_images/Red_Velvet_Tiramisu_2.png",
@@ -574,13 +490,13 @@ export const DessertData = (): DessertInterface[] => {
     },
     {
       id: 17,
-      name: "Salted Caramel",
-      category: "La gamme verrine",
+      name: t("Products.saltedCaramel.name"),
+      category: t("Categories.verrineRange"),
+      categoryKey: "verrineRange",
       weight: "105g",
       isNew: true,
-      description: "La créme Momento®, au goût caramel beurre salé.",
-      allergens:
-        "Amandes*, Oeuf, Gluten, Noisette*, Lactose, Lait, Noix de pécan*, Seigle Soja*, Blé, Noix de cajou*, Orge*, Avoine*, Blé de khorasan*, Noix de macadamia* Fruits à coque, Pistaches, Sésame*, Épeautre*, Noix* *Peut contenir des traces de contaminations croisées",
+      description: t("Products.saltedCaramel.description"),
+      allergens: t("Products.saltedCaramel.allergens"),
       nutritional_values: {
         energy: "1707 kj / 408 kcal",
         fat: "31.8 g",
@@ -591,15 +507,7 @@ export const DessertData = (): DessertInterface[] => {
         protein: "7.3 g",
         salt: "0.22 g",
       },
-      storage_conditions: [
-        "temps de dégivrage au réfrigérateur à +4°c: 4H",
-        "12 pots par boite",
-        "Sans colorants ajoutés",
-        "Gelatine de poisson",
-        "100% HALAL",
-        "Produits prêts pour un service rapide",
-        "Produits adaptés à un long stockage au réfrigérateur",
-      ],
+      storage_conditions: commonStorage,
       main_image: "/product_images/Salted_Caramel_1.png",
       other_images: [
         "/product_images/Salted_Caramel_2.png",
@@ -610,14 +518,13 @@ export const DessertData = (): DessertInterface[] => {
     },
     {
       id: 18,
-      name: "Snickers Tiramisu",
-      category: "La gamme verrine",
+      name: t("Products.snickersTiramisu.name"),
+      category: t("Categories.verrineRange"),
+      categoryKey: "verrineRange",
       weight: "105g",
       isNew: true,
-      description:
-        "Basé sur la recette autentique du tiramisu avec du Snickers.",
-      allergens:
-        "Amande*, Oeuf, Gluten*, Noisette*, Lactose, Lait, Noix de pécan*, Seigle* Soja, Blé*, Noix de cajou*, Orge*, Avoine*, Blé de khorasan*, Noix de macadamia* Fruits à coque*,Cacahuètes, Pistaches*, Sésame*, Épeautre*, Noix* *Peut contenir des traces de contaminations croisées",
+      description: t("Products.snickersTiramisu.description"),
+      allergens: t("Products.snickersTiramisu.allergens"),
       nutritional_values: {
         energy: "1564 kj / 374 kcal",
         fat: "27.7 g",
@@ -628,15 +535,7 @@ export const DessertData = (): DessertInterface[] => {
         protein: "5.5 g",
         salt: "0.21 g",
       },
-      storage_conditions: [
-        "temps de dégivrage au réfrigérateur à +4°c: 4H",
-        "12 pots par boite",
-        "Sans colorants ajoutés",
-        "Gelatine de poisson",
-        "100% HALAL",
-        "Produits prêts pour un service rapide",
-        "Produits adaptés à un long stockage au réfrigérateur",
-      ],
+      storage_conditions: commonStorage,
       main_image: "/product_images/Snickers_Tiramisu_1.png",
       other_images: [
         "/product_images/Snickers_Tiramisu_2.png",
@@ -647,14 +546,13 @@ export const DessertData = (): DessertInterface[] => {
     },
     {
       id: 19,
-      name: "Speculoos Tiramisu",
-      category: "La gamme verrine",
+      name: t("Products.speculoosTiramisu.name"),
+      category: t("Categories.verrineRange"),
+      categoryKey: "verrineRange",
       weight: "110g",
       isNew: true,
-      description:
-        "Basé sur la recette autentique du tiramisu avec du biscuit au spéculoos.",
-      allergens:
-        "Amande*, Oeuf, Gluten, Noisette*, Lactose, Lait, Noix de pécan, Seigle* Soja*, Blé, Noix de cajou*, Orge, Avoine, Blé de khorasan*, Noix de macadamia Fruits à coque, Pistaches*, Sésame*, Épeautre*, Noix *Peut contenir des traces de contaminations croisées",
+      description: t("Products.speculoosTiramisu.description"),
+      allergens: t("Products.speculoosTiramisu.allergens"),
       nutritional_values: {
         energy: "1465 kj / 351 kcal",
         fat: "29.1 g",
@@ -665,15 +563,7 @@ export const DessertData = (): DessertInterface[] => {
         protein: "3.6 g",
         salt: "0.14 g",
       },
-      storage_conditions: [
-        "temps de dégivrage au réfrigérateur à +4°c: 4H",
-        "12 pots par boite",
-        "Sans colorants ajoutés",
-        "Gelatine de poisson",
-        "100% HALAL",
-        "Produits prêts pour un service rapide",
-        "Produits adaptés à un long stockage au réfrigérateur",
-      ],
+      storage_conditions: commonStorage,
       main_image: "/product_images/Speculoos_Tiramisu_1.png",
       other_images: [
         "/product_images/Speculoos_Tiramisu_2.png",

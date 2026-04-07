@@ -348,5 +348,10 @@
                 "allergens": "Ei, Gluten, Haselnuss, Laktose, Milch, Soja, Weizen, Walnüsse."
             }
         }
+    },
+    "NotFound": {
+        "title": "Ups! Geschmolzen.",
+        "description": "Es sieht so aus, als ob die gesuchte Seite geschmolzen ist oder nie existiert hat. Keine Sorge, unsere Leckereien warten woanders auf dich.",
+        "button": "Zurück zum Genuss"
     }
 }

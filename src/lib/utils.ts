@@ -1,6 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { DessertData, DessertInterface } from "@/Data/Const";
+import { DessertInterface } from "@/Data/Const";
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -16,7 +16,6 @@ export function slugify(text: string): string {
         .replace(/\-\-+/g, '-');     // Replace multiple - with single -
 }
 
-export function getProductBySlug(slug: string): DessertInterface | undefined {
-    const products = DessertData();
+export function getProductBySlug(products: DessertInterface[], slug: string): DessertInterface | undefined {
     return products.find(product => slugify(product.name) === slug);
 }

@@ -63,7 +63,8 @@ const Section2 = () => {
             <p>
                 {t("createdBy")}{" "}
                 <a
-                    href="https://zakariyazouazou.com"
+                    // href="https://zakariyazouazou.com"
+                    href="https://zakariya-devloper-profile.vercel.app/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-white hover:text-white/80 underline underline-offset-2 transition-colors duration-300"

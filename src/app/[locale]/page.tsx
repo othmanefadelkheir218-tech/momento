@@ -8,15 +8,13 @@ import OneTimeIntroduction from "@/components/OneTimeIntroduction";
 import SlidingImages from "@/components/home/SlidingImages";
 import RotatingModelSection from "@/components/home/RotatingModel";
 import WeLoveYou from "@/components/home/WeLoveYou";
-import { DessertData, DessertInterface } from "@/Data/Const";
+import { DessertInterface } from "@/Data/Const";
+import { useDessertData } from "@/hooks/useDessertData";
 import ProductCardsSection from "@/components/home/product-cards-section";
-
-
-
 
 export default function HomePage() {
     const t = useTranslations("HomePage.ProductCards");
-    const products: DessertInterface[] = DessertData()
+    const products = useDessertData();
 
     return (
         <>
@@ -29,14 +27,14 @@ export default function HomePage() {
             />
 
             <ProductCardsSection
-                products={products.slice(0, 8).filter((product) => product.category === "Gamme Glace")}
+                products={products.filter((product: DessertInterface) => product.categoryKey === "gammeGlace").slice(0, 8)}
                 ShowTitle={true}
                 showAll={true}
                 title={t("iceCreamRange")}
             />
 
             <ProductCardsSection
-                products={products.slice(0, 8).filter((product) => product.category === "Dubai Chocolat")}
+                products={products.filter((product: DessertInterface) => product.categoryKey === "dubaiChocolat").slice(0, 8)}
                 ShowTitle={true}
                 showAll={false}
                 title={t("dubaiChocolate")}
