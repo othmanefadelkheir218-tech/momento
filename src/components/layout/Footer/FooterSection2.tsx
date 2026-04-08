@@ -63,7 +63,7 @@ const Section2 = () => {
             <p>
                 {t("createdBy")}{" "}
                 <a
-                    // href="https://zakariyazouazou.com"
+                    // href="https://zakariyazouazou.com" this email
                     href="https://zakariya-devloper-profile.vercel.app/"
                     target="_blank"
                     rel="noopener noreferrer"
