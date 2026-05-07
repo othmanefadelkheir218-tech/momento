@@ -79,7 +79,7 @@ const WeLovePartnership = () => {
       */}
             <div
                 ref={bgImageRef}
-                className="absolute inset-0 w-full h-[120%] z-0" // h-[120%] gives us extra room to scroll
+                className="absolute inset-0 w-full h-[120%] z-0" // h-[120%] gives us extra room to scroll in better way 
             >
                 <div
                     className="w-full h-full"
