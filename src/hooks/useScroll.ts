@@ -1,25 +1,34 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 /**
- * Returns `true` when the window has been scrolled down, otherwise `false`.
+ * Returns `true` when the user is scrolling down, `false` when scrolling up or at top.
  */
 const useScroll = (): boolean => {
-    const [isScrolled, setIsScrolled] = useState<boolean>(false);
+    const [isScrolledDown, setIsScrolledDown] = useState<boolean>(false);
+    const lastY = useRef(0);
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 0);
+            const currentY = window.scrollY;
+            if (currentY <= 0) {
+                setIsScrolledDown(false);
+            } else if (currentY > lastY.current) {
+                setIsScrolledDown(true);   // scrolling down → hide header
+            } else {
+                setIsScrolledDown(false);  // scrolling up → show header immediately
+            }
+            lastY.current = currentY;
         };
-        // Initialise state
-        handleScroll();
-        window.addEventListener("scroll", handleScroll);
+
+        lastY.current = window.scrollY;
+        window.addEventListener("scroll", handleScroll, { passive: true });
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
     }, []);
 
-    return isScrolled;
+    return isScrolledDown;
 };
 
 export default useScroll;

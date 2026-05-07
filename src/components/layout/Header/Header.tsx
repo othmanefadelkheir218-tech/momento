@@ -47,11 +47,11 @@ export default function Header() {
     useGSAP(() => {
         if (width > 768) {
             if (isScrolled) {
-                gsap.to(headerRef.current, { y: "-100%", duration: 0.25, ease: "power1.out" });
-                gsap.to(buttonRef.current, { scale: 1, duration: 0.25, ease: "power1.out" });
+                gsap.to(headerRef.current, { y: "-100%", duration: 0.08, ease: "power3.out" });
+                gsap.to(buttonRef.current, { scale: 1, duration: 0.08, ease: "power3.out" });
             } else {
-                gsap.to(headerRef.current, { y: 0, duration: 0.25, ease: "power1.out" });
-                gsap.to(buttonRef.current, { scale: 0, duration: 0.25, ease: "power1.out" });
+                gsap.to(headerRef.current, { y: 0, duration: 0.08, ease: "power3.out" });
+                gsap.to(buttonRef.current, { scale: 0, duration: 0.08, ease: "power3.out" });
             }
         } else {
             gsap.set(headerRef.current, { y: 0 });
@@ -81,7 +81,7 @@ export default function Header() {
     return (
         <>
             {/* if its not home make the heeader backgroudn more dark  */}
-            <header ref={headerRef} className={`fixed top-0 w-full z-20 py-1   backdrop-blur-lg shadow-lg transition-transform duration-300 ${itsHome ? "bg-black/20" : "bg-primary/50"}`}>
+            <header ref={headerRef} className={`fixed top-0 w-full z-20 py-1   backdrop-blur-lg shadow-lg ${itsHome ? "bg-black/20" : "bg-primary/50"}`}>
                 <div className="container mx-auto px-4 h-16 flex items-center justify-between">
                     <TransitionLink href="/" className="">
                         <Image

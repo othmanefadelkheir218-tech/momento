@@ -12,9 +12,9 @@ import { SuccessPopup } from "@/components/success-popup";
 import {
   COMPANY_FACEBOOK,
   COMPANY_INSTAGRAM,
-  COMPANY_LINKEDIN,
-  COMPANY_TWITTER,
-  COMPANY_YOUTUBE,
+  // COMPANY_LINKEDIN,
+  // COMPANY_TWITTER,
+  // COMPANY_YOUTUBE,
 } from "@/Data/socialmedia";
 import { useTranslations } from "next-intl";
 
@@ -23,9 +23,9 @@ gsap.registerPlugin(ScrollTrigger);
 const socialLinks = [
   { icon: Facebook, href: COMPANY_FACEBOOK, label: "Facebook" },
   { icon: Instagram, href: COMPANY_INSTAGRAM, label: "Instagram" },
-  { icon: Twitter, href: COMPANY_TWITTER, label: "Twitter" },
-  { icon: Youtube, href: COMPANY_YOUTUBE, label: "Youtube" },
-  { icon: Linkedin, href: COMPANY_LINKEDIN, label: "LinkedIn" },
+  // { icon: Twitter, href: COMPANY_TWITTER, label: "Twitter" },
+  // { icon: Youtube, href: COMPANY_YOUTUBE, label: "Youtube" },
+  // { icon: Linkedin, href: COMPANY_LINKEDIN, label: "LinkedIn" },
 ];
 
 function Content() {
