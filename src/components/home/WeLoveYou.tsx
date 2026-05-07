@@ -84,7 +84,7 @@ const WeLovePartnership = () => {
                 <div
                     className="w-full h-full"
                     style={{
-                        backgroundImage: `url('/images/WeLoveYou.png')`,
+                        backgroundImage: `url('/images/WeloveYou.png')`,
                         backgroundSize: "cover",
                         backgroundPosition: "center",
                         backgroundRepeat: "no-repeat",

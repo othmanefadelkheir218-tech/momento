@@ -116,18 +116,7 @@ export function HeroSection({ dessert }: HeroSectionProps) {
         </div>
       </div>
 
-      {/* Badge — top left */}
-      {dessert.isNew && (
-        <div className="absolute top-8 left-8 md:top-12 md:left-16 z-10">
-          <span
-            ref={badgeRef}
-            className="inline-block bg-primary text-white text-xs font-bold tracking-widest px-5 py-2.5 rounded-full shadow-lg"
-            style={{ fontFamily: "var(--font-sans)" }}
-          >
-            NOUVEAU
-          </span>
-        </div>
-      )}
+
 
       {/* Product name — bottom left */}
       <div className="absolute bottom-0 left-0 right-0 z-10 px-6 md:px-12 lg:px-20 xl:px-32 pb-14 md:pb-20">
