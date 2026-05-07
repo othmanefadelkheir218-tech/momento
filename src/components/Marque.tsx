@@ -19,7 +19,12 @@ export default function Marque({ PartOne, PartTwo, Direction = 1, speed = 0.1 }:
   const firstBlock = useRef(null);
   const secondBlock = useRef(null);
   const slider = useRef(null);
+  const rafId = useRef<number | null>(null);
 
+  // 1. Initialize direction based on prop. 
+  // If Direction is 1, we start moving left (-1). If -1, we start moving right (1).
+  const xPercent = useRef(0);
+  const direction = useRef(Direction * -1);
 
   const animation = () => {
     // 4. Wrap logic handles both directions automatically
@@ -35,19 +40,12 @@ export default function Marque({ PartOne, PartTwo, Direction = 1, speed = 0.1 }:
 
     // Speed constant (0.1)
     xPercent.current += speed * direction.current;
-    requestAnimationFrame(animation);
+    rafId.current = requestAnimationFrame(animation);
   };
-
-
-
-  // 1. Initialize direction based on prop. 
-  // If Direction is 1, we start moving left (-1). If -1, we start moving right (1).
-  const xPercent = useRef(0);
-  const direction = useRef(Direction * -1);
 
   useGSAP(
     () => {
-      requestAnimationFrame(animation);
+      rafId.current = requestAnimationFrame(animation);
 
       gsap.to(slider.current, {
         scrollTrigger: {
@@ -56,17 +54,15 @@ export default function Marque({ PartOne, PartTwo, Direction = 1, speed = 0.1 }:
           end: "bottom bottom",
           scrub: 0.25,
           onUpdate: (e) => {
-            // 2. CRITICAL CHANGE: 
-            // Multiply scroll direction (e.direction) by your specific Direction prop.
-            // When scrolling down (e.direction = 1):
-            //   - If Direction prop is 1: result is -1 (Move Left)
-            //   - If Direction prop is -1: result is 1 (Move Right)
             direction.current = e.direction * Direction * -1;
           },
         },
-        // 3. Optional: Flip the parallax movement direction too
         x: `${-300 * Direction}px`,
       });
+
+      return () => {
+        if (rafId.current !== null) cancelAnimationFrame(rafId.current);
+      };
     },
     { scope: slider }
   );

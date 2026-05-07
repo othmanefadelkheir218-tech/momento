@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useEffect, useState } from "react"
+import { useRef, useEffect, useState, Suspense } from "react"
 import { Canvas } from "@react-three/fiber"
 import { PerspectiveCamera, Text3D, Center } from "@react-three/drei"
 import * as THREE from "three"
@@ -55,7 +55,7 @@ function RotatingModel() {
         <group ref={meshRef}>
             <Center>
                 <Text3D
-                    font="https://threejs.org/examples/fonts/helvetiker_regular.typeface.json"
+                    font="/fonts/helvetiker_regular.typeface.json"
                     size={4}
                     height={1}
                     curveSegments={12}
@@ -79,8 +79,9 @@ function RotatingModel() {
 // 3D Canvas Scene
 function ModelScene() {
     return (
-        <Canvas className="w-full h-full"
-
+        <Canvas
+            className="w-full h-full"
+            style={{ width: "100%", height: "100%" }}
         >
             {/* <OrbitControls /> */}
             <PerspectiveCamera
@@ -90,7 +91,9 @@ function ModelScene() {
             <ambientLight intensity={0.5} />
             <directionalLight position={[10, 10, 5]} intensity={1} />
             <directionalLight position={[-10, -10, -5]} intensity={0.5} />
-            <RotatingModel />
+            <Suspense fallback={null}>
+                <RotatingModel />
+            </Suspense>
         </Canvas>
     )
 }

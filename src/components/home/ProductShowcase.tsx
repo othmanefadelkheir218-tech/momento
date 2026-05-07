@@ -10,7 +10,9 @@ import { useTransitionRouter } from "@/hooks/useTransitionRouter"
 import { useTranslations } from "next-intl"
 
 
-gsap.registerPlugin(ScrollTrigger)
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const ProductShowcase = () => {
   const router = useTransitionRouter();

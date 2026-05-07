@@ -6,7 +6,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Reveal } from "../animation/Reveal";
 import { useTranslations } from "next-intl";
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const WeLovePartnership = () => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -77,7 +79,7 @@ const WeLovePartnership = () => {
       */}
             <div
                 ref={bgImageRef}
-                className="absolute inset-0 w-full h-[120%] -z-10" // h-[120%] gives us extra room to scroll
+                className="absolute inset-0 w-full h-[120%] z-0" // h-[120%] gives us extra room to scroll
             >
                 <div
                     className="w-full h-full"
@@ -91,7 +93,7 @@ const WeLovePartnership = () => {
             </div>
 
             {/* Optional Gradient Overlay */}
-            <div className="absolute inset-0 bg-black/40 pointer-events-none z-0" />
+            <div className="absolute inset-0 bg-black/40 pointer-events-none z-[1]" />
 
             {/* Content Container */}
             <div className="relative z-10 container mx-auto flex flex-col lg:flex-row items-start lg:items-end justify-between gap-10 lg:gap-20">

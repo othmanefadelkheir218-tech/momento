@@ -41,12 +41,12 @@ const HeroIntro = () => {
         {/* Main Heading */}
         <div className="text-center w-full mb-8 lg:mb-12">
           <Reveal delay={0.2}>
-            <h1 className="trispace-font font-black text-white text-[12vw] sm:text-[10vw] md:text-[9vw] lg:text-[8vw] xl:text-[7vw] leading-[0.95] tracking-tight uppercase">
+            <h1 className=" font-black text-white text-[12vw] sm:text-[10vw] md:text-[9vw] lg:text-[8vw] xl:text-[7vw] leading-[1] tracking-tight uppercase">
               {t("MainHeading1")}
             </h1>
           </Reveal>
           <Reveal delay={0.3}>
-            <h1 className="trispace-font font-black text-white text-[12vw] sm:text-[10vw] md:text-[9vw] lg:text-[8vw] xl:text-[7vw] leading-[0.95] tracking-tight uppercase -mt-1 md:-mt-4">
+            <h1 className=" font-black text-white text-[12vw] sm:text-[10vw] md:text-[9vw] lg:text-[8vw] xl:text-[7vw]  tracking-tight uppercase -mt-1 md:-mt-4">
               {t("MainHeading2")}
             </h1>
           </Reveal>
