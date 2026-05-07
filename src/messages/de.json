@@ -17,6 +17,10 @@
         "contact": {
             "title": "Kontakt | Lassen Sie uns über Genuss sprechen - Momento",
             "description": "Kontaktieren Sie Momento für Veranstaltungen, Partnerschaften oder einfach nur um Hallo zu sagen. Wir freuen uns auf Sie."
+        },
+        "becomeClient": {
+            "title": "Partner werden | Großhandel - Momento",
+            "description": "Werden Sie MOMENTO-Großhandelspartner. Bieten Sie Ihren Kunden erstklassige handwerkliche Desserts mit exklusiven Preisen und persönlicher Betreuung an."
         }
     },
     "Header": {
@@ -245,7 +249,8 @@
         "about": "Über Uns",
         "faq": "FAQ",
         "menu": "Speisekarte",
-        "contact": "Kontakt"
+        "contact": "Kontakt",
+        "becomeClient": "Kunde werden"
     },
     "Common": {
         "toggleTheme": "Thema wechseln",
@@ -380,5 +385,49 @@
         "title": "Ups! Geschmolzen.",
         "description": "Es sieht so aus, als ob die gesuchte Seite geschmolzen ist oder nie existiert hat. Keine Sorge, unsere Leckereien warten woanders auf dich.",
         "button": "Zurück zum Genuss"
+    },
+    "BecomeClientPage": {
+        "heading": "PARTNER WERDEN",
+        "subheading": "Werden Sie Teil der MOMENTO-Familie und bieten Sie Ihren Kunden erstklassige handwerkliche Desserts an",
+        "formTitle": "IHRE ANGABEN",
+        "labels": {
+            "businessName": "Unternehmensname",
+            "contactName": "Kontaktperson",
+            "phone": "Telefon",
+            "email": "E-Mail",
+            "city": "Stadt",
+            "businessType": "Art des Unternehmens",
+            "quantity": "Geschätzte monatliche Menge",
+            "message": "Zusätzliche Informationen"
+        },
+        "businessTypes": {
+            "restaurant": "Restaurant",
+            "cafe": "Café / Coffee Shop",
+            "hotel": "Hotel",
+            "retail": "Einzelhandel",
+            "caterer": "Catering-Service",
+            "other": "Sonstiges"
+        },
+        "placeholders": {
+            "businessName": "Name Ihres Unternehmens",
+            "contactName": "Ihr vollständiger Name",
+            "phone": "+49 30 000 00 00",
+            "email": "kontakt@ihrunternehmen.de",
+            "city": "Ihre Stadt",
+            "quantity": "z.B. 100 Einheiten/Monat",
+            "message": "Erzählen Sie uns mehr über Ihr Projekt..."
+        },
+        "button": "Anfrage senden",
+        "sending": "Wird gesendet...",
+        "error": "Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",
+        "doneTitle": "ANFRAGE ERHALTEN!",
+        "doneMessage": "Vielen Dank für Ihr Interesse, MOMENTO-Partner zu werden. Unser Team wird Ihre Anfrage prüfen und sich in Kürze bei Ihnen melden.",
+        "benefits": {
+            "title": "WARUM MIT UNS ZUSAMMENARBEITEN?",
+            "item1": "Exklusive Großhandelspreise",
+            "item2": "Direktlieferung zu Ihnen",
+            "item3": "Persönlicher Kundenbetreuer",
+            "item4": "Marketingunterstützung inklusive"
+        }
     }
 }

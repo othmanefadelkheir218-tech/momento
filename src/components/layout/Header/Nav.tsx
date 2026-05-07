@@ -52,6 +52,7 @@ export default function Nav({ isActive, setIsActive }: NavProps) {
     { title: t("about"), href: "/about" },
     { title: t("faq"), href: "/faq" },
     { title: t("contact"), href: "/contact" },
+    { title: t("becomeClient"), href: "/become-a-client" },
   ];
 
   useGSAP(

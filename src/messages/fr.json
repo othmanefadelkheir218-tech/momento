@@ -16,8 +16,10 @@
         },
         "contact": {
             "title": "Contact | Parlons de Gourmandise - Momento",
-            "description": "Contactez l’équipe Momento pour vos événements, partenariats ou simplement pour nous saluer. Nous sommes à votre écoute."
-        }
+            "description": "Contactez l’équipe Momento pour vos événements, partenariats ou simplement pour nous saluer. Nous sommes à votre écoute."        },
+        "becomeClient": {
+            "title": "Devenir Partenaire | Grossiste - Momento",
+            "description": "Rejoignez MOMENTO en tant que partenaire grossiste. Proposez des desserts artisanaux premium à vos clients avec des tarifs exclusifs et un accompagnement dédié."        }
     },
     "Header": {
         "navigation": "Navigation",
@@ -245,7 +247,8 @@
         "about": "À Propos",
         "faq": "FAQ",
         "menu": "Menu",
-        "contact": "Contact"
+        "contact": "Contact",
+        "becomeClient": "Devenir Client"
     },
     "Common": {
         "toggleTheme": "Changer le thème",
@@ -380,5 +383,49 @@
         "title": "Oups ! Tout a fondu.",
         "description": "Il semble que la page que vous cherchez ait fondu ou n'ait jamais existé. Pas d'inquiétude, nos douceurs vous attendent ailleurs.",
         "button": "Retour à la gourmandise"
+    },
+    "BecomeClientPage": {
+        "heading": "DEVENIR PARTENAIRE",
+        "subheading": "Rejoignez la famille MOMENTO et proposez des desserts artisanaux premium à vos clients",
+        "formTitle": "RENSEIGNEZ VOS INFORMATIONS",
+        "labels": {
+            "businessName": "Nom de l'établissement",
+            "contactName": "Personne de contact",
+            "phone": "Téléphone",
+            "email": "E-mail",
+            "city": "Ville",
+            "businessType": "Type d'établissement",
+            "quantity": "Quantité mensuelle estimée",
+            "message": "Informations complémentaires"
+        },
+        "businessTypes": {
+            "restaurant": "Restaurant",
+            "cafe": "Café / Coffee Shop",
+            "hotel": "Hôtel",
+            "retail": "Commerce de détail",
+            "caterer": "Service traiteur",
+            "other": "Autre"
+        },
+        "placeholders": {
+            "businessName": "Nom de votre établissement",
+            "contactName": "Votre nom complet",
+            "phone": "+33 6 00 00 00 00",
+            "email": "contact@votrebusiness.com",
+            "city": "Votre ville",
+            "quantity": "Ex. 100 unités/mois",
+            "message": "Parlez-nous de votre projet..."
+        },
+        "button": "Envoyer ma demande",
+        "sending": "Envoi en cours...",
+        "error": "L'envoi a échoué. Veuillez réessayer.",
+        "doneTitle": "DEMANDE REÇUE !",
+        "doneMessage": "Merci pour votre intérêt à devenir partenaire MOMENTO. Notre équipe examinera votre demande et vous contactera très prochainement.",
+        "benefits": {
+            "title": "POURQUOI NOUS REJOINDRE ?",
+            "item1": "Tarifs grossiste exclusifs",
+            "item2": "Livraison directe dans votre établissement",
+            "item3": "Responsable de compte dédié",
+            "item4": "Support marketing inclus"
+        }
     }
 }

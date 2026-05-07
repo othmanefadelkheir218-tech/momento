@@ -17,6 +17,10 @@
     "contact": {
       "title": "Contact Us | Let's Talk Gourmet - Momento",
       "description": "Reach out to Momento for events, partnerships, or just to say hello. We'd love to hear from you."
+    },
+    "becomeClient": {
+      "title": "Become a Partner | Wholesale - Momento",
+      "description": "Join MOMENTO as a wholesale partner. Offer premium artisanal desserts to your customers with exclusive pricing and dedicated support."
     }
   },
   "Header": {
@@ -245,7 +249,8 @@
     "about": "About",
     "faq": "FAQ",
     "menu": "Menu",
-    "contact": "Contact"
+    "contact": "Contact",
+    "becomeClient": "Become a Client"
   },
   "Common": {
     "toggleTheme": "Toggle Theme",
@@ -380,5 +385,49 @@
     "title": "Oops! Melted away.",
     "description": "It looks like the page you are looking for has melted or never existed. Don't worry, our treats are waiting for you elsewhere.",
     "button": "Back to sweetness"
+  },
+  "BecomeClientPage": {
+    "heading": "BECOME A PARTNER",
+    "subheading": "Join the MOMENTO family and offer premium artisanal desserts to your customers",
+    "formTitle": "FILL IN YOUR DETAILS",
+    "labels": {
+      "businessName": "Business Name",
+      "contactName": "Contact Person",
+      "phone": "Phone",
+      "email": "Email",
+      "city": "City",
+      "businessType": "Type of Business",
+      "quantity": "Estimated Monthly Quantity",
+      "message": "Additional Information"
+    },
+    "businessTypes": {
+      "restaurant": "Restaurant",
+      "cafe": "Café / Coffee Shop",
+      "hotel": "Hotel",
+      "retail": "Retail Store",
+      "caterer": "Catering Service",
+      "other": "Other"
+    },
+    "placeholders": {
+      "businessName": "Your business name",
+      "contactName": "Your full name",
+      "phone": "+33 6 00 00 00 00",
+      "email": "contact@yourbusiness.com",
+      "city": "Your city",
+      "quantity": "e.g. 100 units/month",
+      "message": "Tell us more about your project..."
+    },
+    "button": "Send My Request",
+    "sending": "Sending...",
+    "error": "Failed to send your request. Please try again.",
+    "doneTitle": "REQUEST RECEIVED!",
+    "doneMessage": "Thank you for your interest in becoming a MOMENTO partner. Our team will review your request and contact you very shortly.",
+    "benefits": {
+      "title": "WHY PARTNER WITH US?",
+      "item1": "Exclusive wholesale pricing",
+      "item2": "Direct delivery to your establishment",
+      "item3": "Dedicated account manager",
+      "item4": "Marketing support included"
+    }
   }
 }
