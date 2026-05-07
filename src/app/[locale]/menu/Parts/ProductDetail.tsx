@@ -25,7 +25,7 @@ export function ProductShowcase({ dessert }: ProductShowcaseProps) {
             <ProductInfoSection dessert={dessert} />
 
             {/* 3. Full-Width Image - uses other_images[0] */}
-            {dessert.other_images[0] && <FullImageSection imageUrl={dessert.other_images[0]} />}
+            {/* {dessert.other_images[0] && <FullImageSection imageUrl={dessert.other_images[0]} />} */}
 
             {/* 4. Allergens Section - NEW */}
             {

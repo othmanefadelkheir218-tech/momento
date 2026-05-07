@@ -88,16 +88,15 @@ export function ProductInfoSection({ dessert }: ProductInfoSectionProps) {
         >
             <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 lg:gap-24 items-center">
                 {/* Left - Image */}
-                <div ref={imageRef} className="relative aspect-square w-full group">
-                    <div className="absolute inset-0 bg-[#FBE8EA] rounded-3xl transform group-hover:scale-105 transition-transform duration-500" />
-                    <Image
-                        src={dessert.main_image || "/placeholder.svg"}
-                        alt={dessert.name}
-                        fill
-                        className="object-contain p-8 md:p-12 relative z-10"
-                        priority
-                    />
-                </div>
+                <div
+                    ref={imageRef}
+                    className="w-full h-[420px] md:h-[540px] lg:h-[620px] rounded-2xl"
+                    style={{
+                        backgroundImage: `url(${dessert.other_images[1] || dessert.main_image})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                    }}
+                />
 
                 {/* Right - Content */}
                 <div ref={contentRef} className="space-y-6 md:space-y-8">
