@@ -128,7 +128,7 @@ const ProductShowcase = () => {
           >
             <img
               ref={mainImageRef}
-              src="/images/image-1.jpg"
+              src="/images/image-1_2.png"
               alt={t("imageAlt1")}
               className="w-full h-auto object-cover"
             />
