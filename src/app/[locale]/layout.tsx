@@ -7,6 +7,7 @@ import Header from "@/components/layout/Header/Header";
 import { Geist, Geist_Mono } from "next/font/google";
 import TransitionWrapper from "@/components/TransitionWrapper";
 import ReactLenis from "lenis/react";
+import { Analytics } from "@vercel/analytics/next";
 
 import "../globals.css";
 import Footer from "@/components/layout/Footer/Footer";
@@ -117,6 +118,7 @@ export default async function LocaleLayout({
                         </ThemeProvider>
                     </ReactLenis>
                 </NextIntlClientProvider>
+                <Analytics />
             </body>
         </html>
     );
