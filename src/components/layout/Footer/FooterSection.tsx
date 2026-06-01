@@ -32,7 +32,7 @@ export default function FooterSection() {
     { name: t("home"), href: "/" },
     { name: t("menu"), href: "/menu" },
     { name: t("faq"), href: "/faq" },
-    { name: t("contact"), href: "/contact" },
+    // { name: t("contact"), href: "/contact" },
   ]
 
 

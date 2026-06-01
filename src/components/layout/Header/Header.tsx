@@ -65,7 +65,7 @@ export default function Header() {
     const Links = [
         { href: "/menu", label: t("menu") },
         { href: "/about", label: t("about") },
-        { href: "/contact", label: t("contact") },
+        // { href: "/contact", label: t("contact") },
         { href: "/become-a-client", label: t("becomeClient") },
     ];
 
