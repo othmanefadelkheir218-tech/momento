@@ -276,7 +276,7 @@
             "defrosting": "Temps de décongélation au réfrigérateur à +4°C : 4 h.",
             "potsPerBox": "12 pots par carton",
             "noColorants": "Sans colorants artificiels",
-            "fishGelatin": "Gélatine de poisson",
+            "fishGelatin": "Sans Gélatine",
             "halal": "100% HALAL",
             "quickService": "Prêt pour un service rapide",
             "longStorage": "Convient pour une conservation prolongée au réfrigérateur"
@@ -303,7 +303,7 @@
                 "allergens": "Lait, biscuits au chocolat, blé, noix de coco, palme, beurre, crème, soja."
             },
             "speculoos": {
-                "name": "Spéculoos",
+                "name": "Chocolat Blanc Spéculoos",
                 "description": "Glace classique aux biscuits épicés avec des morceaux de spéculoos croquants et une note de cannelle.",
                 "allergens": "Lait, biscuits spéculoos, blé, palme, soja, beurre, chocolat blanc, crème."
             },

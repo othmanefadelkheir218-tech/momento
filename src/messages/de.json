@@ -278,7 +278,7 @@
             "defrosting": "Auftauzeit im Kühlschrank bei +4°C: 4 Std.",
             "potsPerBox": "12 Becher pro Karton",
             "noColorants": "Ohne künstliche Farbstoffe",
-            "fishGelatin": "Fischgelatine",
+            "fishGelatin": "Ohne Gelatine",
             "halal": "100% HALAL",
             "quickService": "Bereit für den schnellen Service",
             "longStorage": "Geeignet für die langfristige Lagerung im Kühlschrank"
@@ -305,7 +305,7 @@
                 "allergens": "Milch, Schokoladenkekse, Weizen, Kokosnuss, Palm, Butter, Sahne, Soja."
             },
             "speculoos": {
-                "name": "Spekulatius",
+                "name": "Weiße Schokolade Spekulatius",
                 "description": "Klassisches Gewürzkeks-Eis mit knusprigen Spekulatius-Stückchen und einer Note von Zimt.",
                 "allergens": "Milch, Spekulatius-Kekse, Weizen, Palm, Soja, Butter, weiße Schokolade, Sahne."
             },

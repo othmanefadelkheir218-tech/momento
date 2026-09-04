@@ -29,8 +29,8 @@ export interface DessertInterface {
 }
 
 export const getDessertData = (t: any): DessertInterface[] => {
-  const commonStorage = [
-    t("Common.defrosting"),
+  // Conditions shared by every range (no defrosting step)
+  const baseStorage = [
     t("Common.potsPerBox"),
     t("Common.noColorants"),
     t("Common.fishGelatin"),
@@ -39,6 +39,11 @@ export const getDessertData = (t: any): DessertInterface[] => {
     t("Common.longStorage"),
   ];
 
+  const commonStorage = [t("Common.defrosting"), ...baseStorage];
+
+  // The "Gamme Glace" range is served frozen: no defrosting instruction
+  const glaceStorage = baseStorage;
+
   return [
     {
       id: 1,
@@ -46,7 +51,7 @@ export const getDessertData = (t: any): DessertInterface[] => {
       category: t("Categories.dubaiChocolat"),
       categoryKey: "dubaiChocolat",
       weight: "125g",
-      isNew: true,
+      isNew: false,
       description: t("Products.dubaiChocolatSnackBar.description"),
       allergens: t("Products.dubaiChocolatSnackBar.allergens"),
       nutritional_values: {
@@ -74,7 +79,7 @@ export const getDessertData = (t: any): DessertInterface[] => {
       category: t("Categories.dubaiChocolat"),
       categoryKey: "dubaiChocolat",
       weight: "125g",
-      isNew: true,
+      isNew: false,
       description: t("Products.dubaiChocolatTablet.description"),
       allergens: t("Products.dubaiChocolatTablet.allergens"),
       nutritional_values: {
@@ -96,41 +101,41 @@ export const getDessertData = (t: any): DessertInterface[] => {
         "/product_images/Dubai_Chocolat_Snack_tablet_5.png",
       ],
     },
-    {
-      id: 3,
-      name: t("Products.citron.name"),
-      category: t("Categories.gammeGlace"),
-      categoryKey: "gammeGlace",
-      weight: "125g",
-      isNew: true,
-      description: t("Products.citron.description"),
-      allergens: t("Products.citron.allergens"),
-      nutritional_values: {
-        energy: "956 kj / 228 kcal",
-        fat: "9.2 g",
-        saturated_fat: "6.4 g",
-        carbohydrates: "31.6 g",
-        sugars: "26.4 g",
-        fiber: "",
-        protein: "4.5 g",
-        salt: "",
-      },
-      storage_conditions: commonStorage,
-      main_image: "/product_images/Citron_1.png",
-      other_images: [
-        "/product_images/Citron_2.png",
-        "/product_images/Citron_3.png",
-        "/product_images/Citron_4.png",
-        "/product_images/Citron_5.png",
-      ],
-    },
+    // {
+    //   id: 3,
+    //   name: t("Products.citron.name"),
+    //   category: t("Categories.gammeGlace"),
+    //   categoryKey: "gammeGlace",
+    //   weight: "125g",
+    //   isNew: false,
+    //   description: t("Products.citron.description"),
+    //   allergens: t("Products.citron.allergens"),
+    //   nutritional_values: {
+    //     energy: "956 kj / 228 kcal",
+    //     fat: "9.2 g",
+    //     saturated_fat: "6.4 g",
+    //     carbohydrates: "31.6 g",
+    //     sugars: "26.4 g",
+    //     fiber: "",
+    //     protein: "4.5 g",
+    //     salt: "",
+    //   },
+    //   storage_conditions: glaceStorage,
+    //   main_image: "/product_images/Citron_1.png",
+    //   other_images: [
+    //     "/product_images/Citron_2.png",
+    //     "/product_images/Citron_3.png",
+    //     "/product_images/Citron_4.png",
+    //     "/product_images/Citron_5.png",
+    //   ],
+    // },
     {
       id: 4,
       name: t("Products.madagascarVanilla.name"),
       category: t("Categories.gammeGlace"),
       categoryKey: "gammeGlace",
       weight: "125g",
-      isNew: true,
+      isNew: false,
       description: t("Products.madagascarVanilla.description"),
       allergens: t("Products.madagascarVanilla.allergens"),
       nutritional_values: {
@@ -143,8 +148,8 @@ export const getDessertData = (t: any): DessertInterface[] => {
         protein: "4.1 g",
         salt: "0.32 g",
       },
-      storage_conditions: commonStorage,
-      main_image: "/product_images/Madagascar_Vanilla_1.png",
+      storage_conditions: glaceStorage,
+      main_image: "/product_images/Madagascar_Vanilla_1_1.png",
       other_images: [
         "/product_images/Madagascar_Vanilla_2.png",
         "/product_images/Madagascar_Vanilla_3.png",
@@ -157,7 +162,7 @@ export const getDessertData = (t: any): DessertInterface[] => {
       name: t("Products.speculoos.name"),
       category: t("Categories.gammeGlace"),
       categoryKey: "gammeGlace",
-      isNew: true,
+      isNew: false,
       weight: "125g",
       description: t("Products.speculoos.description"),
       allergens: t("Products.speculoos.allergens"),
@@ -171,7 +176,7 @@ export const getDessertData = (t: any): DessertInterface[] => {
         protein: "4.3 g",
         salt: "0.35 g",
       },
-      storage_conditions: commonStorage,
+      storage_conditions: glaceStorage,
       main_image: "/product_images/Speculoos_1.png",
       other_images: [
         "/product_images/Speculoos_2.png",
@@ -187,7 +192,7 @@ export const getDessertData = (t: any): DessertInterface[] => {
       categoryKey: "gammeGlace",
       weight: "125g",
       description: t("Products.supremeChocolateBrownie.description"),
-      isNew: true,
+      isNew: false,
       allergens: t("Products.supremeChocolateBrownie.allergens"),
       nutritional_values: {
         energy: "940kj / 225 kcal",
@@ -199,7 +204,7 @@ export const getDessertData = (t: any): DessertInterface[] => {
         protein: "4.6 g",
         salt: "",
       },
-      storage_conditions: commonStorage,
+      storage_conditions: glaceStorage,
       main_image: "/product_images/Supreme_Chocolate_&_Brownie_1.png",
       other_images: [
         "/product_images/Supreme_Chocolate_&_Brownie_2.png",
@@ -208,34 +213,34 @@ export const getDessertData = (t: any): DessertInterface[] => {
         "/product_images/Supreme_Chocolate_&_Brownie_5.png",
       ],
     },
-    {
-      id: 7,
-      name: t("Products.tiramisu.name"),
-      category: t("Categories.gammeGlace"),
-      categoryKey: "gammeGlace",
-      weight: "125g",
-      description: t("Products.tiramisu.description"),
-      isNew: true,
-      allergens: t("Products.tiramisu.allergens"),
-      nutritional_values: {
-        energy: "853 kj / 204 kcal",
-        fat: "10.0 g",
-        saturated_fat: "6.4 g",
-        carbohydrates: "24.6 g",
-        sugars: "24.4 g",
-        fiber: "",
-        protein: "3.9 g",
-        salt: "0.26 g",
-      },
-      storage_conditions: commonStorage,
-      main_image: "/product_images/Tiramisu_1.png",
-      other_images: [
-        "/product_images/Tiramisu_2.png",
-        "/product_images/Tiramisu_3.png",
-        "/product_images/Tiramisu_4.png",
-        "/product_images/Tiramisu_5.png",
-      ],
-    },
+    // {
+    //   id: 7,
+    //   name: t("Products.tiramisu.name"),
+    //   category: t("Categories.gammeGlace"),
+    //   categoryKey: "gammeGlace",
+    //   weight: "125g",
+    //   description: t("Products.tiramisu.description"),
+    //   isNew: false,
+    //   allergens: t("Products.tiramisu.allergens"),
+    //   nutritional_values: {
+    //     energy: "853 kj / 204 kcal",
+    //     fat: "10.0 g",
+    //     saturated_fat: "6.4 g",
+    //     carbohydrates: "24.6 g",
+    //     sugars: "24.4 g",
+    //     fiber: "",
+    //     protein: "3.9 g",
+    //     salt: "0.26 g",
+    //   },
+    //   storage_conditions: glaceStorage,
+    //   main_image: "/product_images/Tiramisu_1.png",
+    //   other_images: [
+    //     "/product_images/Tiramisu_2.png",
+    //     "/product_images/Tiramisu_3.png",
+    //     "/product_images/Tiramisu_4.png",
+    //     "/product_images/Tiramisu_5.png",
+    //   ],
+    // },
     {
       id: 8,
       name: t("Products.classicTiramisu.name"),
@@ -243,7 +248,7 @@ export const getDessertData = (t: any): DessertInterface[] => {
       categoryKey: "verrineRange",
       weight: "100g",
       description: t("Products.classicTiramisu.description"),
-      isNew: true,
+      isNew: false,
       allergens: t("Products.classicTiramisu.allergens"),
       nutritional_values: {
         energy: "1449 kj / 347 kcal",
@@ -270,7 +275,7 @@ export const getDessertData = (t: any): DessertInterface[] => {
       category: t("Categories.verrineRange"),
       categoryKey: "verrineRange",
       weight: "95g",
-      isNew: true,
+      isNew: false,
       description: t("Products.chocolateMousse.description"),
       allergens: t("Products.chocolateMousse.allergens"),
       nutritional_values: {
@@ -298,7 +303,7 @@ export const getDessertData = (t: any): DessertInterface[] => {
       category: t("Categories.verrineRange"),
       categoryKey: "verrineRange",
       weight: "105g",
-      isNew: true,
+      isNew: false,
       description: t("Products.kinderBueno.description"),
       allergens: t("Products.kinderBueno.allergens"),
       nutritional_values: {
@@ -327,7 +332,7 @@ export const getDessertData = (t: any): DessertInterface[] => {
       categoryKey: "verrineRange",
       weight: "110g",
       description: t("Products.lemonCheesecake.description"),
-      isNew: true,
+      isNew: false,
       allergens: t("Products.lemonCheesecake.allergens"),
       nutritional_values: {
         energy: "1305 kj / 312 kcal",
@@ -355,7 +360,7 @@ export const getDessertData = (t: any): DessertInterface[] => {
       categoryKey: "verrineRange",
       weight: "110g",
       description: t("Products.mangoCheesecake.description"),
-      isNew: true,
+      isNew: false,
       allergens: t("Products.mangoCheesecake.allergens"),
       nutritional_values: {
         energy: "1414 kj / 338 kcal",
@@ -382,7 +387,7 @@ export const getDessertData = (t: any): DessertInterface[] => {
       category: t("Categories.verrineRange"),
       categoryKey: "verrineRange",
       weight: "105g",
-      isNew: true,
+      isNew: false,
       description: t("Products.oreoCrumble.description"),
       allergens: t("Products.oreoCrumble.allergens"),
       nutritional_values: {
@@ -411,7 +416,7 @@ export const getDessertData = (t: any): DessertInterface[] => {
       categoryKey: "verrineRange",
       weight: "105g",
       description: t("Products.pistachioCream.description"),
-      isNew: true,
+      isNew: false,
       allergens: t("Products.pistachioCream.allergens"),
       nutritional_values: {
         energy: "1629 kj / 390 kcal",
@@ -437,7 +442,7 @@ export const getDessertData = (t: any): DessertInterface[] => {
       name: t("Products.raspberryCheesecake.name"),
       category: t("Categories.verrineRange"),
       categoryKey: "verrineRange",
-      isNew: true,
+      isNew: false,
       weight: "110g",
       description: t("Products.raspberryCheesecake.description"),
       allergens: t("Products.raspberryCheesecake.allergens"),
@@ -494,7 +499,7 @@ export const getDessertData = (t: any): DessertInterface[] => {
       category: t("Categories.verrineRange"),
       categoryKey: "verrineRange",
       weight: "105g",
-      isNew: true,
+      isNew: false,
       description: t("Products.saltedCaramel.description"),
       allergens: t("Products.saltedCaramel.allergens"),
       nutritional_values: {
@@ -522,7 +527,7 @@ export const getDessertData = (t: any): DessertInterface[] => {
       category: t("Categories.verrineRange"),
       categoryKey: "verrineRange",
       weight: "105g",
-      isNew: true,
+      isNew: false,
       description: t("Products.snickersTiramisu.description"),
       allergens: t("Products.snickersTiramisu.allergens"),
       nutritional_values: {
@@ -550,7 +555,7 @@ export const getDessertData = (t: any): DessertInterface[] => {
       category: t("Categories.verrineRange"),
       categoryKey: "verrineRange",
       weight: "110g",
-      isNew: true,
+      isNew: false,
       description: t("Products.speculoosTiramisu.description"),
       allergens: t("Products.speculoosTiramisu.allergens"),
       nutritional_values: {

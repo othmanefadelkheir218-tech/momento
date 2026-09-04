@@ -228,15 +228,7 @@ function ProductCard({ product, isHovered, onMouseEnter, onMouseLeave, onClick }
                     {/* <p className="text-sm md:text-base lg:text-lg font-bold text-primary trispace-font">{product.category}</p> */}
                 </div>
 
-                <div className={`shrink-0 transition-all duration-300 ${isHovered ? "scale-110" : "scale-100"}`}>
-                    <CostumButton
-                        backgroundColor="#DB212F"
-                        className="w-10 h-10 md:w-12 md:h-12 lg:w-20 lg:h-20 bg-primaryLighter border-primaryLighter text-white hover:border-white">
-                        <ShoppingBag
-                            className={`w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 ${isHovered ? "scale-110" : "scale-100"}`}
-                        />
-                    </CostumButton>
-                </div>
+              
             </div>
         </div>
     )

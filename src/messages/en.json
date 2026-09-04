@@ -278,7 +278,7 @@
       "defrosting": "Defrosting time in the refrigerator at +4°C: 4 hours",
       "potsPerBox": "12 cups per box",
       "noColorants": "No artificial colorings",
-      "fishGelatin": "Fish gelatin",
+      "fishGelatin": "Without Gelatin",
       "halal": "100% HALAL",
       "quickService": "Ready for quick service",
       "longStorage": "Suitable for long-term storage in the refrigerator"
@@ -305,7 +305,7 @@
         "allergens": "Milk, chocolate biscuits, wheat, coconut, palm, butter, cream, soy."
       },
       "speculoos": {
-        "name": "Speculoos",
+        "name": "White Chocolate Speculoos",
         "description": "Classic spiced biscuit ice cream with crunchy speculoos pieces and a hint of cinnamon.",
         "allergens": "Milk, speculoos biscuits, wheat, palm, soy, butter, white chocolate, cream."
       },
