@@ -21,7 +21,7 @@ export async function generateMetadata({
     const { locale } = await params;
     const t = await getTranslations({ locale, namespace: "Metadata" });
 
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://momento-artisanal.com"; // Provide a fallback if not set
+    const baseUrl = process.env.NEXT_BASE_URL || "https://momento-artisanal.com"; // Provide a fallback if not set
 
     return {
         title: {
