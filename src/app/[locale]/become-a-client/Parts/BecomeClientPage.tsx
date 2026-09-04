@@ -106,7 +106,7 @@ export default function BecomeClientPage() {
     setSubmitStatus("idle");
 
     try {
-      const response = await fetch("/api/momento-contact", {
+      const response = await fetch("/api/central/partner", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

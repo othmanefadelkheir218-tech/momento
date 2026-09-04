@@ -109,7 +109,7 @@ export default function FooterSection() {
     setIsSubmitting(true)
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('/api/central/subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
