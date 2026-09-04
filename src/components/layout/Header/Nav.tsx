@@ -33,9 +33,10 @@ export default function Nav({ isActive, setIsActive }: NavProps) {
   const locale = useLocale();
   const router = useRouter();
   const languages = [
-    { code: "en", label: "EN", fullName: t3("en") },
+    { code: "nl", label: "NL", fullName: t3("nl") },
     { code: "fr", label: "FR", fullName: t3("fr") },
     { code: "de", label: "DE", fullName: t3("de") },
+    { code: "en", label: "EN", fullName: t3("en") },
   ];
   const [_, startTransition] = useTransition();
   const container = useRef<HTMLDivElement>(null);

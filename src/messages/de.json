@@ -259,7 +259,8 @@
     "Languages": {
         "en": "Englisch",
         "fr": "Französisch",
-        "de": "Deutsch"
+        "de": "Deutsch",
+        "nl": "Niederländisch"
     },
     "Social": {
         "facebook": "Facebook",
@@ -360,17 +361,17 @@
                 "allergens": "Ei, Gluten, Haselnüsse, Laktose, Milch, Soja, Weizen, Walnüsse."
             },
             "redVelvetTiramisu": {
-                "name": "Red Velvet Tiramisu",
+                "name": "Red Velvet",
                 "description": "Der ikonische Red Velvet Cake neu interpretiert als anspruchsvolles Tiramisu-Erlebnis.",
                 "allergens": "Ei, Gluten, Haselnüsse, Laktose, Milch, Soja, Weizen, Walnüsse."
             },
             "saltedCaramel": {
-                "name": "Salzkaramell",
-                "description": "Zartschmelzendes Dessert mit der charakteristischen Salzkaramell-Creme von Momento.",
+                "name": "Spekulatius & Karamell mit gesalzener Butter",
+                "description": "Zartschmelzendes Dessert mit der charakteristischen Spekulatius- & Salzkaramell-Creme von Momento.",
                 "allergens": "Ei, Gluten, Haselnuss, Laktose, Milch, Soja, Weizen, Walnüsse."
             },
             "snickersTiramisu": {
-                "name": "Snickers Tiramisu",
+                "name": "Snickers",
                 "description": "Eine kühne Variante des Tiramisus mit gerösteten Erdnüssen, Karamell und einer Schicht im Snickers-Stil.",
                 "allergens": "Ei, Gluten, Haselnuss, Laktose, Milch, Erdnüsse, Soja, Weizen."
             },

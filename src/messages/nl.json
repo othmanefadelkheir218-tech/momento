@@ -1,0 +1,434 @@
+{
+  "Metadata": {
+    "title": "Momento - Ambachtelijk IJs & Desserts",
+    "description": "MOMENTO - Ambachtelijke bevroren desserts die elk moment in een onvergetelijke ervaring transformeren.",
+    "home": {
+      "title": "Momento | Ambachtelijk IJs & Premium Bevroren Desserts",
+      "description": "Ontdek Momento: gourmet verrines, handgemaakte ijscrème en unieke bevroren creaties. Perfectie in elke hap."
+    },
+    "about": {
+      "title": "Ons Verhaal & Waarden | De Passie Achter Momento",
+      "description": "Van ambachtelijke wortels tot creatieve innovatie. Ontdek hoe Momento bevroren desserts opnieuw uitvindt met kwaliteit en ambacht."
+    },
+    "faq": {
+      "title": "Veelgestelde Vragen & Ondersteuning | Uw Vragen Beantwoord - Momento",
+      "description": "Vragen over onze ingrediënten, bestellingen of ambacht? Vind hier al uw antwoorden."
+    },
+    "contact": {
+      "title": "Neem Contact Met Ons Op | Laten We Gourmands Spreken - Momento",
+      "description": "Neem contact op met Momento voor evenementen, partnerschappen, of gewoon om hallo te zeggen. We horen graag van u."
+    },
+    "becomeClient": {
+      "title": "Word een Partner | Groothandel - Momento",
+      "description": "Word partner met Momento als groothandelaar. Bied premium ambachtelijke desserts aan uw klanten met exclusieve prijzen en toegewijde ondersteuning."
+    }
+  },
+  "Header": {
+    "navigation": "Navigatie",
+    "followUs": "Volg ons",
+    "CopyRight": "Alle rechten voorbehouden."
+  },
+  "Footer": {
+    "joingMomento": "MELD JE AAN VOOR DE MOMENTO ERVARING",
+    "textMomento": "Het dessert dat uw momenten opnieuw uitvindt. Sluit je bij ons aan en blijf op de hoogte van onze ambachtelijke creaties en bevroren innovaties.",
+    "placeholder": "Uw e-mailadres",
+    "subscribe": "Abonneren",
+    "sending": "Verzenden...",
+    "failed": "Abonnement mislukt. Probeer het later opnieuw.",
+    "popup": {
+      "title": "BEDANKT VOOR HET ABONNEREN!",
+      "message": "U bent nu onderdeel van de MOMENTO-gemeenschap. Bereid u voor om onze nieuwste creaties en exclusieve aanbiedingen te ontvangen!",
+      "decorativeText": "BINNENKORT? DAN IS ER EEN"
+    },
+    "contact": {
+      "heading": "HEBT U EEN VRAAG? WIJ HEBBEN HET ANTWOORD!",
+      "doneTitle": "VOLTOOID: UW VERZOEK WORDT VERWERKT",
+      "doneMessage": "We hebben het formulier naar uw e-mailadres verzonden voor invulling. Wees gerust, uw antwoorden zullen binnenkort worden beoordeeld. Dank je dat je deel uitmaakt van deze spannende reis!",
+      "labels": {
+        "cooperation": "Type samenwerking",
+        "city": "Stad",
+        "name": "Uw naam",
+        "phone": "Telefoon",
+        "email": "E-mail",
+        "message": "Bericht"
+      },
+      "options": {
+        "distributor": "Verkoop- of distributeurpartnerschap",
+        "commercial": "Commercieel verzoek",
+        "partnership": "Partnershipsmogelijkheid",
+        "general": "Algemene vraag"
+      },
+      "placeholders": {
+        "city": "Uw stad",
+        "name": "Voer uw naam in",
+        "message": "Hoe kunnen we u helpen?",
+        "email": "uw@email.com",
+        "phone": "+31 6 00 00 00 00"
+      },
+      "button": "Verzenden",
+      "sending": "Verzenden...",
+      "error": "Kon het bericht niet verzenden. Probeer het later opnieuw."
+    },
+    "bottom": {
+      "rights": "Alle rechten voorbehouden.",
+      "createdBy": "Gemaakt door"
+    }
+  },
+  "HomePage": {
+    "title": "Startpagina",
+    "welcome": "Welkom bij Momento",
+    "description": "Momenten vastleggen, herinneringen creëren.",
+    "catalogueButton": "Catalogus",
+    "MainHeading1": "Het geheim zit in",
+    "MainHeading2": "de room",
+    "MainDescription": "Verfijnde desserts, verwennerijen verrines en ambachtelijke ijscrèmes, gemaakt om een unieke ervaring in elk moment te bieden. Het geheim zit in de crème.",
+    "HeroMarquee": {
+      "row1Part1": "MAAK JE MOMENT * ",
+      "row1Part2": "Kleine momenten, grote herinneringen *",
+      "row2Part1": "Het geheim zit in de room *",
+      "row2Part2": "Ambachtelijke recepten *",
+      "row3Part1": "Traditie & creativiteit *",
+      "row3Part2": "100% halal *"
+    },
+    "ProductCards": {
+      "menuButton": "Menu",
+      "newBadge": "NIEUW",
+      "weightLabel": "Gewicht",
+      "iceCreamRange": "IJscollectie",
+      "dubaiChocolate": "Dubai Chocolade"
+    },
+    "BannerSection": {
+      "line1": "Een bevroren dessert",
+      "line2": "dat smelt",
+      "line3": "elk moment.",
+      "titleLine1": "Degenen die hebben geproefd weten het al.",
+      "titleLine2": "De anderen zullen het binnenkort begrijpen.",
+      "description1": "Onze ambitie gaat verder dan het creëren van een bevroren dessert. We willen de zintuigen wakker maken en elk hapje in een emotionele ervaring veranderen.",
+      "description2": "Bij MOMENTO zijn geen shortcuts toegestaan, niet in smaken, niet in ingrediënten, niet in ambacht. Elke creatie is zorgvuldig ontworpen om een authentieke en onvergetelijke ervaring op te leveren.",
+      "about_us_button": "Over Ons",
+      "imageAlt1": "Vrouw geniet van Mr. Pops-ijscream",
+      "imageAlt2": "Vrouw geniet van ijscream",
+      "imageAlt3": "Vrouw proeft ijscream"
+    },
+    "PartnershipSection": {
+      "titleLine1": "We houden van",
+      "titleLine2": "partnerschappen",
+      "descriptionPart1": "Stel je je vestiging voor - café, restaurant of winkelruimte - die veel meer biedt dan alleen een dessert.",
+      "descriptionPart2": "Met MOMENTO bied je ambachtelijke creaties die de ervaring van uw klanten verbeteren en uw aanbod eenvoudig en effectief verbeteren."
+    },
+    "Features": {
+      "section1": {
+        "title": "Met zorg bereid",
+        "description": "Elke MOMENTO creatie wordt gemaakt met precisie en zorg, met respect voor echt ambachtelijk vakmanschap. Texturen worden zorgvuldig verfijnd om het perfecte evenwicht tussen zachtheid, romigheid en verwennerij te bereiken."
+      },
+      "section2": {
+        "title": "Smaken die inspireren",
+        "description": "Geïnspireerd door traditie en gedreven door creativiteit, biedt ons receptenboek een rijke en gebalanceerde smakenvariatie. Elke proefmoment is een uitnodiging om nieuwe sensaties te ontdekken terwijl je trouw blijft aan authenticiteit."
+      },
+      "section3": {
+        "title": "Momenten om te delen",
+        "description": "MOMENTO is meer dan een desserthet is een moment om te ervaren en te delen. Voor elke gelegenheid begeleiden onze creaties de kleine momenten die blijvende herinneringen worden."
+      }
+    }
+  },
+  "AboutPage": {
+    "title": "Over Ons",
+    "description": "We zijn een team van gepassioneerde makers.",
+    "InANutshell": {
+      "titles": [
+        "ERVAAR JE",
+        "MOMENT",
+        "ELKE HAPI",
+        "VERTELT",
+        "EEN VERHAAL"
+      ],
+      "description1": "Voortgekomen uit een passie voor ambachtelijke taarten, biedt Momento desserts die expertise en creativiteit combineren, met bijzondere aandacht voor de kwaliteit van ingrediënten.",
+      "description2": "Het merk is geëvolueerd naar een diverse reeks gourmet creaties, van herziene klassiekers tot handtekenrecept, ontworpen om een unieke ervaring te bieden.",
+      "description3": "Vandaag innoveert Momento voortdurend met moderne desserts, ontworpen om eenvoudige en onvergetelijke momenten van genot te creëren.",
+      "rotatingText": "MOMENTO • AMBACHTELIJK IJSMAKER • AMBACHTELIJK IJSMAKER • MOMENTO • AMBACHTELIJK IJSMAKER • MOMENTO • AMBACHTELIJK IJSMAKER • MOMENTO • AMBACHTELIJK IJSMAKER • MOMENTO • AMBACHTELIJK IJSMAKER • MOMENTO • AMBACHTELIJK IJSMAKER • MOMENTO •",
+      "imageAlt": "Lachende vrouw geniet van Momento ijscream"
+    },
+    "section1": {
+      "badge": "Ons Verhaal",
+      "est": "Opgericht.",
+      "title": "Waar gourmet <instants>momenten</instants> tot leven komen",
+      "imageAlt": "Ambachtelijke ijscream wordt zorgvuldig bereid",
+      "subtitle": "Een passie geboren uit liefde voor uitzonderlijke desserts",
+      "text": "De MOMENTO-reis werd geboren uit een eenvoudig verlangen: elk hapje in een onvergetelijk moment veranderen. Geïnspireerd door vakmanschap en creativiteit, hebben we onze technieken verfijnd om desserts en ijscrèmes te bieden die onze liefde voor detail weerspiegelen."
+    },
+    "philosophy": {
+      "badge": "Onze Waarden",
+      "title": "<authentiques>Authenticiteit</authentiques>, Innovatie & Vakmanschap",
+      "imageAlt": "Verse, hoogwaardige ingrediënten die in onze recepten worden gebruikt",
+      "text": "Bij Momento geven we prioriteit aan de kwaliteit van ingrediënten, innovatie en ambachtelijk vakmanschap om uitzonderlijke desserts te creëren.",
+      "stats": {
+        "artisanal": "Ambachtelijk",
+        "artisanalSub": "Traditionele Vaardigheid",
+        "quality": "Kwaliteit",
+        "qualitySub": "Ingrediëntselectie",
+        "creativity": "Innovatie",
+        "creativitySub": "Handtekeningrecepten"
+      }
+    },
+    "craft": {
+      "badge": "Vakmanschap",
+      "title": "Met passie vervaardigde <artisanales>ambachtelijke</artisanales> creaties",
+      "imageAlt": "Ambachtelijke voorbereiding van een Momento dessert",
+      "text": "Elk dessert wordt zorgvuldig bereid, met respect voor echte ambachtelijke technieken. We besteden bijzondere aandacht aan texturen om een uniek glad en verwennerij ervaring op te leveren.",
+      "gallery": {
+        "step1": "Karnen",
+        "step2": "Perfectie",
+        "step3": "Serveren"
+      }
+    },
+    "promise": {
+      "badge": "Waarom Kiezen Voor Ons?",
+      "title": "Elke hap, <moment>een unieke ervaring</moment>",
+      "text": "Momento biedt ambachtelijke desserts, gourmet verrines en premium ijscrèmes. Ontdek unieke creaties die kwaliteit, smaak en expertise combineren.",
+      "items": [
+        "Premium ambachtelijke desserts",
+        "Hoogwaardige ingrediënten",
+        "Grote keuze uit verrines en ijscrèmes",
+        "Unieke gourmet ervaring"
+      ],
+      "button": "Ontdek ons menu"
+    }
+  },
+  "FAQPage": {
+    "description": "Veelgestelde Vragen",
+    "title": "Vragen",
+    "items": {
+      "history": {
+        "question": "Hoe het allemaal begon",
+        "answer": [
+          "De MOMENTO-reis werd geboren uit een passie voor uitzonderlijke desserts en ijscrèmes.",
+          "Gedreven door de wens om traditie en creativiteit te combineren, begonnen we met een eenvoudig idee: elk hapje in een onvergetelijk moment veranderen.",
+          "Na verloop van tijd hebben we onze recepten en technieken verfijnd om creaties te bieden die onze liefde voor detail en ons streven naar excellentie weerspiegelen."
+        ]
+      },
+      "partnership": {
+        "question": "Onze partnerschapsbenadering",
+        "answer": [
+          "MOMENTO is een ambachtelijk merk dat zich diep inzet voor kwaliteit en de coherentie van zijn universum. Om deze reden selecteren we onze partners zorgvuldig.",
+          "We geven prioriteit aan vestigingen die onze waarden, onze hoge kwaliteitsnormen en onze focus op klantenervaring delen."
+        ]
+      },
+      "ingredients": {
+        "question": "Onze ingrediënten",
+        "answer": [
+          "We hechten groot belang aan de selectie van ingrediënten, met voorkeur voor kwaliteit, authenticiteit en respect voor onze recepten.",
+          "Elke creatie is ontworpen om een perfect evenwicht tussen smaken, texturen en verwennerij te bieden, zonder concessies te doen op normen."
+        ]
+      },
+      "events": {
+        "question": "Bestellingen en evenementen",
+        "answer": [
+          "MOMENTO ondersteunt ook speciale momenten via speciale bestellingen voor professionele of particuliere evenementen.",
+          "Voor elk specifiek verzoek nodigen we u uit om contact met ons op te nemen zodat we samen de mogelijkheden kunnen verkennen op basis van uw behoeften."
+        ]
+      },
+      "locations": {
+        "question": "Waar MOMENTO te vinden",
+        "answer": [
+          "MOMENTO creaties zijn beschikbaar via onze geselecteerde partners en verkooppunten.",
+          "We breiden onze aanwezigheid geleidelijk uit om ervoor te zorgen dat de kwaliteit consistent blijft en een ervaring die trouw blijft aan het universum van het merk."
+        ]
+      }
+    }
+  },
+  "MenuPage": {
+    "title": "Menu",
+    "description": "Onze heerlijke aanbiedingen"
+  },
+  "ContactPage": {
+    "title": "Neem Contact Op",
+    "description": "Neem contact met ons op"
+  },
+  "Navigation": {
+    "home": "Startpagina",
+    "about": "Over",
+    "faq": "Veelgestelde Vragen",
+    "menu": "Menu",
+    "contact": "Contacteer",
+    "becomeClient": "Word een Partner"
+  },
+  "Common": {
+    "toggleTheme": "Thema Wijzigen",
+    "changeLanguage": "Taal Wijzigen"
+  },
+  "Languages": {
+    "en": "English",
+    "fr": "Français",
+    "de": "Deutsch",
+    "nl": "Nederlands"
+  },
+  "Social": {
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "linkedin": "LinkedIn",
+    "twitter": "Twitter"
+  },
+  "Desserts": {
+    "Categories": {
+      "dubaiChocolat": "Dubai Chocolade",
+      "gammeGlace": "IJscollectie",
+      "verrineRange": "Verrine Collectie"
+    },
+    "Common": {
+      "storageTitle": "Opslagomstandigheden",
+      "defrosting": "Ontdooitijd in de koelkast op +4°C: 4 uur",
+      "potsPerBox": "12 bekers per doos",
+      "noColorants": "Geen kunstmatige kleurstoffen",
+      "fishGelatin": "Zonder Gelatine",
+      "halal": "100% HALAL",
+      "quickService": "Klaar voor snelle bediening",
+      "longStorage": "Geschikt voor langdurige opslag in de koelkast"
+    },
+    "Products": {
+      "dubaiChocolatSnackBar": {
+        "name": "Dubai Chocolade Snackbar",
+        "description": "Verwennerij snackbar met fijne chocolade, romige pistache en krokante kunafa.",
+        "allergens": "Bevat: melk, soja, pistache, tarwe, walnoot, sesam."
+      },
+      "dubaiChocolatTablet": {
+        "name": "Dubai Chocolade Tablet",
+        "description": "Grote Dubai-stijl chocoladereep met een rijke pistache en krokante kunafa vulling.",
+        "allergens": "Bevat: melk, soja, pistache, tarwe, walnoot, sesam."
+      },
+      "citron": {
+        "name": "Citroen",
+        "description": "Verfrissende ambachtelijke citroenijscream met een zure citrusspiraal en krokante basis.",
+        "allergens": "Melk, suiker, boter, yoghurt, room, tarwe, eieren, soja."
+      },
+      "madagascarVanilla": {
+        "name": "Madagascar Vanille",
+        "description": "Premium vanille-ijscream gemaakt van echte Madagascar bonen voor een rijke, aromatische ervaring.",
+        "allergens": "Melk, chocolade koekjes, tarwe, kokosnoot, palm, boter, room, soja."
+      },
+      "speculoos": {
+        "name": "Witte Chocolade Speculoos",
+        "description": "Klassieke speculaas ijscream met krokante speculaas stukjes en een vleugje kaneel.",
+        "allergens": "Melk, speculaas koekjes, tarwe, palm, soja, boter, witte chocolade, room."
+      },
+      "supremeChocolateBrownie": {
+        "name": "Superieure Chocolade & Brownie",
+        "description": "Gladde chocolade-ijscream met fudgy brownie stukjes en een fijne cacaoswirl.",
+        "allergens": "Melk, chocolade, brownie stukjes, eieren, tarwe, boter, soja."
+      },
+      "tiramisu": {
+        "name": "Tiramisu",
+        "description": "Ambachtelijke ijscream geïnspireerd door de Italiaanse klassieker, met koffie doordrenkt koekje en mascarpone.",
+        "allergens": "Melk, mascarpone, boter, room, koekje, tarwe, eieren, cacao."
+      },
+      "classicTiramisu": {
+        "name": "Klassieke Tiramisu",
+        "description": "Authentieke Italiaanse verrine met ladyfingers, sterke koffie en romige mascarpone.",
+        "allergens": "Ei, gluten, hazelnoten, lactose, melk, pecannoten, soja, tarwe, walnoten."
+      },
+      "chocolateMousse": {
+        "name": "Chocolademousse",
+        "description": "Lichte en luchtigen Belgische chocolademousse, gemaakt voor de ultieme gourmetervaring.",
+        "allergens": "Ei, lactose, melk, soja."
+      },
+      "kinderBueno": {
+        "name": "Kinder Bueno",
+        "description": "Hazelnoot room dessert geïnspireerd door de beroemde Kinder Bueno, afgetopt met krokante chocolade.",
+        "allergens": "Ei, gluten, hazelnoot, lactose, melk, soja, tarwe, pistaches."
+      },
+      "lemonCheesecake": {
+        "name": "Citroen Cheesecake",
+        "description": "Romige cheesecake verrine met een zure citroen coulis en een kruimelige koekjesbasis.",
+        "allergens": "Ei, gluten, hazelnoten, lactose, melk, soja, tarwe, walnoten."
+      },
+      "mangoCheesecake": {
+        "name": "Mango Cheesecake",
+        "description": "Exotische cheesecake verrine met een tropische mango coulis en krokante koekje.",
+        "allergens": "Ei, gluten, hazelnoten, lactose, melk, soja, tarwe, walnoten."
+      },
+      "oreoCrumble": {
+        "name": "Oreo Crumble",
+        "description": "Speelse verrine met lagen van fluweelzachte room en een royale Oreo koeksbroodkruimel.",
+        "allergens": "Ei, gluten, hazelnoten, lactose, melk, soja, tarwe, walnoten."
+      },
+      "pistachioCream": {
+        "name": "Pistache Crème",
+        "description": "Luxe lagen van pistache en witte chocolade mousse, geïnspireerd door traditionele recepten.",
+        "allergens": "Ei, gluten, hazelnoot, lactose, melk, soja, tarwe, pistaches."
+      },
+      "raspberryCheesecake": {
+        "name": "Framboos Cheesecake",
+        "description": "Zoete en zure cheesecake verrine met een levendige frambozen coulis topping.",
+        "allergens": "Ei, gluten, hazelnoten, lactose, melk, soja, tarwe, walnoten."
+      },
+      "redVelvetTiramisu": {
+        "name": "Red Velvet",
+        "description": "De iconische Red Velvet cake opnieuw geïnterpreteerd als een verfijnde tiramisu ervaring.",
+        "allergens": "Ei, gluten, hazelnoten, lactose, melk, soja, tarwe, walnoten."
+      },
+      "saltedCaramel": {
+        "name": "Speculoos & Gezouten Boter Caramel",
+        "description": "Zacht smeltend dessert met de kenmerkende Speculoos & Gezouten Boter Caramel room van Momento.",
+        "allergens": "Ei, gluten, hazelnoot, lactose, melk, soja, tarwe, walnoten."
+      },
+      "snickersTiramisu": {
+        "name": "Snickers",
+        "description": "Een gedurfde twist op tiramisu met geroosterde pinda's, caramel en een Snickers-stijl laag.",
+        "allergens": "Ei, gluten, hazelnoot, lactose, melk, pinda's, soja, tarwe."
+      },
+      "speculoosTiramisu": {
+        "name": "Speculoos Tiramisu",
+        "description": "Een lokale favoriet met lagen van gekruide speculaas koekje en fijne mascarpone room.",
+        "allergens": "Ei, gluten, hazelnoot, lactose, melk, soja, tarwe, walnoten."
+      }
+    }
+  },
+  "NotFound": {
+    "title": "Oeps! Gesmolten.",
+    "description": "Het lijkt erop dat de pagina die u zoekt is gesmolten of nooit heeft bestaan. Maak je geen zorgen, onze traktaties wachten op je elders.",
+    "button": "Terug naar zoetigheden"
+  },
+  "BecomeClientPage": {
+    "heading": "WORD EEN PARTNER",
+    "subheading": "Sluit je aan bij de MOMENTO-familie en bied premium ambachtelijke desserts aan uw klanten",
+    "formTitle": "VOED UW GEGEVENS IN",
+    "labels": {
+      "businessName": "Bedrijfsnaam",
+      "contactName": "Contactpersoon",
+      "phone": "Telefoon",
+      "email": "E-mail",
+      "city": "Stad",
+      "businessType": "Type Bedrijf",
+      "quantity": "Geschatte Maandelijkse Hoeveelheid",
+      "message": "Aanvullende Informatie"
+    },
+    "businessTypes": {
+      "restaurant": "Restaurant",
+      "cafe": "Café / Koffiehuis",
+      "hotel": "Hotel",
+      "retail": "Winkel",
+      "caterer": "Cateringservice",
+      "other": "Overig"
+    },
+    "placeholders": {
+      "businessName": "Uw bedrijfsnaam",
+      "contactName": "Uw volledige naam",
+      "phone": "+31 6 00 00 00 00",
+      "email": "contact@uw-bedrijf.com",
+      "city": "Uw stad",
+      "quantity": "bijv. 100 eenheden/maand",
+      "message": "Vertel ons meer over uw project..."
+    },
+    "button": "Verzend Mijn Verzoek",
+    "sending": "Verzenden...",
+    "error": "Kon uw verzoek niet verzenden. Probeer het opnieuw.",
+    "doneTitle": "VERZOEK ONTVANGEN!",
+    "doneMessage": "Bedankt voor uw interesse om een MOMENTO partner te worden. Ons team zal uw verzoek beoordelen en binnenkort contact met u opnemen.",
+    "benefits": {
+      "title": "WAAROM PARTNER WORDEN MET ONS?",
+      "item1": "Exclusieve groothandelsprijzen",
+      "item2": "Directe levering aan uw vestiging",
+      "item3": "Toegewijde accountmanager",
+      "item4": "Marketingondersteuning inbegrepen"
+    }
+  }
+}

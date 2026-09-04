@@ -259,7 +259,8 @@
   "Languages": {
     "en": "English",
     "fr": "French",
-    "de": "German"
+    "de": "German",
+    "nl": "Dutch"
   },
   "Social": {
     "facebook": "Facebook",
@@ -360,17 +361,17 @@
         "allergens": "Egg, gluten, hazelnuts, lactose, milk, soy, wheat, walnuts."
       },
       "redVelvetTiramisu": {
-        "name": "Red Velvet Tiramisu",
+        "name": "Red Velvet",
         "description": "The iconic Red Velvet cake reinterpreted as a sophisticated tiramisu experience.",
         "allergens": "Egg, gluten, hazelnuts, lactose, milk, soy, wheat, walnuts."
       },
       "saltedCaramel": {
-        "name": "Salted Caramel",
-        "description": "Meltingly soft dessert featuring Momento's signature salted caramel cream.",
+        "name": "Speculoos & Salted Butter Caramel",
+        "description": "Meltingly soft dessert featuring Momento's signature Speculoos & Salted Butter Caramel cream.",
         "allergens": "Egg, gluten, hazelnut, lactose, milk, soy, wheat, walnuts."
       },
       "snickersTiramisu": {
-        "name": "Snickers Tiramisu",
+        "name": "Snickers",
         "description": "A bold twist on tiramisu with roasted peanuts, caramel, and a Snickers-style layer.",
         "allergens": "Egg, gluten, hazelnut, lactose, milk, peanuts, soy, wheat."
       },

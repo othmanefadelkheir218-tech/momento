@@ -24,9 +24,10 @@ export default function LangSwitcher() {
             disabled={isPending}
             className="bg-transparent border border-gray-300 dark:border-gray-700 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-            <option value="en">English</option>
+            <option value="nl">Nederlands</option>
             <option value="fr">Français</option>
             <option value="de">Deutsch</option>
+            <option value="en">English</option>
         </select>
     );
 }

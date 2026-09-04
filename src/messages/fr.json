@@ -257,7 +257,8 @@
     "Languages": {
         "en": "Anglais",
         "fr": "Français",
-        "de": "Allemand"
+        "de": "Allemand",
+        "nl": "Néerlandais"
     },
     "Social": {
         "facebook": "Facebook",
@@ -358,17 +359,17 @@
                 "allergens": "Œuf, gluten, noisettes, lactose, lait, soja, blé, noix."
             },
             "redVelvetTiramisu": {
-                "name": "Tiramisu Red Velvet",
+                "name": "Red Velvet",
                 "description": "L'emblématique Red Velvet Cake réinterprété pour une expérience tiramisu sophistiquée.",
                 "allergens": "Œuf, gluten, noisettes, lactose, lait, soja, blé, noix."
             },
             "saltedCaramel": {
-                "name": "Caramel au beurre salé",
-                "description": "Dessert fondant avec la crème au caramel au beurre salé caractéristique de Momento.",
+                "name": "Speculoos & Caramel au beurre salé",
+                "description": "Dessert fondant avec la crème au Speculoos & Caramel au beurre salé caractéristique de Momento.",
                 "allergens": "Œuf, gluten, noisette, lactose, lait, soja, blé, noix."
             },
             "snickersTiramisu": {
-                "name": "Tiramisu Snickers",
+                "name": "Snickers",
                 "description": "Une variante audacieuse du tiramisu avec des cacahuètes grillées, du caramel et une couche façon Snickers.",
                 "allergens": "Œuf, gluten, noisette, lactose, lait, cacahuètes, soja, blé."
             },
