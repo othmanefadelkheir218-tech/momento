@@ -75,42 +75,41 @@ export const logoAnim = (element: SVGPathElement, box?: HTMLElement | null) => {
         strokeDasharray: length,
         strokeDashoffset: length,
         fillOpacity: 0,
-        opacity: 1,
+        autoAlpha: 1,
         scale: 1,
         transformOrigin: "center center"
     });
 
     // Logo always starts centered and visible for every transition
-    if (box) gsap.set(box, { y: 0, opacity: 1 });
+    // (autoAlpha, so it also clears the visibility:hidden left by the shrink)
+    if (box) gsap.set(box, { y: 0, autoAlpha: 1 });
 
     return {
         enter: () => {
-            // Ride up and off with the curtain, instead of dissolving
-            // in place on top of the page that just got revealed.
-            if (!box) {
-                gsap.to(element, { opacity: 0, duration: 0.8, ease: "sine.inOut" });
-                return;
-            }
+            // Shrink away in place: the logo holds its position and scales
+            // down to nothing. Kept short so it is fully gone before the
+            // rising curtain reaches it.
+            const shrink = 0.32;
 
-            const travel = typeof window !== "undefined" ? window.innerHeight : 1000;
+            const done = () => {
+                if (box) gsap.set(box, { autoAlpha: 0 });
+                else gsap.set(element, { autoAlpha: 0 });
+            };
 
-            gsap.timeline()
-                .to(box, {
-                    y: -travel,
-                    duration: duration,
-                    ease: "cubic-bezier(0.76, 0, 0.24, 1)" // same as translateAnim, so it moves locked to the curtain
-                }, 0)
-                // Scale down as it rises, so it reads as receding rather than just sliding
+            gsap.timeline({ onComplete: done })
                 .to(element, {
-                    scale: 0.55,
-                    duration: duration,
-                    ease: "sine.inOut"
+                    scale: 0,
+                    duration: shrink,
+                    ease: "power3.in",
+                    transformOrigin: "center center"
                 }, 0)
-                .to(box, {
+                // Fade only at the tail, so it reads as vanishing rather than
+                // leaving a dot behind at the end of the scale.
+                .to(element, {
                     opacity: 0,
-                    duration: duration * 0.55,
-                    ease: "sine.in"
-                }, duration * 0.4);
+                    duration: shrink * 0.5,
+                    ease: "power1.in"
+                }, shrink * 0.5);
         },
         exit: () => {
             // Pencil-trace the outline, then fill it in solid
