@@ -35,15 +35,23 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         return { title: "Product Not Found" };
     }
 
+    // Fall back to the site-wide share image when a product has no image of its own
+    const shareImage = product.main_image || "/share.jpg";
+    const description = product.description.slice(0, 150) + "...";
+
     return {
-        title: `${product.name} | Momento`,
-        description: product.description.slice(0, 150) + "...",
+        title: product.name,
+        description,
         openGraph: {
-            images: [product.main_image],
+            title: product.name,
+            description,
+            images: [shareImage],
         },
         twitter: {
             card: "summary_large_image",
-            images: [product.main_image],
+            title: product.name,
+            description,
+            images: [shareImage],
         },
     };
 }

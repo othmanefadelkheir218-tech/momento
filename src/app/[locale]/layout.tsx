@@ -46,9 +46,9 @@ export async function generateMetadata({
             siteName: "Momento",
             images: [
                 {
-                    url: "/images/HeroImage.png",
-                    width: 1200,
-                    height: 630,
+                    url: "/share.jpg",
+                    width: 4168,
+                    height: 1405,
                     alt: t("title"),
                 },
             ],
@@ -57,11 +57,20 @@ export async function generateMetadata({
             card: "summary_large_image",
             title: t("title"),
             description: t("description"),
-            images: ["/images/HeroImage.png"],
+            images: ["/share.jpg"],
         },
+        manifest: "/meta/site.webmanifest",
         icons: {
-            icon: "/icon.png",
-            apple: "/apple-icon.png",
+            icon: [
+                { url: "/favicon.ico", sizes: "any" },
+                { url: "/meta/favicon.svg", type: "image/svg+xml" },
+                { url: "/meta/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+                { url: "/meta/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+            ],
+            apple: [{ url: "/meta/apple-touch-icon.png", sizes: "180x180" }],
+            other: [
+                { rel: "mask-icon", url: "/meta/safari-pinned-tab.svg", color: "#DB212F" },
+            ],
         },
     };
 }
