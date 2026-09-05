@@ -70,25 +70,11 @@ export const translateAnim = (element: SVGSVGElement) => {
 export const logoAnim = (element: SVGPathElement, box?: HTMLElement | null) => {
     const length = element.getTotalLength();
 
-    // Set initial state (hidden/undrawn, unfilled)
-    gsap.set(element, {
-        strokeDasharray: length,
-        strokeDashoffset: length,
-        fillOpacity: 0,
-        autoAlpha: 1,
-        scale: 1,
-        transformOrigin: "center center"
-    });
-
-    // Logo always starts centered and visible for every transition
-    // (autoAlpha, so it also clears the visibility:hidden left by the shrink)
-    if (box) gsap.set(box, { y: 0, autoAlpha: 1 });
-
     return {
         enter: () => {
-            // Shrink away in place: the logo holds its position and scales
-            // down to nothing. Kept short so it is fully gone before the
-            // rising curtain reaches it.
+            // Shrink away in place, from whatever the logo currently looks
+            // like. No reset here: on a navigation the exit animation has
+            // just drawn the logo, and wiping that would make it pop.
             const shrink = 0.32;
 
             const done = () => {
@@ -112,7 +98,24 @@ export const logoAnim = (element: SVGPathElement, box?: HTMLElement | null) => {
                 }, shrink * 0.5);
         },
         exit: () => {
-            // Pencil-trace the outline, then fill it in solid
+            // Pencil-trace the outline, then fill it in solid.
+            // This is the only stage that needs a clean slate, so the reset
+            // lives here rather than on every logoAnim() call.
+            gsap.killTweensOf(element);
+            if (box) gsap.killTweensOf(box);
+
+            gsap.set(element, {
+                strokeDasharray: length,
+                strokeDashoffset: length,
+                fillOpacity: 0,
+                autoAlpha: 1,
+                scale: 1,
+                transformOrigin: "center center"
+            });
+
+            // autoAlpha, so it also clears the visibility:hidden left by enter()
+            if (box) gsap.set(box, { y: 0, autoAlpha: 1 });
+
             return new Promise<void>((resolve) => {
                 const tlExit = gsap.timeline({
                     onComplete: () => resolve()

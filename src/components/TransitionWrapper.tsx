@@ -51,19 +51,35 @@ export default function TransitionWrapper({ children }: { children: React.ReactN
         await curve.exit();
     };
 
+    // Keep the latest path builder reachable without making it an effect dep:
+    // a resize must not restart an intro that is already playing.
+    const getPathsRef = useRef(getPaths);
+    useEffect(() => { getPathsRef.current = getPaths; }, [getPaths]);
+
+    const isReady = dimensions.width !== null && dimensions.height !== null;
+
     // 2. Trigger Enter
     useEffect(() => {
-        if (!svgRef.current || !pathRef.current || !textRef.current || !dimensions.width) return;
+        if (!isReady || !svgRef.current || !pathRef.current || !textRef.current) return;
 
-        const { initial, target } = getPaths();
+        const { initial, target } = getPathsRef.current();
         const logo = logoAnim(textRef.current, logoBoxRef.current);
         const curve = curveAnim(pathRef.current, initial, target);
         const trans = translateAnim(svgRef.current);
 
+        let cancelled = false;
+        let claimedIntro = false;
+        let finishedIntro = false;
+
         const playTransition = async () => {
             if (isFirstLoad.current) {
-                await logo.exit();
+                // Claim it up front so a re-run can't skip straight to the
+                // shrink while the draw is still going.
                 isFirstLoad.current = false;
+                claimedIntro = true;
+                await logo.exit();
+                if (cancelled) return;
+                finishedIntro = true;
             }
             logo.enter();
             curve.enter();
@@ -72,7 +88,14 @@ export default function TransitionWrapper({ children }: { children: React.ReactN
 
         playTransition();
 
-    }, [pathname, dimensions, getPaths]); // 3. Now safe to include getPaths
+        return () => {
+            cancelled = true;
+            // Interrupted before the intro finished (StrictMode's double mount):
+            // hand the intro back so the next run still draws the logo.
+            if (claimedIntro && !finishedIntro) isFirstLoad.current = true;
+        };
+
+    }, [pathname, isReady]);
 
     return (
         <TransitionProvider triggerExitAnimation={triggerExitAnimation}>
