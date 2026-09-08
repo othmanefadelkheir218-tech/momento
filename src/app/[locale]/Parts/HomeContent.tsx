@@ -19,6 +19,7 @@ const RotatingModelSection = dynamic(() => import("@/components/home/RotatingMod
 export default function HomeContent() {
     const t = useTranslations("HomePage.ProductCards");
     const products = useDessertData();
+    const menu = useTranslations("Desserts.Categories");
 
     return (
         <>
@@ -31,19 +32,19 @@ export default function HomeContent() {
             />
 
             <ProductCardsSection
-                products={products.filter((product: DessertInterface) => product.categoryKey === "gammeGlace").slice(0, 8)}
+                products={products.filter((product: DessertInterface) => product.categoryKey === "verrineRange").slice(0, 4)}
                 ShowTitle={true}
                 showAll={true}
-                title={t("iceCreamRange")}
+                title={menu("verrineRange")}
             />
 
             <ProductCardsSection
-                products={products.filter((product: DessertInterface) => product.categoryKey === "dubaiChocolat").slice(0, 8)}
+                products={products.filter((product: DessertInterface) => product.categoryKey === "gammeGlace").slice(0, 8)}
                 ShowTitle={true}
                 showAll={false}
-                title={t("dubaiChocolate")}
+                title={menu("gammeGlace")}
             />
-            
+
             <SlidingImages />
             <WeLoveYou />
             <RotatingModelSection />
