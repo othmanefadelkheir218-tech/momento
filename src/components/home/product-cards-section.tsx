@@ -154,7 +154,7 @@ export default function ProductCardsSection({ products, ShowTitle, showAll, bgco
                 ))}
             </div>
 
-            {!showAll && <div className="w-full flex justify-center lg:py-17 py-6">
+            {!showAll && <div className="w-full  flex justify-center lg:py-17 py-6">
                 <BigWavyCircle
                     rotate={true}
                     rotateSpeed={5}

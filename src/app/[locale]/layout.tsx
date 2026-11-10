@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import Header from "@/components/layout/Header/Header";
 import { Geist, Geist_Mono } from "next/font/google";
 import TransitionWrapper from "@/components/TransitionWrapper";
-import ReactLenis from "lenis/react";
+import SmoothScroll from "@/components/SmoothScroll";
 import { Analytics } from "@vercel/analytics/next";
 
 import "../globals.css";
@@ -111,7 +111,7 @@ export default async function LocaleLayout({
                 className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground transition-colors duration-300`}
             >
                 <NextIntlClientProvider messages={messages}>
-                    <ReactLenis root>
+                    <SmoothScroll>
                         <ThemeProvider
                             attribute="class"
                             defaultTheme="light"
@@ -126,7 +126,7 @@ export default async function LocaleLayout({
                                 <Footer />
                             </TransitionWrapper>
                         </ThemeProvider>
-                    </ReactLenis>
+                    </SmoothScroll>
                 </NextIntlClientProvider>
                 <Analytics />
             </body>

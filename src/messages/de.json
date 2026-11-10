@@ -430,5 +430,24 @@
             "item3": "Persönlicher Kundenbetreuer",
             "item4": "Marketingunterstützung inklusive"
         }
+    },
+  "ProductPage": {
+    "backToMenu": "Zurück zum Menü",
+    "allergens": "Allergene",
+    "nutritionTitle": "Nährwerte",
+    "galleryTitle": "In Bildern",
+    "moreFromRange": "Mehr aus dieser Reihe",
+    "youMayLike": "Das könnte Ihnen auch gefallen",
+    "seeFullMenu": "Das ganze Menü ansehen",
+    "nutrients": {
+      "energy": "Energie",
+      "fat": "Fett",
+      "saturated_fat": "davon gesättigte Fettsäuren",
+      "carbohydrates": "Kohlenhydrate",
+      "sugars": "davon Zucker",
+      "fiber": "Ballaststoffe",
+      "protein": "Eiweiß",
+      "salt": "Salz"
     }
+  }
 }

@@ -1,13 +1,16 @@
 'use client';
 
-import React, { useEffect, useRef, useState, useCallback } from 'react'; // 1. Import useCallback
-import { curveAnim, translateAnim, logoAnim } from '@/lib/anim';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
+import gsap from 'gsap';
+import { logoAnim, curtainPaths, curtainY, CURTAIN_BULGE, DURATION, TRANSITION_EASE } from '@/lib/anim';
 import { TransitionProvider } from '@/Context/TransitionContext';
 import { usePathname } from '@/i18n/navigation';
 
+type CurtainState = 'covered' | 'revealed';
+
 export default function TransitionWrapper({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
-    const [dimensions, setDimensions] = useState<{ width: number | null; height: number | null }>({ width: null, height: null });
+    const [isReady, setIsReady] = useState(false);
 
     // References
     const svgRef = useRef<SVGSVGElement>(null);
@@ -17,55 +20,113 @@ export default function TransitionWrapper({ children }: { children: React.ReactN
 
     const isFirstLoad = useRef(true);
 
-    // Resize Logic
-    useEffect(() => {
-        const resize = () => setDimensions({ width: window.innerWidth, height: window.innerHeight });
-        resize();
-        window.addEventListener("resize", resize);
-        return () => window.removeEventListener("resize", resize);
+    // The curtain is driven by GSAP only. Size lives in a ref (not state) so a
+    // resize never re-renders the <path> and wipes out what GSAP has drawn —
+    // that was what left the red screen stuck after an iOS address-bar
+    // change, a browser zoom, or a window resize.
+    const size = useRef({ w: 0, h: 0 });
+    const curtainState = useRef<CurtainState>('covered');
+    const curtainTl = useRef<gsap.core.Timeline | null>(null);
+    const pendingResolve = useRef<(() => void) | null>(null);
+
+    /** Snap the curtain to its current state at the current viewport size. */
+    const syncCurtain = useCallback(() => {
+        const svg = svgRef.current;
+        const path = pathRef.current;
+        const { w, h } = size.current;
+        if (!svg || !path || !w || !h) return;
+
+        const paths = curtainPaths(w, h);
+        gsap.set(svg, { height: h + 2 * CURTAIN_BULGE, y: curtainY(curtainState.current, h) });
+        gsap.set(path, { attr: { d: paths[curtainState.current] } });
     }, []);
 
-    // 2. Wrap getPaths in useCallback
-    // This ensures the function is only recreated when dimensions change
-    const getPaths = useCallback(() => {
-        if (!dimensions.width || !dimensions.height) return { initial: "", target: "" };
-        return {
-            initial: `M0 300 Q${dimensions.width / 2} 0 ${dimensions.width} 300 L${dimensions.width} ${dimensions.height + 300} Q${dimensions.width / 2} ${dimensions.height + 600} 0 ${dimensions.height + 300} L0 0`,
-            target: `M0 300 Q${dimensions.width / 2} 0 ${dimensions.width} 300 L${dimensions.width} ${dimensions.height} Q${dimensions.width / 2} ${dimensions.height} 0 ${dimensions.height} L0 0`
+    /** Animate the curtain to a state; resolves when it lands. */
+    const animateCurtain = useCallback((to: CurtainState) => {
+        const svg = svgRef.current;
+        const path = pathRef.current;
+        const { w, h } = size.current;
+        if (!svg || !path || !w || !h) return Promise.resolve();
+
+        // Stop whatever was running (e.g. a tap during the reveal) and let
+        // anyone waiting on it carry on, instead of two tweens fighting.
+        curtainTl.current?.kill();
+        pendingResolve.current?.();
+        curtainState.current = to;
+
+        const paths = curtainPaths(w, h);
+
+        return new Promise<void>((resolve) => {
+            pendingResolve.current = resolve;
+            curtainTl.current = gsap.timeline({
+                defaults: { duration: DURATION, ease: TRANSITION_EASE },
+                onComplete: () => {
+                    curtainTl.current = null;
+                    pendingResolve.current = null;
+                    // The viewport may have changed mid-animation: land on the
+                    // right shape for the size we have now.
+                    syncCurtain();
+                    resolve();
+                },
+            })
+                .to(path, { attr: { d: paths[to] } }, 0)
+                // transform instead of `top`: same movement, GPU-composited
+                .to(svg, { y: curtainY(to, h) }, 0);
+        });
+    }, [syncCurtain]);
+
+    // Resize / zoom / orientation / iOS address bar
+    useEffect(() => {
+        let raf = 0;
+
+        const measure = () => {
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+            if (w === size.current.w && h === size.current.h) return;
+            size.current = { w, h };
+            // While animating, the tween's onComplete re-syncs at the new size,
+            // so a resize never interrupts or jerks the transition.
+            if (!curtainTl.current) syncCurtain();
         };
-    }, [dimensions]); 
+
+        const onResize = () => {
+            cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(measure);
+        };
+
+        // First measure on the next frame (the screen stays covered by the
+        // bg-primary fallback until then), then start the intro.
+        raf = requestAnimationFrame(() => {
+            measure();
+            setIsReady(true);
+        });
+
+        window.addEventListener('resize', onResize);
+        return () => {
+            cancelAnimationFrame(raf);
+            window.removeEventListener('resize', onResize);
+        };
+    }, [syncCurtain]);
 
     // --- The Main Logic ---
 
-    // 1. Function to Trigger Exit.
-    const triggerExitAnimation = async () => {
-        if (!svgRef.current || !pathRef.current || !textRef.current || !dimensions.width) return;
+    // 1. Exit: cover the screen (and draw the logo) before navigating
+    const triggerExitAnimation = useCallback(async () => {
+        if (textRef.current) logoAnim(textRef.current, logoBoxRef.current).exit();
+        await animateCurtain('covered');
+    }, [animateCurtain]);
 
-        const { initial, target } = getPaths();
-        const logo = logoAnim(textRef.current, logoBoxRef.current);
-        const curve = curveAnim(pathRef.current, initial, target);
-        const trans = translateAnim(svgRef.current);
+    // Reveal without a route change (safety fallback from the context)
+    const triggerEnterAnimation = useCallback(() => {
+        if (textRef.current) logoAnim(textRef.current, logoBoxRef.current).enter();
+        animateCurtain('revealed');
+    }, [animateCurtain]);
 
-        logo.exit();
-        trans.exit();
-        await curve.exit();
-    };
-
-    // Keep the latest path builder reachable without making it an effect dep:
-    // a resize must not restart an intro that is already playing.
-    const getPathsRef = useRef(getPaths);
-    useEffect(() => { getPathsRef.current = getPaths; }, [getPaths]);
-
-    const isReady = dimensions.width !== null && dimensions.height !== null;
-
-    // 2. Trigger Enter
+    // 2. Enter: reveal the new page
     useEffect(() => {
-        if (!isReady || !svgRef.current || !pathRef.current || !textRef.current) return;
+        if (!isReady || !textRef.current) return;
 
-        const { initial, target } = getPathsRef.current();
         const logo = logoAnim(textRef.current, logoBoxRef.current);
-        const curve = curveAnim(pathRef.current, initial, target);
-        const trans = translateAnim(svgRef.current);
 
         let cancelled = false;
         let claimedIntro = false;
@@ -82,8 +143,7 @@ export default function TransitionWrapper({ children }: { children: React.ReactN
                 finishedIntro = true;
             }
             logo.enter();
-            curve.enter();
-            trans.enter();
+            animateCurtain('revealed');
         };
 
         playTransition();
@@ -95,13 +155,16 @@ export default function TransitionWrapper({ children }: { children: React.ReactN
             if (claimedIntro && !finishedIntro) isFirstLoad.current = true;
         };
 
-    }, [pathname, isReady]);
+    }, [pathname, isReady, animateCurtain]);
 
     return (
-        <TransitionProvider triggerExitAnimation={triggerExitAnimation}>
+        <TransitionProvider
+            triggerExitAnimation={triggerExitAnimation}
+            triggerEnterAnimation={triggerEnterAnimation}
+        >
             {children}
-            <div className={`fixed top-0 left-0 w-full h-[calc(100vh+600px)] pointer-events-none z-50 transition-opacity duration-0 opacity-100`}>
-                {dimensions.width === null && <div className="fixed inset-0 bg-primary z-40" />}
+            <div className="fixed inset-0 pointer-events-none z-50">
+                {!isReady && <div className="fixed inset-0 bg-primary z-40" />}
                 <div ref={logoBoxRef} className="fixed inset-0 z-50">
                     <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2">
                     <svg width="220" height="225" viewBox="0 0 329.78 336.99" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -130,10 +193,13 @@ export default function TransitionWrapper({ children }: { children: React.ReactN
                     </svg>
                     </div>
                 </div>
-                <svg ref={svgRef} className="fixed top-[-300px] left-0 w-full h-[calc(100vh+600px)] z-40">
-                    <path ref={pathRef} d={dimensions.width ? getPaths().initial : ""} fill='#DB212F' />
+                <svg
+                    ref={svgRef}
+                    className="fixed top-0 left-0 w-full z-40"
+                    style={{ willChange: 'transform' }}
+                >
+                    <path ref={pathRef} fill='#DB212F' />
                 </svg>
-                <div className={`absolute top-0 left-0 w-full h-full bg-primary -z-10`} style={{ opacity: 0 }} />
             </div>
         </TransitionProvider>
     );

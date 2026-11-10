@@ -1,60 +1,55 @@
 "use client"
 
+import { useTranslations } from "next-intl"
 import { DessertInterface } from "@/Data/Const"
-import { HeroSection } from "./hero-section"
-import { ProductInfoSection } from "./product-info-section"
-import { FullImageSection } from "./Full-image-section"
-import { AllergensSection } from "./allergens-section"
-import { NutritionGridSection } from "./nutrition-section"
-import { SplitImageSection } from "./split-image-section"
-import { CircularImageSection } from "./CircularImageSection"
+import { useDessertData } from "@/hooks/useDessertData"
+import ProductCardsSection from "@/components/home/product-cards-section"
+import { ProductHero } from "./product-hero"
+import { ProductGallery } from "./product-gallery"
+import { ProductDetails } from "./product-details"
 import { FooterSection } from "./footer-section-product"
 
+const RELATED_COUNT = 4
 
 interface ProductShowcaseProps {
     dessert: DessertInterface
 }
 
 export function ProductShowcase({ dessert }: ProductShowcaseProps) {
+    const t = useTranslations("ProductPage")
+    const allProducts = useDessertData()
+
+    // Each image is shown once: the first large photo is in the hero,
+    // the rest go to the gallery.
+    const photos = dessert.other_images.filter(Boolean)
+    const galleryImages = photos.slice(1)
+
+    // Same range first; small ranges are topped up with other products
+    const others = allProducts.filter((p) => p.id !== dessert.id)
+    const sameRange = others.filter((p) => p.categoryKey === dessert.categoryKey)
+    const related = [...sameRange, ...others.filter((p) => p.categoryKey !== dessert.categoryKey)].slice(0, RELATED_COUNT)
+    const relatedTitle = sameRange.length >= RELATED_COUNT ? t("moreFromRange") : t("youMayLike")
+
     return (
         <main className="w-full bg-white">
-            {/* 1. Hero - uses other_images[1] */}
-            <HeroSection dessert={dessert} />
+            {/* 1. Name, range, weight, description, allergens + main photo */}
+            <ProductHero dessert={dessert} />
 
-            {/* 2. Product Info - uses main_image */}
-            <ProductInfoSection dessert={dessert} />
+            {/* 2. Remaining photos */}
+            <ProductGallery images={galleryImages} alt={dessert.name} />
 
-            {/* 3. Full-Width Image - uses other_images[0] */}
-            {/* {dessert.other_images[0] && <FullImageSection imageUrl={dessert.other_images[0]} />} */}
+            {/* 3. Nutrition + storage */}
+            <ProductDetails
+                nutritionalValues={dessert.nutritional_values}
+                storageConditions={dessert.storage_conditions}
+            />
 
-            {/* 4. Allergens Section - NEW */}
-            {
-                dessert.allergens && <AllergensSection allergens={dessert.allergens} />
-            }
+            {/* 4. More desserts (the round button leads back to the menu) */}
+            {related.length > 0 && (
+                <ProductCardsSection products={related} ShowTitle={true} showAll={false} title={relatedTitle} />
+            )}
 
-            {/* 5. Nutritional + Storage Grid */}
-            {
-                dessert.nutritional_values && (
-                    // We check: if NO allergens (!dessert.allergens), add top margin
-                    <div className={!dessert.allergens ? "mt-20 md:mt-32" : ""}>
-                        <NutritionGridSection
-                            nutritionalValues={dessert.nutritional_values}
-                            storageConditions={dessert.storage_conditions}
-                        />
-                    </div>
-                )
-            }
-
-            {/* 6. Split Image Section - uses other_images[2] */}
-            {dessert.other_images[2] && dessert.other_images[3] !== "" && <SplitImageSection
-                imageUrl={dessert.other_images[2]}
-                imageUrl2={dessert.other_images[3]}
-            />}
-
-            {/* 7. Circular Image Section - uses other_images[3] */}
-            {dessert.main_image && <CircularImageSection imageUrl={dessert.main_image} />}
-
-            {/* 8. Footer */}
+            {/* 5. Closing band */}
             <FooterSection />
         </main>
     )

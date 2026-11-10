@@ -23,7 +23,6 @@ const TransitionLink = forwardRef<HTMLButtonElement, TransitionLinkProps>(({ hre
     onClick?.();
     // If we are already on this page, do nothing
     if (pathname === href) return;
-    console.log("its clicked here", href);
     // Trigger the exit animation -> Then Route
     animatePageOut(href);
   };

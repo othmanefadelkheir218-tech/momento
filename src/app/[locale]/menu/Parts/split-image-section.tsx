@@ -18,14 +18,17 @@ export function SplitImageSection({ imageUrl, imageUrl2 }: SplitImageSectionProp
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.to(sectionRef.current, {
+      // Same 80px of travel as before, but centred (+40 → -40) instead of
+      // (0 → -80): the card stays inside the section's padding, so its top
+      // is no longer cut off by overflow-hidden on mobile (py-8 = 32px).
+      gsap.fromTo(sectionRef.current, { y: 40 }, {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top bottom",
           end: "bottom top",
           scrub: 1.5,
         },
-        y: -80,
+        y: -40,
         ease: "none",
       })
     })

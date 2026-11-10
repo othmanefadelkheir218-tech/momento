@@ -1,56 +1,83 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { EASES } from '@/lib/anim';
 
-// Assuming you have props like this
 interface CurveProps {
     isActive: boolean;
 }
 
-export default function Curve({ isActive }: CurveProps) {
-    // 1. We only need state for window dimensions
-    const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+const curvePath = (h: number, open: boolean) =>
+    `M100 0 L100 ${h} Q${open ? 100 : -100} ${h / 2} 100 0`;
 
+/**
+ * Curved edge of the side menu.
+ *
+ * Animated with GSAP rather than a CSS `transition: d`, because Safari
+ * (iPhone, iPad, Mac) can't animate `d` in CSS and just snapped the shape.
+ * Same shape, same timing (1000ms open / 800ms close), same
+ * cubic-bezier(0.76, 0, 0.24, 1) curve as before.
+ *
+ * The height lives in a ref, not state, so a resize / zoom never re-renders
+ * the path and resets it mid-animation.
+ */
+export default function Curve({ isActive }: CurveProps) {
+    const pathRef = useRef<SVGPathElement>(null);
+    const heightRef = useRef(0);
+    const isActiveRef = useRef(isActive);
+    const tweenRef = useRef<gsap.core.Tween | null>(null);
+
+    // Size: set on mount, then snap to the current state on resize
     useEffect(() => {
-        const resize = () => {
-            setDimensions({
-                width: window.innerWidth,
-                height: window.innerHeight
-            });
+        let raf = 0;
+        const measure = () => {
+            const h = window.innerHeight;
+            if (h === heightRef.current) return;
+            heightRef.current = h;
+            if (pathRef.current && !tweenRef.current?.isActive()) {
+                gsap.set(pathRef.current, { attr: { d: curvePath(h, isActiveRef.current) } });
+            }
+        };
+        const onResize = () => {
+            cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(measure);
         };
 
-        // Initialize dimensions
-        resize();
-
-        window.addEventListener("resize", resize);
-        return () => window.removeEventListener("resize", resize);
+        measure();
+        window.addEventListener('resize', onResize);
+        return () => {
+            cancelAnimationFrame(raf);
+            window.removeEventListener('resize', onResize);
+        };
     }, []);
 
-    // 2. Calculate paths directly in the render body
-    // If width is 0 (SSR or initial load), return empty paths
-    const initialPath = dimensions.width > 0 
-        ? `M100 0 L100 ${dimensions.height} Q-100 ${dimensions.height / 2} 100 0` 
-        : "";
+    // Open / close
+    useEffect(() => {
+        const path = pathRef.current;
+        if (isActiveRef.current === isActive || !path) {
+            isActiveRef.current = isActive;
+            return;
+        }
+        isActiveRef.current = isActive;
 
-    const targetPath = dimensions.width > 0 
-        ? `M100 0 L100 ${dimensions.height} Q100 ${dimensions.height / 2} 100 0` 
-        : "";
+        tweenRef.current?.kill();
+        tweenRef.current = gsap.to(path, {
+            attr: { d: curvePath(heightRef.current, isActive) },
+            duration: isActive ? 1 : 0.8,
+            ease: EASES.intended,
+            onComplete: () => {
+                // Land on the right shape if the viewport changed meanwhile
+                gsap.set(path, { attr: { d: curvePath(heightRef.current, isActiveRef.current) } });
+            },
+        });
+    }, [isActive]);
 
-    // 3. Determine the current path based on props
-    // No "useEffect" needed -> React handles the switch automatically
-    const currentPath = isActive ? targetPath : initialPath;
-
-    // 4. Define the transition style dynamically
-    const transitionStyle = {
-        transition: `d ${isActive ? 1000 : 800}ms cubic-bezier(0.76, 0, 0.24, 1)`
-    };
+    useEffect(() => () => { tweenRef.current?.kill(); }, []);
 
     return (
         <svg className="absolute top-0 -left-[99px] w-[100px] h-full fill-primary stroke-none">
-            <path 
-                d={currentPath} 
-                style={transitionStyle}
-            />
+            <path ref={pathRef} />
         </svg>
     );
 }

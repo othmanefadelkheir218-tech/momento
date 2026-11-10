@@ -76,7 +76,8 @@ export default function Header() {
         if (isActive) setIsActive(false);
     }, [pathname]);
 
-    const itsHome = (pathname === "/" || pathname.startsWith("/menu/"));
+    // Product pages now open on a light hero, so they use the standard header
+    const itsHome = pathname === "/";
 
     return (
         <>

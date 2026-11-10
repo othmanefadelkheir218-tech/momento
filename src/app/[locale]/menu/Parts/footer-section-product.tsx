@@ -41,7 +41,7 @@ export function FooterSection() {
   return (
     <section
       ref={sectionRef}
-      className="w-full min-h-[50vh] md:min-h-[60vh] flex items-center justify-center bg-primary mt-10  px-6 py-12 md:py-16"
+      className="w-full min-h-[50vh] md:min-h-[60vh] flex items-center justify-center bg-primary px-6 py-12 md:py-16"
     >
       <h2
         ref={textRef}

@@ -1,71 +1,45 @@
-// components/Layout/anim.ts
+// lib/anim.ts
 import gsap from "gsap";
+import { CustomEase } from "gsap/CustomEase";
 
-const duration = 1; // Time to cover screen
+gsap.registerPlugin(CustomEase);
 
-export const textAnim = (element: HTMLElement) => {
-    const tl = gsap.timeline();
-    return {
-        enter: () => {
-            // Reveal Text
-            tl.to(element, { opacity: 0, top: -100, duration: duration, ease: "cubic-bezier(0.76, 0, 0.24, 1)" });
-        },
-        exit: () => {
-            // Show Text (during black screen)
-            tl.to(element, { opacity: 1, top: "40%", duration: 0.5, ease: "power3.out" });
-        }
-    };
-};
+export const DURATION = 1; // Time to cover / uncover the screen
 
-export const curveAnim = (element: SVGPathElement, initialPath: string, targetPath: string) => {
-    const tl = gsap.timeline();
-    return {
-        enter: () => {
-            // Uncover Screen (Go UP)
-            tl.to(element, { attr: { d: targetPath }, duration: duration, ease: "cubic-bezier(0.76, 0, 0.24, 1)" });
-        },
-        exit: () => {
-            // Cover Screen (Come DOWN)
-            // We return a Promise to let the router know when we are done
-            return new Promise<void>((resolve) => {
-                // Safety timeout in case GSAP fails
-                const timeout = setTimeout(() => {
-                    console.warn("Animation timeout - forcing navigation");
-                    resolve();
-                }, (duration * 1000) + 100);
+/**
+ * Page-transition easing. Pick one and set TRANSITION_EASE below.
+ *
+ * - "current":  the feel the site has always had. The old code passed
+ *               "cubic-bezier(0.76, 0, 0.24, 1)" as a string, which GSAP does
+ *               not understand, so it silently fell back to its default
+ *               (power1.out). This keeps that exact look.
+ * - "intended": the cubic-bezier(0.76, 0, 0.24, 1) curve that was originally
+ *               written — slow start, fast middle, slow landing.
+ */
+export const EASES = {
+    current: "power1.out",
+    intended: CustomEase.create("momentoInOut", "0.76,0,0.24,1"),
+} as const;
 
-                tl.to(element, {
-                    attr: { d: initialPath },
-                    duration: duration,
-                    ease: "cubic-bezier(0.76, 0, 0.24, 1)",
-                    onComplete: () => {
-                        clearTimeout(timeout);
-                        resolve();
-                    }
-                });
-            });
-        }
-    };
-};
+export const TRANSITION_EASE = EASES.current;
 
-export const translateAnim = (element: SVGSVGElement) => {
-    const tl = gsap.timeline();
-    return {
-        enter: () => {
-            tl.to(element, { top: "-100vh", duration: duration, ease: "cubic-bezier(0.76, 0, 0.24, 1)" });
-        },
-        exit: () => {
-            return new Promise<void>((resolve) => {
-                tl.to(element, {
-                    top: "-300px",
-                    duration: duration,
-                    ease: "cubic-bezier(0.76, 0, 0.24, 1)",
-                    onComplete: () => { resolve() }
-                });
-            });
-        }
-    };
-};
+/** How far the curtain's curved edges bulge, in px. */
+export const CURTAIN_BULGE = 300;
+
+/**
+ * The two shapes of the red curtain, in CSS pixels of the current viewport.
+ * The SVG they live in is (height + 2 * bulge) tall.
+ */
+export const curtainPaths = (w: number, h: number) => ({
+    // Screen covered: bottom edge pushed down past the viewport, curving further down
+    covered: `M0 ${CURTAIN_BULGE} Q${w / 2} 0 ${w} ${CURTAIN_BULGE} L${w} ${h + CURTAIN_BULGE} Q${w / 2} ${h + 2 * CURTAIN_BULGE} 0 ${h + CURTAIN_BULGE} L0 0`,
+    // Screen revealed: bottom edge flattened (only seen while it slides away)
+    revealed: `M0 ${CURTAIN_BULGE} Q${w / 2} 0 ${w} ${CURTAIN_BULGE} L${w} ${h} Q${w / 2} ${h} 0 ${h} L0 0`,
+});
+
+/** Vertical offset of the curtain SVG for each state. */
+export const curtainY = (state: "covered" | "revealed", h: number) =>
+    state === "covered" ? -CURTAIN_BULGE : -h;
 
 export const logoAnim = (element: SVGPathElement, box?: HTMLElement | null) => {
     const length = element.getTotalLength();
@@ -123,7 +97,7 @@ export const logoAnim = (element: SVGPathElement, box?: HTMLElement | null) => {
 
                 tlExit.to(element, {
                     strokeDashoffset: 0,
-                    duration: duration,
+                    duration: DURATION,
                     ease: "power2.inOut"
                 })
                     .to(element, {

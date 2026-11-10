@@ -141,7 +141,10 @@ export default function FooterSection() {
 
   return (
     <>
-      <div className="h-screen  bg-primaryLighter/20 flex flex-col items-center justify-between px-6 py-12 md:py-20 relative overflow-hidden">
+      {/* min-h-screen, not h-screen: when the viewport is short (150% zoom,
+          small laptops, landscape phones) the section grows to fit its
+          content instead of clipping it with overflow-hidden */}
+      <div className="min-h-screen bg-primaryLighter/20 flex flex-col items-center justify-between px-6 py-12 md:py-20 relative overflow-hidden">
         {/* Decorative background elements */}
         <div ref={decorRef} className="absolute inset-0 pointer-events-none">
           {/* Scattered dots pattern */}

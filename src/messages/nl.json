@@ -19,7 +19,7 @@
       "description": "Neem contact op met Momento voor evenementen, partnerschappen, of gewoon om hallo te zeggen. We horen graag van u."
     },
     "becomeClient": {
-      "title": "Word een Partner | Groothandel - Momento",
+      "title": "Wor d een Partner | Groothandel - Momento",
       "description": "Word partner met Momento als groothandelaar. Bied premium ambachtelijke desserts aan uw klanten met exclusieve prijzen en toegewijde ondersteuning."
     }
   },
@@ -429,6 +429,25 @@
       "item2": "Directe levering aan uw vestiging",
       "item3": "Toegewijde accountmanager",
       "item4": "Marketingondersteuning inbegrepen"
+    }
+  },
+  "ProductPage": {
+    "backToMenu": "Terug naar menu",
+    "allergens": "Allergenen",
+    "nutritionTitle": "Voedingswaarden",
+    "galleryTitle": "In beeld",
+    "moreFromRange": "Meer uit dit assortiment",
+    "youMayLike": "Misschien ook lekker",
+    "seeFullMenu": "Bekijk het volledige menu",
+    "nutrients": {
+      "energy": "Energie",
+      "fat": "Vetten",
+      "saturated_fat": "waarvan verzadigde vetzuren",
+      "carbohydrates": "Koolhydraten",
+      "sugars": "waarvan suikers",
+      "fiber": "Vezels",
+      "protein": "Eiwitten",
+      "salt": "Zout"
     }
   }
 }

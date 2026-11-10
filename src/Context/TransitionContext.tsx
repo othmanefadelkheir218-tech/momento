@@ -2,7 +2,11 @@
 "use client";
 
 import { useRouter, usePathname } from "@/i18n/navigation";
-import React, { createContext, useContext, useState, useRef } from "react"; // Added useRef
+import React, { createContext, useContext, useState, useRef, useEffect } from "react";
+
+// If the route hasn't changed this long after covering the screen (failed
+// fetch, same-URL push, ...), lift the curtain so the user is never stuck.
+const NAVIGATION_TIMEOUT_MS = 8000;
 
 // Define the shape of our context
 interface TransitionContextType {
@@ -24,9 +28,11 @@ export const useTransition = () => useContext(TransitionContext);
 export const TransitionProvider = ({
   children,
   triggerExitAnimation,
+  triggerEnterAnimation,
 }: {
   children: React.ReactNode;
   triggerExitAnimation: () => Promise<void>;
+  triggerEnterAnimation: () => void;
 }) => {
   const router = useRouter();
   const pathname = usePathname();
@@ -34,9 +40,13 @@ export const TransitionProvider = ({
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
   const [introSeen, setIntroSeen] = useState<boolean>(pathname !== "/");
 
+  // Ref mirror: always current inside async callbacks / timers
+  const isAnimatingRef = useRef(false);
+  const fallbackTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const [prevPathname, setPrevPathname] = useState(pathname);
 
-  // FIX: Check for path change during the render phase
+  // Check for path change during the render phase
   // If the path has changed, we reset isAnimating immediately.
   if (prevPathname !== pathname) {
     setPrevPathname(pathname);
@@ -45,11 +55,22 @@ export const TransitionProvider = ({
     }
   }
 
-  const animatePageOut = async (href: string) => {
-    if (isAnimating) return; // Prevent double clicks
+  // Route arrived: the safety fallback is no longer needed
+  useEffect(() => {
+    isAnimatingRef.current = false;
+    if (fallbackTimer.current) clearTimeout(fallbackTimer.current);
+    fallbackTimer.current = null;
+  }, [pathname]);
 
+  useEffect(() => () => {
+    if (fallbackTimer.current) clearTimeout(fallbackTimer.current);
+  }, []);
+
+  const animatePageOut = async (href: string) => {
+    if (isAnimatingRef.current) return; // Prevent double clicks
+
+    isAnimatingRef.current = true;
     setIsAnimating(true);
-    console.log("its clicked here 22", href);
 
     // 1. Play the Exit Animation (Cover screen)
     try {
@@ -58,7 +79,16 @@ export const TransitionProvider = ({
       console.error("Animation failed", error);
     }
 
-    // 2. NOW navigate to the new route
+    // 2. Arm the safety net, then navigate to the new route
+    if (fallbackTimer.current) clearTimeout(fallbackTimer.current);
+    fallbackTimer.current = setTimeout(() => {
+      fallbackTimer.current = null;
+      if (!isAnimatingRef.current) return;
+      isAnimatingRef.current = false;
+      setIsAnimating(false);
+      triggerEnterAnimation();
+    }, NAVIGATION_TIMEOUT_MS);
+
     router.push(href);
   };
 

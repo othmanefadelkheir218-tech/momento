@@ -430,5 +430,24 @@
       "item3": "Dedicated account manager",
       "item4": "Marketing support included"
     }
+  },
+  "ProductPage": {
+    "backToMenu": "Back to menu",
+    "allergens": "Allergens",
+    "nutritionTitle": "Nutritional values",
+    "galleryTitle": "In pictures",
+    "moreFromRange": "More from this range",
+    "youMayLike": "You may also like",
+    "seeFullMenu": "See the full menu",
+    "nutrients": {
+      "energy": "Energy",
+      "fat": "Fat",
+      "saturated_fat": "of which saturates",
+      "carbohydrates": "Carbohydrates",
+      "sugars": "of which sugars",
+      "fiber": "Fibre",
+      "protein": "Protein",
+      "salt": "Salt"
+    }
   }
 }

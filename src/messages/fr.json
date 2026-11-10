@@ -428,5 +428,24 @@
             "item3": "Responsable de compte dédié",
             "item4": "Support marketing inclus"
         }
+    },
+  "ProductPage": {
+    "backToMenu": "Retour au menu",
+    "allergens": "Allergènes",
+    "nutritionTitle": "Valeurs nutritionnelles",
+    "galleryTitle": "En images",
+    "moreFromRange": "Dans la même gamme",
+    "youMayLike": "Vous aimerez aussi",
+    "seeFullMenu": "Voir tout le menu",
+    "nutrients": {
+      "energy": "Énergie",
+      "fat": "Matières grasses",
+      "saturated_fat": "dont acides gras saturés",
+      "carbohydrates": "Glucides",
+      "sugars": "dont sucres",
+      "fiber": "Fibres",
+      "protein": "Protéines",
+      "salt": "Sel"
     }
+  }
 }
