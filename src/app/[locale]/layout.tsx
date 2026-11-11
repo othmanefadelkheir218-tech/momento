@@ -12,6 +12,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "../globals.css";
 import Footer from "@/components/layout/Footer/Footer";
 import type { Metadata } from "next";
+import { COMING_SOON } from "@/lib/comingSoon";
 
 export async function generateMetadata({
     params,
@@ -111,6 +112,9 @@ export default async function LocaleLayout({
                 className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground transition-colors duration-300`}
             >
                 <NextIntlClientProvider messages={messages}>
+                    {COMING_SOON ? (
+                        <main className="min-h-screen">{children}</main>
+                    ) : (
                     <SmoothScroll>
                         <ThemeProvider
                             attribute="class"
@@ -127,6 +131,7 @@ export default async function LocaleLayout({
                             </TransitionWrapper>
                         </ThemeProvider>
                     </SmoothScroll>
+                    )}
                 </NextIntlClientProvider>
                 <Analytics />
             </body>

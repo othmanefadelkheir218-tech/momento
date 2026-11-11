@@ -23,7 +23,7 @@ export default function HomeContent() {
 
     return (
         <>
-            <OneTimeIntroduction />
+            {/* <OneTimeIntroduction /> */}
             <ZoomScrollAnimation
                 ImageSource="/images/HeroImage.png"
                 ContentOne={<HeroIntro />}

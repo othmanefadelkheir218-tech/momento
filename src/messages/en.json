@@ -449,5 +449,12 @@
       "protein": "Protein",
       "salt": "Salt"
     }
+  },
+  "ComingSoon": {
+    "titleLine1": "The brand is",
+    "titleLine2": "getting a fresh new look.",
+    "subtitle": "Stay tuned, something delicious is coming...",
+    "badge": "Coming soon",
+    "language": "Language"
   }
 }

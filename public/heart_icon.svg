@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 630 400" width="630" height="400">
+  <title>Heart floral outline icon</title>
+  <g fill="none" stroke="#B17B35" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Outer heart -->
+    <path d="M250 375
+             C215 340 145 290 105 235
+             C67 183 75 126 111 104
+             C151 80 207 108 250 202
+             C293 108 349 80 389 104
+             C425 126 433 183 395 235
+             C355 290 285 340 250 375 Z"/>
+    <!-- Central petal -->
+    <path d="M250 202
+             C231 160 190 116 185 73
+             C180 34 211 8 250 8
+             C289 8 320 34 315 73
+             C310 116 269 160 250 202"/>
+  </g>
+</svg>

@@ -449,5 +449,12 @@
       "protein": "Eiweiß",
       "salt": "Salz"
     }
+  },
+  "ComingSoon": {
+    "titleLine1": "Die Marke bekommt",
+    "titleLine2": "einen frischen neuen Look.",
+    "subtitle": "Bleiben Sie dran, etwas Köstliches kommt bald...",
+    "badge": "Demnächst",
+    "language": "Sprache"
   }
 }

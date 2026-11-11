@@ -449,5 +449,12 @@
       "protein": "Eiwitten",
       "salt": "Zout"
     }
+  },
+  "ComingSoon": {
+    "titleLine1": "Het merk krijgt",
+    "titleLine2": "een frisse nieuwe look.",
+    "subtitle": "Blijf op de hoogte, er komt iets heerlijks aan...",
+    "badge": "Binnenkort",
+    "language": "Taal"
   }
 }
