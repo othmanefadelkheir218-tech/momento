@@ -35,11 +35,13 @@ function HeartsIcon({
     width = 56,
     height = 44,
     strokeWidth = 1.6,
+    className = "",
 }: {
     color?: string;
     width?: number;
     height?: number;
     strokeWidth?: number;
+    className?: string;
 }) {
     return (
         <svg
@@ -49,7 +51,7 @@ function HeartsIcon({
             preserveAspectRatio="none"
             fill="none"
             aria-hidden="true"
-            className="shrink-0"
+            className={`shrink-0 ${className}`}
         >
             <g
                 stroke={color}
@@ -87,9 +89,10 @@ export default async function ComingSoon({ locale }: { locale: string }) {
 
     return (
         <div
-            className={`${sans.className} relative min-h-svh w-full overflow-hidden flex flex-col items-center justify-center px-4 py-16 text-center`}
+            className={`${sans.className} fixed inset-0 h-dvh w-full overflow-hidden overscroll-none flex flex-col items-center justify-center text-center`}
             style={{
                 color: WINE,
+                padding: "clamp(12px, 4vh, 48px) clamp(16px, 5vw, 48px)",
                 backgroundColor: "#f7e3d6",
                 backgroundImage: [
                     "radial-gradient(120% 80% at 0% 0%, rgba(255,255,255,0.65) 0%, transparent 55%)",
@@ -99,15 +102,35 @@ export default async function ComingSoon({ locale }: { locale: string }) {
                 ].join(","),
             }}
         >
+            {/* Lock the page: no scrollbars, no overscroll / rubber-band bounce (also at 150% zoom) */}
+            <style>{`
+                html, body {
+                    height: 100%;
+                    overflow: hidden !important;
+                    overscroll-behavior: none;
+                }
+                body { touch-action: none; }
+            `}</style>
+
             {/* Language switcher — full page loads, only locale roots are reachable */}
-            <nav className="absolute top-5 right-5 flex gap-3 text-xs tracking-[0.25em] uppercase" aria-label={t("language")}>
+            <nav
+                className="absolute flex uppercase"
+                style={{
+                    top: "clamp(10px, 2.5vh, 20px)",
+                    right: "clamp(12px, 3vw, 20px)",
+                    gap: "clamp(8px, 1.5vw, 12px)",
+                    fontSize: "clamp(10px, 1.6vh, 12px)",
+                    letterSpacing: "0.25em",
+                }}
+                aria-label={t("language")}
+            >
                 {routing.locales.map((l) => (
                     <a
                         key={l}
                         href={`/${l}`}
                         hrefLang={l}
                         aria-current={l === locale ? "true" : undefined}
-                        className={`transition-opacity ${l === locale ? "opacity-100 underline underline-offset-4" : "opacity-50 hover:opacity-90"}`}
+                        className={`p-1 transition-opacity ${l === locale ? "opacity-100 underline underline-offset-4" : "opacity-50 hover:opacity-90"}`}
                     >
                         {l}
                     </a>
@@ -122,38 +145,68 @@ export default async function ComingSoon({ locale }: { locale: string }) {
                     width={2172}
                     height={724}
                     priority
-                    className="h-auto w-72 sm:w-96"
+                    sizes="(max-width: 640px) 75vw, 384px"
+                    className="h-auto"
+                    style={{ width: "clamp(160px, min(75vw, 40vh), 384px)" }}
                 />
             </div>
 
             {/* Divider with hearts */}
-            <div className="mt-10 flex w-full max-w-xl items-center gap-4">
+            <div
+                className="flex w-full max-w-xl items-center"
+                style={{ marginTop: "clamp(10px, 4vh, 40px)", gap: "clamp(10px, 2vw, 16px)" }}
+            >
                 <Rule className="flex-1" />
-                <HeartsIcon />
+                <span className="flex" style={{ width: "clamp(36px, min(10vw, 6.5vh), 56px)", aspectRatio: "56 / 44" }}>
+                    <HeartsIcon width={56} height={44} className="h-full w-full" />
+                </span>
                 <Rule className="flex-1" />
             </div>
 
             {/* Headline */}
-            <h1 className={`${serif.className} mt-8 font-normal leading-[1.05]`}>
-                <span className="block text-4xl sm:text-6xl md:text-7xl">{t("titleLine1")}</span>
+            <h1
+                className={`${serif.className} font-normal text-balance`}
+                style={{
+                    marginTop: "clamp(8px, 3.5vh, 32px)",
+                    fontSize: "clamp(26px, min(9.5vw, 8.5vh), 76px)",
+                    lineHeight: 1.08,
+                }}
+            >
+                <span className="block">{t("titleLine1")}</span>
                 <span
-                    className={`${playfairItalic.className} block text-4xl sm:text-6xl md:text-7xl mt-1`}
-                    style={{ fontStyle: "italic", fontWeight: 400 }}
+                    className={`${playfairItalic.className} block`}
+                    style={{ fontStyle: "italic", fontWeight: 400, marginTop: "0.05em" }}
                 >
                     {t("titleLine2")}
                 </span>
             </h1>
 
-            <p className="mt-10 max-w-2xl text-[11px] sm:text-sm tracking-[0.3em] uppercase leading-relaxed">
+            <p
+                className="max-w-2xl uppercase text-balance"
+                style={{
+                    marginTop: "clamp(10px, 4vh, 40px)",
+                    fontSize: "clamp(10px, min(2.8vw, 2vh), 14px)",
+                    letterSpacing: "0.3em",
+                    lineHeight: 1.7,
+                }}
+            >
                 {t("subtitle")}
             </p>
 
             {/* Badge */}
-            <div className="mt-10 flex w-full max-w-xl items-center gap-6">
+            <div
+                className="flex w-full max-w-xl items-center"
+                style={{ marginTop: "clamp(10px, 4vh, 40px)", gap: "clamp(12px, 3vw, 24px)" }}
+            >
                 <Rule className="flex-1" />
                 <span
-                    className="shrink-0 rounded-full border px-8 py-3 text-xs sm:text-sm tracking-[0.3em] uppercase"
-                    style={{ borderColor: WINE }}
+                    className="shrink-0 rounded-full border uppercase whitespace-nowrap"
+                    style={{
+                        borderColor: WINE,
+                        fontSize: "clamp(10px, min(2.8vw, 2vh), 14px)",
+                        letterSpacing: "0.3em",
+                        padding: "clamp(7px, 1.5vh, 12px) clamp(20px, 5vw, 32px)",
+                    }}
                 >
                     {t("badge")}
                 </span>
