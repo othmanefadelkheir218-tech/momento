@@ -195,6 +195,38 @@ const styles = `
     }
     .cs-lang a { padding: 4px 6px 4px 8px; border-radius: 999px; transition: opacity .2s, background-color .2s; }
 
+    /* Desktop / landscape: the whole composition scales as ONE block with the
+       background image, so every screen (100%, 125%, 150% Windows scaling,
+       browser zoom…) shows exactly the same layout as the 1920px reference.
+       --u = one "reference pixel" = rendered image width / 1920 (the image covers
+       the screen: its width is the screen width, or 2x the height on narrower
+       screens). Sizes are written as N * --u, N being the px value at 1920 wide. */
+    @media not all and (max-aspect-ratio: 1/1) {
+        /* capped by the width so the longest title (DE) always fits on near-square windows */
+        .cs-root { --u: min(calc(max(100vw, 200dvh) / 1920), calc(100vw / 1150)); }
+        .cs-content { padding: calc(42 * var(--u)) 24px 0; }
+        .cs-logo { width: calc(279 * var(--u)); }
+        .cs-divider {
+            width: calc(460 * var(--u));
+            gap: calc(16 * var(--u));
+            margin-top: calc(24 * var(--u));
+        }
+        .cs-heart { width: calc(46 * var(--u)); }
+        .cs-title {
+            margin-top: calc(19 * var(--u));
+            font-size: max(18px, calc(52 * var(--u)));
+        }
+        .cs-badge {
+            margin-top: calc(24 * var(--u));
+            font-size: max(9px, calc(14 * var(--u)));
+        }
+        .cs-lang {
+            top: calc(18 * var(--u));
+            right: calc(20 * var(--u));
+            font-size: max(10px, calc(12 * var(--u)));
+        }
+    }
+
     /* Mobile / portrait: bigger type, title wraps, focus the crop on the chalkboard */
     @media (max-aspect-ratio: 1/1) {
         /* Portrait art: keep the characters + chalkboard centered, wall on top */
