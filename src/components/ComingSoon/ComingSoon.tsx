@@ -199,11 +199,11 @@ const styles = `
        background image, so every screen (100%, 125%, 150% Windows scaling,
        browser zoom…) shows exactly the same layout as the 1920px reference.
        --u = one "reference pixel" = rendered image width / 1920 (the image covers
-       the screen: its width is the screen width, or 2x the height on narrower
+       the screen: its width is the screen width, or 16/9 of the height on narrower
        screens). Sizes are written as N * --u, N being the px value at 1920 wide. */
     @media not all and (max-aspect-ratio: 1/1) {
         /* capped by the width so the longest title (DE) always fits on near-square windows */
-        .cs-root { --u: min(calc(max(100vw, 200dvh) / 1920), calc(100vw / 1150)); }
+        .cs-root { --u: min(calc(max(100vw, 100dvh * 16 / 9) / 1920), calc(100vw / 1150)); }
         .cs-content { padding: calc(42 * var(--u)) 24px 0; }
         .cs-logo { width: calc(279 * var(--u)); }
         .cs-divider {
@@ -250,23 +250,23 @@ export default async function ComingSoon({ locale }: { locale: string }) {
 
     // Desktop (2:1) and mobile (portrait) backgrounds, optimized by next/image.
     const { props: desktopBg } = getImageProps({
-        src: "/bg_hero_2.png",
+        src: "/new_heroImage.jpeg",
         alt: "",
-        width: 1774,
-        height: 887,
+        width: 1600,
+        height: 900,
         quality: 90,
         priority: true,
-        // cover: as wide as the screen, or 2x the height on narrower screens
-        sizes: "max(100vw, 200vh)",
+        // cover: as wide as the screen, or 16/9 of the height on narrower screens
+        sizes: "max(100vw, 178vh)",
     });
     const { props: mobileBg } = getImageProps({
-        src: "/bg_hero_2_mobile.jpeg",
+        src: "/new_heroImage_mobile.jpeg",
         alt: "",
-        width: 1051,
-        height: 1496,
+        width: 900,
+        height: 1600,
         quality: 90,
-        // portrait cover: as wide as ~70% of the screen height
-        sizes: "max(100vw, 71vh)",
+        // portrait cover: as wide as the screen, or 9/16 of the height
+        sizes: "max(100vw, 57vh)",
     });
 
     return (
@@ -279,23 +279,6 @@ export default async function ComingSoon({ locale }: { locale: string }) {
                 } as React.CSSProperties
             }
         >
-            {/* Start downloading the right background immediately (only the matching one) */}
-            <link
-                rel="preload"
-                as="image"
-                imageSrcSet={desktopBg.srcSet}
-                imageSizes={desktopBg.sizes}
-                media="not all and (max-aspect-ratio: 1/1)"
-                fetchPriority="high"
-            />
-            <link
-                rel="preload"
-                as="image"
-                imageSrcSet={mobileBg.srcSet}
-                imageSizes={mobileBg.sizes}
-                media="(max-aspect-ratio: 1/1)"
-                fetchPriority="high"
-            />
             <style>{styles}</style>
 
             {/* Background illustration */}
