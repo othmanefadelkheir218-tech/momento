@@ -1,7 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import { Playfair_Display, Jost } from "next/font/google";
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import { routing } from "@/i18n/routing";
+import BackgroundPicture from "./BackgroundPicture";
+import { BG_DESKTOP_PLACEHOLDER, BG_MOBILE_PLACEHOLDER } from "./placeholders";
 
 const serif = Playfair_Display({
     subsets: ["latin"],
@@ -10,8 +12,8 @@ const serif = Playfair_Display({
     display: "swap",
 });
 
-// Dedicated Playfair Display Italic for the second headline line
-// ("getting a fresh new look.").
+// Dedicated Playfair Display Italic for the emphasized part of the headline
+// ("fresh new look.").
 const playfairItalic = Playfair_Display({
     subsets: ["latin"],
     weight: ["400"],
@@ -25,7 +27,8 @@ const sans = Jost({
     display: "swap",
 });
 
-const WINE = "#7a0f1f";
+const WINE = "#6b0f1f";
+const INK = "#4a1418";
 const GOLD = "#c9a063";
 
 // Heart floral icon (from public/heart_icon.svg), inlined so the color is customizable.
@@ -75,142 +78,249 @@ function HeartsIcon({
     );
 }
 
-function Rule({ className = "" }: { className?: string }) {
+function Rule() {
     return (
         <span
-            className={`block h-px ${className}`}
-            style={{ background: `linear-gradient(90deg, transparent, ${GOLD} 25%, ${GOLD} 75%, transparent)` }}
+            className="cs-rule block h-px"
+            style={{ background: `linear-gradient(90deg, transparent, ${GOLD} 30%, ${GOLD} 70%, transparent)` }}
         />
     );
 }
 
+// Scoped styles: fluid sizes driven by the viewport width AND height, so the
+// layout fits one screen at any zoom level (e.g. 150%) and on mobile.
+const styles = `
+    html, body {
+        height: 100%;
+        overflow: hidden !important;
+        overscroll-behavior: none;
+    }
+    body { touch-action: none; }
+
+    .cs-root {
+        position: fixed;
+        inset: 0;
+        height: 100dvh;
+        width: 100%;
+        overflow: hidden;
+        overscroll-behavior: none;
+        background-color: #f3d2bd;
+    }
+    /* Background fills the screen; anchored to the top so the wall (text area) stays visible */
+    .cs-frame {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+    }
+    /* Instant blurred preview under the real image (also the fallback if it fails) */
+    .cs-frame::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--cs-ph-desktop) center top / cover no-repeat;
+        filter: blur(18px);
+        transform: scale(1.08);
+    }
+    .cs-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+    }
+    /* Soft light behind the text so it stays readable on any crop */
+    .cs-veil {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+            radial-gradient(ellipse 60% 48% at 50% 18%, rgba(255, 241, 230, 0.55) 0%, rgba(255, 241, 230, 0) 70%);
+    }
+    .cs-content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: clamp(14px, 4.5vh, 44px) clamp(16px, 5vw, 48px) 0;
+    }
+    .cs-logo { width: clamp(150px, min(24vw, 30vh), 360px); height: auto; }
+    .cs-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(10px, 1.4vw, 16px);
+        width: clamp(240px, 32vw, 460px);
+        margin-top: clamp(8px, 2.6vh, 26px);
+    }
+    .cs-rule { flex: 1; }
+    .cs-heart { width: clamp(30px, min(3vw, 5.2vh), 46px); aspect-ratio: 56 / 44; display: flex; }
+    .cs-title {
+        margin-top: clamp(6px, 2vh, 20px);
+        font-size: clamp(22px, min(3.5vw, 6.4vh), 52px);
+        line-height: 1.15;
+        font-weight: 400;
+        color: ${INK};
+        text-wrap: balance;
+    }
+    .cs-title em { color: ${WINE}; }
+    .cs-badge {
+        margin-top: clamp(8px, 2.6vh, 24px);
+        font-size: clamp(10px, min(1vw, 1.9vh), 14px);
+        letter-spacing: 0.4em;
+        padding-left: 0.4em; /* optically center the tracked text */
+        font-weight: 500;
+        color: ${INK};
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+    .cs-lang {
+        position: absolute;
+        z-index: 2;
+        top: clamp(10px, 2.2vh, 18px);
+        right: clamp(10px, 2.5vw, 20px);
+        display: flex;
+        gap: 2px;
+        padding: 4px 6px;
+        border-radius: 999px;
+        background: rgba(255, 244, 236, 0.72);
+        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px);
+        font-size: clamp(10px, 1.5vh, 12px);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: ${WINE};
+    }
+    .cs-lang a { padding: 4px 6px 4px 8px; border-radius: 999px; transition: opacity .2s, background-color .2s; }
+
+    /* Mobile / portrait: bigger type, title wraps, focus the crop on the chalkboard */
+    @media (max-aspect-ratio: 1/1) {
+        /* Portrait art: keep the characters + chalkboard centered, wall on top */
+        .cs-bg { object-position: center top; }
+        .cs-frame::before { background-image: var(--cs-ph-mobile); }
+        .cs-veil {
+            background:
+                linear-gradient(to bottom, rgba(255, 241, 230, 0.45) 0%, rgba(255, 241, 230, 0.3) 30%, rgba(255, 241, 230, 0) 46%);
+        }
+        .cs-content { padding-top: clamp(52px, 8vh, 80px); }
+        .cs-logo { width: clamp(150px, min(58vw, 22vh), 300px); }
+        .cs-divider { width: min(78vw, 360px); }
+        .cs-heart { width: clamp(30px, min(9vw, 5vh), 44px); }
+        .cs-title { font-size: clamp(22px, min(7.4vw, 4.4vh), 40px); max-width: 22ch; }
+        .cs-badge { font-size: clamp(10px, min(3vw, 1.7vh), 13px); }
+    }
+`;
+
 export default async function ComingSoon({ locale }: { locale: string }) {
     const t = await getTranslations({ locale, namespace: "ComingSoon" });
 
+    // Desktop (2:1) and mobile (portrait) backgrounds, optimized by next/image.
+    const { props: desktopBg } = getImageProps({
+        src: "/bg_hero_2.png",
+        alt: "",
+        width: 1774,
+        height: 887,
+        quality: 90,
+        priority: true,
+        // cover: as wide as the screen, or 2x the height on narrower screens
+        sizes: "max(100vw, 200vh)",
+    });
+    const { props: mobileBg } = getImageProps({
+        src: "/bg_hero_2_mobile.jpeg",
+        alt: "",
+        width: 1051,
+        height: 1496,
+        quality: 90,
+        // portrait cover: as wide as ~70% of the screen height
+        sizes: "max(100vw, 71vh)",
+    });
+
     return (
         <div
-            className={`${sans.className} fixed inset-0 h-dvh w-full overflow-hidden overscroll-none flex flex-col items-center justify-center text-center`}
-            style={{
-                color: WINE,
-                padding: "clamp(12px, 4vh, 48px) clamp(16px, 5vw, 48px)",
-                backgroundColor: "#f7e3d6",
-                backgroundImage: [
-                    "radial-gradient(120% 80% at 0% 0%, rgba(255,255,255,0.65) 0%, transparent 55%)",
-                    "radial-gradient(90% 70% at 100% 20%, rgba(232,196,175,0.55) 0%, transparent 60%)",
-                    "radial-gradient(100% 90% at 20% 100%, rgba(240,205,185,0.7) 0%, transparent 60%)",
-                    "linear-gradient(160deg, #fbece3 0%, #f6dfd0 45%, #f3d6c4 100%)",
-                ].join(","),
-            }}
+            className={`${sans.className} cs-root`}
+            style={
+                {
+                    "--cs-ph-desktop": `url("${BG_DESKTOP_PLACEHOLDER}")`,
+                    "--cs-ph-mobile": `url("${BG_MOBILE_PLACEHOLDER}")`,
+                } as React.CSSProperties
+            }
         >
-            {/* Lock the page: no scrollbars, no overscroll / rubber-band bounce (also at 150% zoom) */}
-            <style>{`
-                html, body {
-                    height: 100%;
-                    overflow: hidden !important;
-                    overscroll-behavior: none;
-                }
-                body { touch-action: none; }
-            `}</style>
+            {/* Start downloading the right background immediately (only the matching one) */}
+            <link
+                rel="preload"
+                as="image"
+                imageSrcSet={desktopBg.srcSet}
+                imageSizes={desktopBg.sizes}
+                media="not all and (max-aspect-ratio: 1/1)"
+                fetchPriority="high"
+            />
+            <link
+                rel="preload"
+                as="image"
+                imageSrcSet={mobileBg.srcSet}
+                imageSizes={mobileBg.sizes}
+                media="(max-aspect-ratio: 1/1)"
+                fetchPriority="high"
+            />
+            <style>{styles}</style>
+
+            {/* Background illustration */}
+            <div className="cs-frame">
+                <BackgroundPicture
+                    desktop={desktopBg}
+                    mobile={{ srcSet: mobileBg.srcSet, sizes: mobileBg.sizes }}
+                    className="cs-bg"
+                />
+            </div>
+            <div className="cs-veil" aria-hidden="true" />
 
             {/* Language switcher — full page loads, only locale roots are reachable */}
-            <nav
-                className="absolute flex uppercase"
-                style={{
-                    top: "clamp(10px, 2.5vh, 20px)",
-                    right: "clamp(12px, 3vw, 20px)",
-                    gap: "clamp(8px, 1.5vw, 12px)",
-                    fontSize: "clamp(10px, 1.6vh, 12px)",
-                    letterSpacing: "0.25em",
-                }}
-                aria-label={t("language")}
-            >
+            <nav className="cs-lang" aria-label={t("language")}>
                 {routing.locales.map((l) => (
                     <a
                         key={l}
                         href={`/${l}`}
                         hrefLang={l}
                         aria-current={l === locale ? "true" : undefined}
-                        className={`p-1 transition-opacity ${l === locale ? "opacity-100 underline underline-offset-4" : "opacity-50 hover:opacity-90"}`}
+                        className={l === locale ? "bg-white/70 opacity-100" : "opacity-60 hover:opacity-100"}
                     >
                         {l}
                     </a>
                 ))}
             </nav>
 
-            {/* Logo */}
-            <div className="flex justify-center">
+            <div className="cs-content">
+                {/* Logo */}
                 <Image
                     src="/Momento Dessert Wordmark.png"
                     alt="Momento Dessert"
                     width={2172}
                     height={724}
                     priority
-                    sizes="(max-width: 640px) 75vw, 384px"
-                    className="h-auto"
-                    style={{ width: "clamp(160px, min(75vw, 40vh), 384px)" }}
+                    sizes="(max-aspect-ratio: 1/1) 60vw, 320px"
+                    className="cs-logo"
                 />
-            </div>
 
-            {/* Divider with hearts */}
-            <div
-                className="flex w-full max-w-xl items-center"
-                style={{ marginTop: "clamp(10px, 4vh, 40px)", gap: "clamp(10px, 2vw, 16px)" }}
-            >
-                <Rule className="flex-1" />
-                <span className="flex" style={{ width: "clamp(36px, min(10vw, 6.5vh), 56px)", aspectRatio: "56 / 44" }}>
-                    <HeartsIcon width={56} height={44} className="h-full w-full" />
-                </span>
-                <Rule className="flex-1" />
-            </div>
+                {/* Divider with heart */}
+                <div className="cs-divider">
+                    <Rule />
+                    <span className="cs-heart">
+                        <HeartsIcon width={56} height={44} className="h-full w-full" />
+                    </span>
+                    <Rule />
+                </div>
 
-            {/* Headline */}
-            <h1
-                className={`${serif.className} font-normal text-balance`}
-                style={{
-                    marginTop: "clamp(8px, 3.5vh, 32px)",
-                    fontSize: "clamp(26px, min(9.5vw, 8.5vh), 76px)",
-                    lineHeight: 1.08,
-                }}
-            >
-                <span className="block">{t("titleLine1")}</span>
-                <span
-                    className={`${playfairItalic.className} block`}
-                    style={{ fontStyle: "italic", fontWeight: 400, marginTop: "0.05em" }}
-                >
-                    {t("titleLine2")}
-                </span>
-            </h1>
+                {/* Headline: plain start + Playfair Display Italic emphasis */}
+                <h1 className={`${serif.className} cs-title`}>
+                    {t("titleStart")}{" "}
+                    <em className={playfairItalic.className} style={{ fontStyle: "italic", fontWeight: 400 }}>
+                        {t("titleEmphasis")}
+                    </em>
+                </h1>
 
-            <p
-                className="max-w-2xl uppercase text-balance"
-                style={{
-                    marginTop: "clamp(10px, 4vh, 40px)",
-                    fontSize: "clamp(10px, min(2.8vw, 2vh), 14px)",
-                    letterSpacing: "0.3em",
-                    lineHeight: 1.7,
-                }}
-            >
-                {t("subtitle")}
-            </p>
-
-            {/* Badge */}
-            <div
-                className="flex w-full max-w-xl items-center"
-                style={{ marginTop: "clamp(10px, 4vh, 40px)", gap: "clamp(12px, 3vw, 24px)" }}
-            >
-                <Rule className="flex-1" />
-                <span
-                    className="shrink-0 rounded-full border uppercase whitespace-nowrap"
-                    style={{
-                        borderColor: WINE,
-                        fontSize: "clamp(10px, min(2.8vw, 2vh), 14px)",
-                        letterSpacing: "0.3em",
-                        padding: "clamp(7px, 1.5vh, 12px) clamp(20px, 5vw, 32px)",
-                    }}
-                >
-                    {t("badge")}
-                </span>
-                <Rule className="flex-1" />
+                <p className="cs-badge">{t("badge")}</p>
             </div>
         </div>
     );

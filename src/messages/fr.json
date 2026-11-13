@@ -449,9 +449,8 @@
     }
   },
   "ComingSoon": {
-    "titleLine1": "La marque fait",
-    "titleLine2": "peau neuve.",
-    "subtitle": "Restez à l'écoute, quelque chose de délicieux arrive...",
+    "titleStart": "La marque fait",
+    "titleEmphasis": "peau neuve.",
     "badge": "Bientôt disponible",
     "language": "Langue"
   }

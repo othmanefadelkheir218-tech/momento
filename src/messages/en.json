@@ -451,9 +451,8 @@
     }
   },
   "ComingSoon": {
-    "titleLine1": "The brand is",
-    "titleLine2": "getting a fresh new look.",
-    "subtitle": "Stay tuned, something delicious is coming...",
+    "titleStart": "The brand is getting a",
+    "titleEmphasis": "fresh new look.",
     "badge": "Coming soon",
     "language": "Language"
   }
