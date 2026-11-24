@@ -455,5 +455,31 @@
     "titleEmphasis": "frisse nieuwe look.",
     "badge": "Binnenkort",
     "language": "Taal"
+  },
+  "HomeV2": {
+    "eyebrow": "Momento",
+    "heroTitle1": "Elk moment",
+    "heroTitle2": "heeft zijn zoetheid.",
+    "heroText": "Royale desserts, met passie en vakmanschap bereid.",
+    "heroCta": "Ontdek onze creaties",
+    "f1": "Ambachtelijk vakmanschap",
+    "f2": "Kwaliteitsingrediënten",
+    "f3": "Royale recepten",
+    "f4": "Momenten om te delen",
+    "creationsTitle": "Onze creaties",
+    "creationsText": "Een collectie desserts voor elke trek.",
+    "seeAll": "Bekijk het volledige menu",
+    "prev": "Vorige",
+    "next": "Volgende",
+    "universEyebrow": "Onze wereld",
+    "universTitle1": "In de keuken",
+    "universTitle2": "van Momento",
+    "universText": "Twee gepassioneerde chefs, onafscheidelijk en altijd op zoek naar nieuwe creaties om u lekkere momenten te bezorgen.",
+    "universCta": "Ontdek ons verhaal",
+    "ctaTitle": "Word klant",
+    "ctaText": "Wat als u het volgende hoofdstuk van het Momento-verhaal samen met ons schrijft?",
+    "ctaButton": "Sluit je aan",
+    "heroAlt": "De Momento-chefs in hun keuken",
+    "universAlt": "Het Momento-atelier"
   }
 }

@@ -455,5 +455,31 @@
     "titleEmphasis": "fresh new look.",
     "badge": "Coming soon",
     "language": "Language"
+  },
+  "HomeV2": {
+    "eyebrow": "Momento",
+    "heroTitle1": "Every moment",
+    "heroTitle2": "has its sweetness.",
+    "heroText": "Generous desserts, made with passion and craftsmanship.",
+    "heroCta": "Discover our creations",
+    "f1": "Artisanal craftsmanship",
+    "f2": "Quality ingredients",
+    "f3": "Generous recipes",
+    "f4": "Moments to share",
+    "creationsTitle": "Our creations",
+    "creationsText": "A collection of desserts made for every craving.",
+    "seeAll": "See the full menu",
+    "prev": "Previous",
+    "next": "Next",
+    "universEyebrow": "Our world",
+    "universTitle1": "In the kitchen",
+    "universTitle2": "of Momento",
+    "universText": "Two passionate chefs, partners in crime, always looking for new creations to bring you delicious moments.",
+    "universCta": "Discover our story",
+    "ctaTitle": "Become a client",
+    "ctaText": "What if you wrote the next chapter of the Momento story with us?",
+    "ctaButton": "Join us",
+    "heroAlt": "The Momento chefs in their kitchen",
+    "universAlt": "The Momento workshop"
   }
 }

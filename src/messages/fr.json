@@ -16,10 +16,12 @@
         },
         "contact": {
             "title": "Contact | Parlons de Gourmandise - Momento",
-            "description": "Contactez l’équipe Momento pour vos événements, partenariats ou simplement pour nous saluer. Nous sommes à votre écoute."        },
+            "description": "Contactez l’équipe Momento pour vos événements, partenariats ou simplement pour nous saluer. Nous sommes à votre écoute."
+        },
         "becomeClient": {
             "title": "Devenir Partenaire | Grossiste - Momento",
-            "description": "Rejoignez MOMENTO en tant que partenaire grossiste. Proposez des desserts artisanaux premium à vos clients avec des tarifs exclusifs et un accompagnement dédié."        }
+            "description": "Rejoignez MOMENTO en tant que partenaire grossiste. Proposez des desserts artisanaux premium à vos clients avec des tarifs exclusifs et un accompagnement dédié."
+        }
     },
     "Header": {
         "navigation": "Navigation",
@@ -429,29 +431,55 @@
             "item4": "Support marketing inclus"
         }
     },
-  "ProductPage": {
-    "backToMenu": "Retour au menu",
-    "allergens": "Allergènes",
-    "nutritionTitle": "Valeurs nutritionnelles",
-    "galleryTitle": "En images",
-    "moreFromRange": "Dans la même gamme",
-    "youMayLike": "Vous aimerez aussi",
-    "seeFullMenu": "Voir tout le menu",
-    "nutrients": {
-      "energy": "Énergie",
-      "fat": "Matières grasses",
-      "saturated_fat": "dont acides gras saturés",
-      "carbohydrates": "Glucides",
-      "sugars": "dont sucres",
-      "fiber": "Fibres",
-      "protein": "Protéines",
-      "salt": "Sel"
+    "ProductPage": {
+        "backToMenu": "Retour au menu",
+        "allergens": "Allergènes",
+        "nutritionTitle": "Valeurs nutritionnelles",
+        "galleryTitle": "En images",
+        "moreFromRange": "Dans la même gamme",
+        "youMayLike": "Vous aimerez aussi",
+        "seeFullMenu": "Voir tout le menu",
+        "nutrients": {
+            "energy": "Énergie",
+            "fat": "Matières grasses",
+            "saturated_fat": "dont acides gras saturés",
+            "carbohydrates": "Glucides",
+            "sugars": "dont sucres",
+            "fiber": "Fibres",
+            "protein": "Protéines",
+            "salt": "Sel"
+        }
+    },
+    "ComingSoon": {
+        "titleStart": "La marque fait",
+        "titleEmphasis": "peau neuve.",
+        "badge": "Bientôt disponible",
+        "language": "Langue"
+    },
+    "HomeV2": {
+        "eyebrow": "Momento",
+        "heroTitle1": "Chaque instant",
+        "heroTitle2": "a sa douceur.",
+        "heroText": "Des desserts généreux, préparés avec passion et savoir-faire.",
+        "heroCta": "Découvrir nos créations",
+        "f1": "Savoir-faire artisanal",
+        "f2": "Ingrédients de qualité",
+        "f3": "Recettes généreuses",
+        "f4": "Des moments à partager",
+        "creationsTitle": "Nos créations",
+        "creationsText": "Une collection de desserts pensés pour toutes vos envies.",
+        "seeAll": "Voir tout le menu",
+        "prev": "Précédent",
+        "next": "Suivant",
+        "universEyebrow": "Notre univers",
+        "universTitle1": "Dans la cuisine",
+        "universTitle2": "de Momento",
+        "universText": "Deux chefs passionnés, complices et toujours en quête de nouvelles créations pour vous faire vivre des moments gourmands.",
+        "universCta": "Découvrir notre histoire",
+        "ctaTitle": "Devenir client",
+        "ctaText": "Et si vous écriviez la suite de l'histoire Momento avec nous ?",
+        "ctaButton": "Nous rejoindre",
+        "heroAlt": "Les chefs Momento dans leur cuisine",
+        "universAlt": "L'atelier Momento"
     }
-  },
-  "ComingSoon": {
-    "titleStart": "La marque fait",
-    "titleEmphasis": "peau neuve.",
-    "badge": "Bientôt disponible",
-    "language": "Langue"
-  }
 }

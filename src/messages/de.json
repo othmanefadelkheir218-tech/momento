@@ -431,29 +431,55 @@
             "item4": "Marketingunterstützung inklusive"
         }
     },
-  "ProductPage": {
-    "backToMenu": "Zurück zum Menü",
-    "allergens": "Allergene",
-    "nutritionTitle": "Nährwerte",
-    "galleryTitle": "In Bildern",
-    "moreFromRange": "Mehr aus dieser Reihe",
-    "youMayLike": "Das könnte Ihnen auch gefallen",
-    "seeFullMenu": "Das ganze Menü ansehen",
-    "nutrients": {
-      "energy": "Energie",
-      "fat": "Fett",
-      "saturated_fat": "davon gesättigte Fettsäuren",
-      "carbohydrates": "Kohlenhydrate",
-      "sugars": "davon Zucker",
-      "fiber": "Ballaststoffe",
-      "protein": "Eiweiß",
-      "salt": "Salz"
+    "ProductPage": {
+        "backToMenu": "Zurück zum Menü",
+        "allergens": "Allergene",
+        "nutritionTitle": "Nährwerte",
+        "galleryTitle": "In Bildern",
+        "moreFromRange": "Mehr aus dieser Reihe",
+        "youMayLike": "Das könnte Ihnen auch gefallen",
+        "seeFullMenu": "Das ganze Menü ansehen",
+        "nutrients": {
+            "energy": "Energie",
+            "fat": "Fett",
+            "saturated_fat": "davon gesättigte Fettsäuren",
+            "carbohydrates": "Kohlenhydrate",
+            "sugars": "davon Zucker",
+            "fiber": "Ballaststoffe",
+            "protein": "Eiweiß",
+            "salt": "Salz"
+        }
+    },
+    "ComingSoon": {
+        "titleStart": "Die Marke bekommt einen",
+        "titleEmphasis": "frischen neuen Look.",
+        "badge": "Demnächst",
+        "language": "Sprache"
+    },
+    "HomeV2": {
+        "eyebrow": "Momento",
+        "heroTitle1": "Jeder Moment",
+        "heroTitle2": "hat seine Süße.",
+        "heroText": "Großzügige Desserts, mit Leidenschaft und Handwerkskunst zubereitet.",
+        "heroCta": "Unsere Kreationen entdecken",
+        "f1": "Handwerkliches Können",
+        "f2": "Hochwertige Zutaten",
+        "f3": "Großzügige Rezepte",
+        "f4": "Momente zum Teilen",
+        "creationsTitle": "Unsere Kreationen",
+        "creationsText": "Eine Dessertkollektion für jede Lust.",
+        "seeAll": "Ganzes Menü ansehen",
+        "prev": "Zurück",
+        "next": "Weiter",
+        "universEyebrow": "Unsere Welt",
+        "universTitle1": "In der Küche",
+        "universTitle2": "von Momento",
+        "universText": "Zwei leidenschaftliche Köche, ein eingespieltes Team, immer auf der Suche nach neuen Kreationen für Ihre Genussmomente.",
+        "universCta": "Unsere Geschichte entdecken",
+        "ctaTitle": "Kunde werden",
+        "ctaText": "Wie wäre es, das nächste Kapitel der Momento-Geschichte mit uns zu schreiben?",
+        "ctaButton": "Mitmachen",
+        "heroAlt": "Die Momento-Köche in ihrer Küche",
+        "universAlt": "Die Momento-Werkstatt"
     }
-  },
-  "ComingSoon": {
-    "titleStart": "Die Marke bekommt einen",
-    "titleEmphasis": "frischen neuen Look.",
-    "badge": "Demnächst",
-    "language": "Sprache"
-  }
 }
