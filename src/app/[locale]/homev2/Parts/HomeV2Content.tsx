@@ -13,6 +13,7 @@ import { useDessertData } from "@/hooks/useDessertData";
 import { useTransitionRouter } from "@/hooks/useTransitionRouter";
 import { slugify } from "@/lib/utils";
 import { serif, sans } from "./fonts";
+import DessertScrollSequence from "./DessertScrollSequence";
 
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
@@ -24,6 +25,12 @@ const CREAM = "#F7F0E5";
 const CARAMEL = "#C68B4E";
 const CHOCOLATE = "#4A2C21";
 
+// Temporarily hidden — flip back to true to restore the hero text / colour filters.
+const SHOW_HERO_CONTENT = false;
+const SHOW_HERO_OVERLAY = false;
+const HERO_PARALLAX = false;
+const SHOW_FEATURES = false;
+
 export default function HomeV2Content() {
     const t = useTranslations("HomeV2");
     const products = useDessertData();
@@ -32,13 +39,17 @@ export default function HomeV2Content() {
     const rootRef = useRef<HTMLDivElement>(null);
     const heroImgRef = useRef<HTMLDivElement>(null);
     const universImgRef = useRef<HTMLDivElement>(null);
+    const seqWrapRef = useRef<HTMLDivElement>(null);
+    const heroRef = useRef<HTMLElement>(null);
+    const seqNextRef = useRef<HTMLElement>(null);
     const trackRef = useRef<HTMLDivElement>(null);
 
     const creations = products.filter((p: DessertInterface) => p.categoryKey === "verrineRange");
 
     // Soft parallax on the big images; Lenis drives ScrollTrigger so it stays smooth.
     useGSAP(() => {
-        if (heroImgRef.current) {
+        // Hero parallax disabled for now so the image stays anchored to its bottom (cups fully visible).
+        if (HERO_PARALLAX && heroImgRef.current) {
             gsap.to(heroImgRef.current, {
                 yPercent: 12,
                 ease: "none",
@@ -85,24 +96,53 @@ export default function HomeV2Content() {
             className={`${serif.variable} ${sans.variable} overflow-hidden`}
             style={{ backgroundColor: CREAM, color: CHOCOLATE, fontFamily: "var(--font-hv2-sans)" }}
         >
+            {/* Hero + next screen share one wrapper so the dessert cup can travel between them */}
+            <div ref={seqWrapRef} className="relative">
             {/* ───────── Hero ───────── */}
-            <section className="relative min-h-[100svh] w-full flex items-center overflow-hidden">
-                <div ref={heroImgRef} className="absolute inset-0 -top-[6%] h-[112%] -z-0">
-                    <Image src="/bg_hero_2.png" alt={t("heroAlt")} fill priority sizes="100vw" className="object-cover hidden md:block" />
-                    <Image src="/bg_hero_2_mobile.jpeg" alt={t("heroAlt")} fill priority sizes="100vw" className="object-cover md:hidden" />
+            <section ref={heroRef} className="relative min-h-[100svh] w-full flex items-center overflow-hidden">
+                <div ref={heroImgRef} className="absolute inset-0 -z-0">
+                    <Image
+                        src="/Cozy_Bakery_Kitchen_with_Dessert_Cups.png"
+                        alt={t("heroAlt")}
+                        fill
+                        priority
+                        sizes="100vw"
+                        className="object-cover hv2-hero-img"
+                    />
                 </div>
-                {/* Burgundy-to-transparent wash so the text reads well */}
+                {/* Bottom blur + fade into the cream body colour so the hero blends into the page */}
+                <div
+                    className="absolute inset-x-0 bottom-0 h-32 md:h-44 pointer-events-none z-[1] backdrop-blur-[3px]"
+                    style={{
+                        WebkitMaskImage: "linear-gradient(180deg, transparent 0%, black 85%)",
+                        maskImage: "linear-gradient(180deg, transparent 0%, black 85%)",
+                    }}
+                />
+                <div
+                    className="absolute inset-x-0 bottom-0 h-32 md:h-44 pointer-events-none z-[1]"
+                    style={{ background: `linear-gradient(180deg, ${CREAM}00 0%, ${CREAM}26 40%, ${CREAM}99 80%, ${CREAM} 100%)` }}
+                />
+
+                {SHOW_HERO_OVERLAY && (<>
+                {/* Burgundy-to-transparent wash so the text reads well while the chefs stay visible */}
                 <div
                     className="absolute inset-0 hidden md:block"
-                    style={{ background: `linear-gradient(90deg, ${BURGUNDY}E6 0%, ${BURGUNDY}99 32%, transparent 62%)` }}
+                    style={{ background: `linear-gradient(90deg, ${BURGUNDY}E6 0%, ${BURGUNDY}A6 22%, ${BURGUNDY}40 38%, transparent 50%)` }}
                 />
                 <div
                     className="absolute inset-0 md:hidden"
-                    style={{ background: `linear-gradient(180deg, transparent 30%, ${BURGUNDY}CC 75%, ${BURGUNDY} 100%)` }}
+                    style={{ background: `linear-gradient(180deg, transparent 35%, ${BURGUNDY}CC 72%, ${BURGUNDY} 100%)` }}
                 />
+                {/* Soft top shade so the header stays legible over the bright scene */}
+                <div
+                    className="absolute inset-x-0 top-0 h-40 pointer-events-none"
+                    style={{ background: `linear-gradient(180deg, ${CHOCOLATE}66 0%, transparent 100%)` }}
+                />
+                </>)}
 
+                {SHOW_HERO_CONTENT && (
                 <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 pt-40 pb-16 md:py-0 self-end md:self-center">
-                    <div className="max-w-xl" style={{ color: CREAM }}>
+                    <div className="max-w-lg drop-shadow-[0_2px_12px_rgba(74,44,33,0.35)]" style={{ color: CREAM }}>
                         <Reveal delay={0.15} rotate={false}>
                             <p className="uppercase tracking-[0.4em] text-xs md:text-sm" style={{ color: CARAMEL }}>
                                 {t("eyebrow")}
@@ -133,9 +173,18 @@ export default function HomeV2Content() {
                         </Reveal>
                     </div>
                 </div>
+                )}
             </section>
 
-            {/* ───────── Features strip ───────── */}
+            {/* ───────── Empty placeholder section (content to come) ───────── */}
+            <section ref={seqNextRef} className="h-screen w-full" style={{ backgroundColor: CREAM }} />
+
+            {/* Scroll-driven dessert frames: starts on the counter spot, plays across the next screen */}
+            <DessertScrollSequence wrapperRef={seqWrapRef} heroRef={heroRef} nextRef={seqNextRef} />
+            </div>
+
+            {/* ───────── Features strip (hidden for now) ───────── */}
+            {SHOW_FEATURES && (
             <section className="border-b" style={{ backgroundColor: CREAM, borderColor: `${CARAMEL}40` }}>
                 <div className="max-w-6xl mx-auto px-6 md:px-12 py-8 grid grid-cols-2 md:grid-cols-4 gap-y-6">
                     {features.map(({ icon: Icon, label }, i) => (
@@ -151,6 +200,7 @@ export default function HomeV2Content() {
                     ))}
                 </div>
             </section>
+            )}
 
             {/* ───────── Nos créations ───────── */}
             <section className="py-20 md:py-28">
@@ -316,6 +366,8 @@ export default function HomeV2Content() {
             </section>
 
             <style>{`
+                .hv2-hero-img { object-position: 60% 100%; }
+                @media (min-width: 768px) { .hv2-hero-img { object-position: 70% 100%; } }
                 .hv2-track { scrollbar-width: none; }
                 .hv2-track::-webkit-scrollbar { display: none; }
             `}</style>

@@ -123,7 +123,7 @@ export default async function LocaleLayout({
                             disableTransitionOnChange
                         >
                             <TransitionWrapper>
-                                <Header />
+                                {/*<Header />*/}
                                 <main className="min-h-screen">
                                     {children}
                                 </main>
