@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useLenis } from "lenis/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, ChefHat, ChevronLeft, ChevronRight, Gift, Heart, Leaf } from "lucide-react";
 import { Reveal } from "@/components/animation/Reveal";
@@ -25,6 +26,12 @@ const CREAM = "#F7F0E5";
 const CARAMEL = "#C68B4E";
 const CHOCOLATE = "#4A2C21";
 
+// ── Hero style switch ──
+//   "hero2" → (default) the picture fills the first screen with no text; on scroll it shrinks into a//               frame and the title appears in the cream space above it.
+//   "hero"  → previous version: title on the left, over a cream haze on the picture.
+// To switch, just change the value below to "hero" or "hero2".
+const HERO_VARIANT: "hero" | "hero2" = "hero2";
+
 // Temporarily hidden — flip back to true to restore the hero text / features strip.
 const SHOW_HERO_CONTENT = false;
 const SHOW_FEATURES = false;
@@ -39,6 +46,88 @@ export default function HomeV2Content() {
     const heroHazeRef = useRef<HTMLDivElement>(null);
     const universImgRef = useRef<HTMLDivElement>(null);
     const trackRef = useRef<HTMLDivElement>(null);
+    const heroStageRef = useRef<HTMLDivElement>(null);
+    const revealCopyRef = useRef<HTMLDivElement>(null);
+    const scrollCueRef = useRef<HTMLDivElement>(null);
+    const lenis = useLenis();
+
+    const goToCreations = () => {
+        const target = document.getElementById("hv2-creations");
+        if (!target) return;
+        if (lenis) lenis.scrollTo(target, { offset: -72 });
+        else target.scrollIntoView({ behavior: "smooth" });
+    };
+
+    // hero2: full-screen picture first, then on scroll it shrinks into a frame
+    // and the title writes itself in the cream space above it.
+    useGSAP(() => {
+        if (HERO_VARIANT !== "hero2") return;
+        const stage = heroStageRef.current;
+        const copy = revealCopyRef.current;
+        const cue = scrollCueRef.current;
+        if (!stage || !copy || !cue) return;
+        const section = stage.closest("section");
+        if (!section) return;
+
+        const mm = gsap.matchMedia();
+        mm.add(
+            {
+                desktop: "(min-width: 768px)",
+                mobile: "(max-width: 767px)",
+                reduce: "(prefers-reduced-motion: reduce)",
+            },
+            (ctx) => {
+                const { desktop, reduce } = ctx.conditions as { desktop: boolean; reduce: boolean };
+
+                // Final look of the picture:
+                //  desktop → scaled down to 70% from the bottom, so the whole scene stays visible;
+                //  mobile  → the top is clipped away (the screen is too narrow to scale it down).
+                const framed = desktop
+                    // small rounded corners on top; flush on the bottom edge (no rounding there)
+                    ? { scale: 0.7, borderRadius: "18px 18px 0px 0px" }
+                    : { clipPath: "inset(38% 0% 0% 0% round 12px 12px 0px 0px)" };
+
+                gsap.set(stage, desktop
+                    ? { transformOrigin: "50% 100%", borderRadius: "0px 0px 0px 0px" }
+                    : { clipPath: "inset(0% 0% 0% 0% round 0px 0px 0px 0px)" });
+                // Initial state: the title block is fully hidden over the full-screen picture.
+                gsap.set(copy, { autoAlpha: 0 });
+
+                if (reduce) {
+                    gsap.set(stage, framed);
+                    gsap.set(copy, { autoAlpha: 1 });
+                    gsap.set(cue, { autoAlpha: 0 });
+                    return;
+                }
+
+                gsap.timeline({
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top top",
+                        end: "+=65%",
+                        scrub: 0.8,
+                        invalidateOnRefresh: true,
+                    },
+                })
+                    .to(cue, { autoAlpha: 0, y: 12, duration: 0.15, ease: "none" }, 0)
+                    .to(stage, { ...framed, duration: 1, ease: "power2.inOut" }, 0)
+                    // the title block only appears once the frame has shrunk enough to leave cream space
+                    .to(copy, { autoAlpha: 1, duration: 0.1, ease: "none" }, 0.42)
+                    .from(".hv2r-rule", { scaleX: 0, duration: 0.3, ease: "power3.out" }, 0.45)
+                    .from(".hv2r-eyebrow", { opacity: 0, y: 10, duration: 0.3 }, 0.48)
+                    .from(".hv2-w", { yPercent: 115, duration: 0.35, stagger: 0.03, ease: "power3.out" }, 0.5)
+                    .fromTo(
+                        ".hv2-accent",
+                        { clipPath: "inset(-30% 100% -30% -10%)" },
+                        { clipPath: "inset(-30% -10% -30% -10%)", duration: 0.3, ease: "power2.inOut" },
+                        0.75,
+                    )
+                    .from(".hv2-dot", { opacity: 0, scale: 0, duration: 0.1 }, 1.02)
+                    .from(".hv2r-cta", { opacity: 0, y: 14, duration: 0.25 }, 0.85);
+            },
+        );
+        return () => mm.revert();
+    }, { scope: rootRef });
 
     const creations = products.filter((p: DessertInterface) => p.categoryKey === "verrineRange");
 
@@ -113,7 +202,53 @@ export default function HomeV2Content() {
             style={{ backgroundColor: CREAM, color: CHOCOLATE, fontFamily: "var(--font-hv2-sans)" }}
         >
             {/* ───────── Hero: scroll-driven frame sequence (2.5 screens tall, pinned for 1.5 screens of scroll) ───────── */}
-            <HeroFrameSequence backgroundColor={CREAM}>
+            <HeroFrameSequence backgroundColor={CREAM} stageRef={heroStageRef}>
+                {HERO_VARIANT === "hero2" ? (
+                <>
+                    {/* Title row in the cream space above the framed picture.
+                        Its height matches where the frame's top edge lands (30svh desktop / 38svh mobile). */}
+                    <div
+                        ref={revealCopyRef}
+                        className="invisible absolute inset-x-0 top-[72px] z-10 flex items-center h-[calc(38svh-72px)] md:h-[calc(30svh-72px)]"
+                    >
+                        <div className="mx-auto w-[92vw] md:w-[70vw] flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-8 text-center md:text-left">
+                            <div>
+                                <p className="flex items-center justify-center md:justify-start gap-3 font-body font-semibold text-[11px] md:text-[12px] uppercase tracking-[.18em] text-burgundy whitespace-nowrap">
+                                    <span aria-hidden className="hv2r-rule h-px w-6 md:w-8 bg-burgundy/60 origin-right md:origin-left" />
+                                    <span className="hv2r-eyebrow">{t("heroEyebrow")}</span>
+                                    <span aria-hidden className="hv2r-rule h-px w-6 bg-burgundy/60 origin-left md:hidden" />
+                                </p>
+                                <h1 className="mt-2 md:mt-3 font-display font-medium text-burgundy leading-[1.05] text-[40px] md:text-[clamp(30px,3.4vw,54px)]">
+                                    <HeroTitle raw={t.raw("heroTitle") as string} oneLineOnDesktop />
+                                </h1>
+                            </div>
+                            <button
+                                onClick={goToCreations}
+                                className="hv2r-cta group hidden md:inline-flex shrink-0 items-center gap-3 rounded-full px-7 py-3 text-sm uppercase tracking-[.12em] transition-all duration-300 hover:gap-4 hover:brightness-110"
+                                style={{ backgroundColor: BURGUNDY, color: CREAM }}
+                            >
+                                {t("heroCta")}
+                                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Scroll cue on the first screen (fades out as soon as the user scrolls) */}
+                    <div
+                        ref={scrollCueRef}
+                        aria-hidden
+                        className="pointer-events-none absolute bottom-6 inset-x-0 z-10 flex flex-col items-center gap-2 text-[11px] uppercase tracking-[.3em] drop-shadow-[0_1px_6px_rgba(74,44,33,0.6)]"
+                        style={{ color: CREAM }}
+                    >
+                        <span>Scroll</span>
+                        <span className="block h-10 w-px overflow-hidden" style={{ backgroundColor: `${CREAM}55` }}>
+                            <span className="block h-1/2 w-full animate-[hv2-cue_1.6s_ease-in-out_infinite]" style={{ backgroundColor: CREAM }} />
+                        </span>
+                        <style>{`@keyframes hv2-cue{0%{transform:translateY(-100%)}100%{transform:translateY(200%)}}`}</style>
+                    </div>
+                </>
+                ) : (
+                <>
                 {/* Soft cream fade behind the title (centre on mobile, left side on desktop) */}
                 <div
                     ref={heroHazeRef}
@@ -137,6 +272,8 @@ export default function HomeV2Content() {
                         </h1>
                     </div>
                 </div>
+                </>
+                )}
                 {SHOW_HERO_CONTENT && (
                 <div className="absolute inset-0 z-10 flex items-end md:items-center"><div className="w-full max-w-7xl mx-auto px-6 md:px-12 pt-40 pb-16 md:py-0">
                     <div className="max-w-lg drop-shadow-[0_2px_12px_rgba(74,44,33,0.35)]" style={{ color: CREAM }}>
@@ -193,7 +330,7 @@ export default function HomeV2Content() {
             )}
 
             {/* ───────── Nos créations ───────── */}
-            <section className="py-20 md:py-28">
+            <section id="hv2-creations" className="py-20 md:py-28">
                 <div className="max-w-7xl mx-auto px-6 md:px-12">
                     <div className="text-center">
                         <Reveal>
@@ -368,7 +505,8 @@ export default function HomeV2Content() {
  * from a mask; the <accent> word is Playball (design spec: one accent per heading, in <em>, same
  * colour, ~1.14x) and gets a left-to-right "handwriting" wipe.
  */
-function HeroTitle({ raw }: { raw: string }) {
+function HeroTitle({ raw, oneLineOnDesktop = false }: { raw: string; oneLineOnDesktop?: boolean }) {
+    const lineClass = oneLineOnDesktop ? "block md:inline" : "block";
     const words = (text: string, key: string) =>
         text.split(/(\s+)/).map((w, i) =>
             /^\s+$/.test(w) || !w ? (
@@ -382,10 +520,11 @@ function HeroTitle({ raw }: { raw: string }) {
 
     return (
         <>
-            {raw.split("|").map((line, li) => {
+            {raw.split("|").map((line, li, all) => {
                 const m = line.match(/^(.*?)<accent>(.*?)<\/accent>(.*)$/);
                 return (
-                    <span key={li} className="block">
+                    <span key={li} className={lineClass}>
+                        {oneLineOnDesktop && li > 0 && li < all.length && <span className="hidden md:inline"> </span>}
                         <span className="inline-block">
                             {m ? (
                                 <>

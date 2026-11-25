@@ -84,7 +84,7 @@ export default function Header() {
 
     return (
         <>
-            <header ref={headerRef} className="fixed top-0 w-full z-20 py-1 bg-cream/90 backdrop-blur-xl border-b border-burgundy/14">
+            <header ref={headerRef} className="fixed top-0 w-full z-20 py-1 bg-cream/45 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_8px_30px_-12px_rgb(74_44_33/0.25)]">
                 <div className="container mx-auto px-4 h-16 flex items-center justify-between">
                     <TransitionLink href="/" className="rounded-sm focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-caramel">
                         <Image
@@ -134,7 +134,7 @@ export default function Header() {
                             }}
                             backgroundColor="#751B32"
                             hoverTextColor="#F7F0E5"
-                            className="rounded-2xl! border-[1.5px]! border-burgundy bg-cream text-burgundy px-6 py-3 focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-caramel"
+                            className="rounded-2xl! border-[1.5px]! border-burgundy bg-cream/60 text-burgundy px-6 py-3 focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-caramel"
                         >
                             <span className="block font-body font-bold text-sm tracking-[.04em] whitespace-nowrap">
                                 {t("contact")}
