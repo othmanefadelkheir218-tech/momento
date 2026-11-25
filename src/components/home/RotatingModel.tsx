@@ -171,11 +171,11 @@ export default function RotatingModelSection() {
                                         rotate={false}
                                     // delay={-0.5}
                                     >
-                                        <h2 className="text-4xl uppercase trispace-font  lg:text-7xl font-bold text-primary mb-4 trispace-font">
+                                        <h2 className="text-4xl uppercase trispace-font  lg:text-7xl font-bold text-burgundy mb-4 trispace-font">
                                             {section.title}
                                         </h2>
                                     </Reveal>
-                                    <p className="text-lg lg:text-2xl sriracha-regular text-primary/80 leading-relaxed">
+                                    <p className="text-lg lg:text-2xl sriracha-regular text-burgundy/80 leading-relaxed">
                                         {section.description}
                                     </p>
                                 </div>
@@ -198,10 +198,10 @@ export default function RotatingModelSection() {
                                 key={section.id}
                                 className="backdrop-blur-md p- rounded-xl"
                             >
-                                <h2 className="text-3xl font-bold text-primary mb-3 trispace-font">
+                                <h2 className="text-3xl font-bold text-burgundy mb-3 trispace-font">
                                     {section.title}
                                 </h2>
-                                <p className="text-base text-primary/80 leading-relaxed">
+                                <p className="text-base text-burgundy/80 leading-relaxed">
                                     {section.description}
                                 </p>
                             </div>

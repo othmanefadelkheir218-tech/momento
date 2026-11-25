@@ -81,18 +81,18 @@ export function ProductDetails({ nutritionalValues, storageConditions }: Product
             <div className="mx-auto grid max-w-7xl gap-6 md:gap-8 lg:grid-cols-2">
                 {/* Nutrition */}
                 {rows.length > 0 && (
-                    <div className="details-card rounded-3xl bg-[#FBE8EA] p-6 md:p-10">
-                        <h2 className="mb-6 text-2xl font-bold text-primary md:text-3xl">{t("nutritionTitle")}</h2>
+                    <div className="details-card rounded-3xl bg-[#F7F0E5] p-6 md:p-10">
+                        <h2 className="mb-6 text-2xl font-bold text-burgundy md:text-3xl">{t("nutritionTitle")}</h2>
                         <dl>
                             {rows.map(({ key, sub }) => (
                                 <div
                                     key={key}
-                                    className="details-row flex items-baseline justify-between gap-4 border-b border-primary/10 py-3 last:border-0"
+                                    className="details-row flex items-baseline justify-between gap-4 border-b border-burgundy/10 py-3 last:border-0"
                                 >
                                     <dt className={sub ? "pl-4 text-sm text-gray-500" : "font-medium text-gray-700"}>
                                         {t(`nutrients.${key}`)}
                                     </dt>
-                                    <dd className={`text-right font-semibold tabular-nums ${sub ? "text-sm text-primary/70" : "text-primary"}`}>
+                                    <dd className={`text-right font-semibold tabular-nums ${sub ? "text-sm text-burgundy/70" : "text-burgundy"}`}>
                                         {formatNutritionValue(nutritionalValues![key])}
                                     </dd>
                                 </div>
@@ -103,17 +103,17 @@ export function ProductDetails({ nutritionalValues, storageConditions }: Product
 
                 {/* Storage & service */}
                 {storageConditions.length > 0 && (
-                    <div className="details-card rounded-3xl border border-primary/10 p-6 md:p-10">
-                        <h2 className="mb-6 text-2xl font-bold text-primary md:text-3xl">{common("storageTitle")}</h2>
+                    <div className="details-card rounded-3xl border border-burgundy/10 p-6 md:p-10">
+                        <h2 className="mb-6 text-2xl font-bold text-burgundy md:text-3xl">{common("storageTitle")}</h2>
                         <ul className="grid gap-3 sm:grid-cols-2">
                             {storageConditions.map((condition) => {
                                 const Icon = iconFor(condition)
                                 return (
                                     <li
                                         key={condition}
-                                        className="details-row flex items-start gap-3 rounded-2xl bg-[#FBE8EA]/50 p-4"
+                                        className="details-row flex items-start gap-3 rounded-2xl bg-[#F7F0E5]/50 p-4"
                                     >
-                                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-primary">
+                                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-burgundy">
                                             <Icon size={20} strokeWidth={1.75} />
                                         </span>
                                         <span className="pt-2 text-sm leading-snug text-gray-700">{condition}</span>

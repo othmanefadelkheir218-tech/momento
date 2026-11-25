@@ -81,7 +81,7 @@ export function IntroSection({ dessert }: IntroSectionProps) {
         fill="none"
         preserveAspectRatio="none"
       >
-        <path d="M200 0C100 200 150 400 50 600C0 700 100 800 200 800" stroke="#DB212F" strokeWidth="2" fill="none" />
+        <path d="M200 0C100 200 150 400 50 600C0 700 100 800 200 800" stroke="#751B32" strokeWidth="2" fill="none" />
       </svg>
 
       <div className="mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center gap-8 px-6 py-20 lg:flex-row lg:gap-16 lg:px-12">
@@ -90,14 +90,14 @@ export function IntroSection({ dessert }: IntroSectionProps) {
           {dessert.isNew && (
             <span
               ref={badgeRef}
-              className="mb-4 inline-block rounded-full bg-primary px-4 py-1.5 font-sans text-xs font-semibold uppercase tracking-wider text-white"
+              className="mb-4 inline-block rounded-full bg-burgundy px-4 py-1.5 font-sans text-xs font-semibold uppercase tracking-wider text-white"
             >
               Nouveau
             </span>
           )}
           <h1
             ref={titleRef}
-            className="mb-6 font-serif text-4xl font-bold leading-tight text-primary md:text-5xl lg:text-6xl"
+            className="mb-6 font-serif text-4xl font-bold leading-tight text-burgundy md:text-5xl lg:text-6xl"
           >
             {dessert.name}
           </h1>

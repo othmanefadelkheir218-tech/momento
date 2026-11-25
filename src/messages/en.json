@@ -250,7 +250,11 @@
     "faq": "FAQ",
     "menu": "Menu",
     "contact": "Contact",
-    "becomeClient": "Become a Client"
+    "becomeClient": "Become a Client",
+    "creations": "Our creations",
+    "universe": "Our world",
+    "franchise": "Become a franchisee",
+    "findShop": "Find a shop"
   },
   "Common": {
     "toggleTheme": "Toggle Theme",
@@ -457,6 +461,8 @@
     "language": "Language"
   },
   "HomeV2": {
+    "heroEyebrow": "Artisan desserts in a pot",
+    "heroTitle": "Every moment|has its|<accent>sweetness</accent>.",
     "eyebrow": "Momento",
     "heroTitle1": "Every moment",
     "heroTitle2": "has its sweetness.",

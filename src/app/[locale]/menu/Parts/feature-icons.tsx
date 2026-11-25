@@ -84,7 +84,7 @@ export function FeaturesSection({ storageConditions }: FeaturesSectionProps) {
   return (
     <section ref={sectionRef} className="w-full bg-white py-20 lg:py-32">
       <div className="mx-auto max-w-4xl px-6 lg:px-12">
-        <h2 ref={titleRef} className="mb-10 font-serif text-3xl font-bold text-primary md:text-4xl">
+        <h2 ref={titleRef} className="mb-10 font-serif text-3xl font-bold text-burgundy md:text-4xl">
           Caractéristiques
         </h2>
 
@@ -97,10 +97,10 @@ export function FeaturesSection({ storageConditions }: FeaturesSectionProps) {
                 ref={(el) => {
                   itemsRef.current[index] = el
                 }}
-                className="flex items-center gap-4 rounded-xl border border-primary/10 bg-white p-4 transition-colors hover:bg-[#FBE8EA]/30"
+                className="flex items-center gap-4 rounded-xl border border-burgundy/10 bg-white p-4 transition-colors hover:bg-[#F7F0E5]/30"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                  <Icon className="h-5 w-5 text-primary" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-burgundy/10">
+                  <Icon className="h-5 w-5 text-burgundy" />
                 </div>
                 <span className="font-sans text-sm text-foreground/80">{condition}</span>
               </div>

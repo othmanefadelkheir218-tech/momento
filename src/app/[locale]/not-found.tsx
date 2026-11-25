@@ -48,7 +48,7 @@ export default function NotFound() {
     }, [])
 
     return (
-        <main ref={containerRef} className="min-h-screen bg-[#F7D6D9] text-primary flex items-center justify-center">
+        <main ref={containerRef} className="min-h-screen bg-[#F7D6D9] text-burgundy flex items-center justify-center">
             <div className="text-center px-6">
                 <h1
                     ref={numberRef}
@@ -72,8 +72,8 @@ export default function NotFound() {
                     <CostumButton
                         onClick={() => router.push("/")}
                         backgroundColor="white"
-                        hoverTextColor="#DB212F"
-                        className="w-[250px] h-[50px] rounded-none bg-primary text-white border-white border"
+                        hoverTextColor="#751B32"
+                        className="w-[250px] h-[50px] rounded-none bg-burgundy text-white border-white border"
                     >
                         <p className="font-bold">
                             {t("button")}

@@ -24,6 +24,10 @@ export default function CostumButton({
     const circle = useRef<HTMLDivElement>(null);
     const overflow = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLDivElement>(null);
+    // Copy of the text in the hover colour, living inside the fill circle:
+    // only the part of the text the fill has reached turns to the hover colour.
+    const copyRef = useRef<HTMLDivElement>(null);
+    const syncing = useRef(false);
     const timeline = useRef<gsap.core.Timeline | null>(null);
 
     // Separate refs for timeline and text timeouts to prevent overwriting
@@ -32,8 +36,33 @@ export default function CostumButton({
     // Track hover state to handle rapid interactions
     const isHovered = useRef<boolean>(false);
 
+    // Keep the copy exactly on top of the real text (follows the fill and the magnetic move)
+    const syncCopy = () => {
+        const text = textRef.current, copy = copyRef.current, c = circle.current;
+        if (!text || !copy || !c) return;
+        const t = text.getBoundingClientRect();
+        const r = c.getBoundingClientRect();
+        copy.style.width = `${text.offsetWidth}px`;
+        copy.style.transform = `translate(${t.left - r.left}px, ${t.top - r.top}px)`;
+    };
+    const startSync = () => {
+        if (!hoverTextColor || syncing.current) return;
+        syncing.current = true;
+        syncCopy();
+        gsap.ticker.add(syncCopy);
+    };
+    const stopSync = () => {
+        if (!syncing.current) return;
+        syncing.current = false;
+        gsap.ticker.remove(syncCopy);
+    };
+
     useEffect(() => {
-        timeline.current = gsap.timeline({ paused: true });
+        timeline.current = gsap.timeline({
+            paused: true,
+            // Fill has left the button: stop following the text
+            onComplete: () => { if (!isHovered.current) stopSync(); },
+        });
 
         // Safety check for ref.current
         if (circle.current && timeline.current) {
@@ -47,6 +76,7 @@ export default function CostumButton({
             if (timelineTimeoutId.current) clearTimeout(timelineTimeoutId.current);
             if (textTimeoutId.current) clearTimeout(textTimeoutId.current);
             if (timeline.current) timeline.current.kill();
+            stopSync();
         }
     }, []);
 
@@ -69,11 +99,8 @@ export default function CostumButton({
             gsap.killTweensOf(textRef.current);
         }
 
+        startSync();
         timeline.current?.tweenFromTo('enter', 'exit');
-
-        if (hoverTextColor && textRef.current) {
-            gsap.to(textRef.current, { color: hoverTextColor, duration: 0.5 });
-        }
     };
 
     const manageMouseLeave = () => {
@@ -86,15 +113,6 @@ export default function CostumButton({
                 timeline.current?.play();
             }
         }, 300);
-
-        if (hoverTextColor && textRef.current) {
-            textTimeoutId.current = setTimeout(() => {
-                // Only animate text color back if still not hovered
-                if (!isHovered.current) {
-                    gsap.to(textRef.current, { color: "inherit", duration: 0.7 });
-                }
-            }, 300);
-        }
     };
 
     return (
@@ -128,8 +146,21 @@ export default function CostumButton({
                 <div
                     ref={circle}
                     style={{ backgroundColor }}
-                    className="w-full h-[150%] absolute rounded-[50%] top-full"
-                ></div>
+                    // With a hover colour the fill sits above the text and carries the recoloured copy;
+                    // without one it stays behind the content (icons, lines…) so they stay visible.
+                    className={`w-full h-[150%] absolute rounded-[50%] top-full overflow-hidden pointer-events-none ${hoverTextColor ? "z-20" : ""}`}
+                >
+                    {hoverTextColor && (
+                        <div
+                            ref={copyRef}
+                            aria-hidden
+                            className="absolute top-0 left-0"
+                            style={{ color: hoverTextColor }}
+                        >
+                            {children}
+                        </div>
+                    )}
+                </div>
             </div>
         </Magnetic>
     );

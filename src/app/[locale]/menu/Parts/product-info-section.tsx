@@ -102,7 +102,7 @@ export function ProductInfoSection({ dessert }: ProductInfoSectionProps) {
                 <div ref={contentRef} className="space-y-6 md:space-y-8">
                     <h2
                         ref={titleRef}
-                        className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary leading-[1.1]"
+                        className="text-4xl md:text-6xl lg:text-7xl font-bold text-burgundy leading-[1.1]"
                         style={{ fontFamily: "var(--font-sans)" }}
                     >
                         {dessert.name}
@@ -121,7 +121,7 @@ export function ProductInfoSection({ dessert }: ProductInfoSectionProps) {
 
                     <div className="pt-6 md:pt-8 border-t-2 border-gray-100">
                         <h3
-                            className="text-xl md:text-2xl font-bold text-primary mb-4"
+                            className="text-xl md:text-2xl font-bold text-burgundy mb-4"
                             style={{ fontFamily: "var(--font-sans)" }}
                         >
                             ALLERGÈNES

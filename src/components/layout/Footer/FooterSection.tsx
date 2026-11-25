@@ -13,7 +13,7 @@ import Magnetic from "../../Magnetic"
 gsap.registerPlugin(ScrollTrigger)
 
 const IceCreamDot = ({ className = "", delay = 0 }: { className?: string; delay?: number }) => (
-  <div className={`absolute rounded-full bg-primary/10 ${className}`} style={{ animationDelay: `${delay}s` }} />
+  <div className={`absolute rounded-full bg-burgundy/10 ${className}`} style={{ animationDelay: `${delay}s` }} />
 )
 
 export default function FooterSection() {
@@ -144,7 +144,7 @@ export default function FooterSection() {
       {/* min-h-screen, not h-screen: when the viewport is short (150% zoom,
           small laptops, landscape phones) the section grows to fit its
           content instead of clipping it with overflow-hidden */}
-      <div className="min-h-screen bg-primaryLighter/20 flex flex-col items-center justify-between px-6 py-12 md:py-20 relative overflow-hidden">
+      <div className="min-h-screen bg-caramel/20 flex flex-col items-center justify-between px-6 py-12 md:py-20 relative overflow-hidden">
         {/* Decorative background elements */}
         <div ref={decorRef} className="absolute inset-0 pointer-events-none">
           {/* Scattered dots pattern */}
@@ -161,14 +161,14 @@ export default function FooterSection() {
 
           {/* Decorative curved lines */}
           <svg
-            className="decor-item absolute top-[5%] left-[25%] w-32 h-32 text-primary/5"
+            className="decor-item absolute top-[5%] left-[25%] w-32 h-32 text-burgundy/5"
             viewBox="0 0 100 100"
             fill="none"
           >
             <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="2" strokeDasharray="10 5" />
           </svg>
           <svg
-            className="decor-item absolute bottom-[15%] right-[20%] w-24 h-24 text-primary/5"
+            className="decor-item absolute bottom-[15%] right-[20%] w-24 h-24 text-burgundy/5"
             viewBox="0 0 100 100"
             fill="none"
           >
@@ -178,7 +178,7 @@ export default function FooterSection() {
 
         {/* Top section - can add tagline or badge */}
         <div className="text-center">
-          <span className="inline-block px-4 py-2 text-xs tracking-[0.3em] text-primary/60 uppercase trispace-font">
+          <span className="inline-block px-4 py-2 text-xs tracking-[0.3em] text-burgundy/60 uppercase trispace-font">
             {t2("joingMomento")}
           </span>
         </div>
@@ -193,15 +193,15 @@ export default function FooterSection() {
 
           {/* Decorative divider */}
           <div className="flex items-center justify-center gap-4">
-            <span className="w-12 h-px bg-primary/20"></span>
-            <span className="w-2 h-2 rounded-full bg-primary/30"></span>
-            <span className="w-12 h-px bg-primary/20"></span>
+            <span className="w-12 h-px bg-burgundy/20"></span>
+            <span className="w-2 h-2 rounded-full bg-burgundy/30"></span>
+            <span className="w-12 h-px bg-burgundy/20"></span>
           </div>
 
           {/* Simple Text */}
           <p
             ref={textRef}
-            className="text-base md:text-xl text-primary/80 max-w-2xl mx-auto leading-relaxed"
+            className="text-base md:text-xl text-burgundy/80 max-w-2xl mx-auto leading-relaxed"
           >
             {t2("textMomento")}
           </p>
@@ -213,10 +213,10 @@ export default function FooterSection() {
               <Magnetic key={page.name}>
                 <a
                   href={page.href}
-                  className="text-primary hover:text-primaryLight transition-colors duration-300 text-base md:text-lg font-medium relative group"
+                  className="text-burgundy hover:text-caramel transition-colors duration-300 text-base md:text-lg font-medium relative group"
                 >
                   {page.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-burgundy group-hover:w-full transition-all duration-300" />
                 </a>
               </Magnetic>
             ))}
@@ -229,15 +229,15 @@ export default function FooterSection() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder={t2("placeholder")}
-              className="flex-1 px-6 py-4 border-2 border-primary/30 bg-white/50 text-primary placeholder:text-primary/50 focus:outline-none focus:border-primary transition-colors duration-300"
+              className="flex-1 px-6 py-4 border-2 border-burgundy/30 bg-white/50 text-burgundy placeholder:text-burgundy/50 focus:outline-none focus:border-burgundy transition-colors duration-300"
               required
             />
             <CostumButton
               onClick={triggerSubmit}
               disabled={isSubmitting}
-              backgroundColor="#DB212F"
+              backgroundColor="#751B32"
               hoverTextColor="white"
-              className={`w-[120px] h-[70px] rounded-none bg-white text-primary border-primary border ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+              className={`w-[120px] h-[70px] rounded-none bg-white text-burgundy border-burgundy border ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
             >
               <p className="font-bold">{isSubmitting ? t2("sending") : t2("subscribe")}</p>
             </CostumButton>

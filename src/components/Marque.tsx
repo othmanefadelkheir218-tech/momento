@@ -89,7 +89,7 @@ const MarqueeContent = ({ PartOne, PartTwo }: { PartOne?: React.ReactNode, PartT
   return (
     <>
       <Phrase>{PartOne}</Phrase>
-      <h1 className="m-0 pr-20 text-[100px] md:text-[180px] font-bold uppercase leading-none tracking-tighter text-primary">
+      <h1 className="m-0 pr-20 text-[100px] md:text-[180px] font-bold uppercase leading-none tracking-tighter text-burgundy">
         {PartTwo}
       </h1>
     </>
@@ -103,7 +103,7 @@ interface PhraseProps {
 
 const Phrase = ({ children, className = "" }: PhraseProps) => {
   return (
-    <h1 className={`m-0 pr-20 text-[100px] md:text-[180px] font-bold uppercase leading-none tracking-tighter text-transparent [-webkit-text-stroke:2px_#DB212F] ${className}`}>
+    <h1 className={`m-0 pr-20 text-[100px] md:text-[180px] font-bold uppercase leading-none tracking-tighter text-transparent [-webkit-text-stroke:2px_#751B32] ${className}`}>
       {children}
     </h1>
   );

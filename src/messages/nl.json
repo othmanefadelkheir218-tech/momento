@@ -250,7 +250,11 @@
     "faq": "Veelgestelde Vragen",
     "menu": "Menu",
     "contact": "Contacteer",
-    "becomeClient": "Word een Partner"
+    "becomeClient": "Word een Partner",
+    "creations": "Onze creaties",
+    "universe": "Ons universum",
+    "franchise": "Franchisenemer worden",
+    "findShop": "Vind een winkel"
   },
   "Common": {
     "toggleTheme": "Thema Wijzigen",
@@ -457,6 +461,8 @@
     "language": "Taal"
   },
   "HomeV2": {
+    "heroEyebrow": "Ambachtelijke desserts in een potje",
+    "heroTitle": "Elk moment|heeft zijn|<accent>zoetheid</accent>.",
     "eyebrow": "Momento",
     "heroTitle1": "Elk moment",
     "heroTitle2": "heeft zijn zoetheid.",

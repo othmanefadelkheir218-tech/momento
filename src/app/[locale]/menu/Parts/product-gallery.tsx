@@ -78,7 +78,7 @@ export function ProductGallery({ images, alt }: ProductGalleryProps) {
     return (
         <section ref={sectionRef} className="w-full bg-white px-6 py-16 md:px-12 md:py-24 lg:px-20 xl:px-32">
             <div className="mx-auto max-w-7xl">
-                <h2 className="trispace-font mb-8 text-xs uppercase tracking-[0.25em] text-primary/70 md:mb-10 md:text-sm">
+                <h2 className="trispace-font mb-8 text-xs uppercase tracking-[0.25em] text-burgundy/70 md:mb-10 md:text-sm">
                     {t("galleryTitle")}
                 </h2>
 
@@ -86,7 +86,7 @@ export function ProductGallery({ images, alt }: ProductGalleryProps) {
                     {shown.map((src, i) => (
                         <div
                             key={src}
-                            className={`gallery-tile relative overflow-hidden rounded-3xl bg-[#FBE8EA] ${layout[i]}`}
+                            className={`gallery-tile relative overflow-hidden rounded-3xl bg-[#F7F0E5] ${layout[i]}`}
                         >
                             <div className="gallery-parallax absolute inset-x-0 -top-[6%] h-[112%]">
                                 <Image

@@ -115,7 +115,7 @@ export default function ProductCardsSection({ products, ShowTitle, showAll, bgco
     return (
         <section
             ref={containerRef}
-            className={`relative w-full ${bgcolor ? bgcolor : "bg-[#FBE8EA]"} py-12 md:py-16 lg:py-20 px-4 md:px-8 lg:px-12 overflow-hidden`}
+            className={`relative w-full ${bgcolor ? bgcolor : "bg-[#F7F0E5]"} py-12 md:py-16 lg:py-20 px-4 md:px-8 lg:px-12 overflow-hidden`}
             onMouseMove={handleMouseMove}
             onMouseLeave={() => setHoveredProductId(null)}
         >
@@ -136,7 +136,7 @@ export default function ProductCardsSection({ products, ShowTitle, showAll, bgco
             </div>
 
             <div className="text-center mb-8 md:mb-12">
-                {ShowTitle && <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary trispace-font uppercase">
+                {ShowTitle && <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-burgundy trispace-font uppercase">
                     {title}
                 </h2>}
             </div>
@@ -162,9 +162,9 @@ export default function ProductCardsSection({ products, ShowTitle, showAll, bgco
                     isButton={true}
                     hoverTextColor="white"
                     onClick={() => router.push("/menu")}
-                    className="w-24 h-24 lg:w-45 lg:h-45 text-primary shrink-0"
+                    className="w-24 h-24 lg:w-45 lg:h-45 text-burgundy shrink-0"
                     fill="transparent"
-                    stroke="#DB212F"
+                    stroke="#751B32"
                     strokeWidth={2}
                 >
                     <span className="text-xs xlmax:text-lg lg:text-sm font-bold trispace-font uppercase">
@@ -204,7 +204,7 @@ function ProductCard({ product, isHovered, onMouseEnter, onMouseLeave, onClick }
                         stroke="#C41E3A"
                         strokeWidth={1.5}
                     >
-                        <span className="text-[10px] md:text-xs font-bold text-primary trispace-font uppercase">
+                        <span className="text-[10px] md:text-xs font-bold text-burgundy trispace-font uppercase">
                             {t("newBadge")}
                         </span>
                     </BigWavyCircle>
@@ -225,7 +225,7 @@ function ProductCard({ product, isHovered, onMouseEnter, onMouseLeave, onClick }
                         {product.name}
                     </h3>
                     <p className="text-[10px] md:text-xs text-gray-500 mb-1">{t("weightLabel")}: {product.weight}</p>
-                    {/* <p className="text-sm md:text-base lg:text-lg font-bold text-primary trispace-font">{product.category}</p> */}
+                    {/* <p className="text-sm md:text-base lg:text-lg font-bold text-burgundy trispace-font">{product.category}</p> */}
                 </div>
 
               

@@ -8,7 +8,26 @@ import { usePathname } from '@/i18n/navigation';
 
 type CurtainState = 'covered' | 'revealed';
 
+// Page transitions (burgundy curtain + logo) are switched off for now.
+// Set to true to bring them back; the code below is kept as is.
+const PAGE_TRANSITIONS = false;
+
+const noExit = () => Promise.resolve();
+const noEnter = () => {};
+
 export default function TransitionWrapper({ children }: { children: React.ReactNode }) {
+    if (!PAGE_TRANSITIONS) {
+        // Links still go through the context, but navigate immediately.
+        return (
+            <TransitionProvider triggerExitAnimation={noExit} triggerEnterAnimation={noEnter}>
+                {children}
+            </TransitionProvider>
+        );
+    }
+    return <CurtainTransition>{children}</CurtainTransition>;
+}
+
+function CurtainTransition({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
     const [isReady, setIsReady] = useState(false);
 
@@ -95,7 +114,7 @@ export default function TransitionWrapper({ children }: { children: React.ReactN
         };
 
         // First measure on the next frame (the screen stays covered by the
-        // bg-primary fallback until then), then start the intro.
+        // bg-burgundy fallback until then), then start the intro.
         raf = requestAnimationFrame(() => {
             measure();
             setIsReady(true);
@@ -164,7 +183,7 @@ export default function TransitionWrapper({ children }: { children: React.ReactN
         >
             {children}
             <div className="fixed inset-0 pointer-events-none z-50">
-                {!isReady && <div className="fixed inset-0 bg-primary z-40" />}
+                {!isReady && <div className="fixed inset-0 bg-burgundy z-40" />}
                 <div ref={logoBoxRef} className="fixed inset-0 z-50">
                     <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2">
                     <svg width="220" height="225" viewBox="0 0 329.78 336.99" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -198,7 +217,7 @@ export default function TransitionWrapper({ children }: { children: React.ReactN
                     className="fixed top-0 left-0 w-full z-40"
                     style={{ willChange: 'transform' }}
                 >
-                    <path ref={pathRef} fill='#DB212F' />
+                    <path ref={pathRef} fill='#751B32' />
                 </svg>
             </div>
         </TransitionProvider>

@@ -143,7 +143,7 @@ export default function Nav({ isActive, setIsActive }: NavProps) {
       )}
       <div
         ref={container}
-        className="fixed top-0 -right-25 md:-right-26 h-screen w-full md:w-[650px] bg-primary backdrop-blur-lg shadow-lg text-white z-30 translate-x-full"
+        className="fixed top-0 -right-25 md:-right-26 h-screen w-full md:w-[650px] bg-burgundy backdrop-blur-lg shadow-lg text-white z-30 translate-x-full"
       >
         {/* Inner Content - Redesigned */}
         <div
@@ -164,8 +164,8 @@ export default function Nav({ isActive, setIsActive }: NavProps) {
                 onClick={() => setLangMenuOpen(!langMenuOpen)}
                 aria-label={t5("changeLanguage")}
                 backgroundColor="white"
-                hoverTextColor="#DB212F"
-                className="md:w-[120px] md:h-[50px] w-[100px] h-[50px] rounded-none bg-primary text-white border-white border"
+                hoverTextColor="#751B32"
+                className="md:w-[120px] md:h-[50px] w-[100px] h-[50px] rounded-none bg-burgundy text-white border-white border"
               >
                 <div className="flex space-x-3.5">
                   <Globe

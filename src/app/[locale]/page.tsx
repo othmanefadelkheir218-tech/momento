@@ -1,7 +1,8 @@
 import { getTranslations } from "next-intl/server";
 import HomeContent from "./Parts/HomeContent";
 import ComingSoon from "@/components/ComingSoon/ComingSoon";
-import { COMING_SOON } from "@/lib/comingSoon";
+import { COMING_SOON, REBUILD } from "@/lib/comingSoon";
+import HomeV2Content from "./homev2/Parts/HomeV2Content";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
@@ -23,5 +24,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         const { locale } = await params;
         return <ComingSoon locale={locale} />;
     }
-    return <HomeContent />;
+    // The new home (homev2) is the official home during the rebuild; the old one is kept, just hidden.
+    return REBUILD ? <HomeV2Content /> : <HomeContent />;
 }

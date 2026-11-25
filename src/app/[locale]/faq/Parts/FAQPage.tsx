@@ -55,7 +55,7 @@ export default function FAQPage({ title }: { title: string }) {
   }, [])
 
   return (
-    <main ref={containerRef} className="min-h-screen bg-[#F7D6D9] text-primary">
+    <main ref={containerRef} className="min-h-screen bg-[#F7D6D9] text-burgundy">
       <div className="max-w-6xl mx-auto px-6 py-20 md:py-32">
         <Reveal
           rotate={false}
@@ -85,7 +85,7 @@ export default function FAQPage({ title }: { title: string }) {
 
               <div className="space-y-4">
                 {faq.answer.map((paragraph, pIndex) => (
-                  <p key={pIndex} className="text-primary/75 leading-relaxed text-base md:text-lg">
+                  <p key={pIndex} className="text-burgundy/75 leading-relaxed text-base md:text-lg">
                     {paragraph}
                   </p>
                 ))}

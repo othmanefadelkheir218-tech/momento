@@ -101,7 +101,7 @@ const ProductShowcase = () => {
     <section className="w-full flex items-center justify-center">
       <section
         ref={sectionRef}
-        className="w-full bg-primary text-primary-foreground py-12 md:py-20 px-4 md:px-8 lg:px-4 overflow-hidden"
+        className="w-full bg-burgundy text-burgundy-foreground py-12 md:py-20 px-4 md:px-8 lg:px-4 overflow-hidden"
       >
 
         {/* Header */}

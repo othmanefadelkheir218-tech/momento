@@ -14,6 +14,7 @@ import useScrollToTop from "@/hooks/useScrollToTop";
 import useWidth from "@/hooks/Width";
 import TransitionLink from "../../TransitionLink";
 import Image from "next/image";
+import { useTransitionRouter } from "@/hooks/useTransitionRouter";
 
 export default function Header() {
     useScrollToTop();
@@ -23,6 +24,7 @@ export default function Header() {
     const width = useWidth();
     const t = useTranslations("Navigation");
     const pathname = usePathname();
+    const router = useTransitionRouter();
 
     const containerRef = useRef<HTMLDivElement>(null);
     const topLine = useRef<HTMLDivElement>(null);
@@ -45,13 +47,16 @@ export default function Header() {
     }, { scope: containerRef, dependencies: [isActive, locale] });
 
     useGSAP(() => {
+        // prefers-reduced-motion: show/hide instantly, no slide
+        const m = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 1;
         if (width > 768) {
             if (isScrolled) {
-                gsap.to(headerRef.current, { y: "-100%", duration: 0.08, ease: "power3.out" });
-                gsap.to(buttonRef.current, { scale: 1, duration: 0.08, ease: "power3.out" });
+                // Hide slowly, after a short pause
+                gsap.to(headerRef.current, { y: "-100%", duration: 0.6 * m, delay: 0.25 * m, ease: "power2.inOut", overwrite: true });
+                gsap.to(buttonRef.current, { scale: 1, duration: 0.4 * m, delay: 0.45 * m, ease: "back.out(1.6)", overwrite: true });
             } else {
-                gsap.to(headerRef.current, { y: 0, duration: 0.08, ease: "power3.out" });
-                gsap.to(buttonRef.current, { scale: 0, duration: 0.08, ease: "power3.out" });
+                gsap.to(headerRef.current, { y: 0, duration: 0.4 * m, ease: "power3.out", overwrite: true });
+                gsap.to(buttonRef.current, { scale: 0, duration: 0.2 * m, ease: "power3.out", overwrite: true });
             }
         } else {
             gsap.set(headerRef.current, { y: 0 });
@@ -63,10 +68,10 @@ export default function Header() {
 
 
     const Links = [
-        { href: "/menu", label: t("menu") },
-        { href: "/about", label: t("about") },
+        { href: "/menu", label: t("creations") },
+        { href: "/about", label: t("universe") },
         // { href: "/contact", label: t("contact") },
-        { href: "/become-a-client", label: t("becomeClient") },
+        { href: "/become-a-client", label: t("franchise") },
     ];
 
 
@@ -76,19 +81,17 @@ export default function Header() {
         if (isActive) setIsActive(false);
     }, [pathname]);
 
-    // Product pages now open on a light hero, so they use the standard header
-    const itsHome = pathname === "/";
 
     return (
         <>
-            {/* if its not home make the heeader backgroudn more dark  */}
-            <header ref={headerRef} className={`fixed top-0 w-full z-20 py-1   backdrop-blur-lg shadow-lg ${itsHome ? "bg-black/20" : "bg-primary/50"}`}>
+            <header ref={headerRef} className="fixed top-0 w-full z-20 py-1 bg-cream/90 backdrop-blur-xl border-b border-burgundy/14">
                 <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-                    <TransitionLink href="/" className="">
+                    <TransitionLink href="/" className="rounded-sm focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-caramel">
                         <Image
                             width={128}
-                            height={128}
-                            src="/images/LogoWhite.png" className="md:w-40 w-32" alt="Momento Logo" />
+                            height={31}
+                            priority
+                            src="/logo/momento-logo-burgundy.png" className="md:w-40 w-32 h-auto" alt="Momento" />
                     </TransitionLink>
                     <nav className="hidden md:flex items-center gap-8 relative">
                         {Links.map((link) => {
@@ -98,7 +101,7 @@ export default function Header() {
                                     <TransitionLink
                                         // label={link.label}
                                         href={link.href}
-                                        className="text-white flex   items-center text-lg trispace-font group "
+                                        className="text-burgundy hover:text-burgundy-dark flex items-center font-body font-semibold text-[13px] uppercase tracking-[.08em] group rounded-sm focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-caramel"
                                     >
 
                                         {/* Dot centered under the text */}
@@ -117,6 +120,26 @@ export default function Header() {
                                 </Magnetic>
                             );
                         })}
+
+                        {/* "Contact" button → contact page */}
+                        <CostumButton
+                            role="link"
+                            tabIndex={0}
+                            onClick={() => router.push("/contact")}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter" || e.key === " ") {
+                                    e.preventDefault();
+                                    router.push("/contact");
+                                }
+                            }}
+                            backgroundColor="#751B32"
+                            hoverTextColor="#F7F0E5"
+                            className="rounded-2xl! border-[1.5px]! border-burgundy bg-cream text-burgundy px-6 py-3 focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-caramel"
+                        >
+                            <span className="block font-body font-bold text-sm tracking-[.04em] whitespace-nowrap">
+                                {t("contact")}
+                            </span>
+                        </CostumButton>
                     </nav>
                 </div>
             </header>
@@ -132,11 +155,16 @@ export default function Header() {
                     rounded-full scale-0
                 "
             >
+                {/* Soft blurred cream glow behind the round button (fades out, no hard edge) */}
+                <span
+                    aria-hidden
+                    className="pointer-events-none absolute -inset-7 -z-10 rounded-full backdrop-blur-lg bg-[radial-gradient(closest-side,rgb(247_240_229/.9)_50%,rgb(247_240_229/.55)_75%,transparent)] [mask-image:radial-gradient(closest-side,#000_60%,transparent)]"
+                />
                 <CostumButton
                     onClick={() => setIsActive(!isActive)}
-                    backgroundColor="#DB212F"
+                    backgroundColor="#5A1124"
                     // hoverTextColor="#ffffff"
-                    className="w-full shadow-md h-full bg-primaryLighter border-primaryLighter text-white hover:border-white">
+                    className="w-full shadow-md h-full bg-burgundy border-burgundy text-cream hover:border-cream">
                     <div ref={containerRef} className="relative w-full h-full">
                         <div ref={topLine} className="absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2">
                             <Minus size={35} strokeWidth={1.5} />

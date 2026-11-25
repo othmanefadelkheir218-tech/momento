@@ -76,7 +76,7 @@ export default function Curve({ isActive }: CurveProps) {
     useEffect(() => () => { tweenRef.current?.kill(); }, []);
 
     return (
-        <svg className="absolute top-0 -left-[99px] w-[100px] h-full fill-primary stroke-none">
+        <svg className="absolute top-0 -left-[99px] w-[100px] h-full fill-burgundy stroke-none">
             <path ref={pathRef} />
         </svg>
     );

@@ -1,7 +1,7 @@
 import createMiddleware from 'next-intl/middleware';
 import { NextResponse, type NextRequest } from 'next/server';
 import { routing } from './i18n/routing';
-import { COMING_SOON } from './lib/comingSoon';
+import { COMING_SOON, REBUILD, REBUILD_HOME, REBUILD_PAGES } from './lib/comingSoon';
 
 const intlMiddleware = createMiddleware(routing);
 
@@ -17,6 +17,20 @@ export default function middleware(request: NextRequest) {
             const locale = isLocale ? first : routing.defaultLocale;
             const url = request.nextUrl.clone();
             url.pathname = `/${locale}`;
+            url.search = '';
+            return NextResponse.redirect(url, 307);
+        }
+    } else if (REBUILD) {
+        // Rebuild mode: old pages are hidden — only the rebuilt pages are reachable.
+        const segments = request.nextUrl.pathname.split('/').filter(Boolean);
+        const [first, ...rest] = segments;
+        const isLocale = (routing.locales as readonly string[]).includes(first ?? '');
+        const pagePath = (isLocale ? rest : segments).join('/');
+
+        if (!REBUILD_PAGES.includes(pagePath)) {
+            const locale = isLocale ? first : routing.defaultLocale;
+            const url = request.nextUrl.clone();
+            url.pathname = REBUILD_HOME ? `/${locale}/${REBUILD_HOME}` : `/${locale}`;
             url.search = '';
             return NextResponse.redirect(url, 307);
         }

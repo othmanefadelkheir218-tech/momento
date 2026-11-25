@@ -136,7 +136,7 @@ export default function Introduction() {
     return (
         <div
             ref={containerRef}
-            className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center z-55 bg-primary"
+            className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center z-55 bg-burgundy"
         >
             {dimension.width > 0 && (
                 <>
@@ -152,7 +152,7 @@ export default function Introduction() {
                         ref={svgRef}
                         className="absolute top-0 w-full h-[calc(100%+300px)]"
                     >
-                        <path d={initialPath} fill="#DB212F" />
+                        <path d={initialPath} fill="#751B32" />
                     </svg>
                 </>
             )}

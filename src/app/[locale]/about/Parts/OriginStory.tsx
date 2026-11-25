@@ -382,7 +382,7 @@ export default function OriginStory() {
                 { val: t("philosophy.stats.creativity"), sub: t("philosophy.stats.creativitySub") }
               ].map((stat, i) => (
                 <div key={i} className="stat-item">
-                  <span className="block text-4xl font-semibold text-primary uppercase tracking-tighter">{stat.val}</span>
+                  <span className="block text-4xl font-semibold text-burgundy uppercase tracking-tighter">{stat.val}</span>
                   <span className="text-[#5A1A1F]/60 text-lg font-bold">{stat.sub}</span>
                 </div>
               ))}
@@ -468,9 +468,9 @@ export default function OriginStory() {
             <div className="flex justify-center w-full">
               <CostumButton
                 onClick={() => router.push("/menu")}
-                backgroundColor="#DB212F"
+                backgroundColor="#751B32"
                 hoverTextColor="white"
-                className="w-[250px] h-[70px] rounded-none bg-white text-primary border-primary border"
+                className="w-[250px] h-[70px] rounded-none bg-white text-burgundy border-burgundy border"
               >
                 <p className="font-bold">  {t("promise.button")}</p>
               </CostumButton>

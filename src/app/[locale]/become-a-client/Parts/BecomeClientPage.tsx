@@ -155,7 +155,7 @@ export default function BecomeClientPage() {
 
   return (
     <>
-      <main className="min-h-screen bg-primary text-white">
+      <main className="min-h-screen bg-burgundy text-white">
         {/* Hero */}
         <div className="pt-32 pb-16 px-6 text-center">
           <Reveal rotate={false} delay={0.1}>
@@ -219,7 +219,7 @@ export default function BecomeClientPage() {
                   }}
                 >
                   {businessTypes.map((opt) => (
-                    <option key={opt} value={opt} className="text-primary">
+                    <option key={opt} value={opt} className="text-burgundy">
                       {opt}
                     </option>
                   ))}
@@ -342,8 +342,8 @@ export default function BecomeClientPage() {
                   onClick={triggerSubmit}
                   disabled={isSubmitting}
                   backgroundColor="white"
-                  hoverTextColor="#DB212F"
-                  className={`md:w-45 md:h-12.5 w-40 h-12.5 rounded-none bg-primary text-white border-white border ${isSubmitting ? "opacity-70 cursor-not-allowed" : ""}`}
+                  hoverTextColor="#751B32"
+                  className={`md:w-45 md:h-12.5 w-40 h-12.5 rounded-none bg-burgundy text-white border-white border ${isSubmitting ? "opacity-70 cursor-not-allowed" : ""}`}
                 >
                   <p className="font-bold">
                     {isSubmitting ? t("sending") : t("button")}

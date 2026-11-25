@@ -250,7 +250,11 @@
         "faq": "FAQ",
         "menu": "Speisekarte",
         "contact": "Kontakt",
-        "becomeClient": "Kunde werden"
+        "becomeClient": "Kunde werden",
+        "creations": "Unsere Kreationen",
+        "universe": "Unsere Welt",
+        "franchise": "Franchisepartner werden",
+        "findShop": "Geschäft finden"
     },
     "Common": {
         "toggleTheme": "Thema wechseln",
@@ -457,6 +461,8 @@
         "language": "Sprache"
     },
     "HomeV2": {
+        "heroEyebrow": "Handgemachte Desserts im Glas",
+        "heroTitle": "Jeder Moment|hat seine|<accent>Süße</accent>.",
         "eyebrow": "Momento",
         "heroTitle1": "Jeder Moment",
         "heroTitle2": "hat seine Süße.",

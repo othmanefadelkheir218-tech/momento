@@ -65,7 +65,7 @@ export function CircularImageSection({ imageUrl }: CircularImageSectionProps) {
         />
         
         {/* Border Overlay */}
-        <div className="absolute inset-0 rounded-full border-[6px] border-primary/20 pointer-events-none" />
+        <div className="absolute inset-0 rounded-full border-[6px] border-burgundy/20 pointer-events-none" />
         
         {/* Optional: subtle inner gradient */}
         <div className="absolute inset-0 rounded-full bg-linear-to-br from-black/5 via-transparent to-black/5 pointer-events-none" />

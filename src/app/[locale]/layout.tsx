@@ -8,11 +8,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import TransitionWrapper from "@/components/TransitionWrapper";
 import SmoothScroll from "@/components/SmoothScroll";
 import { Analytics } from "@vercel/analytics/next";
-
 import "../globals.css";
 import Footer from "@/components/layout/Footer/Footer";
 import type { Metadata } from "next";
-import { COMING_SOON } from "@/lib/comingSoon";
+import { COMING_SOON, REBUILD } from "@/lib/comingSoon";
 
 export async function generateMetadata({
     params,
@@ -70,7 +69,7 @@ export async function generateMetadata({
             ],
             apple: [{ url: "/meta/apple-touch-icon.png", sizes: "180x180" }],
             other: [
-                { rel: "mask-icon", url: "/meta/safari-pinned-tab.svg", color: "#DB212F" },
+                { rel: "mask-icon", url: "/meta/safari-pinned-tab.svg", color: "#751B32" },
             ],
         },
     };
@@ -123,11 +122,12 @@ export default async function LocaleLayout({
                             disableTransitionOnChange
                         >
                             <TransitionWrapper>
-                                {/*<Header />*/}
+                                <Header />
                                 <main className="min-h-screen">
                                     {children}
                                 </main>
-                                <Footer />
+                                {/* Old footer hidden during the rebuild (see REBUILD in lib/comingSoon.ts) */}
+                                {!REBUILD && <Footer />}
                             </TransitionWrapper>
                         </ThemeProvider>
                     </SmoothScroll>

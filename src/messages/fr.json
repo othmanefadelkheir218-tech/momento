@@ -250,7 +250,11 @@
         "faq": "FAQ",
         "menu": "Menu",
         "contact": "Contact",
-        "becomeClient": "Devenir Client"
+        "becomeClient": "Devenir Client",
+        "creations": "Nos créations",
+        "universe": "Notre univers",
+        "franchise": "Devenir franchisé",
+        "findShop": "Trouver une boutique"
     },
     "Common": {
         "toggleTheme": "Changer le thème",
@@ -457,6 +461,8 @@
         "language": "Langue"
     },
     "HomeV2": {
+        "heroEyebrow": "Desserts artisanaux en pot",
+        "heroTitle": "Chaque instant|a sa|<accent>douceur</accent>.",
         "eyebrow": "Momento",
         "heroTitle1": "Chaque instant",
         "heroTitle2": "a sa douceur.",

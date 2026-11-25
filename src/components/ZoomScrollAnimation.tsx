@@ -52,7 +52,7 @@ export default function ZoomParallax(props: ZoomParallaxProps) {
     );
 
     return (
-        <main className="w-full bg-primaryLighter/20">
+        <main className="w-full bg-caramel/20">
             <div className="absolute top-0 left-0 w-full z-1">
                 <div ref={container} className="relative h-[300vh] w-full">
                     {/* 1. STICKY BACKGROUND */}

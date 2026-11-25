@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600;700&family=Playball&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Story+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
@@ -7,8 +8,30 @@
 @variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Cream is the body colour, chocolate the text colour */
+  --background: #F7F0E5;
+  --foreground: #4A2C21;
+}
+
+/* ── Momento brand colours ──
+   Use as Tailwind classes: bg-burgundy, text-cream, border-caramel, text-chocolate…
+   or in CSS: var(--color-burgundy) */
+@theme {
+  --color-burgundy: #751B32;
+  --color-cream: #F7F0E5;
+  --color-caramel: #C68B4E;
+  --color-chocolate: #4A2C21;
+  /* Extended palette (design spec) */
+  --color-burgundy-dark: #5A1124; /* burgundy hover */
+  --color-cream-dark: #EDE1CF;    /* alternate sections */
+  --color-ink: #2B1A14;           /* body text */
+  --color-card: #FFFBF5;          /* white-cream cards */
+  --color-pot: #F2D9C8;           /* pot image background */
+
+  /* Brand fonts (design spec): font-display, font-body, font-accent */
+  --font-display: "Cormorant Garamond", Georgia, serif; /* headings, quotes, product names — never italic */
+  --font-body: "Manrope", system-ui, sans-serif;        /* text, buttons, menus, forms */
+  --font-accent: "Playball", cursive;                    /* one accent word per heading, in <em> */
 }
 
 @theme inline {
@@ -16,9 +39,6 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --color-primary: #DB212F;
-  --color-primaryLight: #E64D59;
-  --color-primaryLighter: #E98C94;
 
   /* media screen */
   --breakpoint-xlmax: 1580px;
@@ -29,11 +49,46 @@
   --foreground: #ededed;
 }
 
+/* No rubber-band / pull-to-refresh bounce past the top or bottom of the page (mobile especially) */
+html,
+body {
+  overscroll-behavior: none;
+}
+
+/* ── Brand scrollbar: slim burgundy thumb on a cream track ── */
+/* Firefox only — in Chrome these standard properties would switch off the styles below */
+@supports (-moz-appearance: none) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-burgundy) var(--color-cream);
+  }
+}
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-burgundy);
+  border-radius: 999px;
+  /* cream border = the thumb looks slimmer and floats inside the track */
+  border: 3px solid var(--color-cream);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-burgundy-dark);
+  border-width: 2px;
+}
+::-webkit-scrollbar-corner {
+  background: var(--color-cream);
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #FBE8EA;
+  font-family: var(--font-body);
 }
 
 

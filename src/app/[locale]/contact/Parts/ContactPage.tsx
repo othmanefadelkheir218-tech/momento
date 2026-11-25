@@ -24,7 +24,7 @@ export default function ContactPage({ title }: { title: string }) {
     }, [])
 
     return (
-        <main ref={containerRef} className="min-h-screen  flex items-center justify-center bg-[#F7D6D9] text-primary">
+        <main ref={containerRef} className="min-h-screen  flex items-center justify-center bg-[#F7D6D9] text-burgundy">
             <div className="text-center px-6">
                 <Reveal
                     rotate={false}

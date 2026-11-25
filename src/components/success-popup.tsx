@@ -67,12 +67,12 @@ export function SuccessPopup({
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-50 hidden items-center justify-center bg-primaryLighter/40 backdrop-blur-sm px-4"
+      className="fixed inset-0 z-50 hidden items-center justify-center bg-caramel/40 backdrop-blur-sm px-4"
       onClick={handleClose}
     >
       {/* Decorative background text */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-0 right-0 text-primaryLighter/30 text-[8vw] font-bold whitespace-nowrap uppercase">
+        <div className="absolute top-1/4 left-0 right-0 text-caramel/30 text-[8vw] font-bold whitespace-nowrap uppercase">
           {tFooter("popup.decorativeText")}
         </div>
       </div>
@@ -86,9 +86,9 @@ export function SuccessPopup({
         <div className="absolute top-2 right-4">
           <CostumButton
             onClick={handleClose}
-            backgroundColor="#DB212F"
+            backgroundColor="#751B32"
             hoverTextColor="white"
-            className=" w-[40px] h-[40px] rounded-none bg-white text-primary border-primary border"
+            className=" w-[40px] h-[40px] rounded-none bg-white text-burgundy border-burgundy border"
           >
             <X size={20} />
           </CostumButton>
@@ -96,17 +96,17 @@ export function SuccessPopup({
         </div>
 
         {/* Content */}
-        <h3 className="text-2xl md:text-3xl font-bold text-primary my-6 leading-tight">{title}</h3>
+        <h3 className="text-2xl md:text-3xl font-bold text-burgundy my-6 leading-tight">{title}</h3>
 
-        <p className="text-primary/70 mb-8 leading-relaxed">{message}</p>
+        <p className="text-burgundy/70 mb-8 leading-relaxed">{message}</p>
 
         {/* Home button */}
         <div className="w-full flex justify-center">
           <CostumButton
             onClick={handleClose}
-            backgroundColor="#DB212F"
+            backgroundColor="#751B32"
             hoverTextColor="white"
-            className="w-[100px] h-[50px] rounded-none bg-white text-primary border-primary border"
+            className="w-[100px] h-[50px] rounded-none bg-white text-burgundy border-burgundy border"
           >
             <p className="font-bold">
               {tNav("home")}

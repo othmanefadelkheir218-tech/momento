@@ -30,7 +30,7 @@ const socialLinks = [
 
 function Content() {
   return (
-    <div className="bg-primary py-4 md:py-8 px-4 md:px-12 h-full w-full flex justify-center items-end">
+    <div className="bg-burgundy py-4 md:py-8 px-4 md:px-12 h-full w-full flex justify-center items-end">
       <div className="w-full">
         <Section1 />
         <Section2 />
@@ -222,7 +222,7 @@ const Forms = () => {
     <>
       <section
         ref={sectionRef}
-        className="bg-primary flex flex-col items-center justify-start px-2 md:px-6 py-6 md:py-6"
+        className="bg-burgundy flex flex-col items-center justify-start px-2 md:px-6 py-6 md:py-6"
       >
         <div className="max-w-6xl w-full">
           {/* Heading */}
@@ -253,7 +253,7 @@ const Forms = () => {
                 }}
               >
                 {cooperationOptions.map((option) => (
-                  <option key={option} value={option} className="text-primary">
+                  <option key={option} value={option} className="text-burgundy">
                     {option}
                   </option>
                 ))}
@@ -348,8 +348,8 @@ const Forms = () => {
                 onClick={triggerSubmit}
                 disabled={isSubmitting}
                 backgroundColor="white"
-                hoverTextColor="#DB212F"
-                className={`md:w-[120px] md:h-[50px] w-[100px] h-[50px] rounded-none bg-primary text-white border-white border ${isSubmitting ? "opacity-70 cursor-not-allowed" : ""}`}
+                hoverTextColor="#751B32"
+                className={`md:w-[120px] md:h-[50px] w-[100px] h-[50px] rounded-none bg-burgundy text-white border-white border ${isSubmitting ? "opacity-70 cursor-not-allowed" : ""}`}
               >
                 <p className="font-bold">
                   {isSubmitting ? t("sending") : t("button")}

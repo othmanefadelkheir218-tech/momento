@@ -13,7 +13,7 @@ import { useDessertData } from "@/hooks/useDessertData";
 import { useTransitionRouter } from "@/hooks/useTransitionRouter";
 import { slugify } from "@/lib/utils";
 import { serif, sans } from "./fonts";
-import DessertScrollSequence from "./DessertScrollSequence";
+import HeroFrameSequence from "./HeroFrameSequence";
 
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
@@ -25,10 +25,8 @@ const CREAM = "#F7F0E5";
 const CARAMEL = "#C68B4E";
 const CHOCOLATE = "#4A2C21";
 
-// Temporarily hidden — flip back to true to restore the hero text / colour filters.
+// Temporarily hidden — flip back to true to restore the hero text / features strip.
 const SHOW_HERO_CONTENT = false;
-const SHOW_HERO_OVERLAY = false;
-const HERO_PARALLAX = false;
 const SHOW_FEATURES = false;
 
 export default function HomeV2Content() {
@@ -37,25 +35,43 @@ export default function HomeV2Content() {
     const router = useTransitionRouter();
 
     const rootRef = useRef<HTMLDivElement>(null);
-    const heroImgRef = useRef<HTMLDivElement>(null);
+    const heroCopyRef = useRef<HTMLDivElement>(null);
+    const heroHazeRef = useRef<HTMLDivElement>(null);
     const universImgRef = useRef<HTMLDivElement>(null);
-    const seqWrapRef = useRef<HTMLDivElement>(null);
-    const heroRef = useRef<HTMLElement>(null);
-    const seqNextRef = useRef<HTMLElement>(null);
     const trackRef = useRef<HTMLDivElement>(null);
 
     const creations = products.filter((p: DessertInterface) => p.categoryKey === "verrineRange");
 
+    // Hero copy: words rise in, the accent word "writes" itself in, then it all drifts away on scroll.
+    useGSAP(() => {
+        const copy = heroCopyRef.current;
+        if (!copy) return;
+        const mm = gsap.matchMedia();
+        mm.add("(prefers-reduced-motion: no-preference)", () => {
+            gsap.timeline({ delay: 0.15 })
+                .from(".hv2-rule", { scaleX: 0, duration: 0.55, ease: "power3.out" })
+                .from(".hv2-eyebrow-text", { opacity: 0, y: 10, duration: 0.5, ease: "power3.out" }, "<0.05")
+                .from(".hv2-w", { yPercent: 115, duration: 0.7, stagger: 0.05, ease: "power4.out" }, "-=0.3")
+                .fromTo(
+                    ".hv2-accent",
+                    { clipPath: "inset(-30% 100% -30% -10%)" },
+                    { clipPath: "inset(-30% -10% -30% -10%)", duration: 0.75, ease: "power2.inOut" },
+                    "-=0.35",
+                )
+                .from(".hv2-dot", { opacity: 0, scale: 0, duration: 0.3, ease: "back.out(3)" }, "-=0.1");
+
+            const section = copy.closest("section");
+            if (section) {
+                const st = { trigger: section, start: "top top", end: "+=40%", scrub: true };
+                gsap.to(copy, { y: -80, opacity: 0, ease: "none", scrollTrigger: st });
+                gsap.to(heroHazeRef.current, { opacity: 0, ease: "none", scrollTrigger: { ...st, end: "+=55%" } });
+            }
+        });
+        return () => mm.revert();
+    }, { scope: rootRef });
+
     // Soft parallax on the big images; Lenis drives ScrollTrigger so it stays smooth.
     useGSAP(() => {
-        // Hero parallax disabled for now so the image stays anchored to its bottom (cups fully visible).
-        if (HERO_PARALLAX && heroImgRef.current) {
-            gsap.to(heroImgRef.current, {
-                yPercent: 12,
-                ease: "none",
-                scrollTrigger: { trigger: heroImgRef.current.parentElement, start: "top top", end: "bottom top", scrub: true },
-            });
-        }
         if (universImgRef.current) {
             gsap.fromTo(universImgRef.current, { yPercent: -8 }, {
                 yPercent: 8,
@@ -93,55 +109,36 @@ export default function HomeV2Content() {
     return (
         <div
             ref={rootRef}
-            className={`${serif.variable} ${sans.variable} overflow-hidden`}
+            className={`${serif.variable} ${sans.variable} overflow-x-clip`}
             style={{ backgroundColor: CREAM, color: CHOCOLATE, fontFamily: "var(--font-hv2-sans)" }}
         >
-            {/* Hero + next screen share one wrapper so the dessert cup can travel between them */}
-            <div ref={seqWrapRef} className="relative">
-            {/* ───────── Hero ───────── */}
-            <section ref={heroRef} className="relative min-h-[100svh] w-full flex items-center overflow-hidden">
-                <div ref={heroImgRef} className="absolute inset-0 -z-0">
-                    <Image
-                        src="/Cozy_Bakery_Kitchen_with_Dessert_Cups.png"
-                        alt={t("heroAlt")}
-                        fill
-                        priority
-                        sizes="100vw"
-                        className="object-cover hv2-hero-img"
-                    />
+            {/* ───────── Hero: scroll-driven frame sequence (2.5 screens tall, pinned for 1.5 screens of scroll) ───────── */}
+            <HeroFrameSequence backgroundColor={CREAM}>
+                {/* Soft cream fade behind the title (centre on mobile, left side on desktop) */}
+                <div
+                    ref={heroHazeRef}
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 z-10
+                        bg-[radial-gradient(ellipse_80%_30%_at_50%_50%,rgb(247_240_229/.88)_0%,rgb(247_240_229/.65)_55%,transparent_100%)]
+                        md:bg-[radial-gradient(ellipse_40%_46%_at_14%_50%,rgb(247_240_229/.8)_0%,rgb(247_240_229/.55)_45%,transparent_100%)]"
+                />
+                {/* Hero copy: left side */}
+                <div className="absolute inset-0 z-10 flex items-center pointer-events-none">
+                    <div ref={heroCopyRef} className="container mx-auto px-4 pt-10 md:pt-0 text-center md:text-left">
+                        {/* Small label: thin line + burgundy text, no background */}
+                        <p className="flex items-center justify-center md:justify-start gap-3 font-body font-semibold text-[12px] md:text-[13px] uppercase tracking-[.18em] text-burgundy whitespace-nowrap">
+                            <span aria-hidden className="hv2-rule h-px w-6 md:w-8 bg-burgundy/60 origin-right md:origin-left" />
+                            <span className="hv2-eyebrow-text">{t("heroEyebrow")}</span>
+                            {/* second line only on mobile, where the label is centred */}
+                            <span aria-hidden className="hv2-rule h-px w-6 bg-burgundy/60 origin-left md:hidden" />
+                        </p>
+                        <h1 className="mt-3 font-display font-medium text-burgundy leading-[1.05] text-[50px] md:text-[clamp(34px,4.2vw,56px)]">
+                            <HeroTitle raw={t.raw("heroTitle") as string} />
+                        </h1>
+                    </div>
                 </div>
-                {/* Bottom blur + fade into the cream body colour so the hero blends into the page */}
-                <div
-                    className="absolute inset-x-0 bottom-0 h-32 md:h-44 pointer-events-none z-[1] backdrop-blur-[3px]"
-                    style={{
-                        WebkitMaskImage: "linear-gradient(180deg, transparent 0%, black 85%)",
-                        maskImage: "linear-gradient(180deg, transparent 0%, black 85%)",
-                    }}
-                />
-                <div
-                    className="absolute inset-x-0 bottom-0 h-32 md:h-44 pointer-events-none z-[1]"
-                    style={{ background: `linear-gradient(180deg, ${CREAM}00 0%, ${CREAM}26 40%, ${CREAM}99 80%, ${CREAM} 100%)` }}
-                />
-
-                {SHOW_HERO_OVERLAY && (<>
-                {/* Burgundy-to-transparent wash so the text reads well while the chefs stay visible */}
-                <div
-                    className="absolute inset-0 hidden md:block"
-                    style={{ background: `linear-gradient(90deg, ${BURGUNDY}E6 0%, ${BURGUNDY}A6 22%, ${BURGUNDY}40 38%, transparent 50%)` }}
-                />
-                <div
-                    className="absolute inset-0 md:hidden"
-                    style={{ background: `linear-gradient(180deg, transparent 35%, ${BURGUNDY}CC 72%, ${BURGUNDY} 100%)` }}
-                />
-                {/* Soft top shade so the header stays legible over the bright scene */}
-                <div
-                    className="absolute inset-x-0 top-0 h-40 pointer-events-none"
-                    style={{ background: `linear-gradient(180deg, ${CHOCOLATE}66 0%, transparent 100%)` }}
-                />
-                </>)}
-
                 {SHOW_HERO_CONTENT && (
-                <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 pt-40 pb-16 md:py-0 self-end md:self-center">
+                <div className="absolute inset-0 z-10 flex items-end md:items-center"><div className="w-full max-w-7xl mx-auto px-6 md:px-12 pt-40 pb-16 md:py-0">
                     <div className="max-w-lg drop-shadow-[0_2px_12px_rgba(74,44,33,0.35)]" style={{ color: CREAM }}>
                         <Reveal delay={0.15} rotate={false}>
                             <p className="uppercase tracking-[0.4em] text-xs md:text-sm" style={{ color: CARAMEL }}>
@@ -172,16 +169,9 @@ export default function HomeV2Content() {
                             </button>
                         </Reveal>
                     </div>
-                </div>
+                </div></div>
                 )}
-            </section>
-
-            {/* ───────── Empty placeholder section (content to come) ───────── */}
-            <section ref={seqNextRef} className="h-screen w-full" style={{ backgroundColor: CREAM }} />
-
-            {/* Scroll-driven dessert frames: starts on the counter spot, plays across the next screen */}
-            <DessertScrollSequence wrapperRef={seqWrapRef} heroRef={heroRef} nextRef={seqNextRef} />
-            </div>
+            </HeroFrameSequence>
 
             {/* ───────── Features strip (hidden for now) ───────── */}
             {SHOW_FEATURES && (
@@ -366,11 +356,52 @@ export default function HomeV2Content() {
             </section>
 
             <style>{`
-                .hv2-hero-img { object-position: 60% 100%; }
-                @media (min-width: 768px) { .hv2-hero-img { object-position: 70% 100%; } }
                 .hv2-track { scrollbar-width: none; }
                 .hv2-track::-webkit-scrollbar { display: none; }
             `}</style>
         </div>
+    );
+}
+
+/**
+ * Renders "Chaque instant|a sa|<accent>douceur</accent>." — "|" starts a new line. Each word rises
+ * from a mask; the <accent> word is Playball (design spec: one accent per heading, in <em>, same
+ * colour, ~1.14x) and gets a left-to-right "handwriting" wipe.
+ */
+function HeroTitle({ raw }: { raw: string }) {
+    const words = (text: string, key: string) =>
+        text.split(/(\s+)/).map((w, i) =>
+            /^\s+$/.test(w) || !w ? (
+                w
+            ) : (
+                <span key={`${key}-${i}`} className="inline-block overflow-hidden align-bottom pb-[0.12em] -mb-[0.12em]">
+                    <span className="hv2-w inline-block">{w}</span>
+                </span>
+            ),
+        );
+
+    return (
+        <>
+            {raw.split("|").map((line, li) => {
+                const m = line.match(/^(.*?)<accent>(.*?)<\/accent>(.*)$/);
+                return (
+                    <span key={li} className="block">
+                        <span className="inline-block">
+                            {m ? (
+                                <>
+                                    {words(m[1], `b${li}`)}
+                                    <em className="hv2-accent inline-block not-italic font-accent font-normal text-[1.14em] leading-[1.1] pr-[0.06em]">
+                                        {m[2]}
+                                    </em>
+                                    {m[3] && <span className="hv2-dot inline-block">{m[3]}</span>}
+                                </>
+                            ) : (
+                                words(line, `l${li}`)
+                            )}
+                        </span>
+                    </span>
+                );
+            })}
+        </>
     );
 }
