@@ -115,7 +115,7 @@ export default function ProductCardsSection({ products, ShowTitle, showAll, bgco
     return (
         <section
             ref={containerRef}
-            className={`relative w-full ${bgcolor ? bgcolor : "bg-[#F7F0E5]"} py-12 md:py-16 lg:py-20 px-4 md:px-8 lg:px-12 overflow-hidden`}
+            className={`relative w-full ${bgcolor ? bgcolor : "bg-[#F7EFE2]"} py-12 md:py-16 lg:py-20 px-4 md:px-8 lg:px-12 overflow-hidden`}
             onMouseMove={handleMouseMove}
             onMouseLeave={() => setHoveredProductId(null)}
         >

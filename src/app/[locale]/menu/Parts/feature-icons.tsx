@@ -97,7 +97,7 @@ export function FeaturesSection({ storageConditions }: FeaturesSectionProps) {
                 ref={(el) => {
                   itemsRef.current[index] = el
                 }}
-                className="flex items-center gap-4 rounded-xl border border-burgundy/10 bg-white p-4 transition-colors hover:bg-[#F7F0E5]/30"
+                className="flex items-center gap-4 rounded-xl border border-burgundy/10 bg-white p-4 transition-colors hover:bg-[#F7EFE2]/30"
               >
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-burgundy/10">
                   <Icon className="h-5 w-5 text-burgundy" />

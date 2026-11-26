@@ -76,7 +76,7 @@ export function ProductHero({ dessert }: ProductHeroProps) {
     return (
         <section
             ref={sectionRef}
-            className="relative w-full overflow-hidden bg-[#F7F0E5] px-6 pb-16 pt-28 md:px-12 md:pb-24 md:pt-32 lg:px-20 xl:px-32"
+            className="relative w-full overflow-hidden bg-[#F7EFE2] px-6 pb-16 pt-28 md:px-12 md:pb-24 md:pt-32 lg:px-20 xl:px-32"
         >
             <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-12 lg:gap-16">
                 {/* Text */}

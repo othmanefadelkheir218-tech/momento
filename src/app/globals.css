@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600;700&family=Playball&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=Playball&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Story+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
@@ -9,7 +9,7 @@
 
 :root {
   /* Cream is the body colour, chocolate the text colour */
-  --background: #F7F0E5;
+  --background: #F7EFE2;
   --foreground: #4A2C21;
 }
 
@@ -18,7 +18,7 @@
    or in CSS: var(--color-burgundy) */
 @theme {
   --color-burgundy: #751B32;
-  --color-cream: #F7F0E5;
+  --color-cream: #F7EFE2;
   --color-caramel: #C68B4E;
   --color-chocolate: #4A2C21;
   /* Extended palette (design spec) */
@@ -53,6 +53,9 @@
 html,
 body {
   overscroll-behavior: none;
+  /* The page never moves sideways (e.g. the closed side menu sits off-screen to the right).
+     clip, not hidden: hidden would break the position: sticky sections. */
+  overflow-x: clip;
 }
 
 /* ── Brand scrollbar: slim burgundy thumb on a cream track ── */

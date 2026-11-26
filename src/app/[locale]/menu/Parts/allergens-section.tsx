@@ -53,7 +53,7 @@ export function AllergensSection({ allergens }: AllergensSectionProps) {
           ALLERGÈNES
         </h2>
 
-        <div className="allergen-content bg-[#F7F0E5] border-4 border-burgundy rounded-3xl p-8 md:p-12 lg:p-16">
+        <div className="allergen-content bg-[#F7EFE2] border-4 border-burgundy rounded-3xl p-8 md:p-12 lg:p-16">
           <div className="flex flex-wrap gap-3 md:gap-4 justify-center">
             {allergensList.map((allergen, idx) => (
               <span

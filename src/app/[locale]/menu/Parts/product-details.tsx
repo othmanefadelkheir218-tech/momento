@@ -81,7 +81,7 @@ export function ProductDetails({ nutritionalValues, storageConditions }: Product
             <div className="mx-auto grid max-w-7xl gap-6 md:gap-8 lg:grid-cols-2">
                 {/* Nutrition */}
                 {rows.length > 0 && (
-                    <div className="details-card rounded-3xl bg-[#F7F0E5] p-6 md:p-10">
+                    <div className="details-card rounded-3xl bg-[#F7EFE2] p-6 md:p-10">
                         <h2 className="mb-6 text-2xl font-bold text-burgundy md:text-3xl">{t("nutritionTitle")}</h2>
                         <dl>
                             {rows.map(({ key, sub }) => (
@@ -111,7 +111,7 @@ export function ProductDetails({ nutritionalValues, storageConditions }: Product
                                 return (
                                     <li
                                         key={condition}
-                                        className="details-row flex items-start gap-3 rounded-2xl bg-[#F7F0E5]/50 p-4"
+                                        className="details-row flex items-start gap-3 rounded-2xl bg-[#F7EFE2]/50 p-4"
                                     >
                                         <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-burgundy">
                                             <Icon size={20} strokeWidth={1.75} />

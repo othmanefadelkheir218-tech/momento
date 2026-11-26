@@ -487,5 +487,160 @@
         "ctaButton": "Nous rejoindre",
         "heroAlt": "Les chefs Momento dans leur cuisine",
         "universAlt": "L'atelier Momento"
+    },
+    "MomentoProducts": {
+        "Categories": {
+            "verrines": "Verrines"
+        },
+        "Labels": {
+            "ingredients": "Ingrédients",
+            "allergens": "Allergènes",
+            "traces": "Traces éventuelles",
+            "nutrition": "Valeurs nutritionnelles pour 100 g",
+            "energy": "Énergie",
+            "fat": "Matières grasses",
+            "saturatedFat": "dont acides gras saturés",
+            "carbohydrates": "Glucides",
+            "sugars": "dont sucres",
+            "fiber": "Fibres",
+            "protein": "Protéines",
+            "salt": "Sel",
+            "storage": "Conservation",
+            "storageTemperature": "Température de conservation",
+            "shelfLife": "Durée de conservation",
+            "notAvailable": "Information bientôt disponible"
+        },
+        "Products": {
+            "lemonCheesecake": {
+                "name": "Cheesecake Citron",
+                "description": "Verrine de cheesecake crémeuse avec un coulis de citron acidulé et un fond de biscuit sablé.",
+                "ingredients": "biscuit [farine de BLÉ (GLUTEN), graisse de palme, sucre, amidon de BLÉ, sel, poudre à lever : E503, arôme (vanille), ŒUF en poudre], garniture [sucre, eau, sirop de glucose, graisse de palme, amidon de maïs modifié, jus de citron à base de concentré, émulsifiants : E473, E435, stabilisant : E450, arôme (citron), colorant : E160a, conservateur : E202], beurre [beurre (LAIT)]",
+                "allergens": "Contient : œuf, lait, lactose, blé, gluten.",
+                "traces": "Peut contenir des traces de : fruits à coque, soja.",
+                "storageTemperature": "Entre -35 et -18 °C",
+                "shelfLife": "364 jours",
+                "note": ""
+            },
+            "raspberryCheesecake": {
+                "name": "Cheesecake Framboise",
+                "description": "Verrine de cheesecake sucrée-acidulée avec un nappage éclatant au coulis de framboise.",
+                "ingredients": "spéculoos 77 % [farine de BLÉ (GLUTEN), sucre, huile végétale (palme, colza), sirop de candi, poudre à lever : E500, sel, cannelle], confiture de framboise 13 % [purée de fruits (framboise), sucre, gelée [sirop de glucose (SULFITES), eau, gélifiants : E440, E401, E407, E415, acidifiant : E330, régulateurs d'acidité : E331, E341, agent raffermissant : E509, arôme]], pâte feuilletée 10 % [margarine (huile de palme, eau, graisse de colza, sel, émulsifiant : E471, colorant : E160a, acidifiant : E330, vitamines : A, D3, arôme), eau, farine de BLÉ (GLUTEN), farine de malt de BLÉ, sel, améliorant de panification (farine de LUPIN, lactosérum en poudre (LAIT), améliorant de farine : E300, E920, antiagglomérant : E551)]",
+                "allergens": "Contient : lait, lactose, blé, gluten, lupin, sulfites.",
+                "traces": "Peut contenir des traces de : œuf, soja, seigle.",
+                "storageTemperature": "",
+                "shelfLife": "",
+                "note": "Ne pas recongeler après décongélation. Se conserve 7 jours maximum entre 2 et 4 °C."
+            },
+            "mangoCheesecake": {
+                "name": "Cheesecake Mangue",
+                "description": "Verrine de cheesecake exotique accompagnée d'un coulis de mangue tropicale et d'un biscuit croustillant.",
+                "ingredients": "biscuit 77 % [farine de BLÉ (GLUTEN), graisse de palme, sucre, amidon de BLÉ, sel, poudre à lever : E503, arôme (vanille), ŒUF en poudre], confiture de mangue 13 % [purée de fruits (mangue), gelée [sirop de glucose (SULFITES), eau, gélifiants : E440, E401, E407, E415, acidifiant : E330, régulateurs d'acidité : E331, E341, agent raffermissant : E509, arôme], sucre], pâte feuilletée 10 % [margarine (huile de palme, eau, graisse de colza, sel, émulsifiant : E471, colorant : E160a, acidifiant : E330, vitamines : A, D3, arôme), eau, farine de BLÉ (GLUTEN), farine de malt de BLÉ, sel, améliorant de panification (farine de LUPIN, lactosérum en poudre (LAIT), améliorant de farine : E300, E920, antiagglomérant : E551)]",
+                "allergens": "Contient : œuf, lait, lactose, sulfites, blé, gluten, lupin.",
+                "traces": "Peut contenir des traces de : seigle, fruits à coque, soja.",
+                "storageTemperature": "Entre -35 et -18 °C",
+                "shelfLife": "282 jours",
+                "note": ""
+            },
+            "oreoCrumble": {
+                "name": "Crumble Oreo",
+                "description": "Verrine ludique avec des couches de crème veloutée et un généreux crumble de biscuits Oreo.",
+                "ingredients": "crème tiramisu 88 % [crème fouettée [LAIT (LACTOSE)], crème fraîche [crème (LAIT, LACTOSE), stabilisateur : E407], sucre, ŒUF, mascarpone [crème (LAIT pasteurisé), régulateur d'acidité : E330], eau, gélatine (POISSON), arôme [préparation aromatique, eau, support : E1520, E422, sirop de sucre caramel, agent raffermissant : E415, régulateur d'acidité : E330, conservateur : E202], acide citrique, café, conservateur : E202, sel [sel, antiagglomérant : E535, E504]], biscuit 12 % [farine de BLÉ (GLUTEN), sucre, huile de colza, poudre de cacao, sirop de glucose-fructose, amidon de BLÉ (GLUTEN), poudres à lever : E501, E503, E500, huile de palme, sel, émulsifiant : E322 (SOJA), régulateur d'acidité : E524, arôme]",
+                "allergens": "Contient : œuf, lait, lactose, blé, gluten, soja, poisson.",
+                "traces": "Peut contenir des traces de : blé de Khorasan, orge, avoine, seigle, épeautre.",
+                "storageTemperature": "",
+                "shelfLife": "",
+                "note": ""
+            },
+            "chocolateMousse": {
+                "name": "Mousse au Chocolat",
+                "description": "Mousse au chocolat aérienne et légère, pour un pur moment de gourmandise.",
+                "ingredients": "crème fraîche 28 % [crème (LAIT, LACTOSE), stabilisant : E407], spécialité à la crème 25 % [babeurre (LAIT), huile végétale (palme), émulsifiants : E433, E435, E471, E472b, stabilisants : E407, E460, E466], chocolat 16 % [masse de cacao, sucre, beurre de cacao, émulsifiant : E322 (SOJA), arôme (vanille)], blanc d'ŒUF 11 % [protéine 98,9 %, régulateur d'acidité : E270, agent raffermissant : E415, stabilisant : E520], LAIT 11 % [LAIT (LACTOSE)], sucre 6 %, chocolat au lait 3 % [sucre, beurre de cacao, LAIT en poudre (LACTOSE), masse de cacao, LACTOSE (LAIT), lactosérum en poudre (LAIT, LACTOSE), émulsifiant : E322 (SOJA), arôme (vanille)], acide citrique, conservateur : E202",
+                "allergens": "Contient : œuf, lait, lactose, soja.",
+                "traces": "",
+                "storageTemperature": "Entre -35 et -18 °C",
+                "shelfLife": "365 jours",
+                "note": ""
+            },
+            "nutellaCrousti": {
+                "name": "Nutella Crousti",
+                "description": "Une crème onctueuse à la pâte à tartiner chocolat-noisette, relevée d'éclats croustillants.",
+                "ingredients": "",
+                "allergens": "",
+                "traces": "",
+                "storageTemperature": "",
+                "shelfLife": "",
+                "note": ""
+            },
+            "redVelvet": {
+                "name": "Red Velvet",
+                "description": "Une mousse légère à la framboise sur un biscuit red velvet, imbibé d'un sirop de framboise.",
+                "ingredients": "mousse à la framboise 75 % [crème fraîche [crème (LAIT, LACTOSE), stabilisant : E407], purée de fruits (framboise), sucre, blanc d'ŒUF [protéine 98,9 %, régulateur d'acidité : E270, agent raffermissant : E415, stabilisant : E520], gélatine (POISSON), acide citrique, conservateur : E202], biscuit red velvet 17 % [ŒUF, sucre, farine de BLÉ (GLUTEN), roux [farine de BLÉ (GLUTEN), graisse de palme], colorant [eau, colorants : E122, E102, acidifiant : E330, conservateur : E202], poudre de cacao [poudre de cacao, régulateur d'acidité : E501], bicarbonate de soude, arôme [préparation aromatique, eau, support : E1520, E422, sirop de sucre caramel, agent raffermissant : E415, régulateur d'acidité : E330, conservateur : E202]], sirop de framboise 8 % [eau, sucre, purée de fruits (framboise)]",
+                "allergens": "Contient : œuf, lait, lactose, blé, gluten, poisson.",
+                "traces": "",
+                "storageTemperature": "Entre -35 et -18 °C",
+                "shelfLife": "12 mois",
+                "note": ""
+            },
+            "tiramisuBueno": {
+                "name": "Tiramisu Bueno",
+                "description": "Un tiramisu crémeux, une mousse légère aux noisettes et un biscuit chocolaté, sous un voile de chocolat au lait.",
+                "ingredients": "crème tiramisu [crème fouettée [LAIT (LACTOSE)], crème fraîche [crème (LAIT, LACTOSE), stabilisateur : E407], sucre, ŒUF, mascarpone [crème (LAIT pasteurisé), régulateur d'acidité : E330], eau, gélatine (POISSON), arôme [préparation aromatique, eau, support : E1520, E422, sirop de sucre caramel, agent raffermissant : E415, régulateur d'acidité : E330, conservateur : E202], acide citrique, café, conservateur : E202, sel [sel, antiagglomérant : E535, E504]], mousse aux noisettes [crème fouettée [LAIT (LACTOSE)], pâte de NOISETTES [NOISETTES grillées, sucre], blanc d'ŒUF [protéine 98,9 %, régulateur d'acidité : E270, agent raffermissant : E415, stabilisant : E520], ŒUF, sucre, eau, LAIT [LAIT (LACTOSE)], gélatine (POISSON), acide citrique, conservateur : E202], chocolat au lait [sucre, beurre de cacao, LAIT en poudre (LACTOSE), masse de cacao, lactosérum en poudre (LAIT, LACTOSE), LACTOSE, émulsifiant : E322 (SOJA), arôme (vanille)], biscuit [chocolat au LAIT (sucre, beurre de cacao, pâte de cacao, LAIT en poudre, beurre concentré, émulsifiant : E322 (SOJA), vanilline), sucre, huile de palme, farine de BLÉ (GLUTEN), NOISETTES, LAIT en poudre (LACTOSE), chocolat noir (sucre, pâte de cacao, beurre de cacao, émulsifiant : E322 (SOJA), vanilline), cacao, émulsifiant : E322 (SOJA), poudres à lever : E500, E503, sel, vanilline, nappage (LAIT en poudre, beurre concentré)], chocolat au lait [sucre, beurre de cacao, LAIT en poudre (LACTOSE), masse de cacao, lactosérum en poudre (LAIT, LACTOSE), LACTOSE, émulsifiant : E322 (SOJA), arôme (vanille)]",
+                "allergens": "Contient : œuf, lait, lactose, noisettes, fruits à coque, blé, gluten, soja, poisson.",
+                "traces": "",
+                "storageTemperature": "",
+                "shelfLife": "",
+                "note": ""
+            },
+            "tiramisuSnickers": {
+                "name": "Tiramisu Snickers",
+                "description": "Une variante audacieuse du tiramisu avec des cacahuètes, une ganache au lait et une couche façon Snickers.",
+                "ingredients": "crème tiramisu 75 % [crème fouettée [LAIT (LACTOSE)], crème fraîche [crème (LAIT, LACTOSE), stabilisateur : E407], sucre, ŒUF, mascarpone [crème (LAIT pasteurisé), régulateur d'acidité : E330], eau, gélatine (POISSON), arôme [préparation aromatique, eau, support : E1520, E422, sirop de sucre caramel, agent raffermissant : E415, régulateur d'acidité : E330, conservateur : E202], acide citrique, café, conservateur : E202, sel [sel, antiagglomérant : E535, E504]], confiserie 18 % [sucre, sirop de glucose, CACAHUÈTES, LAIT en poudre (LACTOSE), beurre de cacao, masse de cacao, huile de tournesol, LACTOSE, matière grasse butyrique (LAIT), lactosérum en poudre (LAIT, LACTOSE), graisse de palme, sel, émulsifiant : E322 (SOJA), blanc d'ŒUF en poudre, protéines de LAIT, extrait de vanille], ganache au lait 6 % [chocolat [masse de cacao, sucre, beurre de cacao, émulsifiant : E322 (SOJA), arôme (vanille)], LAIT [LAIT (LACTOSE)], chocolat blanc [sucre, beurre de cacao, LAIT en poudre (LACTOSE), émulsifiant : E322 (SOJA), vanilline]], chocolat au lait [sucre, beurre de cacao, LAIT en poudre (LACTOSE), masse de cacao, lactosérum en poudre (LAIT, LACTOSE), LACTOSE, émulsifiant : E322 (SOJA), arôme (vanille)]",
+                "allergens": "Contient : œuf, lait, lactose, cacahuètes, soja, poisson.",
+                "traces": "Peut contenir des traces de : noisettes, fruits à coque, gluten.",
+                "storageTemperature": "",
+                "shelfLife": "",
+                "note": ""
+            },
+            "classicTiramisu": {
+                "name": "Tiramisu Classique",
+                "description": "Verrine italienne authentique avec biscuits à la cuillère, café intense et mascarpone crémeux.",
+                "ingredients": "",
+                "allergens": "",
+                "traces": "",
+                "storageTemperature": "",
+                "shelfLife": "",
+                "note": ""
+            },
+            "tiramisuPistachio": {
+                "name": "Tiramisu Pistache",
+                "description": "Un tiramisu onctueux au mascarpone, relevé de pistaches et d'une crème à la pistache.",
+                "ingredients": "crème tiramisu 91 % [crème fouettée [LAIT (LACTOSE)], crème fraîche [crème (LAIT, LACTOSE), stabilisateur : E407], sucre, ŒUF, mascarpone [crème (LAIT pasteurisé), régulateur d'acidité : E330], eau, gélatine (POISSON), arôme [préparation aromatique, eau, support : E1520, E422, sirop de sucre caramel, agent raffermissant : E415, régulateur d'acidité : E330, conservateur : E202], acide citrique, café, conservateur : E202, sel [sel, antiagglomérant : E535, E504]], PISTACHES 7 %, arôme 2 % [sirop de glucose-fructose, sucre, pâte à tartiner aux PISTACHES, eau, concentré végétal colorant, arôme]",
+                "allergens": "Contient : œuf, lait, lactose, pistaches, fruits à coque, poisson.",
+                "traces": "Peut contenir des traces de : amandes, noix de pécan, noix de cajou, noisettes, noix de macadamia, noix, cacahuètes, soja.",
+                "storageTemperature": "",
+                "shelfLife": "",
+                "note": "Ne pas recongeler après décongélation. Se conserve 7 jours maximum entre 2 et 4 °C."
+            },
+            "speculoosTiramisu": {
+                "name": "Tiramisu Spéculoos",
+                "description": "Un favori local avec des couches de biscuits spéculoos épicés et une fine crème au mascarpone.",
+                "ingredients": "crème tiramisu 74 % [crème fouettée [LAIT (LACTOSE)], crème fraîche [crème (LAIT, LACTOSE), stabilisateur : E407], sucre, ŒUF, mascarpone [crème (LAIT pasteurisé), régulateur d'acidité : E330], eau, gélatine (POISSON), arôme [préparation aromatique, eau, support : E1520, E422, sirop de sucre caramel, agent raffermissant : E415, régulateur d'acidité : E330, conservateur : E202], acide citrique, café, conservateur : E202, sel [sel, antiagglomérant : E535, E504]], spéculoos 13 % [farine de BLÉ (GLUTEN), sucre, huile végétale (palme, colza), sirop de candi, poudre à lever : E500, sel, cannelle], café 10 % [eau, café, conservateur : E202, acide citrique], spéculoos 2 % [farine de BLÉ (GLUTEN), sucre, huile végétale (palme, colza), sirop de sucre candi, poudre à lever : E500, farine de SOJA, sel, cannelle], poudre de cacao [poudre de cacao, régulateur d'acidité : E501]",
+                "allergens": "Contient : œuf, lait, lactose, blé, gluten, soja, poisson.",
+                "traces": "",
+                "storageTemperature": "",
+                "shelfLife": "",
+                "note": ""
+            },
+            "speculoosSaltedCaramel": {
+                "name": "Tiramisu Spéculoos & Caramel au beurre salé",
+                "description": "Dessert fondant avec la crème au spéculoos et au caramel au beurre salé caractéristique de Momento.",
+                "ingredients": "crème tiramisu 84 % [crème fouettée [LAIT (LACTOSE)], crème fraîche [crème (LAIT, LACTOSE), stabilisateur : E407], sucre, ŒUF, mascarpone [crème (LAIT pasteurisé), régulateur d'acidité : E330], eau, gélatine (POISSON), arôme [préparation aromatique, eau, support : E1520, E422, sirop de sucre caramel, agent raffermissant : E415, régulateur d'acidité : E330, conservateur : E202], acide citrique, café, conservateur : E202, sel [sel, antiagglomérant : E535, E504]], spéculoos 16 % [farine de BLÉ (GLUTEN), sucre, huile végétale (palme, colza), sirop de candi, poudre à lever : E500, sel, cannelle]",
+                "allergens": "Contient : œuf, lait, lactose, blé, gluten, poisson.",
+                "traces": "",
+                "storageTemperature": "Entre -35 et -18 °C",
+                "shelfLife": "365 jours",
+                "note": "Ne pas recongeler après décongélation. Se conserve 7 jours maximum entre 2 et 4 °C."
+            }
+        }
     }
 }

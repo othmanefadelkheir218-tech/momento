@@ -5,16 +5,13 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useLenis } from "lenis/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowRight, ChefHat, ChevronLeft, ChevronRight, Gift, Heart, Leaf } from "lucide-react";
+import { ArrowRight, ChefHat, Gift, Heart, Leaf } from "lucide-react";
 import { Reveal } from "@/components/animation/Reveal";
-import { DessertInterface } from "@/Data/Const";
-import { useDessertData } from "@/hooks/useDessertData";
 import { useTransitionRouter } from "@/hooks/useTransitionRouter";
-import { slugify } from "@/lib/utils";
 import { serif, sans } from "./fonts";
 import HeroFrameSequence from "./HeroFrameSequence";
+import CreationsArc from "./CreationsArc";
 
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
@@ -22,7 +19,7 @@ if (typeof window !== "undefined") {
 
 // Brand colours
 const BURGUNDY = "#751B32";
-const CREAM = "#F7F0E5";
+const CREAM = "#F7EFE2";
 const CARAMEL = "#C68B4E";
 const CHOCOLATE = "#4A2C21";
 
@@ -32,31 +29,28 @@ const CHOCOLATE = "#4A2C21";
 // To switch, just change the value below to "hero" or "hero2".
 const HERO_VARIANT: "hero" | "hero2" = "hero2";
 
+// hero2: soft mask on the framed picture, so its edges fade into the cream instead of a hard line.
+// Two gradients (left/right and top/bottom) kept where both are opaque; widths come from CSS vars
+// animated with the shrink (all 0% = no fade at full screen).
+const FEATHER_MASK =
+    "linear-gradient(to right, transparent, #000 var(--fx), #000 calc(100% - var(--fx)), transparent)," +
+    "linear-gradient(to bottom, transparent var(--ts), #000 var(--te), #000 calc(100% - var(--fb)), transparent)";
+
 // Temporarily hidden — flip back to true to restore the hero text / features strip.
 const SHOW_HERO_CONTENT = false;
 const SHOW_FEATURES = false;
 
 export default function HomeV2Content() {
     const t = useTranslations("HomeV2");
-    const products = useDessertData();
     const router = useTransitionRouter();
 
     const rootRef = useRef<HTMLDivElement>(null);
     const heroCopyRef = useRef<HTMLDivElement>(null);
     const heroHazeRef = useRef<HTMLDivElement>(null);
     const universImgRef = useRef<HTMLDivElement>(null);
-    const trackRef = useRef<HTMLDivElement>(null);
     const heroStageRef = useRef<HTMLDivElement>(null);
     const revealCopyRef = useRef<HTMLDivElement>(null);
-    const scrollCueRef = useRef<HTMLDivElement>(null);
-    const lenis = useLenis();
 
-    const goToCreations = () => {
-        const target = document.getElementById("hv2-creations");
-        if (!target) return;
-        if (lenis) lenis.scrollTo(target, { offset: -72 });
-        else target.scrollIntoView({ behavior: "smooth" });
-    };
 
     // hero2: full-screen picture first, then on scroll it shrinks into a frame
     // and the title writes itself in the cream space above it.
@@ -64,8 +58,7 @@ export default function HomeV2Content() {
         if (HERO_VARIANT !== "hero2") return;
         const stage = heroStageRef.current;
         const copy = revealCopyRef.current;
-        const cue = scrollCueRef.current;
-        if (!stage || !copy || !cue) return;
+        if (!stage || !copy) return;
         const section = stage.closest("section");
         if (!section) return;
 
@@ -80,23 +73,41 @@ export default function HomeV2Content() {
                 const { desktop, reduce } = ctx.conditions as { desktop: boolean; reduce: boolean };
 
                 // Final look of the picture:
-                //  desktop → scaled down to 70% from the bottom, so the whole scene stays visible;
+                //  desktop → scaled down to 70% towards a point 75% down the screen: its top edge lands at
+                //            22.5% (0.75 × 0.3), leaving 7.5% of cream under it — so the title above sits higher;
                 //  mobile  → the top is clipped away (the screen is too narrow to scale it down).
+                // Its edges are feathered into the cream (soft mask, see FEATHER_MASK) instead of
+                // ending on a hard line: the mask grows from nothing (full screen) to these values.
+                //   --fx: left/right fade · --ts → --te: top fade (from → to) · --fb: bottom fade
+                //
+                // Mobile uses NO mask and NO clip-path: the top of the picture is simply covered by a
+                // cream layer that fades out (the "hv2-topfade" div in HeroFrameSequence, driven by
+                // the same --ts / --te vars): solid cream down to --ts, then a fade to --te. It looks
+                // the same, but phones (iOS Safari especially) mis-place masked / clipped layers inside
+                // a sticky box while scrolling, which showed the frame's edge there.
                 const framed = desktop
-                    // small rounded corners on top; flush on the bottom edge (no rounding there)
-                    ? { scale: 0.7, borderRadius: "18px 18px 0px 0px" }
-                    : { clipPath: "inset(38% 0% 0% 0% round 12px 12px 0px 0px)" };
+                    ? { scale: 0.7, "--fx": "9%", "--ts": "0%", "--te": "13%", "--fb": "6%" }
+                    : { "--ts": "38%", "--te": "47%" };
 
-                gsap.set(stage, desktop
-                    ? { transformOrigin: "50% 100%", borderRadius: "0px 0px 0px 0px" }
-                    : { clipPath: "inset(0% 0% 0% 0% round 0px 0px 0px 0px)" });
+                if (desktop) {
+                    stage.style.setProperty("-webkit-mask-image", FEATHER_MASK);
+                    stage.style.setProperty("mask-image", FEATHER_MASK);
+                    stage.style.setProperty("-webkit-mask-composite", "source-in");
+                    stage.style.setProperty("mask-composite", "intersect");
+                    gsap.set(stage, { "--fx": "0%", "--ts": "0%", "--te": "0%", "--fb": "0%", transformOrigin: "50% 75%" });
+                } else {
+                    // The fade keeps the SAME height (9%) the whole time: it starts just above the
+                    // picture (-9% → 0%, invisible) and slides down to 38% → 47%. If it grew from
+                    // 0%/0% instead, it was only a few px tall at the start of the scroll and showed
+                    // as a hard line across the picture.
+                    gsap.set(stage, { "--ts": "-9%", "--te": "0%" });
+                }
                 // Initial state: the title block is fully hidden over the full-screen picture.
                 gsap.set(copy, { autoAlpha: 0 });
 
                 if (reduce) {
                     gsap.set(stage, framed);
                     gsap.set(copy, { autoAlpha: 1 });
-                    gsap.set(cue, { autoAlpha: 0 });
                     return;
                 }
 
@@ -104,32 +115,35 @@ export default function HomeV2Content() {
                     scrollTrigger: {
                         trigger: section,
                         start: "top top",
-                        end: "+=65%",
+                        end: "+=65%", // the shrink's scroll length (unchanged)
                         scrub: 0.8,
                         invalidateOnRefresh: true,
                     },
                 })
-                    .to(cue, { autoAlpha: 0, y: 12, duration: 0.15, ease: "none" }, 0)
                     .to(stage, { ...framed, duration: 1, ease: "power2.inOut" }, 0)
-                    // the title block only appears once the frame has shrunk enough to leave cream space
-                    .to(copy, { autoAlpha: 1, duration: 0.1, ease: "none" }, 0.42)
-                    .from(".hv2r-rule", { scaleX: 0, duration: 0.3, ease: "power3.out" }, 0.45)
-                    .from(".hv2r-eyebrow", { opacity: 0, y: 10, duration: 0.3 }, 0.48)
-                    .from(".hv2-w", { yPercent: 115, duration: 0.35, stagger: 0.03, ease: "power3.out" }, 0.5)
+                    // The title rides ON the frame's top edge: it starts above the screen and comes
+                    // down with the edge (same duration + ease, so its bottom stays exactly on the edge).
+                    // So the cream space above the picture is never empty, and the title can never
+                    // overlap the picture. (Before, it only appeared once the frame was ~90% shrunk,
+                    // with words rising out of masks: a long empty gap, and half-cut words whenever
+                    // the user stopped scrolling mid-reveal.)
                     .fromTo(
-                        ".hv2-accent",
-                        { clipPath: "inset(-30% 100% -30% -10%)" },
-                        { clipPath: "inset(-30% -10% -30% -10%)", duration: 0.3, ease: "power2.inOut" },
-                        0.75,
+                        copy,
+                        { y: () => -(copy.offsetTop + copy.offsetHeight) },
+                        { y: 0, duration: 1, ease: "power2.inOut" },
+                        0,
                     )
-                    .from(".hv2-dot", { opacity: 0, scale: 0, duration: 0.1 }, 1.02)
-                    .from(".hv2r-cta", { opacity: 0, y: 14, duration: 0.25 }, 0.85);
+                    .to(copy, { autoAlpha: 1, duration: 0.35, ease: "none" }, 0.1);
             },
         );
-        return () => mm.revert();
+        return () => {
+            mm.revert();
+            ["-webkit-mask-image", "mask-image", "-webkit-mask-composite", "mask-composite"].forEach((p) =>
+                heroStageRef.current?.style.removeProperty(p),
+            );
+        };
     }, { scope: rootRef });
 
-    const creations = products.filter((p: DessertInterface) => p.categoryKey === "verrineRange");
 
     // Hero copy: words rise in, the accent word "writes" itself in, then it all drifts away on scroll.
     useGSAP(() => {
@@ -168,23 +182,7 @@ export default function HomeV2Content() {
                 scrollTrigger: { trigger: universImgRef.current.parentElement, start: "top bottom", end: "bottom top", scrub: true },
             });
         }
-        gsap.from(".hv2-card", {
-            y: 60,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.08,
-            ease: "power3.out",
-            scrollTrigger: { trigger: trackRef.current, start: "top bottom-=15%" },
-        });
     }, { scope: rootRef });
-
-    const scrollTrack = (dir: 1 | -1) => {
-        const el = trackRef.current;
-        if (!el) return;
-        const card = el.querySelector<HTMLElement>(".hv2-card");
-        const step = card ? card.offsetWidth + 20 : el.clientWidth * 0.8;
-        el.scrollBy({ left: dir * step, behavior: "smooth" });
-    };
 
     const features = [
         { icon: ChefHat, label: t("f1") },
@@ -206,10 +204,12 @@ export default function HomeV2Content() {
                 {HERO_VARIANT === "hero2" ? (
                 <>
                     {/* Title row in the cream space above the framed picture.
-                        Its height matches where the frame's top edge lands (30svh desktop / 38svh mobile). */}
+                        Its height matches where the frame's top edge lands (22.5svh desktop / 38svh mobile). */}
                     <div
                         ref={revealCopyRef}
-                        className="invisible absolute inset-x-0 top-[72px] z-10 flex items-center h-[calc(38svh-72px)] md:h-[calc(30svh-72px)]"
+                        // desktop: the header has slid away by the time the title shows, so the row uses
+                        // the whole space above the frame (no 72px header gap at the top)
+                        className="invisible absolute inset-x-0 top-[72px] md:top-0 z-10 flex items-center md:items-end md:pb-[2.5svh] h-[calc(38svh-72px)] md:h-[22.5svh]"
                     >
                         <div className="mx-auto w-[92vw] md:w-[70vw] flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-8 text-center md:text-left">
                             <div>
@@ -222,30 +222,9 @@ export default function HomeV2Content() {
                                     <HeroTitle raw={t.raw("heroTitle") as string} oneLineOnDesktop />
                                 </h1>
                             </div>
-                            <button
-                                onClick={goToCreations}
-                                className="hv2r-cta group hidden md:inline-flex shrink-0 items-center gap-3 rounded-full px-7 py-3 text-sm uppercase tracking-[.12em] transition-all duration-300 hover:gap-4 hover:brightness-110"
-                                style={{ backgroundColor: BURGUNDY, color: CREAM }}
-                            >
-                                {t("heroCta")}
-                                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                            </button>
                         </div>
                     </div>
 
-                    {/* Scroll cue on the first screen (fades out as soon as the user scrolls) */}
-                    <div
-                        ref={scrollCueRef}
-                        aria-hidden
-                        className="pointer-events-none absolute bottom-6 inset-x-0 z-10 flex flex-col items-center gap-2 text-[11px] uppercase tracking-[.3em] drop-shadow-[0_1px_6px_rgba(74,44,33,0.6)]"
-                        style={{ color: CREAM }}
-                    >
-                        <span>Scroll</span>
-                        <span className="block h-10 w-px overflow-hidden" style={{ backgroundColor: `${CREAM}55` }}>
-                            <span className="block h-1/2 w-full animate-[hv2-cue_1.6s_ease-in-out_infinite]" style={{ backgroundColor: CREAM }} />
-                        </span>
-                        <style>{`@keyframes hv2-cue{0%{transform:translateY(-100%)}100%{transform:translateY(200%)}}`}</style>
-                    </div>
                 </>
                 ) : (
                 <>
@@ -254,8 +233,8 @@ export default function HomeV2Content() {
                     ref={heroHazeRef}
                     aria-hidden
                     className="pointer-events-none absolute inset-0 z-10
-                        bg-[radial-gradient(ellipse_80%_30%_at_50%_50%,rgb(247_240_229/.88)_0%,rgb(247_240_229/.65)_55%,transparent_100%)]
-                        md:bg-[radial-gradient(ellipse_40%_46%_at_14%_50%,rgb(247_240_229/.8)_0%,rgb(247_240_229/.55)_45%,transparent_100%)]"
+                        bg-[radial-gradient(ellipse_80%_30%_at_50%_50%,rgb(247_239_226/.88)_0%,rgb(247_239_226/.65)_55%,transparent_100%)]
+                        md:bg-[radial-gradient(ellipse_40%_46%_at_14%_50%,rgb(247_239_226/.8)_0%,rgb(247_239_226/.55)_45%,transparent_100%)]"
                 />
                 {/* Hero copy: left side */}
                 <div className="absolute inset-0 z-10 flex items-center pointer-events-none">
@@ -329,92 +308,8 @@ export default function HomeV2Content() {
             </section>
             )}
 
-            {/* ───────── Nos créations ───────── */}
-            <section id="hv2-creations" className="py-20 md:py-28">
-                <div className="max-w-7xl mx-auto px-6 md:px-12">
-                    <div className="text-center">
-                        <Reveal>
-                            <div className="flex items-center justify-center gap-5">
-                                <span className="hidden sm:block h-px w-20" style={{ backgroundColor: BURGUNDY }} />
-                                <h2 className="italic text-4xl md:text-6xl" style={{ ...titleFont, color: BURGUNDY }}>
-                                    {t("creationsTitle")}
-                                </h2>
-                                <span className="hidden sm:block h-px w-20" style={{ backgroundColor: BURGUNDY }} />
-                            </div>
-                        </Reveal>
-                        <Reveal delay={0.1} rotate={false}>
-                            <p className="mt-4 text-base md:text-lg opacity-80">{t("creationsText")}</p>
-                        </Reveal>
-                    </div>
-
-                    <div className="relative mt-12">
-                        <button
-                            aria-label={t("prev")}
-                            onClick={() => scrollTrack(-1)}
-                            className="hidden md:flex absolute -left-5 top-[40%] -translate-y-1/2 z-10 w-11 h-11 items-center justify-center rounded-full shadow-md transition-transform hover:scale-110"
-                            style={{ backgroundColor: CREAM, color: BURGUNDY }}
-                        >
-                            <ChevronLeft className="w-5 h-5" />
-                        </button>
-                        <button
-                            aria-label={t("next")}
-                            onClick={() => scrollTrack(1)}
-                            className="hidden md:flex absolute -right-5 top-[40%] -translate-y-1/2 z-10 w-11 h-11 items-center justify-center rounded-full shadow-md transition-transform hover:scale-110"
-                            style={{ backgroundColor: CREAM, color: BURGUNDY }}
-                        >
-                            <ChevronRight className="w-5 h-5" />
-                        </button>
-
-                        <div
-                            ref={trackRef}
-                            className="hv2-track flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 -mx-6 px-6 md:mx-0 md:px-0"
-                        >
-                            {creations.map((product) => (
-                                <button
-                                    key={product.id}
-                                    onClick={() => router.push(`/menu/${slugify(product.name)}`)}
-                                    className="hv2-card group snap-start shrink-0 w-[70%] sm:w-[45%] md:w-[calc(25%-15px)] text-left"
-                                >
-                                    <div
-                                        className="relative aspect-[4/3] rounded-2xl overflow-hidden"
-                                        style={{ background: `radial-gradient(circle at 50% 60%, ${CARAMEL}55 0%, ${CHOCOLATE} 120%)` }}
-                                    >
-                                        <Image
-                                            src={product.main_image}
-                                            alt={product.name}
-                                            fill
-                                            sizes="(max-width: 768px) 70vw, 25vw"
-                                            className="object-contain p-5 transition-transform duration-700 ease-out group-hover:scale-110 group-hover:-rotate-2"
-                                        />
-                                        {product.isNew && (
-                                            <span
-                                                className="absolute top-3 left-3 text-[11px] uppercase tracking-wider px-2.5 py-1 rounded-full"
-                                                style={{ backgroundColor: BURGUNDY, color: CREAM }}
-                                            >
-                                                New
-                                            </span>
-                                        )}
-                                    </div>
-                                    <p className="mt-3 text-center text-base md:text-lg transition-colors duration-300 group-hover:text-[#751B32]">
-                                        {product.name}
-                                    </p>
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="mt-10 text-center">
-                        <button
-                            onClick={() => router.push("/menu")}
-                            className="group inline-flex items-center gap-2 text-sm md:text-base underline-offset-8 hover:underline"
-                            style={{ color: BURGUNDY }}
-                        >
-                            {t("seeAll")}
-                            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                        </button>
-                    </div>
-                </div>
-            </section>
+            {/* ───────── Nos créations: products on an arc, the first one under the hero's falling crumbs ───────── */}
+            <CreationsArc />
 
             {/* ───────── Notre univers ───────── */}
             <section className="relative grid md:grid-cols-2 min-h-[560px]" style={{ backgroundColor: `${CARAMEL}1F` }}>
@@ -492,10 +387,6 @@ export default function HomeV2Content() {
                 </div>
             </section>
 
-            <style>{`
-                .hv2-track { scrollbar-width: none; }
-                .hv2-track::-webkit-scrollbar { display: none; }
-            `}</style>
         </div>
     );
 }

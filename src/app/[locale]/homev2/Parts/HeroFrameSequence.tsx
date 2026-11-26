@@ -20,6 +20,9 @@ const FRAME0_BLUR =
 // The source frames (1928px wide) have a dark strip ~40px wide on their right edge that looks
 // like a border, especially once hero2 shrinks the picture into a frame. We never draw it.
 const TRIM_RIGHT_PX = 44;
+// Size of the source frames (all the same), used to place the frame-0 placeholder like the canvas.
+const SRC_W = 1928;
+const SRC_H = 1072;
 
 // Horizontal focus when the frame is cropped to fill the screen (0 = left, 1 = right).
 // Mobile leans right so the Spéculoos cup (the one that tips over) stays in view.
@@ -55,30 +58,61 @@ const CAM_DESKTOP: Cam = {
 // Phones show the full frame height, so 1.4 isn't enough to push the faces off the top.
 // At 1.8 the top ~44% is cropped. The pan follows the slim chef + Spéculoos cup,
 // then the spilling ice cream (from frame 100), then the falling cream stream.
+// (focusX: higher = the picture slides LEFT, showing more of its right side)
+// The camera goes straight DOWN onto the Spéculoos cup (zoom, done by frame 31 so the faces stay
+// hidden) with no sideways move, stays on the cup while it tips, and only then follows the cream
+// to the left. panXAt passes through the points without stopping at them.
+// NOTE: if you widen this range, regenerate /public/heroSection-mobile (see MOBILE_STRIP below).
 const CAM_MOBILE: Cam = {
     ...CAM_DESKTOP,
     zoom: 1.8,
     panX: [
-        [0, 0.66], // slim chef
-        [31, 0.66],
-        [100, 0.56], // slim chef's arm + the cup as it tips
-        [200, 0.53], // the ice cream spilling over the counter
+        [0, 0.68], // straight DOWN onto the Spéculoos cup (no sideways move)…
+        [110, 0.68], // …the camera stays on the cup while it tips…
+        [200, 0.54], // …then follows the cream as it spills to the left
         [265, 0.47], // the falling cream stream, centred
     ],
 };
 
+// ── Lighter frames for phones (/public/heroSection-mobile) ──
+// A phone only ever shows a vertical strip of the frame, so phones download a pre-cut copy:
+//  • only that strip: x = 470 → 1590 of the full frame (covers every phone up to a 0.8 width/height
+//    screen, over the whole CAM_MOBILE zoom + pan range: 0.47 → 0.70),
+//  • scaled to 80% (896×858), JPEG q74,
+//  • every 2nd frame only (frame_000000, 000002, …, 000360) — still ~4px of scroll per frame.
+// 15 MB instead of 87 MB, and ~4× less to decode. Generated with PIL from /public/heroSection.
+const MOBILE_STRIP = { x: 470, w: 1120 };
+const MOBILE_STEP = 2;
+const mobileFrameSrc = (i: number) => `/heroSection-mobile/frame_${String(i).padStart(6, "0")}.jpg`;
+
+// Where the canvas centres frame 0 on phones (the first point of the mobile camera pan), so the
+// frame-0 placeholder can be placed at exactly the same spot.
+const FOCUS_X_FRAME0_MOBILE = CAM_MOBILE.panX ? CAM_MOBILE.panX[0][1] : FOCUS_X_MOBILE;
+
 // "Smootherstep": eases in and out more gently than a plain smoothstep.
 const smooth = (t: number) => t * t * t * (t * (6 * t - 15) + 10);
+// Smooth curve through the pan points (monotone cubic): it starts and ends gently, but does NOT
+// stop at the points in between, and never overshoots them.
 const panXAt = (frame: number, keys: [number, number][]) => {
+    const n = keys.length;
     if (frame <= keys[0][0]) return keys[0][1];
-    for (let k = 1; k < keys.length; k++) {
-        const [b, vb] = keys[k];
-        if (frame <= b) {
-            const [a, va] = keys[k - 1];
-            return va + (vb - va) * smooth((frame - a) / (b - a));
-        }
+    if (frame >= keys[n - 1][0]) return keys[n - 1][1];
+    const d = keys.slice(1).map(([x, y], k) => (y - keys[k][1]) / (x - keys[k][0])); // slopes
+    const m = keys.map((_, k) => {
+        if (k === 0 || k === n - 1) return 0; // gentle start / end
+        return d[k - 1] * d[k] <= 0 ? 0 : (d[k - 1] + d[k]) / 2;
+    });
+    for (let k = 0; k < n - 1; k++) {
+        // keep it monotone (Fritsch–Carlson)
+        if (d[k] === 0) { m[k] = m[k + 1] = 0; continue; }
+        const a = m[k] / d[k], b = m[k + 1] / d[k], r = a * a + b * b;
+        if (r > 9) { const t = 3 / Math.sqrt(r); m[k] = t * a * d[k]; m[k + 1] = t * b * d[k]; }
     }
-    return keys[keys.length - 1][1];
+    let k = 0;
+    while (frame > keys[k + 1][0]) k++;
+    const [x0, y0] = keys[k], [x1, y1] = keys[k + 1];
+    const h = x1 - x0, t = (frame - x0) / h, t2 = t * t, t3 = t2 * t;
+    return (2 * t3 - 3 * t2 + 1) * y0 + (t3 - 2 * t2 + t) * h * m[k] + (-2 * t3 + 3 * t2) * y1 + (t3 - t2) * h * m[k + 1];
 };
 const cameraAmount = (frame: number, CAM: Cam) => {
     if (frame <= CAM.inStart || frame >= CAM.outEnd) return 0;
@@ -112,83 +146,333 @@ export default function HeroFrameSequence({ children, backgroundColor, stageRef 
         if (!ctx) return;
 
         const state = { p: 0 };
-        const images: HTMLImageElement[] = [];
         let lastDrawn = "";
+        let disposed = false;
+
+        // ── Two ways to keep the frames ──
+        //  • "full": plain <img> elements of the full frames, drawn straight onto the canvas (desktop).
+        //  • "strip" (phones): the <img> way made phones stutter (measured ~10 fps): the browser can't
+        //    keep 361 decoded full-size frames, so it decoded the JPEGs again ON THE MAIN THREAD at
+        //    almost every draw, and the 87 MB download was far from done when people scrolled (frames
+        //    "missing" on an iPhone). Phones now download the light pre-cut frames (MOBILE_STRIP:
+        //    15 MB) as blobs and decode only the ones around the scroll position into ImageBitmaps,
+        //    off the main thread, ahead of the scroll; far-away ones are dropped.
+        //  A narrow screen that is very wide for its height (a small phone held sideways) needs more
+        //  than the strip, so it uses "full" — checked on every resize.
+        const images: HTMLImageElement[] = [];
+        const blobs: (Blob | undefined)[] = [];
+        const bitmaps = new Map<number, ImageBitmap>();
+        const decoding = new Set<number>();
+        let wanted = 0; // frame the scroll asks for
+        let direction = 1; // last scroll direction (+1 down, -1 up): decode further ahead that way
+        const AHEAD = 16;
+        const BEHIND = 6;
+        const KEEP_MARGIN = 6; // bitmaps are only dropped once this much further out than the window
+        const MAX_DECODING = 3;
+        const FULL_W = SRC_W - TRIM_RIGHT_PX; // usable width of a full frame
+
+        // Given the pan at zoom 1 (fx1), the pan to use at `zoom` so the CENTRE of the view stays put
+        // (all in full-frame pixels; s1 = scale at zoom 1, W = screen width in canvas pixels).
+        const fxZoomedAroundCentre = (W: number, s1: number, zoom: number, fx1: number) => {
+            const vw1 = Math.min(FULL_W, W / s1); // visible width at zoom 1
+            const centre = (FULL_W - vw1) * fx1 + vw1 / 2;
+            const vw = vw1 / zoom;
+            if (FULL_W - vw <= 0) return fx1;
+            const left = Math.min(FULL_W - vw, Math.max(0, centre - vw / 2));
+            return left / (FULL_W - vw);
+        };
+
+        // Does the strip contain everything this screen can show, over the whole camera move?
+        const stripFits = (W: number, H: number) => {
+            const fxs = CAM_MOBILE.panX ? CAM_MOBILE.panX.map(([, v]) => v) : [FOCUS_X_MOBILE];
+            const fxMin = Math.min(...fxs);
+            const fxMax = Math.max(...fxs);
+            for (const z of [1, CAM_MOBILE.zoom]) {
+                const vw = Math.min(FULL_W, W / (Math.max(W / FULL_W, H / SRC_H) * z)); // visible width
+                if ((FULL_W - vw) * fxMin < MOBILE_STRIP.x) return false;
+                if ((FULL_W - vw) * fxMax + vw > MOBILE_STRIP.x + MOBILE_STRIP.w) return false;
+            }
+            return true;
+        };
+        const canStrip = typeof createImageBitmap === "function";
+        let mode: "full" | "strip" = "full";
+
+        // Load frame 0 first so the hero shows immediately, then the rest coarse-to-fine:
+        // every 16th frame, then every 8th, 4th, 2nd, then all. Wherever the user scrolls to,
+        // a frame close to it is ready early, instead of only the beginning of the sequence.
+        const loadOrder = (step: number) => {
+            const order: number[] = [0];
+            const queued = new Set<number>([0]);
+            for (const s of [16, 8, 4, 2, 1]) {
+                if (s < step) break;
+                for (let i = 0; i < FRAME_COUNT; i += s) {
+                    if (!queued.has(i)) {
+                        queued.add(i);
+                        order.push(i);
+                    }
+                }
+            }
+            const last = Math.floor((FRAME_COUNT - 1) / step) * step;
+            if (!queued.has(last)) order.splice(1, 0, last);
+            return order;
+        };
+
+        const abort = new AbortController();
+        let fullStarted = false;
+        const startFull = () => {
+            if (fullStarted) return;
+            fullStarted = true;
+            for (let i = 0; i < FRAME_COUNT; i++) {
+                const im = new Image();
+                im.decoding = "async";
+                // redraws only if this frame is now the closest one to the current position
+                im.onload = () => render();
+                images[i] = im;
+            }
+            const [, ...rest] = loadOrder(1);
+            images[0].onload = () => {
+                render();
+                for (const i of rest) images[i].src = frameSrc(i);
+            };
+            images[0].src = frameSrc(0);
+        };
+
+        let stripStarted = false;
+        const startStrip = () => {
+            if (stripStarted) return;
+            stripStarted = true;
+            // download a few at a time, in coarse-to-fine order; pump() decodes the ones near the scroll
+            const queue = loadOrder(MOBILE_STEP);
+            const fetchNext = async (): Promise<void> => {
+                const i = queue.shift();
+                if (i === undefined || disposed) return;
+                try {
+                    const res = await fetch(mobileFrameSrc(i), { signal: abort.signal });
+                    if (res.ok) {
+                        blobs[i] = await res.blob();
+                        if (Math.abs(i - wanted) <= AHEAD + BEHIND) pump();
+                    }
+                } catch {
+                    if (disposed) return;
+                }
+                return fetchNext();
+            };
+            for (let k = 0; k < 6; k++) fetchNext();
+        };
+
+        const dropAllBitmaps = () => {
+            bitmaps.forEach((b) => b.close());
+            bitmaps.clear();
+        };
 
         const resize = () => {
-            const dpr = Math.min(window.devicePixelRatio || 1, 2);
-            canvas.width = Math.round(canvas.clientWidth * dpr);
-            canvas.height = Math.round(canvas.clientHeight * dpr);
-            lastDrawn = "";
+            // Phones: 1.5× is enough — a phone shows only a ~500px-wide slice of the frame, enlarged,
+            // so more canvas pixels add no detail, only cost.
+            const W0 = canvas.clientWidth;
+            const H0 = canvas.clientHeight;
+            const nextMode = canStrip && window.innerWidth < 768 && stripFits(W0, H0) ? "strip" : "full";
+            const dpr = Math.min(window.devicePixelRatio || 1, nextMode === "strip" ? 1.5 : 2);
+            const W = Math.round(W0 * dpr);
+            const H = Math.round(H0 * dpr);
+            // Only touch the canvas size when it really changes: setting it (even to the same value)
+            // WIPES the canvas. On iPhones, the address bar hiding on the first scroll fires "resize"
+            // while ScrollTrigger is refreshing (no drawing allowed) → the hero went blank (cream).
+            const sizeChanged = canvas.width !== W || canvas.height !== H;
+            if (sizeChanged) {
+                canvas.width = W;
+                canvas.height = H;
+            }
+            if (nextMode !== mode) {
+                mode = nextMode;
+                if (mode === "full") dropAllBitmaps();
+            }
+            if (mode === "strip") startStrip();
+            else startFull();
+            pump();
+            if (sizeChanged) lastDrawn = "";
             render();
         };
 
-        const nearestLoaded = (idx: number) => {
+        // ── Phones: decode the frames that will be needed next ──
+        // The animation trails the finger (scrub 0.5): the scroll position already tells which frame
+        // it is heading to (`target`). When the user scrolls fast, decoding one frame after the other
+        // from the current one falls behind for good (it keeps decoding frames already passed). So
+        // frames are decoded spread out between the current frame and the target first — the
+        // animation then always has a recent frame to show — and the gaps are filled after.
+        const MAX_BITMAPS = 36; // ~3 MB each
+        let target = 0;
+        const snap = (i: number) => Math.floor(i / MOBILE_STEP) * MOBILE_STEP;
+        const range = () => {
+            const dir = target === wanted ? direction : Math.sign(target - wanted);
+            const lo = Math.min(wanted, target) - (dir > 0 ? BEHIND : AHEAD);
+            const hi = Math.max(wanted, target) + (dir > 0 ? AHEAD : BEHIND);
+            return { dir, lo: lo - KEEP_MARGIN, hi: hi + KEEP_MARGIN };
+        };
+        const pump = () => {
+            if (mode !== "strip" || disposed) return;
+            const { dir, lo, hi } = range();
+            // order of need: the frame at/before the current one → evenly spread up to the target →
+            // the rest, nearest first (ahead of the scroll first)
+            const raw: number[] = [snap(wanted)];
+            const dist = Math.abs(target - wanted);
+            if (dist > MOBILE_STEP) {
+                const spacing = Math.max(MOBILE_STEP, snap(Math.ceil(dist / 6)));
+                for (let d = spacing; d < dist; d += spacing) raw.push(snap(wanted + dir * d));
+                raw.push(snap(target));
+            }
+            for (let d = MOBILE_STEP; d <= dist + AHEAD; d += MOBILE_STEP) {
+                raw.push(snap(wanted) + d * dir);
+                if (d <= BEHIND) raw.push(snap(wanted) - d * dir);
+            }
+            const order = [...new Set(raw)].filter((i) => i >= 0 && i < FRAME_COUNT).slice(0, MAX_BITMAPS);
+            // free what is no longer needed (out of the range, or past the MAX_BITMAPS most needed)
+            const needed = new Set(order);
+            bitmaps.forEach((b, i) => {
+                if (i < lo || i > hi || (bitmaps.size > MAX_BITMAPS - MAX_DECODING && !needed.has(i))) {
+                    b.close();
+                    bitmaps.delete(i);
+                }
+            });
+            for (const i of order) {
+                if (decoding.size >= MAX_DECODING) break;
+                if (bitmaps.has(i) || decoding.has(i) || !blobs[i]) continue;
+                decoding.add(i);
+                createImageBitmap(blobs[i]!)
+                    .then((bmp) => {
+                        decoding.delete(i);
+                        // too late (unmounted, switched to "full", or scrolled far away)
+                        const r = range();
+                        if (disposed || mode !== "strip" || i < r.lo || i > r.hi) {
+                            bmp.close();
+                        } else {
+                            bitmaps.set(i, bmp);
+                            render();
+                        }
+                        pump();
+                    })
+                    .catch(() => {
+                        decoding.delete(i);
+                    });
+            }
+        };
+
+        // Closest ready frame AT OR BEFORE the wanted one — never a later frame, so frames
+        // always appear in their order (looking ahead too made it jump forward, then back).
+        // Thanks to the coarse-to-fine loading, the fallback is only a few frames behind,
+        // not frame 0 (which used to flash in the middle of the animation).
+        // x / w: the part of the full frame the picture covers (the strip, or all of it).
+        type Source = { img: CanvasImageSource; id: string; iw: number; ih: number; x: number; w: number };
+        const isReady = (im?: HTMLImageElement) => !!im && im.complete && im.naturalWidth > 0;
+        const nearestSource = (idx: number): Source | null => {
+            if (mode === "strip") {
+                for (let i = idx; i >= 0; i--) {
+                    const b = bitmaps.get(i);
+                    if (b) return { img: b, id: `b${i}`, iw: b.width, ih: b.height, x: MOBILE_STRIP.x, w: MOBILE_STRIP.w };
+                }
+                return null; // keep whatever is on the canvas (or the frame-0 placeholder) meanwhile
+            }
             for (let i = idx; i >= 0; i--) {
                 const im = images[i];
-                if (im && im.complete && im.naturalWidth) return im;
+                if (isReady(im)) {
+                    // without its dark right-edge strip (see TRIM_RIGHT_PX)
+                    return { img: im, id: `i${i}`, iw: FULL_W, ih: im.naturalHeight, x: 0, w: FULL_W };
+                }
             }
             return null;
         };
 
         // Draw like `object-fit: cover`, plus the camera zoom/pan.
+        let refreshing = false;
+        // where the scroll position already is (the animation catches up to it): set once the
+        // scroll tween exists, below
+        let scrollProgress = () => state.p;
         const render = () => {
+            if (refreshing) return; // see onRefreshInit / onRefresh below
             const exact = state.p * (FRAME_COUNT - 1);
-            const img = nearestLoaded(Math.round(exact));
-            if (!img) return;
+            const idx = Math.round(exact);
+            const tgt = Math.round(scrollProgress() * (FRAME_COUNT - 1));
+            if (idx !== wanted || tgt !== target) {
+                if (idx !== wanted) direction = idx > wanted ? 1 : -1;
+                wanted = idx;
+                target = tgt;
+                pump();
+            }
+            const src = nearestSource(idx);
+            if (!src) return;
             const isDesktop = window.innerWidth >= 768;
             const CAM = isDesktop ? CAM_DESKTOP : CAM_MOBILE;
             const cam = cameraAmount(exact, CAM);
-            const key = `${img.src}|${cam.toFixed(4)}|${exact.toFixed(2)}|${isDesktop}`;
+            const key = `${src.id}|${cam.toFixed(4)}|${exact.toFixed(2)}|${isDesktop}|${canvas.width}x${canvas.height}`;
             if (key === lastDrawn) return;
             lastDrawn = key;
 
             const W = canvas.width;
             const H = canvas.height;
             const zoom = 1 + (CAM.zoom - 1) * cam;
-            // Use the frame without its dark right-edge strip (see TRIM_RIGHT_PX).
-            const srcW = img.naturalWidth - TRIM_RIGHT_PX;
-            const srcH = img.naturalHeight;
-            const s = Math.max(W / srcW, H / srcH) * zoom;
-            const w = srcW * s;
-            const h = srcH * s;
+            // all the maths is in full-frame coordinates (FULL_W × SRC_H)
+            const s = Math.max(W / FULL_W, H / SRC_H) * zoom;
+            const w = FULL_W * s;
+            const h = SRC_H * s;
             const baseFx = isDesktop ? FOCUS_X_DESKTOP : FOCUS_X_MOBILE;
-            const fx = CAM.panX ? panXAt(exact, CAM.panX) : baseFx + (CAM.focusX - baseFx) * cam;
+            // Phones: panX says where the view sits at zoom 1; the zoom then happens around the CENTRE
+            // of the view (not around the pan point), so zooming in never slides the view sideways —
+            // the drop onto the cup is straight down.
+            let fx = baseFx + (CAM.focusX - baseFx) * cam;
+            if (CAM.panX) {
+                const s1 = Math.max(W / FULL_W, H / SRC_H); // scale at zoom 1
+                fx = fxZoomedAroundCentre(W, s1, zoom, panXAt(exact, CAM.panX));
+            }
             const fy = FOCUS_Y + (CAM.focusY - FOCUS_Y) * cam;
             ctx.clearRect(0, 0, W, H);
-            ctx.drawImage(img, 0, 0, srcW, srcH, (W - w) * fx, (H - h) * fy, w, h);
+            // the picture (strip or full frame) is drawn over its own part of the full frame
+            ctx.drawImage(src.img, 0, 0, src.iw, src.ih, (W - w) * fx + src.x * s, (H - h) * fy, src.w * s, h);
             // The canvas now covers everything: hide the placeholders underneath for good.
             const ph = placeholderRef.current;
             if (ph && ph.style.visibility !== "hidden") ph.style.visibility = "hidden";
         };
 
-        // Load frame 0 first so the hero shows immediately, then the rest in order.
-        for (let i = 0; i < FRAME_COUNT; i++) {
-            const im = new Image();
-            im.decoding = "async";
-            im.onload = () => {
-                if (Math.round(state.p * (FRAME_COUNT - 1)) >= i) render();
-            };
-            images[i] = im;
-        }
-        images[0].onload = () => {
-            render();
-            for (let i = 1; i < FRAME_COUNT; i++) images[i].src = frameSrc(i);
-        };
-        images[0].src = frameSrc(0);
-
-        const tween = gsap.to(state, {
-            p: 1,
-            ease: "none",
-            onUpdate: render,
-            scrollTrigger: {
-                trigger: section,
-                start: "top top",
-                end: "bottom bottom", // section is 250vh → 1.5 screens of scroll to play every frame
-                scrub: 1, // more catch-up smoothing between scroll and frames
-                invalidateOnRefresh: true,
+        // The section is 250vh (phones: 330vh) → the picture stays pinned for 1.5 (2.3) screens of scroll.
+        //  • Frames play over the first FRAMES_SCREENS screens of it, then the last frame (the cream
+        //    drip) HOLDS while the user keeps scrolling, and it is the one that slides away.
+        //  • fromTo (not "to"): always frame 0 → last frame. A plain "to" with invalidateOnRefresh
+        //    re-reads its start from the current frame on every refresh (resize, late layout…), which
+        //    could make the sequence restart from the wrong frame.
+        // Phones play the frames over more scroll (2 screens): over 1.2 the video felt too fast there.
+        // The section is taller on phones by the same 0.8 screen (h-[330vh]), so the hold is the same.
+        const framesScreens = () => (window.innerWidth < 768 ? 2 : 1.2);
+        const tween = gsap.fromTo(
+            state,
+            { p: 0 },
+            {
+                p: 1,
+                ease: "none",
+                onUpdate: render,
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top top",
+                    end: () => `+=${window.innerHeight * framesScreens()}`,
+                    scrub: 0.5, // smoothing between scroll and frames (was 1s: it lagged several frames behind)
+                    invalidateOnRefresh: true,
+                },
             },
-        });
+        );
+        scrollProgress = () => tween.scrollTrigger?.progress ?? state.p;
+
+        // ScrollTrigger "refresh" (fired by SmoothScroll every time an image loads, e.g. the product
+        // pictures below the hero) briefly rewinds every scroll animation to the top to measure the
+        // page, then puts it back WITHOUT calling onUpdate. The rewind used to draw frame 0, and
+        // nothing redrew afterwards → frame 0 stayed on screen while the hero slid away.
+        // So: draw nothing during a refresh, then redraw the real current frame once it's done.
+        const onRefreshInit = () => {
+            refreshing = true;
+        };
+        const onRefresh = () => {
+            refreshing = false;
+            lastDrawn = "";
+            render();
+        };
+        ScrollTrigger.addEventListener("refreshInit", onRefreshInit);
+        ScrollTrigger.addEventListener("refresh", onRefresh);
 
         resize();
         window.addEventListener("resize", resize);
@@ -196,12 +480,17 @@ export default function HeroFrameSequence({ children, backgroundColor, stageRef 
             window.removeEventListener("resize", resize);
             tween.scrollTrigger?.kill();
             tween.kill();
+            ScrollTrigger.removeEventListener("refreshInit", onRefreshInit);
+            ScrollTrigger.removeEventListener("refresh", onRefresh);
             images.forEach((im) => (im.onload = null));
+            disposed = true;
+            abort.abort();
+            dropAllBitmaps();
         };
     }, []);
 
     return (
-        <section ref={sectionRef} className="relative h-[250vh] w-full" style={{ backgroundColor }}>
+        <section ref={sectionRef} className="relative h-[330vh] md:h-[250vh] w-full" style={{ backgroundColor }}>
             <div className="sticky top-0 h-[100svh] w-full overflow-hidden">
                 {/* The "stage" holds the picture. The page can animate it (scale / clip / radius)
                     through `stageRef` without touching the canvas drawing. */}
@@ -209,26 +498,47 @@ export default function HeroFrameSequence({ children, backgroundColor, stageRef 
                     {/* Placeholders shown only until the canvas draws its first frame, then hidden —
                         otherwise their darker edges bleed through as a thin outline when the stage
                         is scaled / rounded (hero2). */}
-                    <div
-                        ref={placeholderRef}
-                        aria-hidden
-                        className="absolute inset-0 bg-cover bg-[position:66%_50%] md:bg-center"
-                        // 1) instant: tiny blurred preview of frame 0 (no download needed)
-                        style={{ backgroundImage: `url(${FRAME0_BLUR})` }}
-                    >
-                        {/* 2) the real frame 0, loaded with top priority (Next optimises it). */}
-                        <NextImage
-                            src={frameSrc(0)}
-                            alt=""
-                            aria-hidden
-                            fill
-                            priority
-                            sizes="100vw"
-                            className="object-cover object-[66%_50%] md:object-center"
-                        />
+                    {/* They are placed EXACTLY where the canvas will draw frame 0 (same right-edge
+                        trim, same "cover" size, same focus), in pure CSS so it is right from the first
+                        paint — so the switch blur → frame 0 → canvas never moves or resizes the picture.
+                        (Before, they used plain object-cover on the untrimmed frame: the canvas then
+                        drew it ~1.2% bigger and shifted, and the picture visibly "settled" on reload.) */}
+                    <div ref={placeholderRef} aria-hidden className="absolute inset-0 overflow-hidden [container-type:size]">
+                        <div
+                            className="hv2-frame0 absolute"
+                            // 1) instant: tiny blurred preview of frame 0 (no download needed)
+                            style={{ backgroundImage: `url(${FRAME0_BLUR})`, backgroundSize: "100% 100%" }}
+                        >
+                            {/* 2) the real frame 0, top priority. Unoptimised on purpose: same file and
+                                pixels as the canvas draws (and the canvas reuses it from the cache). */}
+                            <NextImage src={frameSrc(0)} alt="" aria-hidden fill priority unoptimized className="object-fill" />
+                        </div>
+                        <style>{`
+                            .hv2-frame0 {
+                                /* width of the visible (trimmed) part when it "covers" the stage */
+                                --cw: max(100cqw, 100cqh * ${SRC_W - TRIM_RIGHT_PX} / ${SRC_H});
+                                width: calc(var(--cw) * ${SRC_W} / ${SRC_W - TRIM_RIGHT_PX}); /* + the trimmed strip, pushed off the right */
+                                height: calc(var(--cw) * ${SRC_H} / ${SRC_W - TRIM_RIGHT_PX});
+                                left: calc((100cqw - var(--cw)) * ${FOCUS_X_FRAME0_MOBILE});
+                                top: calc((100cqh - var(--cw) * ${SRC_H} / ${SRC_W - TRIM_RIGHT_PX}) * ${FOCUS_Y});
+                            }
+                            @media (min-width: 768px) {
+                                .hv2-frame0 { left: calc((100cqw - var(--cw)) * ${FOCUS_X_DESKTOP}); }
+                            }
+                        `}</style>
                     </div>
                     {/* 3) the scroll-driven canvas on top — no fade, so there's no visible switch */}
                     <canvas ref={canvasRef} aria-hidden className="absolute inset-0 h-full w-full" />
+                    {/* Phones only: cream cover over the top of the picture, fading out between the
+                        --ts and --te vars the page animates (0% / 0% = invisible). Used instead of a
+                        mask + clip-path, which phones mis-place while scrolling. */}
+                    <div
+                        aria-hidden
+                        className="pointer-events-none absolute inset-0 md:hidden"
+                        style={{
+                            background: `linear-gradient(to bottom, ${backgroundColor ?? "#F7EFE2"} var(--ts, 0%), ${backgroundColor ?? "#F7EFE2"}00 var(--te, 0%))`,
+                        }}
+                    />
                 </div>
                 {children}
             </div>

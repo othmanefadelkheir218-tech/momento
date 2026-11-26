@@ -87,7 +87,7 @@ export function NutritionGridSection({ nutritionalValues, storageConditions }: N
     }, [])
 
     return (
-        <section className="w-full bg-[#F7F0E5] py-12 md:py-16 lg:py-20 px-6 md:px-12 lg:px-20 xl:px-32">
+        <section className="w-full bg-[#F7EFE2] py-12 md:py-16 lg:py-20 px-6 md:px-12 lg:px-20 xl:px-32">
             <div className="max-w-7xl mx-auto">
                 {/* Nutritional Values */}
                 <div className="mb-16 md:mb-24">
@@ -153,7 +153,7 @@ function NutritionRow({ label, value }: { label: string; value: string }) {
     if (!value) return null
 
     return (
-        <div className="nutrition-card flex justify-between items-center px-6 md:px-8 py-4 md:py-5 hover:bg-[#F7F0E5] transition-colors duration-200">
+        <div className="nutrition-card flex justify-between items-center px-6 md:px-8 py-4 md:py-5 hover:bg-[#F7EFE2] transition-colors duration-200">
             <span className="text-gray-700 font-medium text-sm md:text-base">{label}</span>
             <span className="text-burgundy font-bold text-base md:text-lg">{value}</span>
         </div>

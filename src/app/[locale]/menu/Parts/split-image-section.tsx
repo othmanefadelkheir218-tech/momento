@@ -37,7 +37,7 @@ export function SplitImageSection({ imageUrl, imageUrl2 }: SplitImageSectionProp
   }, [])
 
   return (
-    <section className="w-full min-h-[70vh] md:min-h-[80vh] bg-[#F7F0E5] py-8 md:py-12 lg:py-16 px-6 md:px-12 lg:px-20 xl:px-32 overflow-hidden">
+    <section className="w-full min-h-[70vh] md:min-h-[80vh] bg-[#F7EFE2] py-8 md:py-12 lg:py-16 px-6 md:px-12 lg:px-20 xl:px-32 overflow-hidden">
       <div ref={sectionRef} className="max-w-7xl mx-auto relative h-full flex items-center justify-center">
         <div className="relative w-full aspect-16/10 md:aspect-21/9 rounded-3xl overflow-hidden shadow-2xl">
           <div className="absolute inset-0 flex">

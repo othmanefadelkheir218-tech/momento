@@ -86,7 +86,7 @@ export function ProductGallery({ images, alt }: ProductGalleryProps) {
                     {shown.map((src, i) => (
                         <div
                             key={src}
-                            className={`gallery-tile relative overflow-hidden rounded-3xl bg-[#F7F0E5] ${layout[i]}`}
+                            className={`gallery-tile relative overflow-hidden rounded-3xl bg-[#F7EFE2] ${layout[i]}`}
                         >
                             <div className="gallery-parallax absolute inset-x-0 -top-[6%] h-[112%]">
                                 <Image

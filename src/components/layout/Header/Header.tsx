@@ -20,6 +20,14 @@ export default function Header() {
     useScrollToTop();
     const [isActive, setIsActive] = useState<boolean>(false);
     const isScrolled = useScroll();
+    // True only while the page is at the very top: the header is then plain cream (no blur, no shadow)
+    const [atTop, setAtTop] = useState<boolean>(true);
+    useEffect(() => {
+        const onScroll = () => setAtTop(window.scrollY <= 4);
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
     const locale = useLocale();
     const width = useWidth();
     const t = useTranslations("Navigation");
@@ -49,6 +57,10 @@ export default function Header() {
     useGSAP(() => {
         // prefers-reduced-motion: show/hide instantly, no slide
         const m = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 1;
+        // The width is 0 until the page has measured the screen (first frame after load).
+        // Do nothing until then — otherwise the "phone" branch below briefly shows the round
+        // menu button on desktop, and it pops up then hides again on every reload.
+        if (width === 0) return;
         if (width > 768) {
             if (isScrolled) {
                 // Hide slowly, after a short pause
@@ -84,16 +96,20 @@ export default function Header() {
 
     return (
         <>
-            <header ref={headerRef} className="fixed top-0 w-full z-20 py-1 bg-cream/45 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_8px_30px_-12px_rgb(74_44_33/0.25)]">
-                <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+            <header ref={headerRef} className={`fixed top-0 w-full z-20 py-1 transition-[background-color,box-shadow,backdrop-filter] duration-300 ease-out ${atTop
+                ? "bg-cream backdrop-blur-none shadow-none"
+                : "bg-cream/45 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_8px_30px_-12px_rgb(74_44_33/0.25)]"}`}>
+                {/* Desktop sizes are fluid: full size from ~1900px wide, smaller on narrower screens
+                    (e.g. a 1920px screen at 150% Windows zoom is only 1280px wide for the page). */}
+                <div className="container mx-auto px-4 h-16 md:h-[clamp(52px,3.1vw,60px)] flex items-center justify-between md:justify-start">
                     <TransitionLink href="/" className="rounded-sm focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-caramel">
                         <Image
                             width={128}
                             height={31}
                             priority
-                            src="/logo/momento-logo-burgundy.png" className="md:w-40 w-32 h-auto" alt="Momento" />
+                            src="/logo/momento-logo-burgundy.png" className="w-32 md:w-[clamp(104px,7.3vw,140px)] h-auto" alt="Momento" />
                     </TransitionLink>
-                    <nav className="hidden md:flex items-center gap-8 relative">
+                    <nav className="hidden md:flex items-center gap-[clamp(14px,1.4vw,26px)] relative md:ml-auto">
                         {Links.map((link) => {
                             const isActiveLink = pathname === link.href;
                             return (
@@ -101,7 +117,7 @@ export default function Header() {
                                     <TransitionLink
                                         // label={link.label}
                                         href={link.href}
-                                        className="text-burgundy hover:text-burgundy-dark flex items-center font-body font-semibold text-[13px] uppercase tracking-[.08em] group rounded-sm focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-caramel"
+                                        className="text-burgundy hover:text-burgundy-dark flex items-center font-display font-bold text-[clamp(13px,0.85vw,16px)] uppercase tracking-[.08em] group rounded-sm focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-caramel"
                                     >
 
                                         {/* Dot centered under the text */}
@@ -110,7 +126,7 @@ export default function Header() {
                                                 ${isActiveLink ? "opacity-100 scale-100" : "opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100"}
                                             `}
                                         >
-                                            <Dot className="w-8 h-8 " />
+                                            <Dot className="w-6 h-6 " />
                                         </span>
 
                                         <span>{link.label}</span>
@@ -120,8 +136,10 @@ export default function Header() {
                                 </Magnetic>
                             );
                         })}
+                    </nav>
 
-                        {/* "Contact" button → contact page */}
+                    {/* "Contact" button → contact page */}
+                    <div className="hidden md:block md:ml-[clamp(14px,1.4vw,26px)]">
                         <CostumButton
                             role="link"
                             tabIndex={0}
@@ -133,14 +151,14 @@ export default function Header() {
                                 }
                             }}
                             backgroundColor="#751B32"
-                            hoverTextColor="#F7F0E5"
-                            className="rounded-2xl! border-[1.5px]! border-burgundy bg-cream/60 text-burgundy px-6 py-3 focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-caramel"
+                            hoverTextColor="#F7EFE2"
+                            className="rounded-2xl! border-[1.5px]! border-burgundy bg-cream/60 text-burgundy px-[clamp(14px,1.05vw,20px)] py-[clamp(8px,0.55vw,11px)] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-caramel"
                         >
-                            <span className="block font-body font-bold text-sm tracking-[.04em] whitespace-nowrap">
+                            <span className="block font-display font-bold text-[clamp(13px,0.85vw,16px)] uppercase tracking-[.08em] leading-none whitespace-nowrap">
                                 {t("contact")}
                             </span>
                         </CostumButton>
-                    </nav>
+                    </div>
                 </div>
             </header>
 
@@ -155,22 +173,18 @@ export default function Header() {
                     rounded-full scale-0
                 "
             >
-                {/* Soft blurred cream glow behind the round button (fades out, no hard edge) */}
-                <span
-                    aria-hidden
-                    className="pointer-events-none absolute -inset-7 -z-10 rounded-full backdrop-blur-lg bg-[radial-gradient(closest-side,rgb(247_240_229/.9)_50%,rgb(247_240_229/.55)_75%,transparent)] [mask-image:radial-gradient(closest-side,#000_60%,transparent)]"
-                />
+                {/* Cream ring around the burgundy button, so it stays readable on any background */}
                 <CostumButton
                     onClick={() => setIsActive(!isActive)}
                     backgroundColor="#5A1124"
                     // hoverTextColor="#ffffff"
-                    className="w-full shadow-md h-full bg-burgundy border-burgundy text-cream hover:border-cream">
+                    className="w-full shadow-md h-full bg-burgundy border-2! border-cream text-cream">
                     <div ref={containerRef} className="relative w-full h-full">
                         <div ref={topLine} className="absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2">
-                            <Minus size={35} strokeWidth={1.5} />
+                            <Minus size={35} strokeWidth={2.5} />
                         </div>
                         <div ref={bottomLine} className="absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2">
-                            <Minus size={35} strokeWidth={1.5} />
+                            <Minus size={35} strokeWidth={2.5} />
                         </div>
                     </div>
                 </CostumButton>
