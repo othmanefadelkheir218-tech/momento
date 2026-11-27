@@ -4,12 +4,24 @@ import { ReactNode, RefObject, useEffect, useRef } from "react";
 import NextImage from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+    CAMERA_MOBILE,
+    FOCUS_X_DESKTOP,
+    FOCUS_X_FRAME0_MOBILE,
+    FOCUS_X_MOBILE,
+    FOCUS_Y,
+    FULL_W,
+    SRC_H,
+    SRC_W,
+    placeFrame,
+} from "./heroCamera";
 
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
 }
 
 // ── Frames (/public/heroSection/frame_000000.jpeg … frame_000360.jpeg) ──
+// Where each frame is drawn (cover + camera zoom / pan) is in heroCamera.ts.
 const FRAME_COUNT = 361;
 const frameSrc = (i: number) => `/heroSection/frame_${String(i).padStart(6, "0")}.jpeg`;
 
@@ -17,109 +29,16 @@ const frameSrc = (i: number) => `/heroSection/frame_${String(i).padStart(6, "0")
 const FRAME0_BLUR =
     "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAASACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwA0RVe3AeTcqlggxtIOOuav20drFfSLJZhpCM72weDnoO/vWXp7SeUywXCBWxglSQTj9KlN1ercggRukMnDZGQPTHauWUtLI9KMNbs1EEM9yXJiYbcrIBg/TbWPqdraz2hkgU71bOeOmPSpEjvo5YvL2Iit8yeuamv7e5g05RK4XJO/K4B9ADUJ67jaVthdDUDTGwB99/5VNd/LNGy8E5yR3oookVEyZZZSTmRz16say3uJ2RkaaQqCcAscCiinEUj/2Q==";
 
-// The source frames (1928px wide) have a dark strip ~40px wide on their right edge that looks
-// like a border, especially once hero2 shrinks the picture into a frame. We never draw it.
-const TRIM_RIGHT_PX = 44;
-// Size of the source frames (all the same), used to place the frame-0 placeholder like the canvas.
-const SRC_W = 1928;
-const SRC_H = 1072;
-
-// Horizontal focus when the frame is cropped to fill the screen (0 = left, 1 = right).
-// Mobile leans right so the Spéculoos cup (the one that tips over) stays in view.
-const FOCUS_X_DESKTOP = 0.5;
-const FOCUS_X_MOBILE = 0.6;
-const FOCUS_Y = 0.5;
-
-// ── Camera move to hide the chefs' faces (frames 31 → 213) ──
-// The camera zooms in and slides down onto the counter, holds, then eases back out.
-// Frame numbers below are the file numbers (frame_000031.jpeg etc.).
-type Cam = {
-    inStart: number;
-    inEnd: number;
-    outStart: number;
-    outEnd: number;
-    zoom: number;
-    focusX: number;
-    focusY: number;
-    /** Optional [frame, focusX] keyframes: the camera pans between them (overrides focusX). */
-    panX?: [number, number][];
-};
-
-const CAM_DESKTOP: Cam = {
-    inStart: 0, // start moving in right away, so the move is long and gentle
-    inEnd: 31, // fully zoomed by the first "bad" face frame
-    outStart: 200, // start easing back out…
-    outEnd: 265, // …back to the full scene (the video's own camera has moved down by now)
-    zoom: 1.6, // how far in: at 1.6 the top ~37% of the frame is off screen
-    focusX: 0.6, // keep the tipping Spéculoos cup in the centre while zoomed
-    focusY: 1, // anchor on the bottom of the frame (the counter)
-};
-
-// Phones show the full frame height, so 1.4 isn't enough to push the faces off the top.
-// At 1.8 the top ~44% is cropped. The pan follows the slim chef + Spéculoos cup,
-// then the spilling ice cream (from frame 100), then the falling cream stream.
-// (focusX: higher = the picture slides LEFT, showing more of its right side)
-// The camera goes straight DOWN onto the Spéculoos cup (zoom, done by frame 31 so the faces stay
-// hidden) with no sideways move, stays on the cup while it tips, and only then follows the cream
-// to the left. panXAt passes through the points without stopping at them.
-// NOTE: if you widen this range, regenerate /public/heroSection-mobile (see MOBILE_STRIP below).
-const CAM_MOBILE: Cam = {
-    ...CAM_DESKTOP,
-    zoom: 1.8,
-    panX: [
-        [0, 0.68], // straight DOWN onto the Spéculoos cup (no sideways move)…
-        [110, 0.68], // …the camera stays on the cup while it tips…
-        [200, 0.54], // …then follows the cream as it spills to the left
-        [265, 0.47], // the falling cream stream, centred
-    ],
-};
-
 // ── Lighter frames for phones (/public/heroSection-mobile) ──
 // A phone only ever shows a vertical strip of the frame, so phones download a pre-cut copy:
 //  • only that strip: x = 470 → 1590 of the full frame (covers every phone up to a 0.8 width/height
-//    screen, over the whole CAM_MOBILE zoom + pan range: 0.47 → 0.70),
+//    screen, over the whole CAMERA_MOBILE zoom + pan range, see heroCamera.ts),
 //  • scaled to 80% (896×858), JPEG q74,
 //  • every 2nd frame only (frame_000000, 000002, …, 000360) — still ~4px of scroll per frame.
 // 15 MB instead of 87 MB, and ~4× less to decode. Generated with PIL from /public/heroSection.
 const MOBILE_STRIP = { x: 470, w: 1120 };
 const MOBILE_STEP = 2;
 const mobileFrameSrc = (i: number) => `/heroSection-mobile/frame_${String(i).padStart(6, "0")}.jpg`;
-
-// Where the canvas centres frame 0 on phones (the first point of the mobile camera pan), so the
-// frame-0 placeholder can be placed at exactly the same spot.
-const FOCUS_X_FRAME0_MOBILE = CAM_MOBILE.panX ? CAM_MOBILE.panX[0][1] : FOCUS_X_MOBILE;
-
-// "Smootherstep": eases in and out more gently than a plain smoothstep.
-const smooth = (t: number) => t * t * t * (t * (6 * t - 15) + 10);
-// Smooth curve through the pan points (monotone cubic): it starts and ends gently, but does NOT
-// stop at the points in between, and never overshoots them.
-const panXAt = (frame: number, keys: [number, number][]) => {
-    const n = keys.length;
-    if (frame <= keys[0][0]) return keys[0][1];
-    if (frame >= keys[n - 1][0]) return keys[n - 1][1];
-    const d = keys.slice(1).map(([x, y], k) => (y - keys[k][1]) / (x - keys[k][0])); // slopes
-    const m = keys.map((_, k) => {
-        if (k === 0 || k === n - 1) return 0; // gentle start / end
-        return d[k - 1] * d[k] <= 0 ? 0 : (d[k - 1] + d[k]) / 2;
-    });
-    for (let k = 0; k < n - 1; k++) {
-        // keep it monotone (Fritsch–Carlson)
-        if (d[k] === 0) { m[k] = m[k + 1] = 0; continue; }
-        const a = m[k] / d[k], b = m[k + 1] / d[k], r = a * a + b * b;
-        if (r > 9) { const t = 3 / Math.sqrt(r); m[k] = t * a * d[k]; m[k + 1] = t * b * d[k]; }
-    }
-    let k = 0;
-    while (frame > keys[k + 1][0]) k++;
-    const [x0, y0] = keys[k], [x1, y1] = keys[k + 1];
-    const h = x1 - x0, t = (frame - x0) / h, t2 = t * t, t3 = t2 * t;
-    return (2 * t3 - 3 * t2 + 1) * y0 + (t3 - 2 * t2 + t) * h * m[k] + (-2 * t3 + 3 * t2) * y1 + (t3 - t2) * h * m[k + 1];
-};
-const cameraAmount = (frame: number, CAM: Cam) => {
-    if (frame <= CAM.inStart || frame >= CAM.outEnd) return 0;
-    if (frame < CAM.inEnd) return smooth((frame - CAM.inStart) / (CAM.inEnd - CAM.inStart));
-    if (frame <= CAM.outStart) return 1;
-    return smooth(1 - (frame - CAM.outStart) / (CAM.outEnd - CAM.outStart));
-};
 
 type Props = {
     /** Extra content layered on top of the frames (e.g. hero text). */
@@ -130,8 +49,8 @@ type Props = {
 };
 
 /**
- * Full-screen hero driven by scroll: the section is 2.5 screens tall, the canvas stays pinned
- * for the first 1.5 screens of scroll and plays every frame across it.
+ * Full-screen hero driven by scroll: the section is 2.5 screens tall (phones: 3.3), the picture
+ * stays pinned and plays every frame over the first 1.2 screens of scroll (phones: 2).
  */
 export default function HeroFrameSequence({ children, backgroundColor, stageRef }: Props) {
     const sectionRef = useRef<HTMLElement>(null);
@@ -169,25 +88,12 @@ export default function HeroFrameSequence({ children, backgroundColor, stageRef 
         const BEHIND = 6;
         const KEEP_MARGIN = 6; // bitmaps are only dropped once this much further out than the window
         const MAX_DECODING = 3;
-        const FULL_W = SRC_W - TRIM_RIGHT_PX; // usable width of a full frame
-
-        // Given the pan at zoom 1 (fx1), the pan to use at `zoom` so the CENTRE of the view stays put
-        // (all in full-frame pixels; s1 = scale at zoom 1, W = screen width in canvas pixels).
-        const fxZoomedAroundCentre = (W: number, s1: number, zoom: number, fx1: number) => {
-            const vw1 = Math.min(FULL_W, W / s1); // visible width at zoom 1
-            const centre = (FULL_W - vw1) * fx1 + vw1 / 2;
-            const vw = vw1 / zoom;
-            if (FULL_W - vw <= 0) return fx1;
-            const left = Math.min(FULL_W - vw, Math.max(0, centre - vw / 2));
-            return left / (FULL_W - vw);
-        };
-
         // Does the strip contain everything this screen can show, over the whole camera move?
         const stripFits = (W: number, H: number) => {
-            const fxs = CAM_MOBILE.panX ? CAM_MOBILE.panX.map(([, v]) => v) : [FOCUS_X_MOBILE];
+            const fxs = CAMERA_MOBILE.panX ? CAMERA_MOBILE.panX.map(([, v]) => v) : [FOCUS_X_MOBILE];
             const fxMin = Math.min(...fxs);
             const fxMax = Math.max(...fxs);
-            for (const z of [1, CAM_MOBILE.zoom]) {
+            for (const z of [1, CAMERA_MOBILE.zoom]) {
                 const vw = Math.min(FULL_W, W / (Math.max(W / FULL_W, H / SRC_H) * z)); // visible width
                 if ((FULL_W - vw) * fxMin < MOBILE_STRIP.x) return false;
                 if ((FULL_W - vw) * fxMax + vw > MOBILE_STRIP.x + MOBILE_STRIP.w) return false;
@@ -374,14 +280,14 @@ export default function HeroFrameSequence({ children, backgroundColor, stageRef 
             for (let i = idx; i >= 0; i--) {
                 const im = images[i];
                 if (isReady(im)) {
-                    // without its dark right-edge strip (see TRIM_RIGHT_PX)
+                    // without its dark right-edge strip (FULL_W, see heroCamera.ts)
                     return { img: im, id: `i${i}`, iw: FULL_W, ih: im.naturalHeight, x: 0, w: FULL_W };
                 }
             }
             return null;
         };
 
-        // Draw like `object-fit: cover`, plus the camera zoom/pan.
+        // Draws the current frame (placement: see heroCamera.ts).
         let refreshing = false;
         // where the scroll position already is (the animation catches up to it): set once the
         // scroll tween exists, below
@@ -399,40 +305,25 @@ export default function HeroFrameSequence({ children, backgroundColor, stageRef 
             }
             const src = nearestSource(idx);
             if (!src) return;
+            const W = canvas.width;
+            const H = canvas.height;
             const isDesktop = window.innerWidth >= 768;
-            const CAM = isDesktop ? CAM_DESKTOP : CAM_MOBILE;
-            const cam = cameraAmount(exact, CAM);
-            const key = `${src.id}|${cam.toFixed(4)}|${exact.toFixed(2)}|${isDesktop}|${canvas.width}x${canvas.height}`;
+            const place = placeFrame(W, H, exact, isDesktop);
+            const key = `${src.id}|${place.amount.toFixed(4)}|${exact.toFixed(2)}|${isDesktop}|${W}x${H}`;
             if (key === lastDrawn) return;
             lastDrawn = key;
 
-            const W = canvas.width;
-            const H = canvas.height;
-            const zoom = 1 + (CAM.zoom - 1) * cam;
-            // all the maths is in full-frame coordinates (FULL_W × SRC_H)
-            const s = Math.max(W / FULL_W, H / SRC_H) * zoom;
-            const w = FULL_W * s;
-            const h = SRC_H * s;
-            const baseFx = isDesktop ? FOCUS_X_DESKTOP : FOCUS_X_MOBILE;
-            // Phones: panX says where the view sits at zoom 1; the zoom then happens around the CENTRE
-            // of the view (not around the pan point), so zooming in never slides the view sideways —
-            // the drop onto the cup is straight down.
-            let fx = baseFx + (CAM.focusX - baseFx) * cam;
-            if (CAM.panX) {
-                const s1 = Math.max(W / FULL_W, H / SRC_H); // scale at zoom 1
-                fx = fxZoomedAroundCentre(W, s1, zoom, panXAt(exact, CAM.panX));
-            }
-            const fy = FOCUS_Y + (CAM.focusY - FOCUS_Y) * cam;
             ctx.clearRect(0, 0, W, H);
             // the picture (strip or full frame) is drawn over its own part of the full frame
-            ctx.drawImage(src.img, 0, 0, src.iw, src.ih, (W - w) * fx + src.x * s, (H - h) * fy, src.w * s, h);
+            const { scale, x, y } = place;
+            ctx.drawImage(src.img, 0, 0, src.iw, src.ih, x + src.x * scale, y, src.w * scale, SRC_H * scale);
             // The canvas now covers everything: hide the placeholders underneath for good.
             const ph = placeholderRef.current;
             if (ph && ph.style.visibility !== "hidden") ph.style.visibility = "hidden";
         };
 
         // The section is 250vh (phones: 330vh) → the picture stays pinned for 1.5 (2.3) screens of scroll.
-        //  • Frames play over the first FRAMES_SCREENS screens of it, then the last frame (the cream
+        //  • Frames play over the first framesScreens() screens of it, then the last frame (the cream
         //    drip) HOLDS while the user keeps scrolling, and it is the one that slides away.
         //  • fromTo (not "to"): always frame 0 → last frame. A plain "to" with invalidateOnRefresh
         //    re-reads its start from the current frame on every refresh (resize, late layout…), which
@@ -458,9 +349,9 @@ export default function HeroFrameSequence({ children, backgroundColor, stageRef 
         );
         scrollProgress = () => tween.scrollTrigger?.progress ?? state.p;
 
-        // ScrollTrigger "refresh" (fired by SmoothScroll every time an image loads, e.g. the product
-        // pictures below the hero) briefly rewinds every scroll animation to the top to measure the
-        // page, then puts it back WITHOUT calling onUpdate. The rewind used to draw frame 0, and
+        // A ScrollTrigger "refresh" (SmoothScroll fires one when the page height changes) briefly
+        // rewinds every scroll animation to the top to measure the page, then puts it back WITHOUT
+        // calling onUpdate. The rewind used to draw frame 0, and
         // nothing redrew afterwards → frame 0 stayed on screen while the hero slid away.
         // So: draw nothing during a refresh, then redraw the real current frame once it's done.
         const onRefreshInit = () => {
@@ -516,11 +407,11 @@ export default function HeroFrameSequence({ children, backgroundColor, stageRef 
                         <style>{`
                             .hv2-frame0 {
                                 /* width of the visible (trimmed) part when it "covers" the stage */
-                                --cw: max(100cqw, 100cqh * ${SRC_W - TRIM_RIGHT_PX} / ${SRC_H});
-                                width: calc(var(--cw) * ${SRC_W} / ${SRC_W - TRIM_RIGHT_PX}); /* + the trimmed strip, pushed off the right */
-                                height: calc(var(--cw) * ${SRC_H} / ${SRC_W - TRIM_RIGHT_PX});
+                                --cw: max(100cqw, 100cqh * ${FULL_W} / ${SRC_H});
+                                width: calc(var(--cw) * ${SRC_W} / ${FULL_W}); /* + the trimmed strip, pushed off the right */
+                                height: calc(var(--cw) * ${SRC_H} / ${FULL_W});
                                 left: calc((100cqw - var(--cw)) * ${FOCUS_X_FRAME0_MOBILE});
-                                top: calc((100cqh - var(--cw) * ${SRC_H} / ${SRC_W - TRIM_RIGHT_PX}) * ${FOCUS_Y});
+                                top: calc((100cqh - var(--cw) * ${SRC_H} / ${FULL_W}) * ${FOCUS_Y});
                             }
                             @media (min-width: 768px) {
                                 .hv2-frame0 { left: calc((100cqw - var(--cw)) * ${FOCUS_X_DESKTOP}); }

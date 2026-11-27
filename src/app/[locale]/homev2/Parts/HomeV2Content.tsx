@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { RefObject, useRef } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import gsap from "gsap";
@@ -23,13 +23,14 @@ const CREAM = "#F7EFE2";
 const CARAMEL = "#C68B4E";
 const CHOCOLATE = "#4A2C21";
 
-// ── Hero style switch ──
-//   "hero2" → (default) the picture fills the first screen with no text; on scroll it shrinks into a//               frame and the title appears in the cream space above it.
-//   "hero"  → previous version: title on the left, over a cream haze on the picture.
-// To switch, just change the value below to "hero" or "hero2".
-const HERO_VARIANT: "hero" | "hero2" = "hero2";
+// ── Hero version switch ──
+//   "v2" → (live) the picture fills the first screen with no text; on scroll it shrinks into a
+//          frame and the title rides down with the frame's top edge (HeroV2Title).
+//   "v1" → previous version: the title sits on the left, over a cream haze on the picture (HeroV1Copy).
+// To switch, change the value below.
+const HERO_VERSION: "v1" | "v2" = "v2";
 
-// hero2: soft mask on the framed picture, so its edges fade into the cream instead of a hard line.
+// v2: soft mask on the framed picture, so its edges fade into the cream instead of a hard line.
 // Two gradients (left/right and top/bottom) kept where both are opaque; widths come from CSS vars
 // animated with the shrink (all 0% = no fade at full screen).
 const FEATHER_MASK =
@@ -45,19 +46,18 @@ export default function HomeV2Content() {
     const router = useTransitionRouter();
 
     const rootRef = useRef<HTMLDivElement>(null);
-    const heroCopyRef = useRef<HTMLDivElement>(null);
-    const heroHazeRef = useRef<HTMLDivElement>(null);
+    const heroStageRef = useRef<HTMLDivElement>(null); // the picture (inside HeroFrameSequence)
+    const heroV2TitleRef = useRef<HTMLDivElement>(null);
+    const heroV1CopyRef = useRef<HTMLDivElement>(null);
+    const heroV1HazeRef = useRef<HTMLDivElement>(null);
     const universImgRef = useRef<HTMLDivElement>(null);
-    const heroStageRef = useRef<HTMLDivElement>(null);
-    const revealCopyRef = useRef<HTMLDivElement>(null);
 
-
-    // hero2: full-screen picture first, then on scroll it shrinks into a frame
-    // and the title writes itself in the cream space above it.
+    // Hero v2: full-screen picture first, then on scroll it shrinks into a frame
+    // and the title comes down with the frame's top edge.
     useGSAP(() => {
-        if (HERO_VARIANT !== "hero2") return;
+        if (HERO_VERSION !== "v2") return;
         const stage = heroStageRef.current;
-        const copy = revealCopyRef.current;
+        const copy = heroV2TitleRef.current;
         if (!stage || !copy) return;
         const section = stage.closest("section");
         if (!section) return;
@@ -81,7 +81,7 @@ export default function HomeV2Content() {
                 //   --fx: left/right fade · --ts → --te: top fade (from → to) · --fb: bottom fade
                 //
                 // Mobile uses NO mask and NO clip-path: the top of the picture is simply covered by a
-                // cream layer that fades out (the "hv2-topfade" div in HeroFrameSequence, driven by
+                // cream layer that fades out (the phones-only cover div in HeroFrameSequence, driven by
                 // the same --ts / --te vars): solid cream down to --ts, then a fade to --te. It looks
                 // the same, but phones (iOS Safari especially) mis-place masked / clipped layers inside
                 // a sticky box while scrolling, which showed the frame's edge there.
@@ -144,10 +144,10 @@ export default function HomeV2Content() {
         };
     }, { scope: rootRef });
 
-
-    // Hero copy: words rise in, the accent word "writes" itself in, then it all drifts away on scroll.
+    // Hero v1: words rise in, the accent word "writes" itself in, then it all drifts away on scroll.
+    // (Does nothing while v2 is live: its markup isn't rendered.)
     useGSAP(() => {
-        const copy = heroCopyRef.current;
+        const copy = heroV1CopyRef.current;
         if (!copy) return;
         const mm = gsap.matchMedia();
         mm.add("(prefers-reduced-motion: no-preference)", () => {
@@ -167,13 +167,13 @@ export default function HomeV2Content() {
             if (section) {
                 const st = { trigger: section, start: "top top", end: "+=40%", scrub: true };
                 gsap.to(copy, { y: -80, opacity: 0, ease: "none", scrollTrigger: st });
-                gsap.to(heroHazeRef.current, { opacity: 0, ease: "none", scrollTrigger: { ...st, end: "+=55%" } });
+                gsap.to(heroV1HazeRef.current, { opacity: 0, ease: "none", scrollTrigger: { ...st, end: "+=55%" } });
             }
         });
         return () => mm.revert();
     }, { scope: rootRef });
 
-    // Soft parallax on the big images; Lenis drives ScrollTrigger so it stays smooth.
+    // Soft parallax on the "Notre univers" image; Lenis drives ScrollTrigger so it stays smooth.
     useGSAP(() => {
         if (universImgRef.current) {
             gsap.fromTo(universImgRef.current, { yPercent: -8 }, {
@@ -199,59 +199,17 @@ export default function HomeV2Content() {
             className={`${serif.variable} ${sans.variable} overflow-x-clip`}
             style={{ backgroundColor: CREAM, color: CHOCOLATE, fontFamily: "var(--font-hv2-sans)" }}
         >
-            {/* ───────── Hero: scroll-driven frame sequence (2.5 screens tall, pinned for 1.5 screens of scroll) ───────── */}
+            {/* ───────── Hero: scroll-driven frame sequence ───────── */}
             <HeroFrameSequence backgroundColor={CREAM} stageRef={heroStageRef}>
-                {HERO_VARIANT === "hero2" ? (
-                <>
-                    {/* Title row in the cream space above the framed picture.
-                        Its height matches where the frame's top edge lands (22.5svh desktop / 38svh mobile). */}
-                    <div
-                        ref={revealCopyRef}
-                        // desktop: the header has slid away by the time the title shows, so the row uses
-                        // the whole space above the frame (no 72px header gap at the top)
-                        className="invisible absolute inset-x-0 top-[72px] md:top-0 z-10 flex items-center md:items-end md:pb-[2.5svh] h-[calc(38svh-72px)] md:h-[22.5svh]"
-                    >
-                        <div className="mx-auto w-[92vw] md:w-[70vw] flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-8 text-center md:text-left">
-                            <div>
-                                <p className="flex items-center justify-center md:justify-start gap-3 font-body font-semibold text-[11px] md:text-[12px] uppercase tracking-[.18em] text-burgundy whitespace-nowrap">
-                                    <span aria-hidden className="hv2r-rule h-px w-6 md:w-8 bg-burgundy/60 origin-right md:origin-left" />
-                                    <span className="hv2r-eyebrow">{t("heroEyebrow")}</span>
-                                    <span aria-hidden className="hv2r-rule h-px w-6 bg-burgundy/60 origin-left md:hidden" />
-                                </p>
-                                <h1 className="mt-2 md:mt-3 font-display font-medium text-burgundy leading-[1.05] text-[40px] md:text-[clamp(30px,3.4vw,54px)]">
-                                    <HeroTitle raw={t.raw("heroTitle") as string} oneLineOnDesktop />
-                                </h1>
-                            </div>
-                        </div>
-                    </div>
-
-                </>
+                {HERO_VERSION === "v2" ? (
+                    <HeroV2Title titleRef={heroV2TitleRef} eyebrow={t("heroEyebrow")} title={t.raw("heroTitle") as string} />
                 ) : (
-                <>
-                {/* Soft cream fade behind the title (centre on mobile, left side on desktop) */}
-                <div
-                    ref={heroHazeRef}
-                    aria-hidden
-                    className="pointer-events-none absolute inset-0 z-10
-                        bg-[radial-gradient(ellipse_80%_30%_at_50%_50%,rgb(247_239_226/.88)_0%,rgb(247_239_226/.65)_55%,transparent_100%)]
-                        md:bg-[radial-gradient(ellipse_40%_46%_at_14%_50%,rgb(247_239_226/.8)_0%,rgb(247_239_226/.55)_45%,transparent_100%)]"
-                />
-                {/* Hero copy: left side */}
-                <div className="absolute inset-0 z-10 flex items-center pointer-events-none">
-                    <div ref={heroCopyRef} className="container mx-auto px-4 pt-10 md:pt-0 text-center md:text-left">
-                        {/* Small label: thin line + burgundy text, no background */}
-                        <p className="flex items-center justify-center md:justify-start gap-3 font-body font-semibold text-[12px] md:text-[13px] uppercase tracking-[.18em] text-burgundy whitespace-nowrap">
-                            <span aria-hidden className="hv2-rule h-px w-6 md:w-8 bg-burgundy/60 origin-right md:origin-left" />
-                            <span className="hv2-eyebrow-text">{t("heroEyebrow")}</span>
-                            {/* second line only on mobile, where the label is centred */}
-                            <span aria-hidden className="hv2-rule h-px w-6 bg-burgundy/60 origin-left md:hidden" />
-                        </p>
-                        <h1 className="mt-3 font-display font-medium text-burgundy leading-[1.05] text-[50px] md:text-[clamp(34px,4.2vw,56px)]">
-                            <HeroTitle raw={t.raw("heroTitle") as string} />
-                        </h1>
-                    </div>
-                </div>
-                </>
+                    <HeroV1Copy
+                        copyRef={heroV1CopyRef}
+                        hazeRef={heroV1HazeRef}
+                        eyebrow={t("heroEyebrow")}
+                        title={t.raw("heroTitle") as string}
+                    />
                 )}
                 {SHOW_HERO_CONTENT && (
                 <div className="absolute inset-0 z-10 flex items-end md:items-center"><div className="w-full max-w-7xl mx-auto px-6 md:px-12 pt-40 pb-16 md:py-0">
@@ -391,10 +349,75 @@ export default function HomeV2Content() {
     );
 }
 
+type HeroCopyProps = { eyebrow: string; title: string };
+
 /**
- * Renders "Chaque instant|a sa|<accent>douceur</accent>." — "|" starts a new line. Each word rises
- * from a mask; the <accent> word is Playball (design spec: one accent per heading, in <em>, same
- * colour, ~1.14x) and gets a left-to-right "handwriting" wipe.
+ * Hero v2 title row, in the cream space above the framed picture. Its height matches where the
+ * frame's top edge lands (22.5svh desktop / 38svh mobile). Animated by HomeV2Content.
+ */
+function HeroV2Title({ titleRef, eyebrow, title }: HeroCopyProps & { titleRef: RefObject<HTMLDivElement | null> }) {
+    return (
+        <div
+            ref={titleRef}
+            // desktop: the header has slid away by the time the title shows, so the row uses
+            // the whole space above the frame (no 72px header gap at the top)
+            className="invisible absolute inset-x-0 top-[72px] md:top-0 z-10 flex items-center md:items-end md:pb-[2.5svh] h-[calc(38svh-72px)] md:h-[22.5svh]"
+        >
+            <div className="mx-auto w-[92vw] md:w-[70vw] flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-8 text-center md:text-left">
+                <div>
+                    <p className="flex items-center justify-center md:justify-start gap-3 font-body font-semibold text-[11px] md:text-[12px] uppercase tracking-[.18em] text-burgundy whitespace-nowrap">
+                        <span aria-hidden className="hv2r-rule h-px w-6 md:w-8 bg-burgundy/60 origin-right md:origin-left" />
+                        <span className="hv2r-eyebrow">{eyebrow}</span>
+                        <span aria-hidden className="hv2r-rule h-px w-6 bg-burgundy/60 origin-left md:hidden" />
+                    </p>
+                    <h1 className="mt-2 md:mt-3 font-display font-medium text-burgundy leading-[1.05] text-[40px] md:text-[clamp(30px,3.4vw,54px)]">
+                        <HeroTitle raw={title} oneLineOnDesktop />
+                    </h1>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+/** Hero v1 copy: title on the left, over a soft cream haze on the picture. Animated by HomeV2Content. */
+function HeroV1Copy({
+    copyRef,
+    hazeRef,
+    eyebrow,
+    title,
+}: HeroCopyProps & { copyRef: RefObject<HTMLDivElement | null>; hazeRef: RefObject<HTMLDivElement | null> }) {
+    return (
+        <>
+            {/* Soft cream fade behind the title (centre on mobile, left side on desktop) */}
+            <div
+                ref={hazeRef}
+                aria-hidden
+                className="pointer-events-none absolute inset-0 z-10
+                    bg-[radial-gradient(ellipse_80%_30%_at_50%_50%,rgb(247_239_226/.88)_0%,rgb(247_239_226/.65)_55%,transparent_100%)]
+                    md:bg-[radial-gradient(ellipse_40%_46%_at_14%_50%,rgb(247_239_226/.8)_0%,rgb(247_239_226/.55)_45%,transparent_100%)]"
+            />
+            <div className="absolute inset-0 z-10 flex items-center pointer-events-none">
+                <div ref={copyRef} className="container mx-auto px-4 pt-10 md:pt-0 text-center md:text-left">
+                    {/* Small label: thin line + burgundy text, no background */}
+                    <p className="flex items-center justify-center md:justify-start gap-3 font-body font-semibold text-[12px] md:text-[13px] uppercase tracking-[.18em] text-burgundy whitespace-nowrap">
+                        <span aria-hidden className="hv2-rule h-px w-6 md:w-8 bg-burgundy/60 origin-right md:origin-left" />
+                        <span className="hv2-eyebrow-text">{eyebrow}</span>
+                        {/* second line only on mobile, where the label is centred */}
+                        <span aria-hidden className="hv2-rule h-px w-6 bg-burgundy/60 origin-left md:hidden" />
+                    </p>
+                    <h1 className="mt-3 font-display font-medium text-burgundy leading-[1.05] text-[50px] md:text-[clamp(34px,4.2vw,56px)]">
+                        <HeroTitle raw={title} />
+                    </h1>
+                </div>
+            </div>
+        </>
+    );
+}
+
+/**
+ * Renders "Chaque instant|a sa|<accent>douceur</accent>." — "|" starts a new line. The <accent> word
+ * is Playball (design spec: one accent per heading, in <em>, same colour, ~1.14x). Hero v1 animates
+ * the pieces (each word rises from a mask, the accent gets a "handwriting" wipe); v2 doesn't.
  */
 function HeroTitle({ raw, oneLineOnDesktop = false }: { raw: string; oneLineOnDesktop?: boolean }) {
     const lineClass = oneLineOnDesktop ? "block md:inline" : "block";

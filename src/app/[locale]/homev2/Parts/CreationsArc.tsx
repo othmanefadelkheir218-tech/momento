@@ -18,18 +18,17 @@ if (typeof window !== "undefined") {
 //
 //  • The section overlaps the end of the hero, so the Spéculoos tiramisu (first product) appears under
 //    the dripping cream; the other products then fan out from behind it along the arc.
-//  • The products never move on their own: only the page scroll and the user (drag, sideways
-//    swipe, ← → keys) move them. The arc loops, so it never runs out of products.
-//  • The section only holds the page briefly (PIN_VH of scroll): during it, scrolling also moves the
-//    products left → right by SCROLL_PRODUCTS products.
-//  • On top of that, the user can drag the arc with the mouse / finger, swipe sideways on a trackpad,
-//    or use the ← → keys. Clicking a product opens its page (/menu/<slug>).
+//  • The products never move on their own. The arc loops, so it never runs out of products.
+//  • The user moves them by dragging (mouse / finger), swiping sideways on a trackpad, or with the
+//    ← → keys. Clicking a product opens its page (/menu/<slug>).
+//  • Desktop: the products fan out while the section slides in, then the section holds the page
+//    briefly (PIN_VH of scroll), during which the scroll also moves them by SCROLL_PRODUCTS.
+//  • Phones (< 768px): the page scroll never moves the products and there is no scroll hold. They
+//    fan out once when the section comes into view; only a sideways swipe moves them.
 //  • When the section leaves the screen, everything resets: the Spéculoos is in the centre again.
-//  • Phones (< 768px): the page scroll never moves the products and there is no scroll hold. The
-//    products fan out once when the section comes into view; only a sideways swipe moves them.
 
 const FIRST_KEY = "speculoosTiramisu"; // the product facing the hero's last frame
-const PIN_VH = 30; // how long the section holds the page, in vh of scroll (short, on purpose)
+const PIN_VH = 30; // desktop: how long the section holds the page, in vh of scroll (short, on purpose)
 const SCROLL_PRODUCTS = 3; // how many products the scroll moves during that hold
 const OVERLAP_SVH = 16; // how far the section slides up under the end of the hero
 const IMG_RATIO = 305 / 491; // height / width of the "3 ouvert trois quarts" pictures
@@ -184,8 +183,9 @@ export default function CreationsArc() {
         // ── Desktop ──
         mm.add("(min-width: 768px)", () => {
             // 1) Entrance: while the section slides in under the hero, the products fan out on the arc.
-            if (reduce) s.spread = 1;
-            if (!reduce) {
+            if (reduce) {
+                s.spread = 1;
+            } else {
                 gsap.to(s, {
                     spread: 1,
                     ease: "power2.out",
@@ -240,7 +240,7 @@ export default function CreationsArc() {
             });
         });
 
-        // 4) Drag / swipe / keys move the arc on top of the scroll.
+        // ── Drag / swipe / keys move the arc (on top of the scroll, on desktop) ──
         const pxPerStep = () => geo.radius * Math.sin((geo.step * Math.PI) / 180);
         const settle = () => {
             // finish with a product centred

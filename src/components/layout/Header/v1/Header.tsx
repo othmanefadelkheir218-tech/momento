@@ -95,9 +95,11 @@ export default function HeaderV1() {
 
 
     // Close menu when route changes
-    useEffect(() => {
+    const [menuPath, setMenuPath] = useState(pathname);
+    if (pathname !== menuPath) {
+        setMenuPath(pathname);
         if (isActive) setIsActive(false);
-    }, [pathname]);
+    }
 
 
     return (
