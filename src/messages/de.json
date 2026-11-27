@@ -521,14 +521,29 @@
         "findUs": {
             "eyebrow": "Wo Sie uns finden",
             "title": "Lust auf etwas <accent>Süßes</accent>?",
-            "text": "Momento finden Sie in unseren Boutiquen, in Belgien und Marokko.",
+            "text": "Momento finden Sie in unseren Boutiquen in Belgien — und bald auch in Ihrer.",
             "listPlaceholder": "[Zu ergänzen: Liste der Boutiquen und Öffnungszeiten]",
             "cta": "Boutique finden",
             "countriesLabel": "Land wählen",
             "belgium": "Belgien",
             "morocco": "Marokko",
             "shopName": "Momento-Boutique",
-            "shopPlaceholder": "[Zu ergänzen: Adresse, Öffnungszeiten, Telefon]"
+            "shopPlaceholder": "[Zu ergänzen: Adresse, Öffnungszeiten, Telefon]",
+            "pitch": "Café, Restaurant, Hotel oder Feinkostladen: Bieten Sie Ihren Gästen unsere Desserts an. Erzählen Sie uns von Ihrem Betrieb.",
+            "form": {
+                "title": "Momento-Partner werden",
+                "typeLabel": "Ihr Betrieb",
+                "types": {
+                    "cafe": "Café",
+                    "restaurant": "Restaurant",
+                    "hotel": "Hotel",
+                    "shop": "Feinkostladen"
+                },
+                "business": "Name des Betriebs",
+                "city": "Stadt",
+                "email": "E-Mail",
+                "cta": "Partner werden"
+            }
         },
         "franchise": {
             "eyebrow": "Franchisepartner werden",

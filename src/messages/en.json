@@ -521,14 +521,29 @@
     "findUs": {
       "eyebrow": "Where to find us",
       "title": "Craving something <accent>sweet</accent>?",
-      "text": "Find Momento in our shops, in Belgium and Morocco.",
+      "text": "Find Momento in our shops in Belgium",
       "listPlaceholder": "[To be completed: list of shops and opening hours]",
       "cta": "Find a shop",
       "countriesLabel": "Choose a country",
       "belgium": "Belgium",
       "morocco": "Morocco",
       "shopName": "Momento shop",
-      "shopPlaceholder": "[To be completed: address, opening hours, phone]"
+      "shopPlaceholder": "[To be completed: address, opening hours, phone]",
+      "pitch": "Café, restaurant, hotel or delicatessen: offer our desserts to your customers. Tell us about your business.",
+      "form": {
+        "title": "Become a Momento partner",
+        "typeLabel": "Your business",
+        "types": {
+          "cafe": "Café",
+          "restaurant": "Restaurant",
+          "hotel": "Hotel",
+          "shop": "Delicatessen"
+        },
+        "business": "Business name",
+        "city": "City",
+        "email": "Email",
+        "cta": "Become a partner"
+      }
     },
     "franchise": {
       "eyebrow": "Become a franchisee",

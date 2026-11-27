@@ -676,14 +676,29 @@
         "findUs": {
             "eyebrow": "Où nous trouver",
             "title": "Une envie de <accent>douceur</accent> ?",
-            "text": "Retrouvez Momento en boutique, en Belgique et au Maroc.",
+            "text": "Retrouvez Momento dans nos boutiques en Belgique — et bientôt dans la vôtre.",
             "listPlaceholder": "[À compléter : liste des boutiques et horaires]",
             "cta": "Trouver une boutique",
             "countriesLabel": "Choisir un pays",
             "belgium": "Belgique",
             "morocco": "Maroc",
             "shopName": "Boutique Momento",
-            "shopPlaceholder": "[À compléter : adresse, horaires, téléphone]"
+            "shopPlaceholder": "[À compléter : adresse, horaires, téléphone]",
+            "pitch": "Café, restaurant, hôtel ou épicerie fine : proposez nos desserts à vos clients. Parlez-nous de votre établissement.",
+            "form": {
+                "title": "Devenir partenaire Momento",
+                "typeLabel": "Votre établissement",
+                "types": {
+                    "cafe": "Café",
+                    "restaurant": "Restaurant",
+                    "hotel": "Hôtel",
+                    "shop": "Épicerie fine"
+                },
+                "business": "Nom de l’établissement",
+                "city": "Ville",
+                "email": "E-mail",
+                "cta": "Devenir partenaire"
+            }
         },
         "franchise": {
             "eyebrow": "Devenir franchisé",

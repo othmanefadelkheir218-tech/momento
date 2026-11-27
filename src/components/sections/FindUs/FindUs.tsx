@@ -1,27 +1,23 @@
 "use client";
 
-import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { COUNTRIES, SHOPS, type Country } from "@/Data/shops";
 import { accent } from "@/components/ui/Accent";
 import FadeIn from "@/components/ui/FadeIn";
-import MomentoButton from "@/components/ui/MomentoButton";
 import Section from "@/components/ui/Section";
 import SectionHeading from "@/components/ui/SectionHeading";
-import CountryTabs from "./CountryTabs";
+import PartnerTeaserForm from "./PartnerTeaserForm";
 import PotDisplay from "./PotDisplay";
-import ShopCard, { Placeholder } from "./ShopCard";
 
-// "Où nous trouver": the text, the countries and their shops (src/Data/shops.ts) on the left; a
-// small display of Momento pots on the right. (Phones: the pots first.)
-// On a warm (cream-dark) background that fades in and out.
+// "Où nous trouver" → a call to businesses to become a Momento partner. On the left: the heading,
+// the pitch and the start of the partner form (any click opens the partner page). On the right: the
+// display of Momento pots. (Phones: the pots first.) On a warm background that fades in and out.
+// Previous version (countries + shops list): ./v1/FindUs.tsx
 
 type Fade = "both" | "top" | "bottom" | "none";
 
 /** `fade`: where the warm background melts into the cream (see Section). */
 export default function FindUs({ fade = "both" }: { fade?: Fade }) {
     const t = useTranslations("Sections.findUs");
-    const [country, setCountry] = useState<Country>(COUNTRIES[0]);
 
     return (
         <Section aria-label={t("eyebrow")} tone="warm" fade={fade}>
@@ -32,23 +28,12 @@ export default function FindUs({ fade = "both" }: { fade?: Fade }) {
 
                 <FadeIn delay={0.15} className="md:order-1 md:col-span-6 md:pr-8">
                     <SectionHeading eyebrow={t("eyebrow")} title={t.rich("title", { accent })} text={t("text")} />
-                    <Placeholder>{t("listPlaceholder")}</Placeholder>
-
-                    <div className="mt-10">
-                        <CountryTabs countries={COUNTRIES} active={country} onChange={setCountry} />
-                        <ul key={country} role="tabpanel" className="mt-5 border-t border-burgundy/15 animate-[sections-fade_.5s_ease-out]">
-                            {SHOPS[country].map((shop) => (
-                                <ShopCard key={shop.id} shop={shop} />
-                            ))}
-                        </ul>
+                    <p className="mt-4 max-w-[48ch] font-body text-[clamp(16px,1.05vw,19px)] leading-[1.65] text-chocolate/85">{t("pitch")}</p>
+                    <div className="mt-10 border-t border-burgundy/15 pt-9">
+                        <PartnerTeaserForm />
                     </div>
-
-                    <MomentoButton href="/contact" className="mt-10 w-fit">
-                        {t("cta")}
-                    </MomentoButton>
                 </FadeIn>
             </div>
-            <style>{`@keyframes sections-fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}`}</style>
         </Section>
     );
 }

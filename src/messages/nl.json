@@ -521,14 +521,29 @@
     "findUs": {
       "eyebrow": "Waar vindt u ons",
       "title": "Zin in iets <accent>zoets</accent>?",
-      "text": "U vindt Momento in onze winkels, in België en Marokko.",
+      "text": "Vind Momento in onze winkels in België.",
       "listPlaceholder": "[Aan te vullen: lijst van winkels en openingsuren]",
       "cta": "Vind een winkel",
       "countriesLabel": "Kies een land",
       "belgium": "België",
       "morocco": "Marokko",
       "shopName": "Momento-winkel",
-      "shopPlaceholder": "[Aan te vullen: adres, openingsuren, telefoon]"
+      "shopPlaceholder": "[Aan te vullen: adres, openingsuren, telefoon]",
+      "pitch": "Café, restaurant, hotel of delicatessenzaak: bied uw klanten onze desserts aan. Vertel ons over uw zaak.",
+      "form": {
+        "title": "Momento-partner worden",
+        "typeLabel": "Uw zaak",
+        "types": {
+          "cafe": "Café",
+          "restaurant": "Restaurant",
+          "hotel": "Hotel",
+          "shop": "Delicatessenzaak"
+        },
+        "business": "Naam van de zaak",
+        "city": "Stad",
+        "email": "E-mail",
+        "cta": "Partner worden"
+      }
     },
     "franchise": {
       "eyebrow": "Franchisenemer worden",

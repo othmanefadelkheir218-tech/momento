@@ -11,9 +11,11 @@ type Props = {
     focus?: string; // CSS object-position
     /** how wide the soft edge is, in % of the picture */
     feather?: number;
+    /** image compression quality (75 default, 90 for big pictures; allowed values: next.config) */
+    quality?: 75 | 90;
 };
 
-export default function SoftImage({ src, alt, sizes, className = "", focus = "50% 50%", feather = 9 }: Props) {
+export default function SoftImage({ src, alt, sizes, className = "", focus = "50% 50%", feather = 9, quality = 75 }: Props) {
     const f = `${feather}%`;
     const mask =
         `linear-gradient(to right, transparent, #000 ${f}, #000 calc(100% - ${f}), transparent),` +
@@ -24,7 +26,7 @@ export default function SoftImage({ src, alt, sizes, className = "", focus = "50
             className={`relative ${className}`}
             style={{ maskImage: mask, WebkitMaskImage: mask, maskComposite: "intersect", WebkitMaskComposite: "source-in" }}
         >
-            <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" style={{ objectPosition: focus }} />
+            <Image src={src} alt={alt} fill sizes={sizes} quality={quality} className="object-cover" style={{ objectPosition: focus }} />
         </div>
     );
 }
