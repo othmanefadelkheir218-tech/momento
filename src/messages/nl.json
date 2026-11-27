@@ -487,5 +487,67 @@
     "ctaButton": "Sluit je aan",
     "heroAlt": "De Momento-chefs in hun keuken",
     "universAlt": "Het Momento-atelier"
+  },
+  "Sections": {
+    "chefsIntro": {
+      "eyebrow": "Twee chefs, één keuken",
+      "title": "Marcelo waakt over de recepten. Milo blijft maar nieuwe <accent>bedenken</accent>.",
+      "text": "Tussen traditie en durf is er een keuken, een proeflepel en heel veel lekkers.",
+      "cta": "Maak kennis met Marcelo & Milo",
+      "imageAlt": "Marcelo en Milo rug aan rug in hun keuken, achter de Momento-desserts"
+    },
+    "whyMomento": {
+      "eyebrow": "Waarom Momento",
+      "title": "Drie redenen om <accent>uw moment</accent> te nemen.",
+      "homemade": {
+        "title": "Huisgemaakt",
+        "text": "Ambachtelijke recepten, bedacht door Marcelo en geproefd voordat ze worden geserveerd."
+      },
+      "onePot": {
+        "title": "Eén potje, één moment",
+        "text": "Individueel en royaal, om overal mee te nemen en met een lepel van te genieten."
+      },
+      "layers": {
+        "title": "Laagjes om te zien",
+        "text": "Het potje is doorzichtig: u ziet al wat u zo gaat proeven."
+      }
+    },
+    "storyQuote": {
+      "eyebrow": "Ons verhaal in één zin",
+      "quote": "Het begon allemaal in een keuken, met een „Zullen we het eens proberen?” van Milo en een opgetrokken wenkbrauw van Marcelo.",
+      "cta": "Lees ons verhaal",
+      "imageAlt": "Marcelo en Milo schrijven „Momento” op het krijtbord van hun winkel"
+    },
+    "findUs": {
+      "eyebrow": "Waar vindt u ons",
+      "title": "Zin in iets <accent>zoets</accent>?",
+      "text": "U vindt Momento in onze winkels, in België en Marokko.",
+      "listPlaceholder": "[Aan te vullen: lijst van winkels en openingsuren]",
+      "cta": "Vind een winkel",
+      "countriesLabel": "Kies een land",
+      "belgium": "België",
+      "morocco": "Marokko",
+      "shopName": "Momento-winkel",
+      "shopPlaceholder": "[Aan te vullen: adres, openingsuren, telefoon]"
+    },
+    "franchise": {
+      "eyebrow": "Franchisenemer worden",
+      "title": "Zin om uw eigen Momento-<accent>keuken</accent> te openen?",
+      "text": "Sluit u aan bij een merk dat een verhaal vertelt, met een helder assortiment en een wereld die klaar is om tot leven te komen in uw winkel.",
+      "cta": "Word franchisenemer",
+      "imageAlt": "Marcelo spuit chocoladecrème in een Momento-potje"
+    },
+    "episodes": {
+      "eyebrow": "Volg de afleveringen",
+      "title": "Het verhaal gaat verder op Instagram en <accent>TikTok</accent>.",
+      "text": "Elk groot moment van het jaar krijgt zijn eigen miniserie. Volg Marcelo en Milo, aflevering na aflevering.",
+      "episode": "Aflevering {number}",
+      "ep1": "Een idee in de keuken",
+      "ep2": "De geboorte van het concept",
+      "ep3": "De eerste creaties",
+      "ep4": "Welkom bij Momento",
+      "instagram": "Instagram",
+      "tiktok": "TikTok"
+    }
   }
 }

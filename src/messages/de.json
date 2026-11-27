@@ -487,5 +487,67 @@
         "ctaButton": "Mitmachen",
         "heroAlt": "Die Momento-Köche in ihrer Küche",
         "universAlt": "Die Momento-Werkstatt"
+    },
+    "Sections": {
+        "chefsIntro": {
+            "eyebrow": "Zwei Köche, eine Küche",
+            "title": "Marcelo wacht über die Rezepte. Milo hört nicht auf, neue zu <accent>erfinden</accent>.",
+            "text": "Zwischen Tradition und Wagemut gibt es eine Küche, einen Probierlöffel und jede Menge Genuss.",
+            "cta": "Marcelo & Milo kennenlernen",
+            "imageAlt": "Marcelo und Milo Rücken an Rücken in ihrer Küche, hinter den Momento-Desserts"
+        },
+        "whyMomento": {
+            "eyebrow": "Warum Momento",
+            "title": "Drei Gründe, sich <accent>Ihren Moment</accent> zu nehmen.",
+            "homemade": {
+                "title": "Hausgemacht",
+                "text": "Handwerkliche Rezepte, von Marcelo erdacht und probiert, bevor sie serviert werden."
+            },
+            "onePot": {
+                "title": "Ein Becher, ein Moment",
+                "text": "Individuell und großzügig, zum Mitnehmen und zum Genießen mit dem Löffel."
+            },
+            "layers": {
+                "title": "Schichten zum Ansehen",
+                "text": "Der Becher ist durchsichtig: Sie sehen schon, was Sie gleich probieren."
+            }
+        },
+        "storyQuote": {
+            "eyebrow": "Unsere Geschichte in einem Satz",
+            "quote": "Alles begann in einer Küche, mit Milos „Und wenn wir es einfach probieren?“ und Marcelos hochgezogener Augenbraue.",
+            "cta": "Unsere Geschichte lesen",
+            "imageAlt": "Marcelo und Milo schreiben „Momento“ an die Tafel ihrer Boutique"
+        },
+        "findUs": {
+            "eyebrow": "Wo Sie uns finden",
+            "title": "Lust auf etwas <accent>Süßes</accent>?",
+            "text": "Momento finden Sie in unseren Boutiquen, in Belgien und Marokko.",
+            "listPlaceholder": "[Zu ergänzen: Liste der Boutiquen und Öffnungszeiten]",
+            "cta": "Boutique finden",
+            "countriesLabel": "Land wählen",
+            "belgium": "Belgien",
+            "morocco": "Marokko",
+            "shopName": "Momento-Boutique",
+            "shopPlaceholder": "[Zu ergänzen: Adresse, Öffnungszeiten, Telefon]"
+        },
+        "franchise": {
+            "eyebrow": "Franchisepartner werden",
+            "title": "Lust, Ihre eigene Momento-<accent>Küche</accent> zu eröffnen?",
+            "text": "Werden Sie Teil einer Marke, die eine Geschichte erzählt, mit einem klaren Sortiment und einer Welt, die in Ihrer Boutique lebendig wird.",
+            "cta": "Franchisepartner werden",
+            "imageAlt": "Marcelo spritzt Schokoladencreme in einen Momento-Becher"
+        },
+        "episodes": {
+            "eyebrow": "Folgen Sie den Episoden",
+            "title": "Die Geschichte geht weiter auf Instagram und <accent>TikTok</accent>.",
+            "text": "Jeder große Moment des Jahres hat seine eigene Miniserie. Begleiten Sie Marcelo und Milo, Episode für Episode.",
+            "episode": "Episode {number}",
+            "ep1": "Eine Idee in der Küche",
+            "ep2": "Die Geburt des Konzepts",
+            "ep3": "Die ersten Kreationen",
+            "ep4": "Willkommen bei Momento",
+            "instagram": "Instagram",
+            "tiktok": "TikTok"
+        }
     }
 }

@@ -3,6 +3,7 @@ export const COMPANY_PHONE = "+216 55 55 55 55"
 export const COMPANY_ADDRESS = "123 Main St, Anytown, USA"
 export const COMPANY_NAME = "Momento"
 export const COMPANY_INSTAGRAM = "https://www.instagram.com/momento_desserts"
+export const COMPANY_TIKTOK = "#" // TODO: the real TikTok page URL
 export const COMPANY_FACEBOOK = "https://web.facebook.com/momentodesserts/?_rdc=1&_rdr"
 export const COMPANY_TWITTER = "#"
 export const COMPANY_LINKEDIN = "#"

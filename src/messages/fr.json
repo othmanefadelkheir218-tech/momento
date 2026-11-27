@@ -642,5 +642,67 @@
                 "note": "Ne pas recongeler après décongélation. Se conserve 7 jours maximum entre 2 et 4 °C."
             }
         }
+    },
+    "Sections": {
+        "chefsIntro": {
+            "eyebrow": "Deux chefs, une cuisine",
+            "title": "Marcelo veille sur les recettes. Milo n’arrête pas d’en <accent>inventer</accent>.",
+            "text": "Entre la tradition et l’audace, il y a une cuisine, une cuillère de dégustation et beaucoup de gourmandise.",
+            "cta": "Rencontrer Marcelo & Milo",
+            "imageAlt": "Marcelo et Milo dos à dos dans leur cuisine, derrière les desserts Momento"
+        },
+        "whyMomento": {
+            "eyebrow": "Pourquoi Momento",
+            "title": "Trois raisons de prendre <accent>son moment</accent>.",
+            "homemade": {
+                "title": "Fait maison",
+                "text": "Des recettes artisanales, pensées par Marcelo, goûtées avant d’être servies."
+            },
+            "onePot": {
+                "title": "Un pot, un moment",
+                "text": "Individuel, généreux, à emporter partout et à savourer à la cuillère."
+            },
+            "layers": {
+                "title": "Des couches à voir",
+                "text": "Le pot est transparent : on voit déjà ce qu’on va goûter."
+            }
+        },
+        "storyQuote": {
+            "eyebrow": "Notre histoire en une phrase",
+            "quote": "Tout a commencé dans une cuisine, par un « Et si on essayait ? » de Milo et un sourcil levé de Marcelo.",
+            "cta": "Lire notre histoire",
+            "imageAlt": "Marcelo et Milo écrivent « Momento » sur l’ardoise de leur boutique"
+        },
+        "findUs": {
+            "eyebrow": "Où nous trouver",
+            "title": "Une envie de <accent>douceur</accent> ?",
+            "text": "Retrouvez Momento en boutique, en Belgique et au Maroc.",
+            "listPlaceholder": "[À compléter : liste des boutiques et horaires]",
+            "cta": "Trouver une boutique",
+            "countriesLabel": "Choisir un pays",
+            "belgium": "Belgique",
+            "morocco": "Maroc",
+            "shopName": "Boutique Momento",
+            "shopPlaceholder": "[À compléter : adresse, horaires, téléphone]"
+        },
+        "franchise": {
+            "eyebrow": "Devenir franchisé",
+            "title": "Envie d’ouvrir votre propre <accent>cuisine</accent> Momento ?",
+            "text": "Rejoignez une marque qui raconte une histoire, avec une gamme claire et un univers prêt à vivre en boutique.",
+            "cta": "Devenir franchisé",
+            "imageAlt": "Marcelo garnit un pot Momento de crème au chocolat"
+        },
+        "episodes": {
+            "eyebrow": "Suivez les épisodes",
+            "title": "La suite de l’histoire est sur Instagram et <accent>TikTok</accent>.",
+            "text": "Chaque grand moment de l’année a sa mini-série. Rejoignez Marcelo et Milo, épisode après épisode.",
+            "episode": "Épisode {number}",
+            "ep1": "Une idée dans la cuisine",
+            "ep2": "La naissance du concept",
+            "ep3": "Les premières créations",
+            "ep4": "Bienvenue chez Momento",
+            "instagram": "Instagram",
+            "tiktok": "TikTok"
+        }
     }
 }

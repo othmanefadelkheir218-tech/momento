@@ -7,3 +7,4 @@ export const useMomentoProducts = (): MomentoProduct[] => {
   const t = useTranslations("MomentoProducts");
   return getMomentoProducts(t);
 };
+  
