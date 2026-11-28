@@ -1,30 +1,18 @@
-import { useTranslations } from "next-intl";
-import { getTranslations } from "next-intl/server";
-import ContactPagePart from "./Parts/ContactPage";
+import { pageMetadata } from "@/lib/pageMetadata";
+import PageShell from "@/components/ui/PageShell";
+import PageHero from "@/components/sections/PageHero/PageHero";
+import ContactSection from "@/components/sections/Contact/ContactSection";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
-    const { locale } = await params;
-    const t = await getTranslations({ locale, namespace: "Metadata.contact" });
-    return {
-        title: t("title"),
-        description: t("description"),
-        openGraph: {
-            title: t("title"),
-            description: t("description"),
-            images: ["/share.jpg"],
-        },
-    };
-}
+// Contact (/contact). The previous contact page is kept in ../_v1/contact/.
+
+type Params = { params: Promise<{ locale: string }> };
+export const generateMetadata = ({ params }: Params) => pageMetadata(params, "contact");
 
 export default function ContactPage() {
-    const t = useTranslations("ContactPage");
-
     return (
-        <div className="bg-[#F7D6D9] mx-auto px-4 py-12">
-            <ContactPagePart
-                title={t("title")}
-            />
-        </div>
-
+        <PageShell>
+            <PageHero ns="Sections.contact.hero" />
+            <ContactSection />
+        </PageShell>
     );
 }

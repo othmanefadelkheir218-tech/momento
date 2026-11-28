@@ -674,9 +674,9 @@
             "imageAlt": "Marcelo et Milo écrivent « Momento » sur l’ardoise de leur boutique"
         },
         "findUs": {
-            "eyebrow": "Où nous trouver",
-            "title": "Une envie de <accent>douceur</accent> ?",
-            "text": "Retrouvez Momento dans nos boutiques en Belgique — et bientôt dans la vôtre.",
+            "eyebrow": "Devenir franchisé",
+            "title": "Devenir <accent>partenaire</accent> Momento",
+            "text": "Rejoignez une marque qui raconte une histoire : des desserts faits maison, une gamme claire et un univers prêt à prendre vie chez vous.",
             "listPlaceholder": "[À compléter : liste des boutiques et horaires]",
             "cta": "Trouver une boutique",
             "countriesLabel": "Choisir un pays",
@@ -684,9 +684,9 @@
             "morocco": "Maroc",
             "shopName": "Boutique Momento",
             "shopPlaceholder": "[À compléter : adresse, horaires, téléphone]",
-            "pitch": "Café, restaurant, hôtel ou épicerie fine : proposez nos desserts à vos clients. Parlez-nous de votre établissement.",
+            "pitch": "Café, restaurant, hôtel ou épicerie fine : offrez à vos clients un moment à savourer. Parlez-nous de votre établissement.",
+            "imageAlt": "Marcelo garnit un pot Momento de crème au chocolat",
             "form": {
-                "title": "Devenir partenaire Momento",
                 "typeLabel": "Votre établissement",
                 "types": {
                     "cafe": "Café",
@@ -709,7 +709,7 @@
         },
         "episodes": {
             "eyebrow": "Suivez les épisodes",
-            "title": "La suite de l’histoire est sur Instagram et <accent>TikTok</accent>.",
+            "title": "La suite de l’histoire est sur Instagram, TikTok et <accent>Facebook</accent>.",
             "text": "Chaque grand moment de l’année a sa mini-série. Rejoignez Marcelo et Milo, épisode après épisode.",
             "episode": "Épisode {number}",
             "ep1": "Une idée dans la cuisine",
@@ -717,7 +717,21 @@
             "ep3": "Les premières créations",
             "ep4": "Bienvenue chez Momento",
             "instagram": "Instagram",
-            "tiktok": "TikTok"
+            "tiktok": "TikTok",
+            "facebook": "Facebook"
+        }
+    },
+    "SiteFooter": {
+        "tagline": "Desserts artisanaux",
+        "rights": "© {year} Momento. Tous droits réservés.",
+        "createdBy": "Site réalisé par",
+        "contact": "Contact",
+        "explore": "Découvrir",
+        "follow": "Nous suivre",
+        "social": {
+            "instagram": "Instagram",
+            "tiktok": "TikTok",
+            "facebook": "Facebook"
         }
     }
 }

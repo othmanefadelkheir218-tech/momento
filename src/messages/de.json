@@ -519,9 +519,9 @@
             "imageAlt": "Marcelo und Milo schreiben „Momento“ an die Tafel ihrer Boutique"
         },
         "findUs": {
-            "eyebrow": "Wo Sie uns finden",
-            "title": "Lust auf etwas <accent>Süßes</accent>?",
-            "text": "Momento finden Sie in unseren Boutiquen in Belgien — und bald auch in Ihrer.",
+            "eyebrow": "Franchisepartner werden",
+            "title": "Momento-<accent>Partner</accent> werden",
+            "text": "Werden Sie Teil einer Marke, die eine Geschichte erzählt: hausgemachte Desserts, ein klares Sortiment und eine Welt, die bei Ihnen lebendig wird.",
             "listPlaceholder": "[Zu ergänzen: Liste der Boutiquen und Öffnungszeiten]",
             "cta": "Boutique finden",
             "countriesLabel": "Land wählen",
@@ -529,9 +529,9 @@
             "morocco": "Marokko",
             "shopName": "Momento-Boutique",
             "shopPlaceholder": "[Zu ergänzen: Adresse, Öffnungszeiten, Telefon]",
-            "pitch": "Café, Restaurant, Hotel oder Feinkostladen: Bieten Sie Ihren Gästen unsere Desserts an. Erzählen Sie uns von Ihrem Betrieb.",
+            "pitch": "Café, Restaurant, Hotel oder Feinkostladen: Schenken Sie Ihren Gästen einen Genussmoment. Erzählen Sie uns von Ihrem Betrieb.",
+            "imageAlt": "Marcelo spritzt Schokoladencreme in einen Momento-Becher",
             "form": {
-                "title": "Momento-Partner werden",
                 "typeLabel": "Ihr Betrieb",
                 "types": {
                     "cafe": "Café",
@@ -554,7 +554,7 @@
         },
         "episodes": {
             "eyebrow": "Folgen Sie den Episoden",
-            "title": "Die Geschichte geht weiter auf Instagram und <accent>TikTok</accent>.",
+            "title": "Die Geschichte geht weiter auf Instagram, TikTok und <accent>Facebook</accent>.",
             "text": "Jeder große Moment des Jahres hat seine eigene Miniserie. Begleiten Sie Marcelo und Milo, Episode für Episode.",
             "episode": "Episode {number}",
             "ep1": "Eine Idee in der Küche",
@@ -562,7 +562,21 @@
             "ep3": "Die ersten Kreationen",
             "ep4": "Willkommen bei Momento",
             "instagram": "Instagram",
-            "tiktok": "TikTok"
+            "tiktok": "TikTok",
+            "facebook": "Facebook"
+        }
+    },
+    "SiteFooter": {
+        "tagline": "Handgemachte Desserts",
+        "rights": "© {year} Momento. Alle Rechte vorbehalten.",
+        "createdBy": "Website von",
+        "contact": "Kontakt",
+        "explore": "Entdecken",
+        "follow": "Folgen Sie uns",
+        "social": {
+            "instagram": "Instagram",
+            "tiktok": "TikTok",
+            "facebook": "Facebook"
         }
     }
 }

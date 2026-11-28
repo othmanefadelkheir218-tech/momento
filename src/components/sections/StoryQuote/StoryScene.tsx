@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import Eyebrow from "@/components/ui/Eyebrow";
 import MomentoButton from "@/components/ui/MomentoButton";
+import { ROUTES } from "@/Data/routes";
 import { STORY_IMAGE } from "./storyImage";
 import { useStoryScene } from "./useStoryScene";
 
@@ -54,7 +55,7 @@ export default function StoryScene({ className = "" }: { className?: string }) {
                                 {t("quote")}
                             </blockquote>
                             <div data-story-rise className="mt-10">
-                                <MomentoButton href="/about" variant="ghost" className="w-fit">
+                                <MomentoButton href={ROUTES.story} variant="ghost" className="w-fit">
                                     {t("cta")}
                                 </MomentoButton>
                             </div>

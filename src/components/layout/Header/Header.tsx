@@ -10,6 +10,8 @@ import { usePathname } from "@/i18n/navigation";
 import useScroll from "@/hooks/useScroll";
 import useScrollToTop from "@/hooks/useScrollToTop";
 import useWidth from "@/hooks/Width";
+import { NAV_TEXT } from "@/components/ui/navText";
+import { ROUTES } from "@/Data/routes";
 import { useTransitionRouter } from "@/hooks/useTransitionRouter";
 import CostumButton from "../../CostumButton";
 import Magnetic from "../../Magnetic";
@@ -27,8 +29,6 @@ const FOCUS_RING = "focus-visible:outline-2 focus-visible:outline-offset-[3px] f
 
 // Desktop sizes are fluid (clamp): full size from ~1900px wide, smaller on narrower screens
 // (e.g. a 1920px screen at 150% Windows zoom is only 1280px wide for the page).
-const NAV_TEXT = "font-display font-bold text-[clamp(13px,0.85vw,16px)] uppercase tracking-[.08em]";
-
 export default function Header() {
     useScrollToTop();
     const t = useTranslations("Navigation");
@@ -100,13 +100,14 @@ export default function Header() {
         }
     }, { dependencies: [isScrolled, width] });
 
+    // The other pages are in the side menu (Nav.tsx) and the footer.
     const links = [
-        { href: "/menu", label: t("creations") },
-        { href: "/about", label: t("universe") },
-        { href: "/become-a-client", label: t("franchise") },
+        { href: ROUTES.creations, label: t("creations") },
+        { href: ROUTES.world, label: t("world") },
+        { href: ROUTES.partner, label: t("partner") },
     ];
 
-    const goToContact = () => router.push("/contact");
+    const goToContact = () => router.push(ROUTES.contact);
 
     return (
         <>
@@ -129,7 +130,7 @@ export default function Header() {
 
                     <nav className="hidden md:flex items-center gap-[clamp(14px,1.4vw,26px)] relative md:ml-auto">
                         {links.map((link) => {
-                            const isCurrent = pathname === link.href;
+                            const isCurrent = pathname === link.href || pathname.startsWith(`${link.href}/`);
                             return (
                                 <Magnetic key={link.href}>
                                     <TransitionLink

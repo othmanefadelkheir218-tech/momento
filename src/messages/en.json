@@ -15,18 +15,67 @@
       "description": "Have questions about our ingredients, ordering, or craftsmanship? Find all your answers here."
     },
     "contact": {
-      "title": "Contact Us | Let's Talk Gourmet - Momento",
-      "description": "Reach out to Momento for events, partnerships, or just to say hello. We'd love to hear from you."
+      "title": "Contact",
+      "description": "A question, a suggestion or a sweet idea? Write to Momento."
     },
     "becomeClient": {
       "title": "Become a Partner | Wholesale - Momento",
       "description": "Join MOMENTO as a wholesale partner. Offer premium artisanal desserts to your customers with exclusive pricing and dedicated support."
+    },
+    "creations": {
+      "title": "Our Creations",
+      "description": "Handmade desserts in individual pots, generous and ready to take away."
+    },
+    "creation": {
+      "title": "{name}",
+      "description": "{short}. A Momento creation, handmade and served in its own pot."
+    },
+    "world": {
+      "title": "The Momento World",
+      "description": "Step into the warm little kitchen of Marcelo and Milo, where every dessert begins with a story."
+    },
+    "characters": {
+      "title": "Meet Marcelo & Milo",
+      "description": "Two chefs, one kitchen, a lot of sweetness. Meet the duo behind Momento."
+    },
+    "story": {
+      "title": "Our Story",
+      "description": "How two chefs turned one idea into Momento: desserts made for your moment."
+    },
+    "partner": {
+      "title": "Become a Partner",
+      "description": "Serve Momento desserts to your customers, or open your own Momento."
+    },
+    "questions": {
+      "title": "Questions",
+      "description": "Answers about Momento, our creations, ordering for your business and opening a Momento."
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "How Momento collects and uses your personal data."
+    },
+    "cookies": {
+      "title": "Cookies",
+      "description": "Which cookies the Momento website uses and how to manage them."
+    },
+    "terms": {
+      "title": "Terms",
+      "description": "The terms of use of the Momento website."
+    },
+    "allergens": {
+      "title": "Allergens & Nutrition",
+      "description": "Allergens and nutritional values of the Momento creations."
+    },
+    "notFound": {
+      "title": "Page not found",
+      "description": "This page has melted."
     }
   },
   "Header": {
     "navigation": "Navigation",
     "followUs": "Follow us",
-    "CopyRight": "All rights reserved."
+    "CopyRight": "All rights reserved.",
+    "menuTitle": "Menu"
   },
   "Footer": {
     "joingMomento": "JOIN THE MOMENTO EXPERIENCE",
@@ -251,10 +300,19 @@
     "menu": "Menu",
     "contact": "Contact",
     "becomeClient": "Become a Client",
-    "creations": "Our creations",
+    "creations": "Our Creations",
     "universe": "Our world",
     "franchise": "Become a franchisee",
-    "findShop": "Find a shop"
+    "findShop": "Find a shop",
+    "world": "The Momento World",
+    "characters": "Meet Marcelo & Milo",
+    "story": "Our Story",
+    "partner": "Become a Partner",
+    "questions": "Questions",
+    "privacy": "Privacy Policy",
+    "cookies": "Cookies",
+    "terms": "Terms",
+    "allergens": "Allergens & Nutrition"
   },
   "Common": {
     "toggleTheme": "Toggle Theme",
@@ -519,9 +577,9 @@
       "imageAlt": "Marcelo and Milo writing “Momento” on the chalkboard of their shop"
     },
     "findUs": {
-      "eyebrow": "Where to find us",
-      "title": "Craving something <accent>sweet</accent>?",
-      "text": "Find Momento in our shops in Belgium",
+      "eyebrow": "Become a franchisee",
+      "title": "Become a Momento <accent>partner</accent>",
+      "text": "Join a brand with a story to tell: homemade desserts, a clear range and a world ready to come to life in your space.",
       "listPlaceholder": "[To be completed: list of shops and opening hours]",
       "cta": "Find a shop",
       "countriesLabel": "Choose a country",
@@ -529,9 +587,9 @@
       "morocco": "Morocco",
       "shopName": "Momento shop",
       "shopPlaceholder": "[To be completed: address, opening hours, phone]",
-      "pitch": "Café, restaurant, hotel or delicatessen: offer our desserts to your customers. Tell us about your business.",
+      "pitch": "Café, restaurant, hotel or delicatessen: give your guests a moment worth savouring. Tell us about your business.",
+      "imageAlt": "Marcelo piping chocolate cream into a Momento pot",
       "form": {
-        "title": "Become a Momento partner",
         "typeLabel": "Your business",
         "types": {
           "cafe": "Café",
@@ -554,7 +612,7 @@
     },
     "episodes": {
       "eyebrow": "Follow the episodes",
-      "title": "The story continues on Instagram and <accent>TikTok</accent>.",
+      "title": "The story continues on Instagram, TikTok and <accent>Facebook</accent>.",
       "text": "Every big moment of the year has its own mini-series. Follow Marcelo and Milo, episode after episode.",
       "episode": "Episode {number}",
       "ep1": "An idea in the kitchen",
@@ -562,7 +620,1021 @@
       "ep3": "The first creations",
       "ep4": "Welcome to Momento",
       "instagram": "Instagram",
-      "tiktok": "TikTok"
+      "tiktok": "TikTok",
+      "facebook": "Facebook"
+    },
+    "creations": {
+      "hero": {
+        "eyebrow": "The menu",
+        "title": "Our <accent>Creations</accent>",
+        "text": "Handmade desserts, generous and ready to take away. Each one comes in its own pot, made to be carried anywhere and enjoyed in the moment."
+      },
+      "toolbar": {
+        "label": "Search and filter the creations",
+        "search": "Search",
+        "searchPlaceholder": "Search a dessert…",
+        "category": "Category",
+        "type": "Type",
+        "sort": "Sort by",
+        "view": "View",
+        "all": "All",
+        "categories": {
+          "creamy": "Creamy",
+          "fruity": "Fruity",
+          "chocolatey": "Chocolatey",
+          "crunchy": "Crunchy"
+        },
+        "types": {
+          "everyday": "Everyday range",
+          "seasonal": "Seasonal specials"
+        },
+        "sorts": {
+          "az": "Name (A to Z)",
+          "za": "Name (Z to A)",
+          "newest": "Newest first"
+        },
+        "grid": "Grid view",
+        "list": "List view",
+        "count": "Showing {count, plural, one {# creation} other {# creations}}",
+        "reset": "Clear all filters"
+      },
+      "card": {
+        "view": "View product",
+        "imageAlt": "{name}, a Momento pot with its lid half open"
+      },
+      "empty": {
+        "title": "No creations found",
+        "text": "We couldn't find a dessert matching your search. Try another word or clear the filters.",
+        "button": "Clear all filters"
+      },
+      "whyPot": {
+        "eyebrow": "Why the pot?",
+        "title": "Made to be carried, made to be <accent>savoured</accent>",
+        "text": "Marcelo and Milo had one idea: a dessert you can take anywhere. Individual, generous and easy to carry, each pot is ready whenever your moment is.",
+        "imageAlt": "Three Momento pots up close, their layers showing through the clear pot"
+      },
+      "seasonal": {
+        "eyebrow": "Seasonal",
+        "title": "Seasonal <accent>specials</accent>",
+        "text": "Some flavours come and go with the seasons. Follow Momento to discover each new chapter.",
+        "cta": "See seasonal specials"
+      },
+      "product": {
+        "back": "Back to our creations",
+        "badges": {
+          "handmade": "Handmade",
+          "takeaway": "Ready to take away"
+        },
+        "infoEyebrow": "Key information",
+        "infoTitle": "Good to <accent>know</accent>",
+        "format": "Format",
+        "formatValue": "Individual pot",
+        "formatWeight": "Individual pot, {weight}",
+        "formatTbc": "Individual pot [size in g or ml to be confirmed]",
+        "availability": "Availability",
+        "availabilityValues": {
+          "everyday": "Everyday range",
+          "seasonal": "Seasonal"
+        },
+        "allergens": "Allergens",
+        "allergensValue": "See the allergen table",
+        "storage": "Storage",
+        "storageValue": "Keep refrigerated. [Shelf life to be confirmed]",
+        "sayEyebrow": "Marcelo & Milo say",
+        "names": {
+          "marcelo": "Marcelo",
+          "milo": "Milo"
+        },
+        "roles": {
+          "marcelo": "The pastry chef",
+          "milo": "The creative chef"
+        },
+        "relatedEyebrow": "More from the kitchen",
+        "relatedTitle": "You may also <accent>like</accent>",
+        "seeAll": "See all our creations"
+      },
+      "products": {
+        "speculoosSaltedCaramel": {
+          "name": "Spéculoos Salted Caramel",
+          "short": "Creamy, salted caramel, speculoos crunch",
+          "description": "Creamy, salted caramel with a speculoos crunch. A sweet and salty pot for those who love a little contrast.",
+          "quote": "A pinch of salt in the caramel, and the speculoos sings a little louder. That is the whole secret."
+        },
+        "speculoos": {
+          "name": "Spéculoos",
+          "short": "Smooth and biscuity",
+          "description": "Smooth and biscuity. A comforting classic for anyone who loves the speculoos flavour.",
+          "quote": "Some flavours remind you of home. Speculoos is one of them, so I never rush it."
+        },
+        "tiramisuClassique": {
+          "name": "Tiramisu Classique",
+          "short": "The timeless tiramisu",
+          "description": "The timeless tiramisu, made the traditional way and served in a pot you can take anywhere.",
+          "quote": "Coffee, mascarpone, patience. I did not change a thing, and I never will."
+        },
+        "oreo": {
+          "name": "Oreo",
+          "short": "Creamy and crunchy",
+          "description": "Creamy and crunchy. A playful pot for biscuit lovers.",
+          "quote": "I wanted to see what happens when cream meets a biscuit. Now nobody wants it to end."
+        },
+        "snickers": {
+          "name": "Snickers",
+          "short": "Caramel, chocolate, peanuts",
+          "description": "Caramel, chocolate and peanuts together in one generous pot.",
+          "quote": "Caramel, chocolate, peanuts. Why choose one when the spoon can find all three?"
+        },
+        "pistache": {
+          "name": "Pistache",
+          "short": "Smooth and nutty",
+          "description": "Smooth and nutty, with the delicate flavour of pistachio.",
+          "quote": "Pistachio needs a gentle hand. Too much and it shouts; just enough and it whispers."
+        },
+        "bueno": {
+          "name": "Bueno",
+          "short": "Creamy and chocolatey",
+          "description": "Creamy and chocolatey. Soft, indulgent and easy to love.",
+          "quote": "Hazelnut, chocolate and a cloud of cream. I tasted it three times, just to be sure."
+        },
+        "citron": {
+          "name": "Citron",
+          "short": "Fresh and zesty",
+          "description": "Fresh and zesty. A light, bright pot for a fresh finish.",
+          "quote": "After a good meal, a little lemon. It wakes up the spoon and the smile."
+        },
+        "mangue": {
+          "name": "Mangue",
+          "short": "Fruity and sunny",
+          "description": "Fruity and sunny. A taste of the sun in every spoonful.",
+          "quote": "On a grey day, I open a Mangue. Instant holiday, no suitcase needed."
+        },
+        "framboise": {
+          "name": "Framboise",
+          "short": "Fresh and tangy",
+          "description": "Fresh and tangy. Bright, fruity and refreshing.",
+          "quote": "A raspberry has to be a little tart. That is what keeps the sweetness honest."
+        },
+        "nutellaCrousti": {
+          "name": "Nutella Crousti",
+          "short": "Rich and crunchy",
+          "description": "Rich and crunchy. A hazelnut-chocolate pot with a crisp bite.",
+          "quote": "Listen closely: that little crunch is the best sound in the whole kitchen."
+        },
+        "redVelvet": {
+          "name": "Red Velvet",
+          "short": "Soft and velvety",
+          "description": "Soft and velvety. A smooth, elegant dessert with a gentle sweetness.",
+          "quote": "Red velvet should feel like a soft scarf: elegant, gentle, never too much."
+        },
+        "mousseAuChocolat": {
+          "name": "Mousse au Chocolat",
+          "short": "Silky and chocolatey",
+          "description": "Silky and chocolatey. A light, smooth chocolate mousse.",
+          "quote": "A good mousse is mostly air and patience. The chocolate does the rest."
+        },
+        "cookies": {
+          "name": "Cookies",
+          "short": "[One-line description to be confirmed]",
+          "description": "[Description to be confirmed]",
+          "quote": "[Quote to be confirmed]"
+        }
+      }
+    },
+    "world": {
+      "hero": {
+        "eyebrow": "The Momento World",
+        "title": "Welcome to The Momento <accent>World</accent>",
+        "text": "A warm little kitchen where every dessert begins with a story.",
+        "imageAlt": "Marcelo and Milo at work in their warm kitchen, Momento pots lined up on the counter"
+      },
+      "kitchen": {
+        "eyebrow": "The kitchen",
+        "title": "Step into the <accent>kitchen</accent>",
+        "text": "Everything at Momento starts in a cosy artisan kitchen. This is where Marcelo and Milo imagine, taste, test and sometimes make a delicious mess. It is warm, bright and always smells of something sweet.",
+        "imageAlt": "Milo holding up an empty pot with a grin while Marcelo watches, arms crossed"
+      },
+      "series": {
+        "eyebrow": "The story so far",
+        "title": "Watch the story <accent>unfold</accent>",
+        "text": "Every season brings a new chapter. Each mini-series has a beginning, a middle and an end, and every dessert has its place in the story.",
+        "watch": "Watch the episodes",
+        "soon": "Coming soon",
+        "items": {
+          "christmas": {
+            "season": "Christmas",
+            "title": "The Birth of Momento",
+            "text": "How Marcelo and Milo came up with the idea of Momento."
+          },
+          "valentine": {
+            "season": "Valentine's Day",
+            "title": "Marcelo Prepares a Surprise",
+            "text": "Sharing, and moments for two."
+          },
+          "ramadan": {
+            "season": "Ramadan",
+            "title": "Evening Sweetness",
+            "text": "Desserts and shared evenings together."
+          },
+          "easter": {
+            "season": "Easter",
+            "title": "The Hunt for New Flavours",
+            "text": "A seasonal creation."
+          },
+          "summer": {
+            "season": "Spring / Summer",
+            "title": "Milo's Tasty Adventures",
+            "text": "Summer flavours and creations."
+          },
+          "backToSchool": {
+            "season": "Back to school",
+            "title": "Back to the Kitchen",
+            "text": "New creations and a fresh start."
+          }
+        }
+      },
+      "seasons": {
+        "eyebrow": "Seasons in the kitchen",
+        "title": "The kitchen changes with the <accent>seasons</accent>",
+        "text": "Christmas lights, spring flowers, summer colours. The kitchen is always the same home, dressed for the season.",
+        "items": {
+          "winter": "Winter",
+          "spring": "Spring",
+          "summer": "Summer",
+          "autumn": "Autumn"
+        },
+        "imageAlt": "The Momento kitchen dressed for {season}"
+      },
+      "follow": {
+        "eyebrow": "Follow the story",
+        "title": "Never miss an <accent>episode</accent>",
+        "text": "Follow the story on Instagram and TikTok.",
+        "instagram": "Follow on Instagram",
+        "tiktok": "Follow on TikTok"
+      }
+    },
+    "characters": {
+      "hero": {
+        "eyebrow": "The chefs",
+        "title": "Meet Marcelo & <accent>Milo</accent>",
+        "text": "Two chefs, one kitchen, a lot of sweetness.",
+        "imageAlt": "Marcelo and Milo standing back to back in their kitchen, behind the Momento desserts"
+      },
+      "personality": "Personality",
+      "standsFor": "What he stands for",
+      "marcelo": {
+        "eyebrow": "The experienced pastry chef",
+        "name": "Marcelo",
+        "intro": "Marcelo is the heart of Momento. Passionate about pastry and devoted to craftsmanship, he imagines the recipes, chooses the flavour pairings and makes sure every creation is perfect.",
+        "traits": [
+          "Generous and warm",
+          "Passionate and a perfectionist",
+          "Creative, but loyal to tradition",
+          "A little dreamy and sometimes clumsy"
+        ],
+        "values": "Craft, quality, passion and authenticity.",
+        "quote": "[Short signature line from Marcelo, to be confirmed]",
+        "imageAlt": "Marcelo piping cream into a Momento pot"
+      },
+      "milo": {
+        "eyebrow": "The young creative chef",
+        "name": "Milo",
+        "intro": "Milo is Marcelo's young partner. Curious and full of energy, he is always looking for new ideas, and he is the one who dares to try something different.",
+        "traits": [
+          "Curious and enthusiastic",
+          "Bold and inventive",
+          "Spontaneous and sometimes impatient",
+          "Funny and lovable"
+        ],
+        "values": "Innovation, creativity, discovery and indulgence.",
+        "quote": "[Short signature line from Milo, to be confirmed]",
+        "imageAlt": "Milo tasting a dessert with his spoon"
+      },
+      "duo": {
+        "eyebrow": "The duo",
+        "title": "Different, and better <accent>together</accent>",
+        "text": "Marcelo brings experience and know-how. Milo brings imagination and a taste for experiments. Together they create desserts that are carefully made and full of surprises. They don't always agree, but they always end up sharing a spoon.",
+        "imageAlt": "Milo holding up an empty pot with a grin while Marcelo watches, arms crossed"
+      },
+      "story": {
+        "eyebrow": "Their story",
+        "title": "Where it all <accent>began</accent>",
+        "text": "Marcelo loved his traditional recipes. Milo dreamed of something new. One day in the kitchen, an idea appeared: a new way to enjoy dessert.",
+        "cta": "Read our story",
+        "imageAlt": "The Momento name chalked on a board in the kitchen"
+      },
+      "cta": {
+        "eyebrow": "On screen",
+        "title": "See them in <accent>action</accent>.",
+        "text": "Every season, a new mini-series from the Momento kitchen.",
+        "button": "Visit The Momento World"
+      }
+    },
+    "story": {
+      "hero": {
+        "eyebrow": "Our story",
+        "title": "Our <accent>Story</accent>",
+        "text": "Every moment has its sweetness.",
+        "imageAlt": "The Momento name chalked on a board in a sunny kitchen"
+      },
+      "began": {
+        "eyebrow": "How it began",
+        "title": "An idea in the <accent>kitchen</accent>",
+        "text": "Momento started with two chefs and one question: how can we make desserts easier to enjoy, without losing the care of homemade pastry? Marcelo knew the traditions. Milo had the ideas. Together they found the answer: individual pots, generous and easy to take anywhere.",
+        "imageAlt": "Milo holding up an empty pot, full of ideas, while Marcelo looks on"
+      },
+      "idea": {
+        "eyebrow": "The Momento idea",
+        "title": "Desserts made for your <accent>moment</accent>",
+        "text": "A dessert is more than something sweet. It is a pause, a treat, a moment to share. Momento is about making those moments easy to enjoy, wherever you are.",
+        "imageAlt": "Milo enjoying a spoonful of dessert"
+      },
+      "values": {
+        "eyebrow": "Our values",
+        "title": "What we <accent>care</accent> about",
+        "items": [
+          {
+            "title": "Craftsmanship",
+            "text": "Desserts made with care and respect for tradition."
+          },
+          {
+            "title": "Generosity",
+            "text": "Generous pots, warm service and a sweet welcome."
+          },
+          {
+            "title": "Creativity",
+            "text": "New flavours and new ideas, always."
+          },
+          {
+            "title": "Authenticity",
+            "text": "Honest, homemade desserts with real flavour."
+          },
+          {
+            "title": "Moments",
+            "text": "Every dessert is made for a moment worth savouring."
+          }
+        ]
+      },
+      "promise": {
+        "eyebrow": "Our promise",
+        "title": "Our <accent>promise</accent>",
+        "text": "Every pot is made with passion, packed with flavour and ready for your moment.",
+        "cta": "Discover our creations"
+      }
+    },
+    "partner": {
+      "hero": {
+        "eyebrow": "Become a partner",
+        "title": "Bring Momento to your <accent>customers</accent>",
+        "text": "Serve Momento desserts in your café, restaurant, hotel or shop. Or go further, and open your own Momento.",
+        "ctaClient": "Become a client",
+        "ctaFranchise": "Open a Momento",
+        "imageAlt": "Marcelo and Milo shaking hands with a shop owner over a row of Momento pots"
+      },
+      "why": {
+        "eyebrow": "Why choose Momento",
+        "title": "Desserts your customers will <accent>love</accent>",
+        "text": "Momento creations are handmade, generous and packed in individual pots, easy to display, easy to serve and easy to sell. Behind them is a brand with its own characters and story that people enjoy following.",
+        "points": [
+          "A wide range of flavours that changes with the seasons",
+          "Individual pots, ready to sell or serve",
+          "Handmade quality with a recognisable brand",
+          "Seasonal creations to keep your offer fresh"
+        ],
+        "imageAlt": "Momento pots displayed on the counter of a partner café"
+      },
+      "who": {
+        "eyebrow": "Who it's for",
+        "title": "For every place that loves a sweet <accent>moment</accent>",
+        "items": [
+          "Cafés and coffee shops",
+          "Restaurants and hotels",
+          "Grocery and delicatessen stores",
+          "Corporate clients and offices",
+          "Event and catering companies",
+          "[Other business types to be confirmed]"
+        ]
+      },
+      "offer": {
+        "eyebrow": "What you get",
+        "title": "Everything you need to <accent>start</accent>",
+        "items": [
+          "Access to the full Momento range and seasonal creations",
+          "Wholesale prices [to be confirmed]",
+          "Regular or one-off orders [to be confirmed]",
+          "Brand visuals and display materials [to be confirmed]",
+          "A dedicated contact for your orders [to be confirmed]"
+        ]
+      },
+      "steps": {
+        "eyebrow": "How it works",
+        "title": "From your request to your first <accent>order</accent>",
+        "items": [
+          "Send us your request",
+          "We get in touch to understand your needs",
+          "Receive our product list and wholesale conditions",
+          "Place your first order",
+          "Delivery or collection [to be confirmed]"
+        ],
+        "imageAlt": "Milo delivering a crate of Momento pots"
+      },
+      "order": {
+        "eyebrow": "Order details",
+        "title": "The practical <accent>side</accent>",
+        "rows": [
+          {
+            "label": "Minimum order",
+            "value": "[To be confirmed]"
+          },
+          {
+            "label": "Ordering frequency",
+            "value": "[To be confirmed]"
+          },
+          {
+            "label": "Storage and handling",
+            "value": "Keep refrigerated. [Details to be confirmed]"
+          },
+          {
+            "label": "Delivery",
+            "value": "[To be confirmed]"
+          },
+          {
+            "label": "Payment terms",
+            "value": "[To be confirmed]"
+          }
+        ]
+      },
+      "clientForm": {
+        "eyebrow": "Client request",
+        "title": "Tell us about your <accent>business</accent>",
+        "text": "A few details and we will get back to you with our product list and conditions.",
+        "fields": {
+          "business": "Business name",
+          "contact": "Contact person",
+          "email": "Email",
+          "phone": "Phone",
+          "city": "City",
+          "type": "Business type",
+          "quantity": "Estimated quantity per order",
+          "products": "Products of interest",
+          "message": "Message"
+        },
+        "types": {
+          "cafe": "Café",
+          "restaurant": "Restaurant",
+          "hotel": "Hotel",
+          "store": "Store",
+          "corporate": "Corporate",
+          "events": "Events",
+          "other": "Other"
+        },
+        "submit": "Send my request",
+        "doneTitle": "Thank you",
+        "done": "Thank you. We have received your request and will get back to you soon.",
+        "consent": "I agree that Momento may use my details to answer my request. See our <link>Privacy Policy</link>.",
+        "required": "Please fill in this field.",
+        "invalidEmail": "Please enter a valid email address.",
+        "consentRequired": "Please accept so we can answer you.",
+        "sending": "Sending…",
+        "error": "Something went wrong and your message was not sent. Please try again in a moment.",
+        "again": "Send another message"
+      },
+      "franchiseIntro": {
+        "eyebrow": "Franchise",
+        "title": "Open a <accent>Momento</accent>",
+        "text": "Join a dessert brand with a story people love."
+      },
+      "franchiseWhy": {
+        "eyebrow": "Why Momento",
+        "title": "A brand with a <accent>universe</accent>",
+        "text": "Momento is more than a dessert shop. It has its own characters, its own story and a world people connect with. That makes it memorable and easy to follow.",
+        "points": [
+          "A distinctive brand with its own characters",
+          "A simple, practical product: handmade desserts in individual pots",
+          "A wide range of flavours that changes with the seasons",
+          "Ready-made content and campaigns for each season"
+        ]
+      },
+      "concept": {
+        "eyebrow": "The concept",
+        "title": "The Momento <accent>concept</accent>",
+        "text": "A shop built around a warm, artisan kitchen. Customers choose from a range of handmade desserts in pots, take them away and enjoy them wherever they are.",
+        "imageAlt": "Guests enjoying Momento desserts in a warm shop"
+      },
+      "franchiseOffer": {
+        "eyebrow": "What we offer",
+        "title": "By your side from day <accent>one</accent>",
+        "items": [
+          "Brand identity and visual universe",
+          "Product range and recipes [to be confirmed]",
+          "Training [to be confirmed]",
+          "Marketing and seasonal campaigns",
+          "Shop design and in-store materials",
+          "Ongoing support [to be confirmed]"
+        ]
+      },
+      "profile": {
+        "eyebrow": "Who we are looking for",
+        "title": "People who love a good <accent>welcome</accent>",
+        "items": [
+          "Passionate about food and hospitality",
+          "Committed to quality and service",
+          "Motivated to build a local business",
+          "[Other criteria to be confirmed]"
+        ]
+      },
+      "franchiseSteps": {
+        "eyebrow": "How it works",
+        "title": "From first hello to opening <accent>day</accent>",
+        "items": [
+          "Get in touch",
+          "First conversation",
+          "Discover the concept and the numbers",
+          "Choose your location",
+          "Training and set-up",
+          "Opening day"
+        ]
+      },
+      "franchiseForm": {
+        "eyebrow": "Franchise enquiry",
+        "title": "Tell us about your <accent>project</accent>",
+        "text": "Share a few words about yourself and the place you have in mind. We read every enquiry.",
+        "fields": {
+          "name": "Full name",
+          "email": "Email",
+          "phone": "Phone",
+          "country": "Country",
+          "city": "City of interest",
+          "project": "Tell us about yourself and your project",
+          "contactMethod": "Preferred contact method"
+        },
+        "methods": {
+          "email": "Email",
+          "phone": "Phone"
+        },
+        "submit": "Send my enquiry",
+        "doneTitle": "Thank you",
+        "done": "Thank you. We have received your enquiry and will get back to you soon.",
+        "consent": "I agree that Momento may use my details to answer my request. See our <link>Privacy Policy</link>.",
+        "required": "Please fill in this field.",
+        "invalidEmail": "Please enter a valid email address.",
+        "consentRequired": "Please accept so we can answer you.",
+        "sending": "Sending…",
+        "error": "Something went wrong and your message was not sent. Please try again in a moment.",
+        "again": "Send another message"
+      },
+      "faq": {
+        "eyebrow": "Questions",
+        "title": "Good to <accent>know</accent>",
+        "business": "For businesses",
+        "franchise": "Franchise",
+        "more": "All questions"
+      }
+    },
+    "questions": {
+      "hero": {
+        "eyebrow": "Questions",
+        "title": "Your questions, our <accent>answers</accent>",
+        "text": "Everything you may want to know about Momento, our creations, ordering for your business and opening a Momento."
+      },
+      "groups": {
+        "momento": {
+          "title": "About Momento",
+          "items": [
+            {
+              "q": "How did Momento start?",
+              "a": [
+                "Momento started in a kitchen, with two chefs and one question: how can we make desserts easier to enjoy, without losing the care of homemade pastry? The answer was the pot: individual, generous and easy to take anywhere."
+              ]
+            },
+            {
+              "q": "Who are Marcelo and Milo?",
+              "a": [
+                "Marcelo is the experienced pastry chef, Milo the young creative chef. They are the two characters of the Momento world: you can follow their adventures, season after season, on Instagram and TikTok."
+              ]
+            },
+            {
+              "q": "What about your ingredients?",
+              "a": [
+                "We place great importance on the selection of ingredients, favouring quality, authenticity and respect for our recipes.",
+                "Each creation is designed to offer a fine balance of flavours, textures and indulgence."
+              ]
+            },
+            {
+              "q": "Where can I find Momento?",
+              "a": [
+                "Momento creations are available through our partners in Belgium. [List of points of sale to be confirmed]"
+              ]
+            }
+          ]
+        },
+        "creations": {
+          "title": "Our creations",
+          "items": [
+            {
+              "q": "Where can I find the allergens of a creation?",
+              "a": [
+                "Every creation has its allergens listed on our Allergens & Nutrition page. If you have an allergy or intolerance, please ask before ordering."
+              ]
+            },
+            {
+              "q": "How should I keep my dessert?",
+              "a": [
+                "Keep refrigerated. [Storage and shelf life to be confirmed]"
+              ]
+            },
+            {
+              "q": "Do you make seasonal creations?",
+              "a": [
+                "Yes. Some flavours come and go with the seasons, each with its own chapter of the Marcelo & Milo story. Follow Momento to discover them first."
+              ]
+            }
+          ]
+        },
+        "business": {
+          "title": "For businesses",
+          "items": [
+            {
+              "q": "Is there a minimum order?",
+              "a": [
+                "[To be confirmed]"
+              ]
+            },
+            {
+              "q": "Can I choose which flavours I order?",
+              "a": [
+                "[To be confirmed]"
+              ]
+            },
+            {
+              "q": "Can I order seasonal creations?",
+              "a": [
+                "[To be confirmed]"
+              ]
+            },
+            {
+              "q": "How are the desserts delivered?",
+              "a": [
+                "[To be confirmed]"
+              ]
+            },
+            {
+              "q": "Do you take orders for events?",
+              "a": [
+                "Yes, for professional or private events. Tell us about your event through the contact form and we will look at the possibilities together."
+              ]
+            }
+          ]
+        },
+        "franchise": {
+          "title": "Franchise",
+          "items": [
+            {
+              "q": "Do I need experience in pastry?",
+              "a": [
+                "[To be confirmed]"
+              ]
+            },
+            {
+              "q": "How long does it take to open?",
+              "a": [
+                "[To be confirmed]"
+              ]
+            },
+            {
+              "q": "Is training included?",
+              "a": [
+                "[To be confirmed]"
+              ]
+            }
+          ]
+        }
+      },
+      "cta": {
+        "eyebrow": "Still curious?",
+        "title": "Ask us <accent>anything</accent>",
+        "text": "If your question is not here, write to us. We answer every message.",
+        "button": "Contact us"
+      }
+    },
+    "contact": {
+      "hero": {
+        "eyebrow": "Contact",
+        "title": "Contact <accent>us</accent>",
+        "text": "A question, a suggestion or a sweet idea? We'd love to hear from you."
+      },
+      "form": {
+        "fields": {
+          "name": "Full name",
+          "email": "Email",
+          "phone": "Phone (optional)",
+          "subject": "Subject",
+          "message": "Message"
+        },
+        "subjects": {
+          "general": "General question",
+          "order": "Order",
+          "franchise": "Franchise",
+          "press": "Press & partnerships",
+          "other": "Other"
+        },
+        "submit": "Send message",
+        "doneTitle": "Thank you",
+        "done": "Thank you. Your message has been sent. We'll be in touch soon.",
+        "consent": "I agree that Momento may use my details to answer my request. See our <link>Privacy Policy</link>.",
+        "required": "Please fill in this field.",
+        "invalidEmail": "Please enter a valid email address.",
+        "consentRequired": "Please accept so we can answer you.",
+        "sending": "Sending…",
+        "error": "Something went wrong and your message was not sent. Please try again in a moment.",
+        "again": "Send another message"
+      },
+      "details": {
+        "eyebrow": "Contact details",
+        "email": "Email",
+        "emailValue": "[Email to be confirmed]",
+        "phone": "Phone",
+        "phoneValue": "[Phone to be confirmed]"
+      },
+      "press": {
+        "title": "Press & partnerships",
+        "text": "For press and partnership requests, please choose “Press & partnerships” in the form or write to [email to be confirmed]."
+      },
+      "social": {
+        "title": "Follow us",
+        "instagram": "Instagram",
+        "tiktok": "TikTok"
+      },
+      "imageAlt": "Marcelo adding the finishing touch to a Momento pot"
+    },
+    "legal": {
+      "eyebrow": "Legal",
+      "updated": "Last updated: {date}",
+      "date": "[date to be confirmed]",
+      "privacy": {
+        "title": "Privacy <accent>Policy</accent>",
+        "articles": [
+          {
+            "title": "Who we are",
+            "body": [
+              "Momento [legal entity name, address and registration number to be confirmed]."
+            ]
+          },
+          {
+            "title": "What data we collect",
+            "body": [
+              "When you use this website, we may collect:"
+            ],
+            "items": [
+              "Contact form details (name, email, phone, message)",
+              "Franchise enquiry details",
+              "Newsletter sign-up details (if applicable)",
+              "Technical data (IP address, browser, device, pages visited)"
+            ]
+          },
+          {
+            "title": "Why we use it",
+            "body": [
+              "We use your data:"
+            ],
+            "items": [
+              "To answer your requests",
+              "To process franchise enquiries",
+              "To send updates if you subscribe",
+              "To improve the website"
+            ]
+          },
+          {
+            "title": "Legal basis",
+            "body": [
+              "Your consent; our legitimate interest in running and improving the website; legal obligations."
+            ]
+          },
+          {
+            "title": "Who we share it with",
+            "body": [
+              "Service providers who help us run the website and send emails. We do not sell your data."
+            ]
+          },
+          {
+            "title": "How long we keep it",
+            "body": [
+              "Only as long as needed for the purpose above. [Retention periods to be confirmed]"
+            ]
+          },
+          {
+            "title": "Your rights",
+            "body": [
+              "You have the right to access, correct, delete, restrict, object to and port your data, and the right to withdraw your consent at any time."
+            ]
+          },
+          {
+            "title": "How to exercise your rights",
+            "body": [
+              "Email [privacy contact to be confirmed]."
+            ]
+          },
+          {
+            "title": "Complaints",
+            "body": [
+              "You may contact your national data protection authority (Belgium and Morocco)."
+            ]
+          },
+          {
+            "title": "Changes",
+            "body": [
+              "This policy may be updated. The date of the latest update appears at the top."
+            ]
+          }
+        ]
+      },
+      "cookies": {
+        "title": "<accent>Cookies</accent>",
+        "articles": [
+          {
+            "title": "What cookies are",
+            "body": [
+              "Small files stored on your device when you visit a website."
+            ]
+          },
+          {
+            "title": "Cookies we use",
+            "body": [
+              "We use the following kinds of cookies:"
+            ],
+            "items": [
+              "Essential: needed for the website to work.",
+              "Analytics: help us understand how the site is used.",
+              "Marketing: used to measure and improve our advertising. [If used]"
+            ]
+          },
+          {
+            "title": "Your choices",
+            "body": [
+              "You can accept, refuse or customise cookies through the cookie banner, and change your choice at any time. You can also manage cookies in your browser settings."
+            ]
+          }
+        ],
+        "table": {
+          "title": "Cookie table",
+          "columns": [
+            "Name",
+            "Purpose",
+            "Duration",
+            "Type"
+          ],
+          "empty": "[To be completed once tools are chosen]"
+        }
+      },
+      "terms": {
+        "title": "<accent>Terms</accent> of use",
+        "articles": [
+          {
+            "title": "About these terms",
+            "body": [
+              "By using this website you agree to these terms."
+            ]
+          },
+          {
+            "title": "About Momento",
+            "body": [
+              "[Legal name, address, company number, contact to be confirmed]"
+            ]
+          },
+          {
+            "title": "Use of the website",
+            "body": [
+              "For personal, lawful use only."
+            ]
+          },
+          {
+            "title": "Intellectual property",
+            "body": [
+              "The Momento name, logo, characters (Marcelo and Milo), images, texts and designs belong to Momento and may not be copied or reused without written permission."
+            ]
+          },
+          {
+            "title": "Product information",
+            "body": [
+              "We make every effort to keep product information, images and availability accurate. Products may vary slightly from photos. Availability may vary by season."
+            ]
+          },
+          {
+            "title": "Orders and prices",
+            "body": [
+              "[If online ordering is added, to be completed]"
+            ]
+          },
+          {
+            "title": "Links to other websites",
+            "body": [
+              "We are not responsible for the content of external websites."
+            ]
+          },
+          {
+            "title": "Liability",
+            "body": [
+              "The website is provided “as is”. We are not liable for any loss arising from its use, within the limits of the law."
+            ]
+          },
+          {
+            "title": "Governing law",
+            "body": [
+              "[Belgian and/or Moroccan law, to be confirmed]"
+            ]
+          },
+          {
+            "title": "Changes",
+            "body": [
+              "We may update these terms at any time."
+            ]
+          }
+        ]
+      }
+    },
+    "allergens": {
+      "hero": {
+        "eyebrow": "Your safety",
+        "title": "Allergens & <accent>Nutrition</accent>",
+        "text": "Your safety matters. Here is what you need to know about the allergens and nutritional values of our creations."
+      },
+      "notice": {
+        "title": "Important notice",
+        "text": "Our desserts are made in a kitchen that handles milk, eggs, gluten, nuts, peanuts, soy and other allergens. We cannot guarantee that any product is completely free of allergen traces. If you have an allergy or intolerance, please ask a member of our team before ordering."
+      },
+      "table": {
+        "eyebrow": "Allergens",
+        "title": "Allergens per <accent>creation</accent>",
+        "draft": "[All values to be completed from the official recipes. Do not publish until verified.]",
+        "product": "Product",
+        "columns": {
+          "milk": "Milk",
+          "eggs": "Eggs",
+          "gluten": "Gluten",
+          "nuts": "Nuts",
+          "peanuts": "Peanuts",
+          "soy": "Soy",
+          "sesame": "Sesame",
+          "other": "Other"
+        },
+        "values": {
+          "yes": "Contains",
+          "traces": "Traces",
+          "no": "—",
+          "tbc": "[TBC]"
+        },
+        "legend": "Contains: the creation contains this allergen. Traces: it may contain traces of it. —: not listed.",
+        "other": {
+          "fish": "Fish",
+          "lupin": "Lupin",
+          "sulphites": "Sulphites",
+          "tbc": "[TBC]"
+        }
+      },
+      "nutrition": {
+        "eyebrow": "Nutrition",
+        "title": "Nutritional <accent>values</accent>",
+        "note": "Values per 100 g. [All values to be completed from laboratory or recipe analysis.]",
+        "columns": {
+          "product": "Product",
+          "portion": "Portion size",
+          "energy": "Energy (kcal / kJ)",
+          "fat": "Fat",
+          "saturates": "of which saturates",
+          "carbs": "Carbohydrates",
+          "sugars": "of which sugars",
+          "protein": "Protein",
+          "salt": "Salt"
+        },
+        "tbc": "[TBC]",
+        "grams": "{value} g"
+      },
+      "contact": {
+        "text": "Questions about allergens? Contact us at [email to be confirmed].",
+        "button": "Contact us"
+      }
+    },
+    "notFound": {
+      "code": "404",
+      "title": "Oops, this page has <accent>melted</accent>",
+      "text": "Marcelo is looking for it in the kitchen, and Milo thinks he may have eaten it. Let's get you back to something sweet.",
+      "home": "Back to Home",
+      "creations": "See Our Creations",
+      "line": "Every moment has its sweetness, even this one.",
+      "imageAlt": "Marcelo and Milo looking puzzled in their kitchen"
     }
+  },
+  "SiteFooter": {
+    "tagline": "Artisanal desserts",
+    "rights": "© {year} Momento. All rights reserved.",
+    "createdBy": "Website by",
+    "contact": "Contact",
+    "explore": "Explore",
+    "follow": "Follow us",
+    "social": {
+      "instagram": "Instagram",
+      "tiktok": "TikTok",
+      "facebook": "Facebook"
+    },
+    "legal": "Legal"
   }
 }

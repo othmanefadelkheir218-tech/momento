@@ -3,17 +3,18 @@
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import { EPISODES } from "@/Data/episodes";
-import { COMPANY_INSTAGRAM, COMPANY_TIKTOK } from "@/Data/socialmedia";
+import { COMPANY_FACEBOOK, COMPANY_INSTAGRAM, COMPANY_TIKTOK } from "@/Data/socialmedia";
 import { accent } from "@/components/ui/Accent";
 import FadeIn from "@/components/ui/FadeIn";
 import MomentoButton from "@/components/ui/MomentoButton";
 import Section from "@/components/ui/Section";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { FacebookIcon, InstagramIcon, TikTokIcon } from "@/components/ui/SocialIcons";
 import { useScrollParallax } from "@/components/ui/useScrollParallax";
 import EpisodeCard from "./EpisodeCard";
 
 // "Suivez les épisodes": the Marcelo & Milo mini-series (episodes in src/Data/episodes.ts).
-// Heading on the left, Instagram / TikTok on the right; the episodes below, gently staggered.
+// Heading on the left, the Instagram / TikTok / Facebook logos on the right; the episodes below, gently staggered.
 
 export default function Episodes() {
     const t = useTranslations("Sections.episodes");
@@ -27,11 +28,14 @@ export default function Episodes() {
                     <SectionHeading eyebrow={t("eyebrow")} title={t.rich("title", { accent })} text={t("text")} />
                 </FadeIn>
                 <FadeIn delay={0.1} className="flex flex-wrap gap-3 md:col-span-4 md:justify-end">
-                    <MomentoButton href={COMPANY_INSTAGRAM} variant="ghost" external>
-                        {t("instagram")}
+                    <MomentoButton href={COMPANY_INSTAGRAM} label={t("instagram")} variant="ghost" external>
+                        <InstagramIcon />
                     </MomentoButton>
-                    <MomentoButton href={COMPANY_TIKTOK} variant="ghost" external>
-                        {t("tiktok")}
+                    <MomentoButton href={COMPANY_TIKTOK} label={t("tiktok")} variant="ghost" external>
+                        <TikTokIcon />
+                    </MomentoButton>
+                    <MomentoButton href={COMPANY_FACEBOOK} label={t("facebook")} variant="ghost" external>
+                        <FacebookIcon />
                     </MomentoButton>
                 </FadeIn>
             </div>

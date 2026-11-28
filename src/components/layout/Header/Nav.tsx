@@ -10,6 +10,7 @@ import NavLink from "../../Link";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { useTranslations, useLocale } from "next-intl";
 import { useLenis } from "lenis/react";
+import { ROUTES } from "@/Data/routes";
 import Magnetic from "@/components/Magnetic";
 import CostumButton from "@/components/CostumButton";
 import {
@@ -47,13 +48,16 @@ export default function Nav({ isActive, setIsActive }: NavProps) {
 
   const tl = useRef<gsap.core.Timeline | null>(null);
 
+  // Every main page (addresses: src/Data/routes.ts)
   const navItems = [
-    { title: t("home"), href: "/" },
-    { title: t("menu"), href: "/menu" },
-    { title: t("about"), href: "/about" },
-    { title: t("faq"), href: "/faq" },
-    // { title: t("contact"), href: "/contact" },
-    { title: t("becomeClient"), href: "/become-a-client" },
+    { title: t("home"), href: ROUTES.home },
+    { title: t("creations"), href: ROUTES.creations },
+    { title: t("world"), href: ROUTES.world },
+    { title: t("characters"), href: ROUTES.characters },
+    { title: t("story"), href: ROUTES.story },
+    { title: t("questions"), href: ROUTES.questions },
+    { title: t("partner"), href: ROUTES.partner },
+    { title: t("contact"), href: ROUTES.contact },
   ];
 
   useGSAP(
@@ -149,7 +153,7 @@ export default function Nav({ isActive, setIsActive }: NavProps) {
         <div
           className="h-full 
                 w-[300px]  md:w-full
-                px-10 md:px-20 py-16 flex flex-col justify-between box-border relative"
+                px-10 md:px-20 py-16 flex flex-col justify-between gap-8 box-border relative overflow-y-auto"
         >
           {/* Language Switcher - Top Right */}
           {langMenuOpen && (
@@ -203,9 +207,9 @@ export default function Nav({ isActive, setIsActive }: NavProps) {
           </div>
 
           {/* Navigation Links Container */}
-          <div className="flex flex-col gap-4 mt-24">
+          <div className="flex flex-col gap-2 mt-20">
             {/* Section Label */}
-            <div className="mb-8">
+            <div className="mb-4">
               <p className="text-white/40 uppercase text-[10px] tracking-[0.3em] trispace-font">
                 {t2("navigation")}
               </p>
@@ -213,7 +217,7 @@ export default function Nav({ isActive, setIsActive }: NavProps) {
             </div>
 
             {/* Nav Links */}
-            <nav className="flex flex-col gap-1">
+            <nav className="flex flex-col [&_p]:py-2.5">
               {navItems.map((data, index) => (
                 <div key={index} className="nav-link overflow-hidden">
                   <NavLink

@@ -5,7 +5,7 @@ import { requireEmail } from "@/lib/central-admin/validation";
 
 /**
  * Newsletter subscription — used by the footer sign-up form
- * (components/layout/Footer/FooterSection.tsx).
+ * (components/layout/Footer/v1/FooterSection.tsx).
  *
  * Forwards straight to the central admin; the payload shape already matches
  * what it expects, so there is no field mapping here.

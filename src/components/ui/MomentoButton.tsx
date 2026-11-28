@@ -1,5 +1,6 @@
 "use client";
 
+import { ReactNode } from "react";
 import CostumButton from "@/components/CostumButton";
 import { useTransitionRouter } from "@/hooks/useTransitionRouter";
 
@@ -9,6 +10,7 @@ import { useTransitionRouter } from "@/hooks/useTransitionRouter";
 //   primary → burgundy button, cream text; on hover it fills with cream, text burgundy (on cream)
 //   light   → cream button, burgundy text        (on burgundy backgrounds)
 //   ghost   → outlined burgundy, see-through     (secondary actions on cream)
+// `label` makes it a round icon button (e.g. a social media logo): the label is read by screen readers.
 
 type Variant = "primary" | "light" | "ghost";
 
@@ -19,20 +21,27 @@ const VARIANTS: Record<Variant, { className: string; fill: string; hoverText: st
 };
 
 type Props = {
-    href: string;
-    children: string;
+    /** the page to open (ignored when `onClick` is given) */
+    href?: string;
+    /** an action instead of a page (e.g. scroll to a form, apply a filter) */
+    onClick?: () => void;
+    /** the text, or an icon when `label` is given */
+    children: ReactNode;
+    /** for an icon button: what it is (read by screen readers, shown on hover as a tooltip) */
+    label?: string;
     variant?: Variant;
     /** Opens in a new tab (Instagram, TikTok…). Internal pages use the page transition. */
     external?: boolean;
     className?: string;
 };
 
-export default function MomentoButton({ href, children, variant = "primary", external = false, className = "" }: Props) {
+export default function MomentoButton({ href = "/", onClick, children, label, variant = "primary", external = false, className = "" }: Props) {
     const router = useTransitionRouter();
     const style = VARIANTS[variant];
 
     const go = () => {
-        if (external) window.open(href, "_blank", "noopener,noreferrer");
+        if (onClick) onClick();
+        else if (external) window.open(href, "_blank", "noopener,noreferrer");
         else router.push(href);
     };
 
@@ -40,6 +49,8 @@ export default function MomentoButton({ href, children, variant = "primary", ext
         <CostumButton
             role="link"
             tabIndex={0}
+            aria-label={label}
+            title={label}
             onClick={go}
             onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
@@ -49,7 +60,7 @@ export default function MomentoButton({ href, children, variant = "primary", ext
             }}
             backgroundColor={style.fill}
             hoverTextColor={style.hoverText}
-            className={`rounded-2xl! border-[1.5px]! px-7 py-4 focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-caramel ${style.className} ${className}`}
+            className={`rounded-2xl! border-[1.5px]! ${label ? "p-3.5" : "px-7 py-4"} focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-caramel ${style.className} ${className}`}
         >
             <span className="block font-body font-semibold text-sm tracking-[.04em] leading-none whitespace-nowrap">
                 {children}

@@ -1,7 +1,7 @@
 "use client";
 
 // ── Burgundy call-to-action band (NOT USED — kept for reference) ──
-// Replaced by the "Devenir franchisé" section (src/components/sections/Franchise).
+// Replaced by the "Devenir franchisé" section (src/components/sections/Franchise/v1).
 // To show it again: import it in ../HomeV2Content.tsx and put <CtaBand /> back in the list.
 
 import { useTranslations } from "next-intl";

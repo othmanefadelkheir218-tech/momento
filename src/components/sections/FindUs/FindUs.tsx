@@ -5,13 +5,13 @@ import { accent } from "@/components/ui/Accent";
 import FadeIn from "@/components/ui/FadeIn";
 import Section from "@/components/ui/Section";
 import SectionHeading from "@/components/ui/SectionHeading";
+import PartnerPicture from "./PartnerPicture";
 import PartnerTeaserForm from "./PartnerTeaserForm";
-import PotDisplay from "./PotDisplay";
 
-// "Où nous trouver" → a call to businesses to become a Momento partner. On the left: the heading,
-// the pitch and the start of the partner form (any click opens the partner page). On the right: the
-// display of Momento pots. (Phones: the pots first.) On a warm background that fades in and out.
-// Previous version (countries + shops list): ./v1/FindUs.tsx
+// "Become a franchisee": a call to businesses to become a Momento partner. On the left: the heading,
+// the pitch and the start of the partner form (any click opens the partner page). On the right:
+// Marcelo at work. (Phones: the picture first.) On a warm background that fades in and out.
+// Previous versions: ./v1/FindUsV2.tsx (pots display), ./v1/FindUs.tsx (countries + shops list)
 
 type Fade = "both" | "top" | "bottom" | "none";
 
@@ -23,7 +23,7 @@ export default function FindUs({ fade = "both" }: { fade?: Fade }) {
         <Section aria-label={t("eyebrow")} tone="warm" fade={fade}>
             <div className="grid items-center gap-10 md:grid-cols-12 md:gap-6">
                 <FadeIn className="md:order-2 md:col-span-6">
-                    <PotDisplay />
+                    <PartnerPicture />
                 </FadeIn>
 
                 <FadeIn delay={0.15} className="md:order-1 md:col-span-6 md:pr-8">

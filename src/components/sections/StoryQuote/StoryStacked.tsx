@@ -5,6 +5,7 @@ import Eyebrow from "@/components/ui/Eyebrow";
 import FadeIn from "@/components/ui/FadeIn";
 import Glow from "@/components/ui/Glow";
 import MomentoButton from "@/components/ui/MomentoButton";
+import { ROUTES } from "@/Data/routes";
 import Section from "@/components/ui/Section";
 import SoftImage from "@/components/ui/SoftImage";
 import { STORY_IMAGE } from "./storyImage";
@@ -29,7 +30,7 @@ export default function StoryStacked({ tone = "cream", fade = "both", className 
                 <blockquote className="mt-6 font-display font-medium text-burgundy text-[clamp(28px,2.7vw,50px)] leading-[1.2] text-balance">
                     {t("quote")}
                 </blockquote>
-                <MomentoButton href="/about" variant="ghost" className="mt-10 w-fit">
+                <MomentoButton href={ROUTES.story} variant="ghost" className="mt-10 w-fit">
                     {t("cta")}
                 </MomentoButton>
             </FadeIn>

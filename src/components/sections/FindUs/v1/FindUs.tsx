@@ -13,7 +13,7 @@ import MomentoButton from "@/components/ui/MomentoButton";
 import Section from "@/components/ui/Section";
 import SectionHeading from "@/components/ui/SectionHeading";
 import CountryTabs from "../CountryTabs";
-import PotDisplay from "../PotDisplay";
+import PotDisplay from "./PotDisplay";
 import ShopCard, { Placeholder } from "../ShopCard";
 
 // "Où nous trouver": the text, the countries and their shops (src/Data/shops.ts) on the left; a

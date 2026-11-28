@@ -519,9 +519,9 @@
       "imageAlt": "Marcelo en Milo schrijven „Momento” op het krijtbord van hun winkel"
     },
     "findUs": {
-      "eyebrow": "Waar vindt u ons",
-      "title": "Zin in iets <accent>zoets</accent>?",
-      "text": "Vind Momento in onze winkels in België.",
+      "eyebrow": "Franchisenemer worden",
+      "title": "Word Momento-<accent>partner</accent>",
+      "text": "Sluit u aan bij een merk met een verhaal: huisgemaakte desserts, een helder assortiment en een wereld die bij u tot leven komt.",
       "listPlaceholder": "[Aan te vullen: lijst van winkels en openingsuren]",
       "cta": "Vind een winkel",
       "countriesLabel": "Kies een land",
@@ -529,9 +529,9 @@
       "morocco": "Marokko",
       "shopName": "Momento-winkel",
       "shopPlaceholder": "[Aan te vullen: adres, openingsuren, telefoon]",
-      "pitch": "Café, restaurant, hotel of delicatessenzaak: bied uw klanten onze desserts aan. Vertel ons over uw zaak.",
+      "pitch": "Café, restaurant, hotel of delicatessenzaak: schenk uw gasten een moment om van te genieten. Vertel ons over uw zaak.",
+      "imageAlt": "Marcelo spuit chocoladecrème in een Momento-potje",
       "form": {
-        "title": "Momento-partner worden",
         "typeLabel": "Uw zaak",
         "types": {
           "cafe": "Café",
@@ -554,7 +554,7 @@
     },
     "episodes": {
       "eyebrow": "Volg de afleveringen",
-      "title": "Het verhaal gaat verder op Instagram en <accent>TikTok</accent>.",
+      "title": "Het verhaal gaat verder op Instagram, TikTok en <accent>Facebook</accent>.",
       "text": "Elk groot moment van het jaar krijgt zijn eigen miniserie. Volg Marcelo en Milo, aflevering na aflevering.",
       "episode": "Aflevering {number}",
       "ep1": "Een idee in de keuken",
@@ -562,7 +562,21 @@
       "ep3": "De eerste creaties",
       "ep4": "Welkom bij Momento",
       "instagram": "Instagram",
-      "tiktok": "TikTok"
+      "tiktok": "TikTok",
+      "facebook": "Facebook"
+    }
+  },
+  "SiteFooter": {
+    "tagline": "Ambachtelijke desserts",
+    "rights": "© {year} Momento. Alle rechten voorbehouden.",
+    "createdBy": "Website door",
+    "contact": "Contact",
+    "explore": "Ontdekken",
+    "follow": "Volg ons",
+    "social": {
+      "instagram": "Instagram",
+      "tiktok": "TikTok",
+      "facebook": "Facebook"
     }
   }
 }

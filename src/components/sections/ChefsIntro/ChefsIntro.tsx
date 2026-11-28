@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import FadeIn from "@/components/ui/FadeIn";
 import MomentoButton from "@/components/ui/MomentoButton";
+import { ROUTES } from "@/Data/routes";
 import RevealImage from "@/components/ui/RevealImage";
 import Section from "@/components/ui/Section";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -35,7 +36,7 @@ export default function ChefsIntro({ className = "" }: { className?: string }) {
                             text={<WaveText text={t("text")} color={CHOCOLATE} />}
                         />
                     </div>
-                    <MomentoButton href="/about" className="mt-10 w-fit">
+                    <MomentoButton href={ROUTES.characters} className="mt-10 w-fit">
                         {t("cta")}
                     </MomentoButton>
                 </FadeIn>

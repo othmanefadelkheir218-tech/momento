@@ -1,11 +1,15 @@
 import { NextResponse } from "next/server";
 
 import { submitToCentralAdmin } from "@/lib/central-admin/client";
-import { requireEmail, requirePhone, requireString } from "@/lib/central-admin/validation";
+import { optionalString, requireEmail, requirePhone, requireString } from "@/lib/central-admin/validation";
 
 /**
- * Contact form — used by the footer contact form
- * (components/layout/Footer/FooterSection2.tsx).
+ * Contact form — used by the contact page form (components/sections/Forms/ContactForm.tsx),
+ * the franchise enquiry form (components/sections/Forms/FranchiseForm.tsx) and the old
+ * footer contact form (components/layout/Footer/v1/FooterSection2.tsx).
+ *
+ * City and phone are optional (the contact page doesn't ask for a city; the phone is optional).
+ * [To be confirmed] that the central admin accepts them empty.
  *
  * Field names already match the central admin's contact schema one for one,
  * so no mapping is needed here — only presence/format checks before
@@ -24,9 +28,9 @@ export async function POST(request: Request) {
   try {
     const data = {
       cooperation: requireString(input.cooperation, "Le type de coopération"),
-      city: requireString(input.city, "La ville"),
+      city: optionalString(input.city),
       name: requireString(input.name, "Le nom"),
-      phone: requirePhone(input.phone),
+      phone: optionalString(input.phone) ? requirePhone(input.phone) : "",
       email: requireEmail(input.email),
       message: requireString(input.message, "Le message"),
     };
