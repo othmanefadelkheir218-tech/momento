@@ -10,6 +10,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import { Analytics } from "@vercel/analytics/next";
 import "../globals.css";
 import Footer from "@/components/layout/Footer/Footer";
+import ScrollToTopFloating from "@/components/ui/ScrollToTopFloating";
 import type { Metadata } from "next";
 import { COMING_SOON } from "@/lib/comingSoon";
 
@@ -133,6 +134,8 @@ export default async function LocaleLayout({
                                 {/* The new footer (the old one is kept in components/layout/Footer/v1/) */}
                                 <Footer />
                             </TransitionWrapper>
+                            {/* Floating "back to top" (bottom-right), outside the page transition so it stays fixed */}
+                            <ScrollToTopFloating />
                         </ThemeProvider>
                     </SmoothScroll>
                     )}

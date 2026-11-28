@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { ROUTES } from "@/Data/routes";
 import { COMPANY_EMAIL, COMPANY_FACEBOOK, COMPANY_INSTAGRAM, COMPANY_PHONE, COMPANY_TIKTOK } from "@/Data/socialmedia";
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 import FooterBounce from "./FooterBounce";
 import FooterLink from "./FooterLink";
 
@@ -96,12 +97,18 @@ export default function Footer() {
                     </div>
                 </div>
 
-                {/* Legal pages, on one quiet line under a hairline */}
-                <nav aria-label={t("legal")} className="mt-12 flex flex-wrap gap-x-6 gap-y-2 border-t border-ink/10 pt-6 text-xs text-ink/70">
-                    {LEGAL.map((item) => (
-                        <FooterLink key={item.href} href={item.href} label={nav(item.key)} />
-                    ))}
-                </nav>
+                {/* Bottom line, under a hairline: legal pages on the left, languages on the right.
+                    ("Back to top" is the floating button, ui/ScrollToTopFloating.tsx; the earlier text
+                    button that sat here is kept in ui/v1/ScrollToTopButton.tsx.) */}
+                <div className="mt-12 flex flex-col gap-6 border-t border-ink/10 pt-6 md:flex-row md:items-center md:justify-between">
+                    <nav aria-label={t("legal")} className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-ink/70">
+                        {LEGAL.map((item) => (
+                            <FooterLink key={item.href} href={item.href} label={nav(item.key)} />
+                        ))}
+                    </nav>
+                    <LanguageSwitcher />
+
+                </div>
             </div>
         </footer>
     );

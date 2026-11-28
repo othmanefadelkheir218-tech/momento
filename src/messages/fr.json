@@ -1,737 +1,1641 @@
 {
-    "Metadata": {
-        "title": "Momento - Glacier Artisanal & Desserts",
-        "description": "MOMENTO - Des desserts givrés artisanaux qui transforment chaque instant en une expérience inoubliable.",
-        "home": {
-            "title": "Momento | Excellence Artisanale & Desserts Givrés Premium",
-            "description": "Découvrez Momento : verrines gourmandes, glaces artisanales et créations givrées uniques. La perfection à chaque bouchée."
-        },
-        "about": {
-            "title": "Notre Histoire & Nos Valeurs | La Passion Momento",
-            "description": "De l’artisanat traditionnel à l’innovation créative. Découvrez comment Momento redéfinit le dessert avec qualité et savoir-faire."
-        },
-        "faq": {
-            "title": "FAQ & Aide | Vos Questions, Nos Réponses - Momento",
-            "description": "Des questions sur nos ingrédients, nos commandes ou notre savoir-faire ? Toutes les réponses sont ici."
-        },
-        "contact": {
-            "title": "Contact | Parlons de Gourmandise - Momento",
-            "description": "Contactez l’équipe Momento pour vos événements, partenariats ou simplement pour nous saluer. Nous sommes à votre écoute."
-        },
-        "becomeClient": {
-            "title": "Devenir Partenaire | Grossiste - Momento",
-            "description": "Rejoignez MOMENTO en tant que partenaire grossiste. Proposez des desserts artisanaux premium à vos clients avec des tarifs exclusifs et un accompagnement dédié."
-        }
+  "Metadata": {
+    "title": "Momento - Glace Artisanale & Desserts",
+    "description": "MOMENTO - Des desserts givrés artisanaux qui transforment chaque instant en une expérience inoubliable.",
+    "home": {
+      "title": "Momento | Glace Artisanale & Desserts Givrés Premium",
+      "description": "Découvrez Momento : verrines gourmandes, glaces artisanales et créations givrées uniques. La perfection à chaque bouchée."
     },
-    "Header": {
-        "navigation": "Navigation",
-        "followUs": "Suivez-nous",
-        "CopyRight": "Tous droits réservés."
+    "about": {
+      "title": "Notre Histoire & Nos Valeurs | La Passion Derrière Momento",
+      "description": "De l'artisanat traditionnel à l'innovation créative. Découvrez comment Momento redéfinit les desserts givrés avec qualité et savoir-faire."
     },
-    "Footer": {
-        "joingMomento": "REJOIGNEZ L'EXPÉRIENCE MOMENTO",
-        "textMomento": "Le dessert qui redéfinit vos moments. Rejoignez-nous pour ne rien manquer de nos créations artisanales et nouveautés glacées.",
-        "placeholder": "Votre adresse e-mail",
-        "subscribe": "S'abonner",
-        "sending": "Envoi en cours...",
-        "failed": "Échec de l'abonnement. Veuillez réessayer plus tard.",
-        "popup": {
-            "title": "MERCI POUR VOTRE INSCRIPTION !",
-            "message": "Vous faites maintenant partie de la communauté MOMENTO. Préparez-vous à découvrir nos dernières créations et offres exclusives !",
-            "decorativeText": "BIENTÔT ? IL Y A ALORS UN"
-        },
-        "contact": {
-            "heading": "UNE QUESTION ? NOUS AVONS LA RÉPONSE !",
-            "doneTitle": "TERMINÉ : VOTRE DEMANDE EST EN COURS DE TRAITEMENT",
-            "doneMessage": "Nous vous avons envoyé le formulaire à remplir à votre adresse e-mail. Soyez assuré que vos informations seront examinées sous peu. Merci de faire partie de cette aventure passionnante !",
-            "labels": {
-                "cooperation": "Type de coopération",
-                "city": "Ville",
-                "name": "Votre nom",
-                "phone": "Téléphone",
-                "email": "E-mail",
-                "message": "Message"
-            },
-            "options": {
-                "distributor": "Coopération partenaire commercial ou distributeur",
-                "commercial": "Demande commerciale",
-                "partnership": "Opportunité de partenariat",
-                "general": "Question générale"
-            },
-            "placeholders": {
-                "city": "Votre ville",
-                "name": "Entrez votre nom",
-                "message": "Comment pouvons-nous vous aider ?",
-                "email": "votre@email.com",
-                "phone": "+33 6 00 00 00 00"
-            },
-            "button": "Envoyer",
-            "sending": "Envoi en cours...",
-            "error": "Échec de l'envoi du message. Veuillez réessayer plus tard."
-        },
-        "bottom": {
-            "rights": "Tous droits réservés.",
-            "createdBy": "Créé par"
-        }
+    "faq": {
+      "title": "FAQ & Aide | Vos Questions, Nos Réponses - Momento",
+      "description": "Des questions sur nos ingrédients, nos commandes ou notre savoir-faire ? Trouvez toutes les réponses ici."
     },
-    "HomePage": {
-        "title": "Accueil",
-        "welcome": "Bienvenue chez Momento",
-        "description": "Capturer des instants, créer des souvenirs.",
-        "catalogueButton": "Catalogue",
-        "MainHeading1": "Le secret est dans",
-        "MainHeading2": "la crème",
-        "MainDescription": "Des desserts raffinés, verrines gourmandes et glaces artisanales, créés pour offrir une expérience unique à chaque instant. The secret is in the crème.",
-        "HeroMarquee": {
-            "row1Part1": "TAKE YOUR MOMENT *",
-            "row1Part2": "Petits moments, grands souvenirs *",
-            "row2Part1": "Le secret est dans la crème *",
-            "row2Part2": "Recettes artisanales *",
-            "row3Part1": "Tradition & créativité *",
-            "row3Part2": "100% halal *"
-        },
-        "ProductCards": {
-            "menuButton": "Menu",
-            "newBadge": "NOUVEAU",
-            "weightLabel": "Poids",
-            "iceCreamRange": "Gamme Glace",
-            "dubaiChocolate": "Dubaï Chocolat"
-        },
-        "BannerSection": {
-            "line1": "Un dessert glacé",
-            "line2": "qui fait fondre",
-            "line3": "chaque instant.",
-            "titleLine1": "Ceux qui ont goûté le savent déjà.",
-            "titleLine2": "Les autres comprendront bientôt.",
-            "description1": "Notre ambition dépasse la simple fabrication d'un dessert glacé. Nous cherchons à éveiller les sens et à faire de chaque bouchée une expérience émotionnelle.",
-            "description2": "Chez MOMENTO, aucun raccourci n'est permis, que ce soit pour les saveurs, les ingrédients ou l'artisanat. Chaque création est pensée avec exigence pour offrir une expérience authentique et mémorable.",
-            "about_us_button": "À propos",
-            "imageAlt1": "Femme dégustant une glace Mr. Pops",
-            "imageAlt2": "Femme savourant une glace",
-            "imageAlt3": "Femme goûtant une glace"
-        },
-        "PartnershipSection": {
-            "titleLine1": "Nous aimons les",
-            "titleLine2": "partenariats",
-            "descriptionPart1": "Imaginez votre établissement café, restaurant ou espace de vente  offrant bien plus qu’un simple dessert.",
-            "descriptionPart2": "Avec MOMENTO, vous proposez des créations artisanales conçues pour sublimer l'expérience de vos clients et valoriser votre offre, simplement et efficacement."
-        },
-        "Features": {
-            "section1": {
-                "title": "Fabriqué avec soin",
-                "description": "Chaque création MOMENTO est réalisée avec précision et dévouement, dans le respect d'un véritable savoir-faire artisanal. Les textures sont travaillées pour atteindre l'équilibre parfait entre douceur, onctuosité et gourmandise."
-            },
-            "section2": {
-                "title": "Des saveurs qui inspirent",
-                "description": "Inspirées par la tradition et portées par la créativité, nos recettes offrent une palette de saveurs riches et équilibrées. Chaque dégustation est une invitation à découvrir de nouvelles sensations tout en restant fidèle à l'authenticité."
-            },
-            "section3": {
-                "title": "Des moments à partager",
-                "description": "MOMENTO est plus qu’un dessert : c’est un instant à vivre et à partager. Pour chaque occasion, nos créations accompagnent les petits moments qui deviennent des souvenirs durables."
-            }
-        }
+    "contact": {
+      "title": "Contact",
+      "description": "Une question, une suggestion ou une douce idée ? Écrivez à Momento."
     },
-    "AboutPage": {
-        "title": "À Propos",
-        "description": "Nous sommes une équipe de créateurs passionnés.",
-        "InANutshell": {
-            "titles": [
-                "VIVEZ VOTRE",
-                "MOMENT",
-                "CHAQUE BOUCHÉE",
-                "RACONTE",
-                "UNE HISTOIRE"
-            ],
-            "description1": "Née d’une passion pour la pâtisserie artisanale, Momento propose des desserts alliant savoir-faire et créativité, avec une attention particulière à la qualité des ingrédients.",
-            "description2": "La marque a évolué vers une gamme variée de créations gourmandes, entre classiques revisités et recettes signature, pensées pour offrir une expérience unique.",
-            "description3": "Aujourd’hui, Momento continue d’innover avec des desserts modernes, conçus pour créer des moments de plaisir simples et mémorables.",
-            "rotatingText": "MOMENTO • MAÎTRE ARTISAN GLACIER • MAÎTRE ARTISAN GLACIER • MOMENTO • MAÎTRE ARTISAN GLACIER • MOMENTO • MAÎTRE ARTISAN GLACIER • MOMENTO • MAÎTRE ARTISAN GLACIER • MOMENTO • MAÎTRE ARTISAN GLACIER • MOMENTO • MAÎTRE ARTISAN GLACIER • MOMENTO •",
-            "imageAlt": "Femme souriante dégustant une glace Momento"
-        },
-        "section1": {
-            "badge": "Notre Histoire",
-            "est": "Fondée en",
-            "title": "Là où les <instants>moments</instants> gourmands prennent vie",
-            "imageAlt": "Préparation soigneuse d'une glace artisanale",
-            "subtitle": "Une passion née de l'amour des desserts d'exception",
-            "text": "L'aventure MOMENTO est née d'un désir simple : transformer chaque bouchée en un moment mémorable. Inspirés par l'artisanat et portés par la créativité, nous avons perfectionné nos techniques pour offrir des desserts et des glaces qui reflètent notre amour du détail."
-        },
-        "philosophy": {
-            "badge": "NOS VALEURS",
-            "title": "L’<authentiques>authenticité</authentiques>, l’Innovation et le Savoir-faire",
-            "imageAlt": "Ingrédients frais et de qualité supérieure utilisés dans nos recettes",
-            "text": "Chez Momento, nous privilégions la qualité des ingrédients, l’innovation et le savoir-faire artisanal pour créer des desserts d’exception.",
-            "stats": {
-                "artisanal": "Artisanat",
-                "artisanalSub": "Savoir-faire traditionnel",
-                "quality": "Qualité",
-                "qualitySub": "Sélection rigoureuse",
-                "creativity": "Innovation",
-                "creativitySub": "Recettes signatures"
-            }
-        },
-        "craft": {
-            "badge": "Artisanat",
-            "title": "Des créations <artisanales>artisanales</artisanales> façonnées avec passion",
-            "imageAlt": "Préparation artisanale d'un dessert Momento",
-            "text": "Chaque dessert est préparé avec le plus grand soin, dans le respect des techniques artisanales. Nous accordons une attention particulière aux textures pour offrir une expérience fondante et gourmande unique.",
-            "gallery": {
-                "step1": "Barattage",
-                "step2": "Perfection",
-                "step3": "Service"
-            }
-        },
-        "promise": {
-            "badge": "Pourquoi nous choisir ?",
-            "title": "Chaque bouchée, <moment>une expérience unique</moment>",
-            "text": "Momento propose des desserts artisanaux, verrines gourmandes et glaces premium. Découvrez des créations uniques alliant qualité, goût et savoir-faire",
-            "items": [
-                "Desserts artisanaux premium",
-                "Ingrédients de qualité",
-                "Large choix de verrines et glaces",
-                "Expérience gourmande unique"
-            ],
-            "button": "Découvrir notre menu"
-        }
+    "becomeClient": {
+      "title": "Devenir Partenaire | Grossiste - Momento",
+      "description": "Rejoignez MOMENTO en tant que partenaire grossiste. Proposez des desserts artisanaux premium à vos clients avec des tarifs exclusifs et un accompagnement dédié."
     },
-    "FAQPage": {
-        "description": "Questions Fréquentes",
-        "title": "Questions",
-        "items": {
-            "history": {
-                "question": "Comment tout a commencé",
-                "answer": [
-                    "L'aventure MOMENTO est née d'une passion pour les desserts et les glaces d'exception.",
-                    "Animés par le désir d'allier tradition et créativité, nous avons commencé avec une idée simple : faire de chaque bouchée un moment inoubliable.",
-                    "Au fil du temps, nous avons affiné nos recettes et nos techniques pour proposer des créations qui reflètent notre amour du détail et notre quête d'excellence."
-                ]
-            },
-            "partnership": {
-                "question": "Notre approche du partenariat",
-                "answer": [
-                    "MOMENTO est une marque artisanale attachée à la qualité et à la cohérence de son univers. C'est pourquoi nous sélectionnons nos partenaires avec soin.",
-                    "Nous privilégions les établissements qui partagent nos valeurs, notre exigence de qualité et notre attention portée à l'expérience client."
-                ]
-            },
-            "ingredients": {
-                "question": "Nos ingrédients",
-                "answer": [
-                    "Nous accordons une importance primordiale à la sélection des ingrédients, en privilégiant la qualité, l'authenticité et le respect de nos recettes.",
-                    "Chaque création est conçue pour offrir un équilibre entre saveurs, textures et gourmandise, sans aucun compromis sur l'exigence."
-                ]
-            },
-            "events": {
-                "question": "Commandes et événements",
-                "answer": [
-                    "MOMENTO accompagne aussi les moments privilégiés à travers des commandes dédiées pour des événements professionnels ou privés.",
-                    "Pour toute demande spécifique, nous vous invitons à nous contacter afin d'étudier ensemble les possibilités selon vos besoins."
-                ]
-            },
-            "locations": {
-                "question": "Où trouver MOMENTO",
-                "answer": [
-                    "Les créations MOMENTO sont disponibles auprès de nos partenaires et points de vente sélectionnés.",
-                    "Nous développons notre présence progressivement afin de garantir une qualité constante et une expérience fidèle à l'esprit de la marque."
-                ]
-            }
-        }
+    "creations": {
+      "title": "Nos Créations",
+      "description": "Des desserts faits à la main dans des pots individuels, généreux et prêts à emporter."
     },
-    "MenuPage": {
-        "title": "Menu",
-        "description": "Nos délicieuses offres"
+    "creation": {
+      "title": "{name}",
+      "description": "{short}. Une création Momento, faite à la main et servie dans son propre pot."
     },
-    "ContactPage": {
-        "title": "Contact",
-        "description": "Contactez-nous"
+    "world": {
+      "title": "Le Monde Momento",
+      "description": "Entrez dans la petite cuisine chaleureuse de Marcelo et Milo, où chaque dessert commence par une histoire."
     },
-    "Navigation": {
-        "home": "Accueil",
-        "about": "À Propos",
-        "faq": "FAQ",
-        "menu": "Menu",
-        "contact": "Contact",
-        "becomeClient": "Devenir Client",
-        "creations": "Nos créations",
-        "universe": "Notre univers",
-        "franchise": "Devenir franchisé",
-        "findShop": "Trouver une boutique"
+    "characters": {
+      "title": "Rencontrez Marcelo & Milo",
+      "description": "Deux chefs, une cuisine, beaucoup de douceur. Rencontrez le duo derrière Momento."
+    },
+    "story": {
+      "title": "Notre Histoire",
+      "description": "Comment deux chefs ont transformé une idée en Momento : des desserts faits pour votre moment."
+    },
+    "partner": {
+      "title": "Devenir Partenaire",
+      "description": "Servez les desserts Momento à vos clients, ou ouvrez votre propre Momento."
+    },
+    "questions": {
+      "title": "Questions",
+      "description": "Des réponses sur Momento, nos créations, les commandes pour votre commerce et l'ouverture d'un Momento."
+    },
+    "privacy": {
+      "title": "Politique de Confidentialité",
+      "description": "Comment Momento collecte et utilise vos données personnelles."
+    },
+    "cookies": {
+      "title": "Cookies",
+      "description": "Quels cookies le site Momento utilise et comment les gérer."
+    },
+    "terms": {
+      "title": "Conditions",
+      "description": "Les conditions d'utilisation du site Momento."
+    },
+    "allergens": {
+      "title": "Allergènes & Nutrition",
+      "description": "Allergènes et valeurs nutritionnelles des créations Momento."
+    },
+    "notFound": {
+      "title": "Page non trouvée",
+      "description": "Cette page a fondu."
+    }
+  },
+  "Header": {
+    "navigation": "Navigation",
+    "followUs": "Suivez-nous",
+    "CopyRight": "Tous droits réservés.",
+    "menuTitle": "Menu"
+  },
+  "Footer": {
+    "joingMomento": "REJOIGNEZ L'EXPÉRIENCE MOMENTO",
+    "textMomento": "Le dessert qui redéfinit vos moments. Rejoignez-nous et restez à jour avec nos créations artisanales et innovations givrées.",
+    "placeholder": "Votre adresse e-mail",
+    "subscribe": "S'abonner",
+    "sending": "Envoi en cours...",
+    "failed": "L'abonnement a échoué. Veuillez réessayer plus tard.",
+    "popup": {
+      "title": "MERCI DE VOTRE ABONNEMENT !",
+      "message": "Vous faites maintenant partie de la communauté MOMENTO. Préparez-vous à recevoir nos dernières créations et offres exclusives !",
+      "decorativeText": "BIENTÔT ? ALORS IL Y A UN"
+    },
+    "contact": {
+      "heading": "UNE QUESTION ? NOUS AVONS LA RÉPONSE !",
+      "doneTitle": "COMPLÉTÉ : VOTRE DEMANDE EST EN COURS DE TRAITEMENT",
+      "doneMessage": "Nous avons envoyé le formulaire à votre adresse e-mail pour complétion. Soyez assuré que vos réponses seront examinées sous peu. Merci de faire partie de ce voyage passionnant !",
+      "labels": {
+        "cooperation": "Type de coopération",
+        "city": "Ville",
+        "name": "Votre nom",
+        "phone": "Téléphone",
+        "email": "E-mail",
+        "message": "Message"
+      },
+      "options": {
+        "distributor": "Coopération partenaire commercial ou distributeur",
+        "commercial": "Demande commerciale",
+        "partnership": "Opportunité de partenariat",
+        "general": "Question générale"
+      },
+      "placeholders": {
+        "city": "Votre ville",
+        "name": "Entrez votre nom",
+        "message": "Comment pouvons-nous vous aider ?",
+        "email": "votre@email.com",
+        "phone": "+33 6 00 00 00 00"
+      },
+      "button": "Envoyer",
+      "sending": "Envoi en cours...",
+      "error": "Échec de l'envoi du message. Veuillez réessayer plus tard."
+    },
+    "bottom": {
+      "rights": "Tous droits réservés.",
+      "createdBy": "Créé par"
+    }
+  },
+  "HomePage": {
+    "title": "Accueil",
+    "welcome": "Bienvenue à Momento",
+    "description": "Capturez les moments, créez des souvenirs.",
+    "catalogueButton": "Catalogue",
+    "MainHeading1": "Le secret est dans",
+    "MainHeading2": "la crème",
+    "MainDescription": "Des desserts raffinés, des verrines gourmandes et des glaces artisanales, créés pour offrir une expérience unique à chaque moment. Le secret est dans la crème.",
+    "HeroMarquee": {
+      "row1Part1": "VIVEZ VOTRE MOMENT *",
+      "row1Part2": "Petits moments, grands souvenirs *",
+      "row2Part1": "Le secret est dans la crème *",
+      "row2Part2": "Recettes artisanales *",
+      "row3Part1": "Tradition & créativité *",
+      "row3Part2": "100% halal *"
+    },
+    "ProductCards": {
+      "menuButton": "Menu",
+      "newBadge": "NOUVEAU",
+      "weightLabel": "Poids",
+      "iceCreamRange": "Gamme Glace",
+      "dubaiChocolate": "Chocolat Dubaï"
+    },
+    "BannerSection": {
+      "line1": "Un dessert glacé",
+      "line2": "qui fait fondre",
+      "line3": "chaque moment.",
+      "titleLine1": "Ceux qui ont goûté le savent déjà.",
+      "titleLine2": "Les autres le découvriront bientôt.",
+      "description1": "Notre ambition va au-delà de créer un dessert glacé. Nous visons à éveiller les sens et à faire de chaque bouchée une expérience émotionnelle.",
+      "description2": "Chez MOMENTO, aucun raccourci n'est permis – ni dans les saveurs, ni dans les ingrédients, ni dans le savoir-faire. Chaque création est pensée pour offrir une expérience authentique et mémorable.",
+      "about_us_button": "À Propos de Nous",
+      "imageAlt1": "Une femme savourant la glace Mr. Pops",
+      "imageAlt2": "Une femme savourant une glace",
+      "imageAlt3": "Une femme goûtant une glace"
+    },
+    "PartnershipSection": {
+      "titleLine1": "Nous aimons",
+      "titleLine2": "les partenariats",
+      "descriptionPart1": "Imaginez votre établissement – café, restaurant ou boutique – offrant bien plus qu'un simple dessert.",
+      "descriptionPart2": "Avec MOMENTO, vous offrez des créations artisanales conçues pour rehausser l'expérience de vos clients et enrichir votre offre, simplement et efficacement."
+    },
+    "Features": {
+      "section1": {
+        "title": "Fait avec soin",
+        "description": "Chaque création MOMENTO est faite avec précision et soin, respectant le vrai savoir-faire artisanal. Les textures sont soigneusement affinées pour atteindre l'équilibre parfait entre douceur, onctuosité et indulgence."
+      },
+      "section2": {
+        "title": "Des saveurs qui inspirent",
+        "description": "Inspirées par la tradition et portées par la créativité, nos recettes offrent une gamme riche et équilibrée de saveurs. Chaque dégustation est une invitation à découvrir de nouvelles sensations tout en restant fidèle à l'authenticité."
+      },
+      "section3": {
+        "title": "Des moments à partager",
+        "description": "MOMENTO est plus qu'un dessert – c'est un moment à vivre et partager. Pour chaque occasion, nos créations accompagnent les petits moments qui deviennent des souvenirs durables."
+      }
+    }
+  },
+  "AboutPage": {
+    "title": "À Propos de Nous",
+    "description": "Nous sommes une équipe de créateurs passionnés.",
+    "InANutshell": {
+      "titles": [
+        "VIVEZ VOTRE",
+        "MOMENT",
+        "CHAQUE BOUCHÉE",
+        "RACONTE",
+        "UNE HISTOIRE"
+      ],
+      "description1": "Née d'une passion pour la pâtisserie artisanale, Momento propose des desserts combinant expertise et créativité, avec une attention particulière à la qualité des ingrédients.",
+      "description2": "La marque a évolué vers une gamme diverse de créations gourmandes, des classiques revisités aux recettes signature, conçues pour offrir une expérience unique.",
+      "description3": "Aujourd'hui, Momento continue d'innover avec des desserts modernes, conçus pour créer des moments simples et mémorables de plaisir.",
+      "rotatingText": "MOMENTO • GLACIER ARTISAN • GLACIER ARTISAN • MOMENTO • GLACIER ARTISAN • MOMENTO • GLACIER ARTISAN • MOMENTO • GLACIER ARTISAN • MOMENTO • GLACIER ARTISAN • MOMENTO • GLACIER ARTISAN • MOMENTO •",
+      "imageAlt": "Une femme souriante savourant une glace Momento"
+    },
+    "section1": {
+      "badge": "Notre Histoire",
+      "est": "Fondée.",
+      "title": "Où les <instants>moments</instants> gourmands prennent vie",
+      "imageAlt": "Une glace artisanale étant soigneusement préparée",
+      "subtitle": "Une passion née d'une amour pour les desserts exceptionnels",
+      "text": "Le voyage MOMENTO est né d'un simple désir : transformer chaque bouchée en un moment mémorable. Inspirés par le savoir-faire et la créativité, nous avons affiné nos techniques pour proposer des desserts et glaces qui reflètent notre amour du détail."
+    },
+    "philosophy": {
+      "badge": "Nos Valeurs",
+      "title": "<authentiques>Authenticité</authentiques>, Innovation & Savoir-faire",
+      "imageAlt": "Des ingrédients frais et de haute qualité utilisés dans nos recettes",
+      "text": "Chez Momento, nous privilégions la qualité des ingrédients, l'innovation et le savoir-faire artisanal pour créer des desserts exceptionnels.",
+      "stats": {
+        "artisanal": "Artisanal",
+        "artisanalSub": "Savoir-faire Traditionnel",
+        "quality": "Qualité",
+        "qualitySub": "Sélection des ingrédients",
+        "creativity": "Innovation",
+        "creativitySub": "Recettes Signature"
+      }
+    },
+    "craft": {
+      "badge": "Savoir-faire",
+      "title": "Des créations <artisanales>artisanales</artisanales> faites avec passion",
+      "imageAlt": "Préparation artisanale d'un dessert Momento",
+      "text": "Chaque dessert est préparé avec soin, respectant les véritables techniques artisanales. Nous accordons une attention particulière aux textures pour offrir une expérience uniquement lisse et indulgente.",
+      "gallery": {
+        "step1": "Brassage",
+        "step2": "Perfection",
+        "step3": "Service"
+      }
+    },
+    "promise": {
+      "badge": "Pourquoi Nous Choisir ?",
+      "title": "Chaque bouchée, <moment>une expérience unique</moment>",
+      "text": "Momento propose des desserts artisanaux, des verrines gourmandes et des glaces premium. Découvrez des créations uniques combinant qualité, goût et expertise.",
+      "items": [
+        "Desserts artisanaux premium",
+        "Ingrédients de haute qualité",
+        "Large choix de verrines et glaces",
+        "Expérience gourmande unique"
+      ],
+      "button": "Découvrez notre menu"
+    }
+  },
+  "FAQPage": {
+    "description": "Questions Fréquemment Posées",
+    "title": "Questions",
+    "items": {
+      "history": {
+        "question": "Comment tout a commencé",
+        "answer": [
+          "Le voyage MOMENTO est né d'une passion pour les desserts et glaces exceptionnels.",
+          "Poussés par le désir de combiner tradition et créativité, nous avons commencé avec une idée simple : transformer chaque bouchée en un moment mémorable.",
+          "Au fil du temps, nous avons affiné nos recettes et techniques pour proposer des créations qui reflètent notre amour du détail et notre quête d'excellence."
+        ]
+      },
+      "partnership": {
+        "question": "Notre approche du partenariat",
+        "answer": [
+          "MOMENTO est une marque artisanale, profondément engagée dans la qualité et la cohérence de son univers. Pour cette raison, nous sélectionnons soigneusement nos partenaires.",
+          "Nous privilégions les établissements qui partagent nos valeurs, nos hauts standards de qualité et notre attention à l'expérience client."
+        ]
+      },
+      "ingredients": {
+        "question": "Nos ingrédients",
+        "answer": [
+          "Nous accordons une grande importance à la sélection des ingrédients, privilégiant la qualité, l'authenticité et le respect de nos recettes.",
+          "Chaque création est conçue pour offrir un équilibre parfait de saveurs, textures et indulgence, sans compromettre les normes."
+        ]
+      },
+      "events": {
+        "question": "Commandes et événements",
+        "answer": [
+          "MOMENTO soutient également les moments spéciaux grâce à des commandes dédiées pour les événements professionnels ou privés.",
+          "Pour toute demande spécifique, nous vous invitons à nous contacter pour explorer les possibilités ensemble selon vos besoins."
+        ]
+      },
+      "locations": {
+        "question": "Où trouver MOMENTO",
+        "answer": [
+          "Les créations MOMENTO sont disponibles par nos partenaires sélectionnés et points de vente.",
+          "Nous étendons progressivement notre présence pour assurer une qualité cohérente et une expérience fidèle à l'univers de la marque."
+        ]
+      }
+    }
+  },
+  "MenuPage": {
+    "title": "Menu",
+    "description": "Nos délicieuses offres"
+  },
+  "ContactPage": {
+    "title": "Nous Contacter",
+    "description": "Entrez en contact avec nous"
+  },
+  "Navigation": {
+    "home": "Accueil",
+    "about": "À Propos",
+    "faq": "FAQ",
+    "menu": "Menu",
+    "contact": "Contact",
+    "becomeClient": "Devenir Client",
+    "creations": "Nos Créations",
+    "universe": "Notre monde",
+    "franchise": "Devenir Franchisé",
+    "findShop": "Trouver une boutique",
+    "world": "Le Monde Momento",
+    "characters": "Rencontrez Marcelo & Milo",
+    "story": "Notre Histoire",
+    "partner": "Devenir Partenaire",
+    "questions": "Questions",
+    "privacy": "Politique de Confidentialité",
+    "cookies": "Cookies",
+    "terms": "Conditions",
+    "allergens": "Allergènes & Nutrition"
+  },
+  "Common": {
+    "toggleTheme": "Basculer le Thème",
+    "changeLanguage": "Changer la Langue"
+  },
+  "Languages": {
+    "en": "Anglais",
+    "fr": "Français",
+    "de": "Allemand",
+    "nl": "Néerlandais"
+  },
+  "Social": {
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "linkedin": "LinkedIn",
+    "twitter": "Twitter"
+  },
+  "Desserts": {
+    "Categories": {
+      "dubaiChocolat": "Chocolat Dubaï",
+      "gammeGlace": "Gamme Glace",
+      "verrineRange": "Gamme Verrine"
     },
     "Common": {
-        "toggleTheme": "Changer le thème",
-        "changeLanguage": "Changer la langue"
+      "storageTitle": "Conditions de Stockage",
+      "defrosting": "Temps de décongélation au réfrigérateur à +4°C : 4 heures",
+      "potsPerBox": "12 pots par boîte",
+      "noColorants": "Sans colorants artificiels",
+      "fishGelatin": "Sans Gélatine",
+      "halal": "100% HALAL",
+      "quickService": "Prêt pour le service rapide",
+      "longStorage": "Adapté au stockage à long terme au réfrigérateur"
     },
-    "Languages": {
-        "en": "Anglais",
-        "fr": "Français",
-        "de": "Allemand",
-        "nl": "Néerlandais"
+    "Products": {
+      "dubaiChocolatSnackBar": {
+        "name": "Barre Chocolat Dubaï",
+        "description": "Barre gourmande avec du chocolat fin, pistache crémeuse et kunafa croustillante.",
+        "allergens": "Contient : lait, soja, pistache, blé, noix, sésame."
+      },
+      "dubaiChocolatTablet": {
+        "name": "Tablette Chocolat Dubaï",
+        "description": "Grande barre de chocolat style Dubaï avec farce riche pistache et kunafa croustillante.",
+        "allergens": "Contient : lait, soja, pistache, blé, noix, sésame."
+      },
+      "citron": {
+        "name": "Citron",
+        "description": "Glace artisanale citron rafraîchissante avec un tourbillon agrume savoureux et une base croustillante.",
+        "allergens": "Lait, sucre, beurre, yaourt, crème, blé, œufs, soja."
+      },
+      "madagascarVanilla": {
+        "name": "Vanille Madagascar",
+        "description": "Glace vanille premium faite avec de vrais gousses de Madagascar pour une expérience riche et aromatique.",
+        "allergens": "Lait, biscuits chocolatés, blé, noix de coco, palme, beurre, crème, soja."
+      },
+      "speculoos": {
+        "name": "Speculoos Chocolat Blanc",
+        "description": "Glace biscuit épicé classique avec des morceaux de speculoos croustillants et une touche de cannelle.",
+        "allergens": "Lait, biscuits speculoos, blé, palme, soja, beurre, chocolat blanc, crème."
+      },
+      "supremeChocolateBrownie": {
+        "name": "Suprême Chocolat & Brownie",
+        "description": "Glace chocolat lisse avec des morceaux de brownie fondant et un fin tourbillon de cacao.",
+        "allergens": "Lait, chocolat, morceaux de brownie, œufs, blé, beurre, soja."
+      },
+      "tiramisu": {
+        "name": "Tiramisu",
+        "description": "Glace artisanale inspirée du classique italien, avec biscuit imbibé de café et mascarpone.",
+        "allergens": "Lait, mascarpone, beurre, crème, biscuit, blé, œufs, cacao."
+      },
+      "classicTiramisu": {
+        "name": "Tiramisu Classique",
+        "description": "Véritable verrine tiramisu italien avec doigts de dame, café fort et crème mascarpone.",
+        "allergens": "Œuf, gluten, noisettes, lactose, lait, noix de pécan, soja, blé, noix."
+      },
+      "chocolateMousse": {
+        "name": "Mousse au Chocolat",
+        "description": "Mousse au chocolat belge légère et aérée, créée pour l'ultime expérience gourmande.",
+        "allergens": "Œuf, lactose, lait, soja."
+      },
+      "kinderBueno": {
+        "name": "Kinder Bueno",
+        "description": "Dessert crème noisette inspiré du célèbre Kinder Bueno, garni de chocolat croustillant.",
+        "allergens": "Œuf, gluten, noisette, lactose, lait, soja, blé, pistaches."
+      },
+      "lemonCheesecake": {
+        "name": "Cheesecake Citron",
+        "description": "Verrine cheesecake crémeuse avec un coulis citron savoureux et une base biscuit friable.",
+        "allergens": "Œuf, gluten, noisettes, lactose, lait, soja, blé, noix."
+      },
+      "mangoCheesecake": {
+        "name": "Cheesecake Mangue",
+        "description": "Verrine cheesecake exotique accompagnée d'un coulis mangue tropical et biscuit croustillant.",
+        "allergens": "Œuf, gluten, noisettes, lactose, lait, soja, blé, noix."
+      },
+      "oreoCrumble": {
+        "name": "Oreo Crumble",
+        "description": "Verrine ludique avec des couches de crème veloutée et généreuse miette de biscuit Oreo.",
+        "allergens": "Œuf, gluten, noisettes, lactose, lait, soja, blé, noix."
+      },
+      "pistachioCream": {
+        "name": "Crème Pistache",
+        "description": "Couches luxueuses de mousse pistache et chocolat blanc, inspirées par les recettes traditionnelles.",
+        "allergens": "Œuf, gluten, noisette, lactose, lait, soja, blé, pistaches."
+      },
+      "raspberryCheesecake": {
+        "name": "Cheesecake Framboise",
+        "description": "Verrine cheesecake douce et acidulée avec un coulis framboise vibrant en garniture.",
+        "allergens": "Œuf, gluten, noisettes, lactose, lait, soja, blé, noix."
+      },
+      "redVelvetTiramisu": {
+        "name": "Velours Rouge",
+        "description": "Le gâteau Red Velvet emblématique réinterprété en une expérience tiramisu sophistiquée.",
+        "allergens": "Œuf, gluten, noisettes, lactose, lait, soja, blé, noix."
+      },
+      "saltedCaramel": {
+        "name": "Speculoos & Caramel Beurre Salé",
+        "description": "Dessert fondant en bouche avec la signature Speculoos & Caramel Beurre Salé de Momento.",
+        "allergens": "Œuf, gluten, noisette, lactose, lait, soja, blé, noix."
+      },
+      "snickersTiramisu": {
+        "name": "Snickers",
+        "description": "Une interprétation audacieuse de tiramisu avec cacahuètes rôties, caramel et couche style Snickers.",
+        "allergens": "Œuf, gluten, noisette, lactose, lait, cacahuètes, soja, blé."
+      },
+      "speculoosTiramisu": {
+        "name": "Tiramisu Speculoos",
+        "description": "Un favori local avec des couches de biscuit speculoos épicé et fine crème mascarpone.",
+        "allergens": "Œuf, gluten, noisette, lactose, lait, soja, blé, noix."
+      }
+    }
+  },
+  "NotFound": {
+    "title": "Oups ! Fondu.",
+    "description": "Il semble que la page que vous recherchez a fondu ou n'a jamais existé. Ne vous inquiétez pas, nos gâteries vous attendent ailleurs.",
+    "button": "Retour à la douceur"
+  },
+  "BecomeClientPage": {
+    "heading": "DEVENIR PARTENAIRE",
+    "subheading": "Rejoignez la famille MOMENTO et proposez des desserts artisanaux premium à vos clients",
+    "formTitle": "REMPLISSEZ VOS INFORMATIONS",
+    "labels": {
+      "businessName": "Nom de l'Entreprise",
+      "contactName": "Personne de Contact",
+      "phone": "Téléphone",
+      "email": "E-mail",
+      "city": "Ville",
+      "businessType": "Type d'Établissement",
+      "quantity": "Quantité Mensuelle Estimée",
+      "message": "Informations Supplémentaires"
     },
-    "Social": {
-        "facebook": "Facebook",
-        "instagram": "Instagram",
-        "linkedin": "LinkedIn",
-        "twitter": "Twitter"
+    "businessTypes": {
+      "restaurant": "Restaurant",
+      "cafe": "Café / Salon de Thé",
+      "hotel": "Hôtel",
+      "retail": "Boutique",
+      "caterer": "Service de Traiteur",
+      "other": "Autre"
     },
-    "Desserts": {
-        "Categories": {
-            "dubaiChocolat": "Chocolat Dubaï",
-            "gammeGlace": "Gamme de glaces",
-            "verrineRange": "Gamme de verrines"
+    "placeholders": {
+      "businessName": "Nom de votre entreprise",
+      "contactName": "Votre nom complet",
+      "phone": "+33 6 00 00 00 00",
+      "email": "contact@votreentreprise.com",
+      "city": "Votre ville",
+      "quantity": "ex. 100 unités/mois",
+      "message": "Parlez-nous plus de votre projet..."
+    },
+    "button": "Envoyer Ma Demande",
+    "sending": "Envoi en cours...",
+    "error": "Échec de l'envoi de votre demande. Veuillez réessayer.",
+    "doneTitle": "DEMANDE REÇUE !",
+    "doneMessage": "Merci de votre intérêt pour devenir partenaire MOMENTO. Notre équipe examinera votre demande et vous contactera très bientôt.",
+    "benefits": {
+      "title": "POURQUOI NOUS REJOINDRE ?",
+      "item1": "Tarifs de gros exclusifs",
+      "item2": "Livraison directe à votre établissement",
+      "item3": "Gestionnaire de compte dédié",
+      "item4": "Soutien marketing inclus"
+    }
+  },
+  "ProductPage": {
+    "backToMenu": "Retour au menu",
+    "allergens": "Allergènes",
+    "nutritionTitle": "Valeurs nutritionnelles",
+    "galleryTitle": "En images",
+    "moreFromRange": "Plus de cette gamme",
+    "youMayLike": "Vous aimerez peut-être aussi",
+    "seeFullMenu": "Voir le menu complet",
+    "nutrients": {
+      "energy": "Énergie",
+      "fat": "Matières Grasses",
+      "saturated_fat": "dont saturées",
+      "carbohydrates": "Glucides",
+      "sugars": "dont sucres",
+      "fiber": "Fibres",
+      "protein": "Protéines",
+      "salt": "Sel"
+    }
+  },
+  "ComingSoon": {
+    "titleStart": "La marque obtient un",
+    "titleEmphasis": "nouveau look frais.",
+    "badge": "À venir bientôt",
+    "language": "Langue"
+  },
+  "HomeV2": {
+    "heroEyebrow": "Desserts artisanaux en pot",
+    "heroTitle": "Chaque moment|a sa|<accent>douceur</accent>.",
+    "eyebrow": "Momento",
+    "heroTitle1": "Chaque moment",
+    "heroTitle2": "a sa douceur.",
+    "heroText": "Des desserts généreux, faits avec passion et savoir-faire.",
+    "heroCta": "Découvrez nos créations",
+    "f1": "Savoir-faire artisanal",
+    "f2": "Ingrédients de qualité",
+    "f3": "Recettes généreuses",
+    "f4": "Moments à partager",
+    "creationsTitle": "Nos créations",
+    "creationsText": "Une collection de desserts faits pour chaque envie.",
+    "seeAll": "Voir le menu complet",
+    "prev": "Précédent",
+    "next": "Suivant",
+    "universEyebrow": "Notre monde",
+    "universTitle1": "Dans la cuisine",
+    "universTitle2": "de Momento",
+    "universText": "Deux chefs passionnés, partenaires de crime, toujours à la recherche de nouvelles créations pour vous apporter des moments délicieux.",
+    "universCta": "Découvrez notre histoire",
+    "ctaTitle": "Devenir client",
+    "ctaText": "Et si vous écriviez le prochain chapitre de l'histoire Momento avec nous ?",
+    "ctaButton": "Rejoignez-nous",
+    "heroAlt": "Les chefs Momento dans leur cuisine",
+    "universAlt": "L'atelier Momento"
+  },
+  "Sections": {
+    "chefsIntro": {
+      "eyebrow": "Deux chefs, une cuisine",
+      "title": "Marcelo s'occupe des recettes. Milo ne cesse jamais <accent>d'inventer</accent> de nouvelles.",
+      "text": "Entre tradition et audace, il y a une cuisine, une cuillère à déguster et beaucoup d'indulgence.",
+      "cta": "Rencontrez Marcelo & Milo",
+      "imageAlt": "Marcelo et Milo debout dos à dos dans leur cuisine, derrière les desserts Momento"
+    },
+    "whyMomento": {
+      "eyebrow": "Pourquoi Momento",
+      "title": "Trois raisons de vivre <accent>votre moment</accent>.",
+      "homemade": {
+        "title": "Fait Maison",
+        "text": "Des recettes artisanales, créées par Marcelo et goûtées avant d'être servies."
+      },
+      "onePot": {
+        "title": "Un pot, un moment",
+        "text": "Individuels et généreux, à emporter partout et à déguster à la cuillère."
+      },
+      "layers": {
+        "title": "Des couches que l'on voit",
+        "text": "Le pot est transparent : vous voyez déjà ce que vous allez déguster."
+      }
+    },
+    "storyQuote": {
+      "eyebrow": "Notre histoire en une phrase",
+      "quote": "Tout a commencé dans une cuisine, avec le « Et si on essayait ? » de Milo et un sourcil levé de Marcelo.",
+      "cta": "Lire notre histoire",
+      "imageAlt": "Marcelo et Milo écrivant « Momento » sur le tableau noir de leur boutique"
+    },
+    "findUs": {
+      "eyebrow": "Devenir Franchisé",
+      "title": "Devenez <accent>partenaire</accent> Momento",
+      "text": "Rejoignez une marque avec une histoire à raconter : des desserts faits maison, une gamme claire et un monde prêt à prendre vie dans votre espace.",
+      "listPlaceholder": "[À compléter : liste de boutiques et horaires d'ouverture]",
+      "cta": "Trouver une boutique",
+      "countriesLabel": "Choisissez un pays",
+      "belgium": "Belgique",
+      "morocco": "Maroc",
+      "shopName": "Boutique Momento",
+      "shopPlaceholder": "[À compléter : adresse, horaires, téléphone]",
+      "pitch": "Café, restaurant, hôtel ou épicerie fine : offrez à vos clients un moment worth savourer. Parlez-nous de votre commerce.",
+      "imageAlt": "Marcelo versant de la crème au chocolat dans un pot Momento",
+      "form": {
+        "typeLabel": "Votre commerce",
+        "types": {
+          "cafe": "Café",
+          "restaurant": "Restaurant",
+          "hotel": "Hôtel",
+          "shop": "Épicerie Fine"
         },
-        "Common": {
-            "storageTitle": "Conditions de conservation",
-            "defrosting": "Temps de décongélation au réfrigérateur à +4°C : 4 h.",
-            "potsPerBox": "12 pots par carton",
-            "noColorants": "Sans colorants artificiels",
-            "fishGelatin": "Sans Gélatine",
-            "halal": "100% HALAL",
-            "quickService": "Prêt pour un service rapide",
-            "longStorage": "Convient pour une conservation prolongée au réfrigérateur"
-        },
-        "Products": {
-            "dubaiChocolatSnackBar": {
-                "name": "Barre snack au chocolat Dubaï",
-                "description": "Barre snack gourmande avec un chocolat fin, une pistache crémeuse et du kunafa croustillant.",
-                "allergens": "Contient : lait, soja, pistache, blé, noix, sésame."
-            },
-            "dubaiChocolatTablet": {
-                "name": "Tablette de chocolat Dubaï",
-                "description": "Grande tablette de chocolat style Dubaï avec une riche garniture à la pistache et au kunafa croustillant.",
-                "allergens": "Contient : lait, soja, pistache, blé, noix, sésame."
-            },
-            "citron": {
-                "name": "Citron",
-                "description": "Glace artisanale rafraîchissante au citron avec un tourbillon d'agrumes et une base croustillante.",
-                "allergens": "Lait, sucre, beurre, yaourt, crème, blé, œufs, soja."
-            },
-            "madagascarVanilla": {
-                "name": "Vanille de Madagascar",
-                "description": "Glace à la vanille premium élaborée avec de véritables gousses de Madagascar pour une expérience riche et aromatique.",
-                "allergens": "Lait, biscuits au chocolat, blé, noix de coco, palme, beurre, crème, soja."
-            },
-            "speculoos": {
-                "name": "Chocolat Blanc Spéculoos",
-                "description": "Glace classique aux biscuits épicés avec des morceaux de spéculoos croquants et une note de cannelle.",
-                "allergens": "Lait, biscuits spéculoos, blé, palme, soja, beurre, chocolat blanc, crème."
-            },
-            "supremeChocolateBrownie": {
-                "name": "Suprême Chocolat & Brownie",
-                "description": "Glace au chocolat fondante avec des morceaux de brownie moelleux et un fin tourbillon de cacao.",
-                "allergens": "Lait, chocolat, morceaux de brownie, œufs, blé, beurre, soja."
-            },
-            "tiramisu": {
-                "name": "Tiramisu",
-                "description": "Glace artisanale inspirée du classique italien, avec biscuit imbibé de café et mascarpone.",
-                "allergens": "Lait, mascarpone, beurre, crème, biscuit, blé, œufs, cacao."
-            },
-            "classicTiramisu": {
-                "name": "Tiramisu Classique",
-                "description": "Verrine italienne authentique avec biscuits à la cuillère, café intense et mascarpone crémeux.",
-                "allergens": "Œuf, gluten, noisettes, lactose, lait, noix de pécan, soja, blé, noix."
-            },
-            "chocolateMousse": {
-                "name": "Mousse au Chocolat",
-                "description": "Mousse au chocolat belge aérienne et légère, créée pour une expérience gourmande ultime.",
-                "allergens": "Œuf, lactose, lait, soja."
-            },
-            "kinderBueno": {
-                "name": "Kinder Bueno",
-                "description": "Dessert à la crème de noisettes inspiré du célèbre Kinder Bueno, nappé de chocolat croquant.",
-                "allergens": "Œuf, gluten, noisette, lactose, lait, soja, blé, pistaches."
-            },
-            "lemonCheesecake": {
-                "name": "Cheesecake Citron",
-                "description": "Verrine de cheesecake crémeuse avec un coulis de citron acidulé et un fond de biscuit sablé.",
-                "allergens": "Œuf, gluten, noisettes, lactose, lait, soja, blé, noix."
-            },
-            "mangoCheesecake": {
-                "name": "Cheesecake Mangue",
-                "description": "Verrine de cheesecake exotique accompagnée d'un coulis de mangue tropicale et d'un biscuit croustillant.",
-                "allergens": "Œuf, gluten, noisettes, lactose, lait, soja, blé, noix."
-            },
-            "oreoCrumble": {
-                "name": "Crumble Oreo",
-                "description": "Verrine ludique avec des couches de crème veloutée et un généreux crumble de biscuits Oreo.",
-                "allergens": "Œuf, gluten, noisettes, lactose, lait, soja, blé, noix."
-            },
-            "pistachioCream": {
-                "name": "Crème de Pistache",
-                "description": "Luxueuses couches de mousse à la pistache et au chocolat blanc, inspirées de recettes traditionnelles.",
-                "allergens": "Œuf, gluten, noisette, lactose, lait, soja, blé, pistaches."
-            },
-            "raspberryCheesecake": {
-                "name": "Cheesecake Framboise",
-                "description": "Verrine de cheesecake sucrée-acidulée avec un nappage éclatant au coulis de framboise.",
-                "allergens": "Œuf, gluten, noisettes, lactose, lait, soja, blé, noix."
-            },
-            "redVelvetTiramisu": {
-                "name": "Red Velvet",
-                "description": "L'emblématique Red Velvet Cake réinterprété pour une expérience tiramisu sophistiquée.",
-                "allergens": "Œuf, gluten, noisettes, lactose, lait, soja, blé, noix."
-            },
-            "saltedCaramel": {
-                "name": "Speculoos & Caramel au beurre salé",
-                "description": "Dessert fondant avec la crème au Speculoos & Caramel au beurre salé caractéristique de Momento.",
-                "allergens": "Œuf, gluten, noisette, lactose, lait, soja, blé, noix."
-            },
-            "snickersTiramisu": {
-                "name": "Snickers",
-                "description": "Une variante audacieuse du tiramisu avec des cacahuètes grillées, du caramel et une couche façon Snickers.",
-                "allergens": "Œuf, gluten, noisette, lactose, lait, cacahuètes, soja, blé."
-            },
-            "speculoosTiramisu": {
-                "name": "Tiramisu Spéculoos",
-                "description": "Un favori local avec des couches de biscuits spéculoos épicés et une fine crème au mascarpone.",
-                "allergens": "Œuf, gluten, noisette, lactose, lait, soja, blé, noix."
-            }
-        }
+        "business": "Nom de l'établissement",
+        "city": "Ville",
+        "email": "E-mail",
+        "cta": "Devenir partenaire"
+      }
     },
-    "NotFound": {
-        "title": "Oups ! Tout a fondu.",
-        "description": "Il semble que la page que vous cherchez ait fondu ou n'ait jamais existé. Pas d'inquiétude, nos douceurs vous attendent ailleurs.",
-        "button": "Retour à la gourmandise"
+    "franchise": {
+      "eyebrow": "Devenir Franchisé",
+      "title": "Envie d'ouvrir votre propre <accent>cuisine</accent> Momento ?",
+      "text": "Rejoignez une marque qui raconte une histoire, avec une gamme claire et un monde prêt à prendre vie dans votre boutique.",
+      "cta": "Devenir franchisé",
+      "imageAlt": "Marcelo versant de la crème au chocolat dans un pot Momento"
     },
-    "BecomeClientPage": {
-        "heading": "DEVENIR PARTENAIRE",
-        "subheading": "Rejoignez la famille MOMENTO et proposez des desserts artisanaux premium à vos clients",
-        "formTitle": "RENSEIGNEZ VOS INFORMATIONS",
-        "labels": {
-            "businessName": "Nom de l'établissement",
-            "contactName": "Personne de contact",
-            "phone": "Téléphone",
-            "email": "E-mail",
-            "city": "Ville",
-            "businessType": "Type d'établissement",
-            "quantity": "Quantité mensuelle estimée",
-            "message": "Informations complémentaires"
-        },
-        "businessTypes": {
-            "restaurant": "Restaurant",
-            "cafe": "Café / Coffee Shop",
-            "hotel": "Hôtel",
-            "retail": "Commerce de détail",
-            "caterer": "Service traiteur",
-            "other": "Autre"
-        },
-        "placeholders": {
-            "businessName": "Nom de votre établissement",
-            "contactName": "Votre nom complet",
-            "phone": "+33 6 00 00 00 00",
-            "email": "contact@votrebusiness.com",
-            "city": "Votre ville",
-            "quantity": "Ex. 100 unités/mois",
-            "message": "Parlez-nous de votre projet..."
-        },
-        "button": "Envoyer ma demande",
-        "sending": "Envoi en cours...",
-        "error": "L'envoi a échoué. Veuillez réessayer.",
-        "doneTitle": "DEMANDE REÇUE !",
-        "doneMessage": "Merci pour votre intérêt à devenir partenaire MOMENTO. Notre équipe examinera votre demande et vous contactera très prochainement.",
-        "benefits": {
-            "title": "POURQUOI NOUS REJOINDRE ?",
-            "item1": "Tarifs grossiste exclusifs",
-            "item2": "Livraison directe dans votre établissement",
-            "item3": "Responsable de compte dédié",
-            "item4": "Support marketing inclus"
-        }
+    "episodes": {
+      "eyebrow": "Suivez les épisodes",
+      "title": "L'histoire continue sur Instagram, TikTok et <accent>Facebook</accent>.",
+      "text": "Chaque grand moment de l'année a sa propre mini-série. Suivez Marcelo et Milo, épisode après épisode.",
+      "episode": "Épisode {number}",
+      "ep1": "Une idée en cuisine",
+      "ep2": "La naissance du concept",
+      "ep3": "Les premières créations",
+      "ep4": "Bienvenue à Momento",
+      "instagram": "Instagram",
+      "tiktok": "TikTok",
+      "facebook": "Facebook"
     },
-    "ProductPage": {
-        "backToMenu": "Retour au menu",
+    "creations": {
+      "hero": {
+        "eyebrow": "Le menu",
+        "title": "Nos <accent>Créations</accent>",
+        "text": "Des desserts faits à la main, généreux et prêts à emporter. Chacun vient dans son propre pot, conçu pour être transporté partout et savouré dans le moment."
+      },
+      "toolbar": {
+        "label": "Cherchez et filtrez les créations",
+        "search": "Rechercher",
+        "searchPlaceholder": "Rechercher un dessert…",
+        "category": "Catégorie",
+        "type": "Type",
+        "sort": "Trier par",
+        "view": "Vue",
+        "all": "Tous",
+        "categories": {
+          "creamy": "Crémeux",
+          "fruity": "Fruité",
+          "chocolatey": "Chocolaté",
+          "crunchy": "Croustillant"
+        },
+        "types": {
+          "everyday": "Gamme Quotidienne",
+          "seasonal": "Spéciales de Saison"
+        },
+        "sorts": {
+          "az": "Nom (A à Z)",
+          "za": "Nom (Z à A)",
+          "newest": "Le Plus Récent d'Abord"
+        },
+        "grid": "Vue Grille",
+        "list": "Vue Liste",
+        "count": "Affichage {count, plural, one {# création} other {# créations}}",
+        "reset": "Réinitialiser tous les filtres"
+      },
+      "card": {
+        "view": "Voir le produit",
+        "imageAlt": "{name}, un pot Momento avec son couvercle entrouverts"
+      },
+      "empty": {
+        "title": "Aucune création trouvée",
+        "text": "Nous n'avons trouvé aucun dessert correspondant à votre recherche. Essayez un autre mot ou réinitialisez les filtres.",
+        "button": "Réinitialiser tous les filtres"
+      },
+      "whyPot": {
+        "eyebrow": "Pourquoi le pot ?",
+        "title": "Fait pour être emporté, fait pour être <accent>savouré</accent>",
+        "text": "Marcelo et Milo avaient une idée : un dessert que vous pouvez emporter partout. Individuel, généreux et facile à transporter, chaque pot est prêt quand votre moment arrive.",
+        "imageAlt": "Trois pots Momento en gros plan, leurs couches transparentes par le pot clair"
+      },
+      "seasonal": {
+        "eyebrow": "Saisonnier",
+        "title": "Spéciales <accent>de saison</accent>",
+        "text": "Certaines saveurs vont et viennent avec les saisons. Suivez Momento pour découvrir chaque nouveau chapitre.",
+        "cta": "Voir les spéciales de saison"
+      },
+      "product": {
+        "back": "Retour à nos créations",
+        "badges": {
+          "handmade": "Fait à la main",
+          "takeaway": "Prêt à emporter"
+        },
+        "infoEyebrow": "Informations Clés",
+        "infoTitle": "Bon à <accent>savoir</accent>",
+        "format": "Format",
+        "formatValue": "Pot individuel",
+        "formatWeight": "Pot individuel, {weight}",
+        "formatTbc": "Pot individuel [taille en g ou ml à confirmer]",
+        "availability": "Disponibilité",
+        "availabilityValues": {
+          "everyday": "Gamme Quotidienne",
+          "seasonal": "Saisonnier"
+        },
         "allergens": "Allergènes",
-        "nutritionTitle": "Valeurs nutritionnelles",
-        "galleryTitle": "En images",
-        "moreFromRange": "Dans la même gamme",
-        "youMayLike": "Vous aimerez aussi",
-        "seeFullMenu": "Voir tout le menu",
-        "nutrients": {
-            "energy": "Énergie",
-            "fat": "Matières grasses",
-            "saturated_fat": "dont acides gras saturés",
-            "carbohydrates": "Glucides",
-            "sugars": "dont sucres",
-            "fiber": "Fibres",
-            "protein": "Protéines",
-            "salt": "Sel"
+        "allergensValue": "Voir le tableau des allergènes",
+        "storage": "Stockage",
+        "storageValue": "À conserver au réfrigérateur. [Durée de conservation à confirmer]",
+        "sayEyebrow": "Marcelo & Milo disent",
+        "names": {
+          "marcelo": "Marcelo",
+          "milo": "Milo"
+        },
+        "roles": {
+          "marcelo": "Le pâtissier",
+          "milo": "Le chef créatif"
+        },
+        "relatedEyebrow": "Plus de la cuisine",
+        "relatedTitle": "Vous aimerez peut-être aussi <accent>ceci</accent>",
+        "seeAll": "Voir toutes nos créations"
+      },
+      "products": {
+        "speculoosSaltedCaramel": {
+          "name": "Spéculoos Caramel Beurre Salé",
+          "short": "Crémeux, caramel salé, croustillant speculoos",
+          "description": "Crémeux, caramel salé avec un croustillant speculoos. Un pot sucré-salé pour ceux qui aiment un peu de contraste.",
+          "quote": "Une pincée de sel dans le caramel, et le speculoos chante un peu plus fort. C'est tout le secret."
+        },
+        "speculoos": {
+          "name": "Spéculoos",
+          "short": "Lisse et biscuité",
+          "description": "Lisse et biscuité. Un classique réconfortant pour tous ceux qui aiment le goût speculoos.",
+          "quote": "Certaines saveurs vous rappellent la maison. Le speculoos en fait partie, donc je ne me dépêche jamais."
+        },
+        "tiramisuClassique": {
+          "name": "Tiramisu Classique",
+          "short": "Le tiramisu intemporel",
+          "description": "Le tiramisu intemporel, fait à la traditionnelle et servi dans un pot que vous pouvez emporter partout.",
+          "quote": "Café, mascarpone, patience. Je n'ai rien changé, et je ne changerai jamais."
+        },
+        "oreo": {
+          "name": "Oreo",
+          "short": "Crémeux et croustillant",
+          "description": "Crémeux et croustillant. Un pot ludique pour les amateurs de biscuits.",
+          "quote": "Je voulais voir ce qui se passe quand la crème rencontre un biscuit. Maintenant personne ne veut qu'ça finisse."
+        },
+        "snickers": {
+          "name": "Snickers",
+          "short": "Caramel, chocolat, cacahuètes",
+          "description": "Caramel, chocolat et cacahuètes ensemble dans un pot généreux.",
+          "quote": "Caramel, chocolat, cacahuètes. Pourquoi en choisir un seul quand la cuillère peut tous les trouver ?"
+        },
+        "pistache": {
+          "name": "Pistache",
+          "short": "Lisse et noisette",
+          "description": "Lisse et noisette, avec la saveur délicate de la pistache.",
+          "quote": "La pistache a besoin d'une main douce. Trop et elle crie ; juste assez et elle chuchote."
+        },
+        "bueno": {
+          "name": "Bueno",
+          "short": "Crémeux et chocolaté",
+          "description": "Crémeux et chocolaté. Doux, indulgent et facile à aimer.",
+          "quote": "Noisette, chocolat et un nuage de crème. J'ai goûté trois fois, juste pour être sûr."
+        },
+        "citron": {
+          "name": "Citron",
+          "short": "Frais et piquant",
+          "description": "Frais et piquant. Un pot léger et brillant pour une fin fraîche.",
+          "quote": "Après un bon repas, un peu de citron. Ça réveille la cuillère et le sourire."
+        },
+        "mangue": {
+          "name": "Mangue",
+          "short": "Fruité et ensoleillé",
+          "description": "Fruité et ensoleillé. Un goût de soleil à chaque cuillère.",
+          "quote": "Un jour gris, j'ouvre une Mangue. Vacances instantanées, sans valise nécessaire."
+        },
+        "framboise": {
+          "name": "Framboise",
+          "short": "Frais et acidulé",
+          "description": "Frais et acidulé. Brillant, fruité et rafraîchissant.",
+          "quote": "Une framboise doit être un peu acide. C'est ce qui garde la douceur honnête."
+        },
+        "nutellaCrousti": {
+          "name": "Nutella Crousti",
+          "short": "Riche et croustillant",
+          "description": "Riche et croustillant. Un pot noisette-chocolat avec un coup de croustille.",
+          "quote": "Écoutez bien : ce petit croustillement est le plus beau son de toute la cuisine."
+        },
+        "redVelvet": {
+          "name": "Velours Rouge",
+          "short": "Doux et velouté",
+          "description": "Doux et velouté. Un dessert lisse et élégant avec une douceur douce.",
+          "quote": "Le velours rouge devrait se sentir comme un foulard doux : élégant, délicat, jamais trop."
+        },
+        "mousseAuChocolat": {
+          "name": "Mousse au Chocolat",
+          "short": "Soyeuse et chocolatée",
+          "description": "Soyeuse et chocolatée. Une mousse au chocolat légère et lisse.",
+          "quote": "Une bonne mousse est surtout de l'air et de la patience. Le chocolat fait le reste."
+        },
+        "cookies": {
+          "name": "Cookies",
+          "short": "[Description à confirmer]",
+          "description": "[Description à confirmer]",
+          "quote": "[Citation à confirmer]"
         }
+      }
     },
-    "ComingSoon": {
-        "titleStart": "La marque fait",
-        "titleEmphasis": "peau neuve.",
-        "badge": "Bientôt disponible",
-        "language": "Langue"
-    },
-    "HomeV2": {
-        "heroEyebrow": "Desserts artisanaux en pot",
-        "heroTitle": "Chaque instant|a sa|<accent>douceur</accent>.",
-        "eyebrow": "Momento",
-        "heroTitle1": "Chaque instant",
-        "heroTitle2": "a sa douceur.",
-        "heroText": "Des desserts généreux, préparés avec passion et savoir-faire.",
-        "heroCta": "Découvrir nos créations",
-        "f1": "Savoir-faire artisanal",
-        "f2": "Ingrédients de qualité",
-        "f3": "Recettes généreuses",
-        "f4": "Des moments à partager",
-        "creationsTitle": "Nos créations",
-        "creationsText": "Une collection de desserts pensés pour toutes vos envies.",
-        "seeAll": "Voir tout le menu",
-        "prev": "Précédent",
-        "next": "Suivant",
-        "universEyebrow": "Notre univers",
-        "universTitle1": "Dans la cuisine",
-        "universTitle2": "de Momento",
-        "universText": "Deux chefs passionnés, complices et toujours en quête de nouvelles créations pour vous faire vivre des moments gourmands.",
-        "universCta": "Découvrir notre histoire",
-        "ctaTitle": "Devenir client",
-        "ctaText": "Et si vous écriviez la suite de l'histoire Momento avec nous ?",
-        "ctaButton": "Nous rejoindre",
-        "heroAlt": "Les chefs Momento dans leur cuisine",
-        "universAlt": "L'atelier Momento"
-    },
-    "MomentoProducts": {
-        "Categories": {
-            "verrines": "Verrines"
-        },
-        "Labels": {
-            "ingredients": "Ingrédients",
-            "allergens": "Allergènes",
-            "traces": "Traces éventuelles",
-            "nutrition": "Valeurs nutritionnelles pour 100 g",
-            "energy": "Énergie",
-            "fat": "Matières grasses",
-            "saturatedFat": "dont acides gras saturés",
-            "carbohydrates": "Glucides",
-            "sugars": "dont sucres",
-            "fiber": "Fibres",
-            "protein": "Protéines",
-            "salt": "Sel",
-            "storage": "Conservation",
-            "storageTemperature": "Température de conservation",
-            "shelfLife": "Durée de conservation",
-            "notAvailable": "Information bientôt disponible"
-        },
-        "Products": {
-            "lemonCheesecake": {
-                "name": "Cheesecake Citron",
-                "description": "Verrine de cheesecake crémeuse avec un coulis de citron acidulé et un fond de biscuit sablé.",
-                "ingredients": "biscuit [farine de BLÉ (GLUTEN), graisse de palme, sucre, amidon de BLÉ, sel, poudre à lever : E503, arôme (vanille), ŒUF en poudre], garniture [sucre, eau, sirop de glucose, graisse de palme, amidon de maïs modifié, jus de citron à base de concentré, émulsifiants : E473, E435, stabilisant : E450, arôme (citron), colorant : E160a, conservateur : E202], beurre [beurre (LAIT)]",
-                "allergens": "Contient : œuf, lait, lactose, blé, gluten.",
-                "traces": "Peut contenir des traces de : fruits à coque, soja.",
-                "storageTemperature": "Entre -35 et -18 °C",
-                "shelfLife": "364 jours",
-                "note": ""
-            },
-            "raspberryCheesecake": {
-                "name": "Cheesecake Framboise",
-                "description": "Verrine de cheesecake sucrée-acidulée avec un nappage éclatant au coulis de framboise.",
-                "ingredients": "spéculoos 77 % [farine de BLÉ (GLUTEN), sucre, huile végétale (palme, colza), sirop de candi, poudre à lever : E500, sel, cannelle], confiture de framboise 13 % [purée de fruits (framboise), sucre, gelée [sirop de glucose (SULFITES), eau, gélifiants : E440, E401, E407, E415, acidifiant : E330, régulateurs d'acidité : E331, E341, agent raffermissant : E509, arôme]], pâte feuilletée 10 % [margarine (huile de palme, eau, graisse de colza, sel, émulsifiant : E471, colorant : E160a, acidifiant : E330, vitamines : A, D3, arôme), eau, farine de BLÉ (GLUTEN), farine de malt de BLÉ, sel, améliorant de panification (farine de LUPIN, lactosérum en poudre (LAIT), améliorant de farine : E300, E920, antiagglomérant : E551)]",
-                "allergens": "Contient : lait, lactose, blé, gluten, lupin, sulfites.",
-                "traces": "Peut contenir des traces de : œuf, soja, seigle.",
-                "storageTemperature": "",
-                "shelfLife": "",
-                "note": "Ne pas recongeler après décongélation. Se conserve 7 jours maximum entre 2 et 4 °C."
-            },
-            "mangoCheesecake": {
-                "name": "Cheesecake Mangue",
-                "description": "Verrine de cheesecake exotique accompagnée d'un coulis de mangue tropicale et d'un biscuit croustillant.",
-                "ingredients": "biscuit 77 % [farine de BLÉ (GLUTEN), graisse de palme, sucre, amidon de BLÉ, sel, poudre à lever : E503, arôme (vanille), ŒUF en poudre], confiture de mangue 13 % [purée de fruits (mangue), gelée [sirop de glucose (SULFITES), eau, gélifiants : E440, E401, E407, E415, acidifiant : E330, régulateurs d'acidité : E331, E341, agent raffermissant : E509, arôme], sucre], pâte feuilletée 10 % [margarine (huile de palme, eau, graisse de colza, sel, émulsifiant : E471, colorant : E160a, acidifiant : E330, vitamines : A, D3, arôme), eau, farine de BLÉ (GLUTEN), farine de malt de BLÉ, sel, améliorant de panification (farine de LUPIN, lactosérum en poudre (LAIT), améliorant de farine : E300, E920, antiagglomérant : E551)]",
-                "allergens": "Contient : œuf, lait, lactose, sulfites, blé, gluten, lupin.",
-                "traces": "Peut contenir des traces de : seigle, fruits à coque, soja.",
-                "storageTemperature": "Entre -35 et -18 °C",
-                "shelfLife": "282 jours",
-                "note": ""
-            },
-            "oreoCrumble": {
-                "name": "Crumble Oreo",
-                "description": "Verrine ludique avec des couches de crème veloutée et un généreux crumble de biscuits Oreo.",
-                "ingredients": "crème tiramisu 88 % [crème fouettée [LAIT (LACTOSE)], crème fraîche [crème (LAIT, LACTOSE), stabilisateur : E407], sucre, ŒUF, mascarpone [crème (LAIT pasteurisé), régulateur d'acidité : E330], eau, gélatine (POISSON), arôme [préparation aromatique, eau, support : E1520, E422, sirop de sucre caramel, agent raffermissant : E415, régulateur d'acidité : E330, conservateur : E202], acide citrique, café, conservateur : E202, sel [sel, antiagglomérant : E535, E504]], biscuit 12 % [farine de BLÉ (GLUTEN), sucre, huile de colza, poudre de cacao, sirop de glucose-fructose, amidon de BLÉ (GLUTEN), poudres à lever : E501, E503, E500, huile de palme, sel, émulsifiant : E322 (SOJA), régulateur d'acidité : E524, arôme]",
-                "allergens": "Contient : œuf, lait, lactose, blé, gluten, soja, poisson.",
-                "traces": "Peut contenir des traces de : blé de Khorasan, orge, avoine, seigle, épeautre.",
-                "storageTemperature": "",
-                "shelfLife": "",
-                "note": ""
-            },
-            "chocolateMousse": {
-                "name": "Mousse au Chocolat",
-                "description": "Mousse au chocolat aérienne et légère, pour un pur moment de gourmandise.",
-                "ingredients": "crème fraîche 28 % [crème (LAIT, LACTOSE), stabilisant : E407], spécialité à la crème 25 % [babeurre (LAIT), huile végétale (palme), émulsifiants : E433, E435, E471, E472b, stabilisants : E407, E460, E466], chocolat 16 % [masse de cacao, sucre, beurre de cacao, émulsifiant : E322 (SOJA), arôme (vanille)], blanc d'ŒUF 11 % [protéine 98,9 %, régulateur d'acidité : E270, agent raffermissant : E415, stabilisant : E520], LAIT 11 % [LAIT (LACTOSE)], sucre 6 %, chocolat au lait 3 % [sucre, beurre de cacao, LAIT en poudre (LACTOSE), masse de cacao, LACTOSE (LAIT), lactosérum en poudre (LAIT, LACTOSE), émulsifiant : E322 (SOJA), arôme (vanille)], acide citrique, conservateur : E202",
-                "allergens": "Contient : œuf, lait, lactose, soja.",
-                "traces": "",
-                "storageTemperature": "Entre -35 et -18 °C",
-                "shelfLife": "365 jours",
-                "note": ""
-            },
-            "nutellaCrousti": {
-                "name": "Nutella Crousti",
-                "description": "Une crème onctueuse à la pâte à tartiner chocolat-noisette, relevée d'éclats croustillants.",
-                "ingredients": "",
-                "allergens": "",
-                "traces": "",
-                "storageTemperature": "",
-                "shelfLife": "",
-                "note": ""
-            },
-            "redVelvet": {
-                "name": "Red Velvet",
-                "description": "Une mousse légère à la framboise sur un biscuit red velvet, imbibé d'un sirop de framboise.",
-                "ingredients": "mousse à la framboise 75 % [crème fraîche [crème (LAIT, LACTOSE), stabilisant : E407], purée de fruits (framboise), sucre, blanc d'ŒUF [protéine 98,9 %, régulateur d'acidité : E270, agent raffermissant : E415, stabilisant : E520], gélatine (POISSON), acide citrique, conservateur : E202], biscuit red velvet 17 % [ŒUF, sucre, farine de BLÉ (GLUTEN), roux [farine de BLÉ (GLUTEN), graisse de palme], colorant [eau, colorants : E122, E102, acidifiant : E330, conservateur : E202], poudre de cacao [poudre de cacao, régulateur d'acidité : E501], bicarbonate de soude, arôme [préparation aromatique, eau, support : E1520, E422, sirop de sucre caramel, agent raffermissant : E415, régulateur d'acidité : E330, conservateur : E202]], sirop de framboise 8 % [eau, sucre, purée de fruits (framboise)]",
-                "allergens": "Contient : œuf, lait, lactose, blé, gluten, poisson.",
-                "traces": "",
-                "storageTemperature": "Entre -35 et -18 °C",
-                "shelfLife": "12 mois",
-                "note": ""
-            },
-            "tiramisuBueno": {
-                "name": "Tiramisu Bueno",
-                "description": "Un tiramisu crémeux, une mousse légère aux noisettes et un biscuit chocolaté, sous un voile de chocolat au lait.",
-                "ingredients": "crème tiramisu [crème fouettée [LAIT (LACTOSE)], crème fraîche [crème (LAIT, LACTOSE), stabilisateur : E407], sucre, ŒUF, mascarpone [crème (LAIT pasteurisé), régulateur d'acidité : E330], eau, gélatine (POISSON), arôme [préparation aromatique, eau, support : E1520, E422, sirop de sucre caramel, agent raffermissant : E415, régulateur d'acidité : E330, conservateur : E202], acide citrique, café, conservateur : E202, sel [sel, antiagglomérant : E535, E504]], mousse aux noisettes [crème fouettée [LAIT (LACTOSE)], pâte de NOISETTES [NOISETTES grillées, sucre], blanc d'ŒUF [protéine 98,9 %, régulateur d'acidité : E270, agent raffermissant : E415, stabilisant : E520], ŒUF, sucre, eau, LAIT [LAIT (LACTOSE)], gélatine (POISSON), acide citrique, conservateur : E202], chocolat au lait [sucre, beurre de cacao, LAIT en poudre (LACTOSE), masse de cacao, lactosérum en poudre (LAIT, LACTOSE), LACTOSE, émulsifiant : E322 (SOJA), arôme (vanille)], biscuit [chocolat au LAIT (sucre, beurre de cacao, pâte de cacao, LAIT en poudre, beurre concentré, émulsifiant : E322 (SOJA), vanilline), sucre, huile de palme, farine de BLÉ (GLUTEN), NOISETTES, LAIT en poudre (LACTOSE), chocolat noir (sucre, pâte de cacao, beurre de cacao, émulsifiant : E322 (SOJA), vanilline), cacao, émulsifiant : E322 (SOJA), poudres à lever : E500, E503, sel, vanilline, nappage (LAIT en poudre, beurre concentré)], chocolat au lait [sucre, beurre de cacao, LAIT en poudre (LACTOSE), masse de cacao, lactosérum en poudre (LAIT, LACTOSE), LACTOSE, émulsifiant : E322 (SOJA), arôme (vanille)]",
-                "allergens": "Contient : œuf, lait, lactose, noisettes, fruits à coque, blé, gluten, soja, poisson.",
-                "traces": "",
-                "storageTemperature": "",
-                "shelfLife": "",
-                "note": ""
-            },
-            "tiramisuSnickers": {
-                "name": "Tiramisu Snickers",
-                "description": "Une variante audacieuse du tiramisu avec des cacahuètes, une ganache au lait et une couche façon Snickers.",
-                "ingredients": "crème tiramisu 75 % [crème fouettée [LAIT (LACTOSE)], crème fraîche [crème (LAIT, LACTOSE), stabilisateur : E407], sucre, ŒUF, mascarpone [crème (LAIT pasteurisé), régulateur d'acidité : E330], eau, gélatine (POISSON), arôme [préparation aromatique, eau, support : E1520, E422, sirop de sucre caramel, agent raffermissant : E415, régulateur d'acidité : E330, conservateur : E202], acide citrique, café, conservateur : E202, sel [sel, antiagglomérant : E535, E504]], confiserie 18 % [sucre, sirop de glucose, CACAHUÈTES, LAIT en poudre (LACTOSE), beurre de cacao, masse de cacao, huile de tournesol, LACTOSE, matière grasse butyrique (LAIT), lactosérum en poudre (LAIT, LACTOSE), graisse de palme, sel, émulsifiant : E322 (SOJA), blanc d'ŒUF en poudre, protéines de LAIT, extrait de vanille], ganache au lait 6 % [chocolat [masse de cacao, sucre, beurre de cacao, émulsifiant : E322 (SOJA), arôme (vanille)], LAIT [LAIT (LACTOSE)], chocolat blanc [sucre, beurre de cacao, LAIT en poudre (LACTOSE), émulsifiant : E322 (SOJA), vanilline]], chocolat au lait [sucre, beurre de cacao, LAIT en poudre (LACTOSE), masse de cacao, lactosérum en poudre (LAIT, LACTOSE), LACTOSE, émulsifiant : E322 (SOJA), arôme (vanille)]",
-                "allergens": "Contient : œuf, lait, lactose, cacahuètes, soja, poisson.",
-                "traces": "Peut contenir des traces de : noisettes, fruits à coque, gluten.",
-                "storageTemperature": "",
-                "shelfLife": "",
-                "note": ""
-            },
-            "classicTiramisu": {
-                "name": "Tiramisu Classique",
-                "description": "Verrine italienne authentique avec biscuits à la cuillère, café intense et mascarpone crémeux.",
-                "ingredients": "",
-                "allergens": "",
-                "traces": "",
-                "storageTemperature": "",
-                "shelfLife": "",
-                "note": ""
-            },
-            "tiramisuPistachio": {
-                "name": "Tiramisu Pistache",
-                "description": "Un tiramisu onctueux au mascarpone, relevé de pistaches et d'une crème à la pistache.",
-                "ingredients": "crème tiramisu 91 % [crème fouettée [LAIT (LACTOSE)], crème fraîche [crème (LAIT, LACTOSE), stabilisateur : E407], sucre, ŒUF, mascarpone [crème (LAIT pasteurisé), régulateur d'acidité : E330], eau, gélatine (POISSON), arôme [préparation aromatique, eau, support : E1520, E422, sirop de sucre caramel, agent raffermissant : E415, régulateur d'acidité : E330, conservateur : E202], acide citrique, café, conservateur : E202, sel [sel, antiagglomérant : E535, E504]], PISTACHES 7 %, arôme 2 % [sirop de glucose-fructose, sucre, pâte à tartiner aux PISTACHES, eau, concentré végétal colorant, arôme]",
-                "allergens": "Contient : œuf, lait, lactose, pistaches, fruits à coque, poisson.",
-                "traces": "Peut contenir des traces de : amandes, noix de pécan, noix de cajou, noisettes, noix de macadamia, noix, cacahuètes, soja.",
-                "storageTemperature": "",
-                "shelfLife": "",
-                "note": "Ne pas recongeler après décongélation. Se conserve 7 jours maximum entre 2 et 4 °C."
-            },
-            "speculoosTiramisu": {
-                "name": "Tiramisu Spéculoos",
-                "description": "Un favori local avec des couches de biscuits spéculoos épicés et une fine crème au mascarpone.",
-                "ingredients": "crème tiramisu 74 % [crème fouettée [LAIT (LACTOSE)], crème fraîche [crème (LAIT, LACTOSE), stabilisateur : E407], sucre, ŒUF, mascarpone [crème (LAIT pasteurisé), régulateur d'acidité : E330], eau, gélatine (POISSON), arôme [préparation aromatique, eau, support : E1520, E422, sirop de sucre caramel, agent raffermissant : E415, régulateur d'acidité : E330, conservateur : E202], acide citrique, café, conservateur : E202, sel [sel, antiagglomérant : E535, E504]], spéculoos 13 % [farine de BLÉ (GLUTEN), sucre, huile végétale (palme, colza), sirop de candi, poudre à lever : E500, sel, cannelle], café 10 % [eau, café, conservateur : E202, acide citrique], spéculoos 2 % [farine de BLÉ (GLUTEN), sucre, huile végétale (palme, colza), sirop de sucre candi, poudre à lever : E500, farine de SOJA, sel, cannelle], poudre de cacao [poudre de cacao, régulateur d'acidité : E501]",
-                "allergens": "Contient : œuf, lait, lactose, blé, gluten, soja, poisson.",
-                "traces": "",
-                "storageTemperature": "",
-                "shelfLife": "",
-                "note": ""
-            },
-            "speculoosSaltedCaramel": {
-                "name": "Tiramisu Spéculoos & Caramel au beurre salé",
-                "description": "Dessert fondant avec la crème au spéculoos et au caramel au beurre salé caractéristique de Momento.",
-                "ingredients": "crème tiramisu 84 % [crème fouettée [LAIT (LACTOSE)], crème fraîche [crème (LAIT, LACTOSE), stabilisateur : E407], sucre, ŒUF, mascarpone [crème (LAIT pasteurisé), régulateur d'acidité : E330], eau, gélatine (POISSON), arôme [préparation aromatique, eau, support : E1520, E422, sirop de sucre caramel, agent raffermissant : E415, régulateur d'acidité : E330, conservateur : E202], acide citrique, café, conservateur : E202, sel [sel, antiagglomérant : E535, E504]], spéculoos 16 % [farine de BLÉ (GLUTEN), sucre, huile végétale (palme, colza), sirop de candi, poudre à lever : E500, sel, cannelle]",
-                "allergens": "Contient : œuf, lait, lactose, blé, gluten, poisson.",
-                "traces": "",
-                "storageTemperature": "Entre -35 et -18 °C",
-                "shelfLife": "365 jours",
-                "note": "Ne pas recongeler après décongélation. Se conserve 7 jours maximum entre 2 et 4 °C."
-            }
+    "world": {
+      "hero": {
+        "eyebrow": "Le Monde Momento",
+        "title": "Bienvenue au <accent>Monde</accent> Momento",
+        "text": "Une petite cuisine chaleureuse où chaque dessert commence par une histoire.",
+        "imageAlt": "Marcelo et Milo au travail dans leur cuisine chaleureuse, des pots Momento alignés sur le comptoir"
+      },
+      "kitchen": {
+        "eyebrow": "La cuisine",
+        "title": "Entrez dans la <accent>cuisine</accent>",
+        "text": "Tout chez Momento commence dans une cuisine artisanale confortable. C'est là que Marcelo et Milo imaginent, goûtent, testent et parfois font un désordre délicieux. C'est chaud, lumineux et ça sent toujours quelque chose de doux.",
+        "imageAlt": "Milo levant un pot vide avec un sourire narquois tandis que Marcelo regarde, les bras croisés"
+      },
+      "series": {
+        "eyebrow": "L'histoire jusqu'ici",
+        "title": "Regardez l'histoire <accent>se dérouler</accent>",
+        "text": "Chaque saison apporte un nouveau chapitre. Chaque mini-série a un début, un milieu et une fin, et chaque dessert a sa place dans l'histoire.",
+        "watch": "Regarder les épisodes",
+        "soon": "À venir bientôt",
+        "items": {
+          "christmas": {
+            "season": "Noël",
+            "title": "La Naissance de Momento",
+            "text": "Comment Marcelo et Milo ont eu l'idée de Momento."
+          },
+          "valentine": {
+            "season": "Saint-Valentin",
+            "title": "Marcelo Prépare une Surprise",
+            "text": "Partager, et des moments pour deux."
+          },
+          "ramadan": {
+            "season": "Ramadan",
+            "title": "Douceur du Soir",
+            "text": "Des desserts et des soirées partagées ensemble."
+          },
+          "easter": {
+            "season": "Pâques",
+            "title": "La Chasse aux Nouvelles Saveurs",
+            "text": "Une création saisonnière."
+          },
+          "summer": {
+            "season": "Printemps / Été",
+            "title": "Les Aventures Gourmandes de Milo",
+            "text": "Les saveurs et créations d'été."
+          },
+          "backToSchool": {
+            "season": "Rentrée",
+            "title": "Retour à la Cuisine",
+            "text": "De nouvelles créations et un nouveau départ."
+          }
         }
+      },
+      "seasons": {
+        "eyebrow": "Les saisons en cuisine",
+        "title": "La cuisine change avec les <accent>saisons</accent>",
+        "text": "Lumières de Noël, fleurs de printemps, couleurs d'été. La cuisine est toujours la même maison, habillée pour la saison.",
+        "items": {
+          "winter": "Hiver",
+          "spring": "Printemps",
+          "summer": "Été",
+          "autumn": "Automne"
+        },
+        "imageAlt": "La cuisine Momento habillée pour {season}"
+      },
+      "follow": {
+        "eyebrow": "Suivez l'histoire",
+        "title": "Ne manquez jamais un <accent>épisode</accent>",
+        "text": "Suivez l'histoire sur Instagram et TikTok.",
+        "instagram": "Suivre sur Instagram",
+        "tiktok": "Suivre sur TikTok"
+      }
     },
-    "Sections": {
-        "chefsIntro": {
-            "eyebrow": "Deux chefs, une cuisine",
-            "title": "Marcelo veille sur les recettes. Milo n’arrête pas d’en <accent>inventer</accent>.",
-            "text": "Entre la tradition et l’audace, il y a une cuisine, une cuillère de dégustation et beaucoup de gourmandise.",
-            "cta": "Rencontrer Marcelo & Milo",
-            "imageAlt": "Marcelo et Milo dos à dos dans leur cuisine, derrière les desserts Momento"
+    "characters": {
+      "hero": {
+        "eyebrow": "Les chefs",
+        "title": "Rencontrez Marcelo & <accent>Milo</accent>",
+        "text": "Deux chefs, une cuisine, beaucoup de douceur.",
+        "imageAlt": "Marcelo et Milo debout dos à dos dans leur cuisine, derrière les desserts Momento"
+      },
+      "personality": "Personnalité",
+      "standsFor": "Ce qu'il défend",
+      "marcelo": {
+        "eyebrow": "Le pâtissier expérimenté",
+        "name": "Marcelo",
+        "intro": "Marcelo est le cœur de Momento. Passionné par la pâtisserie et dévoué au savoir-faire, il imagine les recettes, choisit les accords de saveurs et s'assure que chaque création est parfaite.",
+        "traits": [
+          "Généreux et chaleureuse",
+          "Passionné et perfectionniste",
+          "Créatif, mais fidèle à la tradition",
+          "Un peu rêveur et parfois maladroit"
+        ],
+        "values": "Savoir-faire, qualité, passion et authenticité.",
+        "quote": "[Courte phrase signature de Marcelo, à confirmer]",
+        "imageAlt": "Marcelo versant de la crème dans un pot Momento"
+      },
+      "milo": {
+        "eyebrow": "Le jeune chef créatif",
+        "name": "Milo",
+        "intro": "Milo est le jeune partenaire de Marcelo. Curieux et plein d'énergie, il cherche toujours de nouvelles idées, et c'est lui qui ose essayer quelque chose de différent.",
+        "traits": [
+          "Curieux et enthousiaste",
+          "Audacieux et inventif",
+          "Spontané et parfois impatient",
+          "Amusant et adorable"
+        ],
+        "values": "Innovation, créativité, découverte et indulgence.",
+        "quote": "[Courte phrase signature de Milo, à confirmer]",
+        "imageAlt": "Milo goûtant un dessert avec sa cuillère"
+      },
+      "duo": {
+        "eyebrow": "Le duo",
+        "title": "Différents, et meilleurs <accent>ensemble</accent>",
+        "text": "Marcelo apporte l'expérience et le savoir-faire. Milo apporte l'imagination et le goût des expériences. Ensemble, ils créent des desserts soigneusement faits et pleins de surprises. Ils ne sont pas toujours d'accord, mais ils finissent toujours par partager une cuillère.",
+        "imageAlt": "Milo levant un pot vide avec un sourire narquois tandis que Marcelo regarde, les bras croisés"
+      },
+      "story": {
+        "eyebrow": "Leur histoire",
+        "title": "Où tout a <accent>commencé</accent>",
+        "text": "Marcelo aimait ses recettes traditionnelles. Milo rêvait de quelque chose de nouveau. Un jour en cuisine, une idée est apparue : une nouvelle façon de savourer le dessert.",
+        "cta": "Lire notre histoire",
+        "imageAlt": "Le nom Momento écrit à la craie sur un tableau en cuisine"
+      },
+      "cta": {
+        "eyebrow": "À l'écran",
+        "title": "Regardez-les en <accent>action</accent>.",
+        "text": "Chaque saison, une nouvelle mini-série de la cuisine Momento.",
+        "button": "Visitez le Monde Momento"
+      }
+    },
+    "story": {
+      "hero": {
+        "eyebrow": "Notre Histoire",
+        "title": "Notre <accent>Histoire</accent>",
+        "text": "Chaque moment a sa douceur.",
+        "imageAlt": "Le nom Momento écrit à la craie sur un tableau dans une cuisine ensoleillée"
+      },
+      "began": {
+        "eyebrow": "Comment c'est commencé",
+        "title": "Une idée en <accent>cuisine</accent>",
+        "text": "Momento a commencé avec deux chefs et une question : comment pouvons-nous rendre les desserts plus faciles à savourer, sans perdre le soin de la pâtisserie maison ? Marcelo connaissait les traditions. Milo avait les idées. Ensemble, ils ont trouvé la réponse : des pots individuels, généreux et faciles à emporter partout.",
+        "imageAlt": "Milo levant un pot vide, plein d'idées, tandis que Marcelo observe"
+      },
+      "idea": {
+        "eyebrow": "L'idée Momento",
+        "title": "Des desserts faits pour votre <accent>moment</accent>",
+        "text": "Un dessert est plus que quelque chose de sucré. C'est une pause, une gourmandise, un moment à partager. Momento, c'est rendre ces moments faciles à savourer, où que vous soyez.",
+        "imageAlt": "Milo savourant une cuillerée de dessert"
+      },
+      "values": {
+        "eyebrow": "Nos Valeurs",
+        "title": "Ce qui nous <accent>importe</accent>",
+        "items": [
+          {
+            "title": "Savoir-faire",
+            "text": "Des desserts faits avec soin et respect de la tradition."
+          },
+          {
+            "title": "Générosité",
+            "text": "Des pots généreux, service chaleureux et accueil sucré."
+          },
+          {
+            "title": "Créativité",
+            "text": "De nouvelles saveurs et de nouvelles idées, toujours."
+          },
+          {
+            "title": "Authenticité",
+            "text": "Des desserts honnêtes, faits maison avec un vrai goût."
+          },
+          {
+            "title": "Moments",
+            "text": "Chaque dessert est fait pour un moment worth déguster."
+          }
+        ]
+      },
+      "promise": {
+        "eyebrow": "Notre Promesse",
+        "title": "Notre <accent>Promesse</accent>",
+        "text": "Chaque pot est fait avec passion, rempli de saveur et prêt pour votre moment.",
+        "cta": "Découvrez nos créations"
+      }
+    },
+    "partner": {
+      "hero": {
+        "eyebrow": "Devenir Partenaire",
+        "title": "Apportez Momento à vos <accent>clients</accent>",
+        "text": "Servez les desserts Momento dans votre café, restaurant, hôtel ou boutique. Ou allez plus loin, et ouvrez votre propre Momento.",
+        "ctaClient": "Devenir Client",
+        "ctaFranchise": "Ouvrir un Momento",
+        "imageAlt": "Marcelo et Milo serrant la main d'un propriétaire de boutique sur une rangée de pots Momento"
+      },
+      "why": {
+        "eyebrow": "Pourquoi Choisir Momento",
+        "title": "Des Desserts que vos Clients vont <accent>Adorer</accent>",
+        "text": "Les créations Momento sont faites à la main, généreuses et emballées en pots individuels, faciles à afficher, faciles à servir et faciles à vendre. Derrière eux se cache une marque avec ses propres personnages et son histoire que les gens aiment suivre.",
+        "points": [
+          "Une large gamme de saveurs qui change avec les saisons",
+          "Des pots individuels, prêts à vendre ou servir",
+          "Qualité artisanale avec une marque reconnaissable",
+          "Des créations saisonnières pour garder votre offre fraîche"
+        ],
+        "imageAlt": "Des pots Momento affichés sur le comptoir d'un café partenaire"
+      },
+      "who": {
+        "eyebrow": "Pour Qui C'est",
+        "title": "Pour chaque endroit qui aime un doux <accent>Moment</accent>",
+        "items": [
+          "Cafés et salons de thé",
+          "Restaurants et hôtels",
+          "Épiceries et magasins spécialisés",
+          "Clients corporatifs et bureaux",
+          "Sociétés de catering et événementiel",
+          "[Autres types d'entreprises à confirmer]"
+        ]
+      },
+      "offer": {
+        "eyebrow": "Ce que Vous Obtenez",
+        "title": "Tout Ce Dont Vous Avez Besoin pour <accent>Commencer</accent>",
+        "items": [
+          "Accès à la gamme complète Momento et créations saisonnières",
+          "Tarifs de gros [à confirmer]",
+          "Commandes régulières ou ponctuelles [à confirmer]",
+          "Visuels de marque et matériel d'affichage [à confirmer]",
+          "Un contact dédié pour vos commandes [à confirmer]"
+        ]
+      },
+      "steps": {
+        "eyebrow": "Comment Ça Marche",
+        "title": "De Votre Demande à Votre Première <accent>Commande</accent>",
+        "items": [
+          "Envoyez-nous votre demande",
+          "Nous vous contactons pour comprendre vos besoins",
+          "Recevez notre liste de produits et conditions de gros",
+          "Passez votre première commande",
+          "Livraison ou retrait [à confirmer]"
+        ],
+        "imageAlt": "Milo livrant une caisse de pots Momento"
+      },
+      "order": {
+        "eyebrow": "Détails de Commande",
+        "title": "Le Côté Pratique <accent>de</accent> Choses",
+        "rows": [
+          {
+            "label": "Commande minimale",
+            "value": "[À confirmer]"
+          },
+          {
+            "label": "Fréquence de commande",
+            "value": "[À confirmer]"
+          },
+          {
+            "label": "Stockage et manutention",
+            "value": "À conserver au réfrigérateur. [Détails à confirmer]"
+          },
+          {
+            "label": "Livraison",
+            "value": "[À confirmer]"
+          },
+          {
+            "label": "Conditions de paiement",
+            "value": "[À confirmer]"
+          }
+        ]
+      },
+      "clientForm": {
+        "eyebrow": "Demande Client",
+        "title": "Parlez-nous de Votre <accent>Commerce</accent>",
+        "text": "Quelques détails et nous vous reviendrons avec notre liste de produits et conditions.",
+        "fields": {
+          "business": "Nom de l'entreprise",
+          "contact": "Personne de contact",
+          "email": "E-mail",
+          "phone": "Téléphone",
+          "city": "Ville",
+          "type": "Type d'entreprise",
+          "quantity": "Quantité estimée par commande",
+          "products": "Produits d'intérêt",
+          "message": "Message"
         },
-        "whyMomento": {
-            "eyebrow": "Pourquoi Momento",
-            "title": "Trois raisons de prendre <accent>son moment</accent>.",
-            "homemade": {
-                "title": "Fait maison",
-                "text": "Des recettes artisanales, pensées par Marcelo, goûtées avant d’être servies."
+        "types": {
+          "cafe": "Café",
+          "restaurant": "Restaurant",
+          "hotel": "Hôtel",
+          "store": "Boutique",
+          "corporate": "Entreprise",
+          "events": "Événements",
+          "other": "Autre"
+        },
+        "submit": "Envoyer ma demande",
+        "doneTitle": "Merci",
+        "done": "Merci. Nous avons reçu votre demande et vous recontacterons bientôt.",
+        "consent": "J'accepte que Momento utilise mes informations pour répondre à ma demande. Voir notre <link>Politique de Confidentialité</link>.",
+        "required": "Veuillez remplir ce champ.",
+        "invalidEmail": "Veuillez entrer une adresse e-mail valide.",
+        "consentRequired": "Veuillez accepter pour que nous puissions vous répondre.",
+        "sending": "Envoi…",
+        "error": "Quelque chose s'est mal passé et votre message n'a pas été envoyé. Veuillez réessayer dans un moment.",
+        "again": "Envoyer un autre message"
+      },
+      "franchiseIntro": {
+        "eyebrow": "Franchise",
+        "title": "Ouvrez un <accent>Momento</accent>",
+        "text": "Rejoignez une marque de desserts que les gens aiment."
+      },
+      "franchiseWhy": {
+        "eyebrow": "Pourquoi Momento",
+        "title": "Une Marque avec un <accent>Univers</accent>",
+        "text": "Momento est plus qu'une boutique de desserts. Elle a ses propres personnages, sa propre histoire et un univers auquel les gens se connectent. Cela la rend mémorable et facile à suivre.",
+        "points": [
+          "Une marque distinctive avec ses propres personnages",
+          "Un produit simple et pratique : des desserts faits maison en pots individuels",
+          "Une large gamme de saveurs qui change avec les saisons",
+          "Contenu et campagnes prêts-à-l'emploi pour chaque saison"
+        ]
+      },
+      "concept": {
+        "eyebrow": "Le Concept",
+        "title": "Le <accent>Concept</accent> Momento",
+        "text": "Une boutique construite autour d'une cuisine chaleureuse et artisanale. Les clients choisissent parmi une gamme de desserts faits maison en pots, les emportent et les dégustent où qu'ils aillent.",
+        "imageAlt": "Des clients savourant les desserts Momento dans une boutique chaleureuse"
+      },
+      "franchiseOffer": {
+        "eyebrow": "Ce Que Nous Offrons",
+        "title": "À Vos Côtés dès le <accent>Jour</accent> Un",
+        "items": [
+          "Identité de marque et univers visuel",
+          "Gamme de produits et recettes [à confirmer]",
+          "Formation [à confirmer]",
+          "Marketing et campagnes saisonnières",
+          "Design de boutique et matériel en magasin",
+          "Support continu [à confirmer]"
+        ]
+      },
+      "profile": {
+        "eyebrow": "Qui Nous Cherchons",
+        "title": "Des Gens qui Aiment un Bon <accent>Accueil</accent>",
+        "items": [
+          "Passionnés par la nourriture et l'hospitalité",
+          "Engagés dans la qualité et le service",
+          "Motivés à construire une entreprise locale",
+          "[Autres critères à confirmer]"
+        ]
+      },
+      "franchiseSteps": {
+        "eyebrow": "Comment Ça Marche",
+        "title": "Du Premier Bonjour au Jour de l' <accent>Ouverture</accent>",
+        "items": [
+          "Prenez contact",
+          "Première conversation",
+          "Découvrez le concept et les chiffres",
+          "Choisissez votre emplacement",
+          "Formation et mise en place",
+          "Jour d'ouverture"
+        ]
+      },
+      "franchiseForm": {
+        "eyebrow": "Demande de Franchise",
+        "title": "Parlez-nous de Votre <accent>Projet</accent>",
+        "text": "Partager quelques mots sur vous-même et l'endroit que vous avez en tête. Nous lisons chaque demande.",
+        "fields": {
+          "name": "Nom complet",
+          "email": "E-mail",
+          "phone": "Téléphone",
+          "country": "Pays",
+          "city": "Ville d'intérêt",
+          "project": "Parlez-nous de vous et de votre projet",
+          "contactMethod": "Méthode de contact préférée"
+        },
+        "methods": {
+          "email": "E-mail",
+          "phone": "Téléphone"
+        },
+        "submit": "Envoyer ma demande",
+        "doneTitle": "Merci",
+        "done": "Merci. Nous avons reçu votre demande et vous recontacterons bientôt.",
+        "consent": "J'accepte que Momento utilise mes informations pour répondre à ma demande. Voir notre <link>Politique de Confidentialité</link>.",
+        "required": "Veuillez remplir ce champ.",
+        "invalidEmail": "Veuillez entrer une adresse e-mail valide.",
+        "consentRequired": "Veuillez accepter pour que nous puissions vous répondre.",
+        "sending": "Envoi…",
+        "error": "Quelque chose s'est mal passé et votre message n'a pas été envoyé. Veuillez réessayer dans un moment.",
+        "again": "Envoyer un autre message"
+      },
+      "faq": {
+        "eyebrow": "Questions",
+        "title": "Bon à <accent>Savoir</accent>",
+        "business": "Pour les Entreprises",
+        "franchise": "Franchise",
+        "more": "Toutes les Questions"
+      }
+    },
+    "questions": {
+      "hero": {
+        "eyebrow": "Questions",
+        "title": "Vos Questions, Nos <accent>Réponses</accent>",
+        "text": "Tout ce que vous pourriez vouloir savoir sur Momento, nos créations, les commandes pour votre commerce et l'ouverture d'un Momento."
+      },
+      "groups": {
+        "momento": {
+          "title": "À Propos de Momento",
+          "items": [
+            {
+              "q": "Comment Momento a-t-il commencé ?",
+              "a": [
+                "Momento a commencé dans une cuisine, avec deux chefs et une question : comment pouvons-nous rendre les desserts plus faciles à savourer, sans perdre le soin de la pâtisserie maison ? La réponse était le pot : individuel, généreux et facile à emporter partout."
+              ]
             },
-            "onePot": {
-                "title": "Un pot, un moment",
-                "text": "Individuel, généreux, à emporter partout et à savourer à la cuillère."
+            {
+              "q": "Qui sont Marcelo et Milo ?",
+              "a": [
+                "Marcelo est le pâtissier expérimenté, Milo le jeune chef créatif. Ce sont les deux personnages de l'univers Momento : vous pouvez suivre leurs aventures, saison après saison, sur Instagram et TikTok."
+              ]
             },
-            "layers": {
-                "title": "Des couches à voir",
-                "text": "Le pot est transparent : on voit déjà ce qu’on va goûter."
+            {
+              "q": "Qu'en est-il de vos ingrédients ?",
+              "a": [
+                "Nous accordons une grande importance à la sélection des ingrédients, privilégiant la qualité, l'authenticité et le respect de nos recettes.",
+                "Chaque création est conçue pour offrir un équilibre fin des saveurs, textures et indulgence."
+              ]
+            },
+            {
+              "q": "Où puis-je trouver Momento ?",
+              "a": [
+                "Les créations Momento sont disponibles par nos partenaires en Belgique. [Liste des points de vente à confirmer]"
+              ]
             }
+          ]
         },
-        "storyQuote": {
-            "eyebrow": "Notre histoire en une phrase",
-            "quote": "Tout a commencé dans une cuisine, par un « Et si on essayait ? » de Milo et un sourcil levé de Marcelo.",
-            "cta": "Lire notre histoire",
-            "imageAlt": "Marcelo et Milo écrivent « Momento » sur l’ardoise de leur boutique"
-        },
-        "findUs": {
-            "eyebrow": "Devenir franchisé",
-            "title": "Devenir <accent>partenaire</accent> Momento",
-            "text": "Rejoignez une marque qui raconte une histoire : des desserts faits maison, une gamme claire et un univers prêt à prendre vie chez vous.",
-            "listPlaceholder": "[À compléter : liste des boutiques et horaires]",
-            "cta": "Trouver une boutique",
-            "countriesLabel": "Choisir un pays",
-            "belgium": "Belgique",
-            "morocco": "Maroc",
-            "shopName": "Boutique Momento",
-            "shopPlaceholder": "[À compléter : adresse, horaires, téléphone]",
-            "pitch": "Café, restaurant, hôtel ou épicerie fine : offrez à vos clients un moment à savourer. Parlez-nous de votre établissement.",
-            "imageAlt": "Marcelo garnit un pot Momento de crème au chocolat",
-            "form": {
-                "typeLabel": "Votre établissement",
-                "types": {
-                    "cafe": "Café",
-                    "restaurant": "Restaurant",
-                    "hotel": "Hôtel",
-                    "shop": "Épicerie fine"
-                },
-                "business": "Nom de l’établissement",
-                "city": "Ville",
-                "email": "E-mail",
-                "cta": "Devenir partenaire"
+        "creations": {
+          "title": "Nos Créations",
+          "items": [
+            {
+              "q": "Où puis-je trouver les allergènes d'une création ?",
+              "a": [
+                "Chaque création a ses allergènes listés sur notre page Allergènes & Nutrition. Si vous avez une allergie ou une intolérance, demandez avant de commander."
+              ]
+            },
+            {
+              "q": "Comment dois-je conserver mon dessert ?",
+              "a": [
+                "À conserver au réfrigérateur. [Stockage et durée de conservation à confirmer]"
+              ]
+            },
+            {
+              "q": "Faites-vous des créations saisonnières ?",
+              "a": [
+                "Oui. Certaines saveurs vont et viennent avec les saisons, chacune avec son propre chapitre de l'histoire de Marcelo & Milo. Suivez Momento pour les découvrir en premier."
+              ]
             }
+          ]
+        },
+        "business": {
+          "title": "Pour les Entreprises",
+          "items": [
+            {
+              "q": "Y a-t-il une commande minimale ?",
+              "a": [
+                "[À confirmer]"
+              ]
+            },
+            {
+              "q": "Puis-je choisir les saveurs que je commande ?",
+              "a": [
+                "[À confirmer]"
+              ]
+            },
+            {
+              "q": "Puis-je commander des créations saisonnières ?",
+              "a": [
+                "[À confirmer]"
+              ]
+            },
+            {
+              "q": "Comment les desserts sont-ils livrés ?",
+              "a": [
+                "[À confirmer]"
+              ]
+            },
+            {
+              "q": "Prenez-vous les commandes pour les événements ?",
+              "a": [
+                "Oui, pour les événements professionnels ou privés. Parlez-nous de votre événement via le formulaire de contact et nous étudierons les possibilités ensemble."
+              ]
+            }
+          ]
         },
         "franchise": {
-            "eyebrow": "Devenir franchisé",
-            "title": "Envie d’ouvrir votre propre <accent>cuisine</accent> Momento ?",
-            "text": "Rejoignez une marque qui raconte une histoire, avec une gamme claire et un univers prêt à vivre en boutique.",
-            "cta": "Devenir franchisé",
-            "imageAlt": "Marcelo garnit un pot Momento de crème au chocolat"
-        },
-        "episodes": {
-            "eyebrow": "Suivez les épisodes",
-            "title": "La suite de l’histoire est sur Instagram, TikTok et <accent>Facebook</accent>.",
-            "text": "Chaque grand moment de l’année a sa mini-série. Rejoignez Marcelo et Milo, épisode après épisode.",
-            "episode": "Épisode {number}",
-            "ep1": "Une idée dans la cuisine",
-            "ep2": "La naissance du concept",
-            "ep3": "Les premières créations",
-            "ep4": "Bienvenue chez Momento",
-            "instagram": "Instagram",
-            "tiktok": "TikTok",
-            "facebook": "Facebook"
+          "title": "Franchise",
+          "items": [
+            {
+              "q": "Dois-je avoir une expérience en pâtisserie ?",
+              "a": [
+                "[À confirmer]"
+              ]
+            },
+            {
+              "q": "Combien de temps faut-il pour ouvrir ?",
+              "a": [
+                "[À confirmer]"
+              ]
+            },
+            {
+              "q": "La formation est-elle incluse ?",
+              "a": [
+                "[À confirmer]"
+              ]
+            }
+          ]
         }
+      },
+      "cta": {
+        "eyebrow": "Toujours Curieux ?",
+        "title": "Demandez-nous <accent>Tout</accent>",
+        "text": "Si votre question n'est pas ici, écrivez-nous. Nous répondons à chaque message.",
+        "button": "Nous Contacter"
+      }
     },
-    "SiteFooter": {
-        "tagline": "Desserts artisanaux",
-        "rights": "© {year} Momento. Tous droits réservés.",
-        "createdBy": "Site réalisé par",
-        "contact": "Contact",
-        "explore": "Découvrir",
-        "follow": "Nous suivre",
-        "social": {
-            "instagram": "Instagram",
-            "tiktok": "TikTok",
-            "facebook": "Facebook"
+    "contact": {
+      "hero": {
+        "eyebrow": "Contact",
+        "title": "Nous <accent>Contacter</accent>",
+        "text": "Une question, une suggestion ou une douce idée ? Nous aimerions vous entendre."
+      },
+      "form": {
+        "fields": {
+          "name": "Nom complet",
+          "email": "E-mail",
+          "phone": "Téléphone (optionnel)",
+          "subject": "Sujet",
+          "message": "Message"
+        },
+        "subjects": {
+          "general": "Question générale",
+          "order": "Commande",
+          "franchise": "Franchise",
+          "press": "Presse & Partenariats",
+          "other": "Autre"
+        },
+        "submit": "Envoyer le message",
+        "doneTitle": "Merci",
+        "done": "Merci. Votre message a été envoyé. Nous vous recontacterons bientôt.",
+        "consent": "J'accepte que Momento utilise mes informations pour répondre à ma demande. Voir notre <link>Politique de Confidentialité</link>.",
+        "required": "Veuillez remplir ce champ.",
+        "invalidEmail": "Veuillez entrer une adresse e-mail valide.",
+        "consentRequired": "Veuillez accepter pour que nous puissions vous répondre.",
+        "sending": "Envoi…",
+        "error": "Quelque chose s'est mal passé et votre message n'a pas été envoyé. Veuillez réessayer dans un moment.",
+        "again": "Envoyer un autre message"
+      },
+      "details": {
+        "eyebrow": "Coordonnées",
+        "email": "E-mail",
+        "emailValue": "[E-mail à confirmer]",
+        "phone": "Téléphone",
+        "phoneValue": "[Téléphone à confirmer]"
+      },
+      "press": {
+        "title": "Presse & Partenariats",
+        "text": "Pour les demandes de presse et de partenariat, veuillez choisir « Presse & Partenariats » dans le formulaire ou écrivez à [e-mail à confirmer]."
+      },
+      "social": {
+        "title": "Suivez-nous",
+        "instagram": "Instagram",
+        "tiktok": "TikTok"
+      },
+      "imageAlt": "Marcelo mettant la touche finale à un pot Momento"
+    },
+    "legal": {
+      "eyebrow": "Légal",
+      "updated": "Dernière mise à jour : {date}",
+      "date": "[Date à confirmer]",
+      "privacy": {
+        "title": "Politique de <accent>Confidentialité</accent>",
+        "articles": [
+          {
+            "title": "Qui nous sommes",
+            "body": [
+              "Momento [nom juridique, adresse et numéro d'enregistrement à confirmer]."
+            ]
+          },
+          {
+            "title": "Quelles données nous collectons",
+            "body": [
+              "Lorsque vous utilisez ce site, nous pouvons collecter :"
+            ],
+            "items": [
+              "Détails du formulaire de contact (nom, e-mail, téléphone, message)",
+              "Détails de la demande de franchise",
+              "Détails d'inscription à la lettre d'information (le cas échéant)",
+              "Données techniques (adresse IP, navigateur, appareil, pages visitées)"
+            ]
+          },
+          {
+            "title": "Pourquoi nous l'utilisons",
+            "body": [
+              "Nous utilisons vos données :"
+            ],
+            "items": [
+              "Pour répondre à vos demandes",
+              "Pour traiter les demandes de franchise",
+              "Pour vous envoyer des mises à jour si vous êtes abonné",
+              "Pour améliorer le site"
+            ]
+          },
+          {
+            "title": "Base juridique",
+            "body": [
+              "Votre consentement ; notre intérêt légitime à exploiter et améliorer le site ; obligations légales."
+            ]
+          },
+          {
+            "title": "Avec qui nous le partageons",
+            "body": [
+              "Fournisseurs de services qui nous aident à exploiter le site et à envoyer des e-mails. Nous ne vendons pas vos données."
+            ]
+          },
+          {
+            "title": "Combien de temps nous la conservons",
+            "body": [
+              "Seulement aussi longtemps que nécessaire pour l'objectif ci-dessus. [Périodes de conservation à confirmer]"
+            ]
+          },
+          {
+            "title": "Vos Droits",
+            "body": [
+              "Vous avez le droit d'accéder, corriger, supprimer, limiter, vous opposer et transférer vos données, et le droit de retirer votre consentement à tout moment."
+            ]
+          },
+          {
+            "title": "Comment exercer vos droits",
+            "body": [
+              "E-mail [contact confidentialité à confirmer]."
+            ]
+          },
+          {
+            "title": "Plaintes",
+            "body": [
+              "Vous pouvez contacter l'autorité nationale de protection des données (Belgique et Maroc)."
+            ]
+          },
+          {
+            "title": "Changements",
+            "body": [
+              "Cette politique peut être mise à jour. La date de la dernière mise à jour apparaît en haut."
+            ]
+          }
+        ]
+      },
+      "cookies": {
+        "title": "<accent>Cookies</accent>",
+        "articles": [
+          {
+            "title": "Qu'est-ce que les Cookies",
+            "body": [
+              "Petits fichiers stockés sur votre appareil quand vous visitez un site."
+            ]
+          },
+          {
+            "title": "Cookies Que Nous Utilisons",
+            "body": [
+              "Nous utilisons les types de cookies suivants :"
+            ],
+            "items": [
+              "Essentiels : nécessaires pour le fonctionnement du site.",
+              "Analytiques : nous aident à comprendre comment le site est utilisé.",
+              "Marketing : utilisés pour mesurer et améliorer notre publicité. [Si utilisé]"
+            ]
+          },
+          {
+            "title": "Vos Choix",
+            "body": [
+              "Vous pouvez accepter, refuser ou personnaliser les cookies via la banneau de cookies, et changer votre choix à tout moment. Vous pouvez également gérer les cookies dans les paramètres de votre navigateur."
+            ]
+          }
+        ],
+        "table": {
+          "title": "Tableau des Cookies",
+          "columns": [
+            "Nom",
+            "Objectif",
+            "Durée",
+            "Type"
+          ],
+          "empty": "[À compléter une fois les outils choisis]"
         }
+      },
+      "terms": {
+        "title": "<accent>Conditions</accent> d'Utilisation",
+        "articles": [
+          {
+            "title": "À Propos de Ces Conditions",
+            "body": [
+              "En utilisant ce site, vous acceptez ces conditions."
+            ]
+          },
+          {
+            "title": "À Propos de Momento",
+            "body": [
+              "[Nom juridique, adresse, numéro d'entreprise, contact à confirmer]"
+            ]
+          },
+          {
+            "title": "Utilisation du Site",
+            "body": [
+              "Pour usage personnel et légal uniquement."
+            ]
+          },
+          {
+            "title": "Propriété Intellectuelle",
+            "body": [
+              "Le nom Momento, le logo, les personnages (Marcelo et Milo), les images, les textes et les designs appartiennent à Momento et ne peuvent pas être copiés ou réutilisés sans autorisation écrite."
+            ]
+          },
+          {
+            "title": "Information sur les Produits",
+            "body": [
+              "Nous nous efforçons de tenir à jour les informations, images et disponibilité des produits. Les produits peuvent varier légèrement des photos. La disponibilité peut varier selon la saison."
+            ]
+          },
+          {
+            "title": "Commandes et Prix",
+            "body": [
+              "[Si la commande en ligne est ajoutée, à compléter]"
+            ]
+          },
+          {
+            "title": "Liens vers d'Autres Sites",
+            "body": [
+              "Nous ne sommes pas responsables du contenu des sites externes."
+            ]
+          },
+          {
+            "title": "Responsabilité",
+            "body": [
+              "Le site est fourni « tel quel ». Nous ne sommes pas responsables de toute perte découlant de son utilisation, dans les limites de la loi."
+            ]
+          },
+          {
+            "title": "Loi Applicable",
+            "body": [
+              "[Droit Belge et/ou Marocain, à confirmer]"
+            ]
+          },
+          {
+            "title": "Changements",
+            "body": [
+              "Nous pouvons mettre à jour ces conditions à tout moment."
+            ]
+          }
+        ]
+      }
+    },
+    "allergens": {
+      "hero": {
+        "eyebrow": "Votre Sécurité",
+        "title": "Allergènes & <accent>Nutrition</accent>",
+        "text": "Votre sécurité est importante. Voici ce que vous devez savoir sur les allergènes et valeurs nutritionnelles de nos créations."
+      },
+      "notice": {
+        "title": "Avis Important",
+        "text": "Nos desserts sont faits dans une cuisine qui manipule le lait, les œufs, le gluten, les noix, les cacahuètes, le soja et d'autres allergènes. Nous ne pouvons pas garantir qu'aucun produit est complètement exempt de traces d'allergènes. Si vous avez une allergie ou une intolérance, demandez à un membre de notre équipe avant de commander."
+      },
+      "table": {
+        "eyebrow": "Allergènes",
+        "title": "Allergènes par <accent>Création</accent>",
+        "draft": "[Toutes les valeurs à compléter à partir des recettes officielles. Ne pas publier avant vérification.]",
+        "product": "Produit",
+        "columns": {
+          "milk": "Lait",
+          "eggs": "Œufs",
+          "gluten": "Gluten",
+          "nuts": "Noix",
+          "peanuts": "Cacahuètes",
+          "soy": "Soja",
+          "sesame": "Sésame",
+          "other": "Autre"
+        },
+        "values": {
+          "yes": "Contient",
+          "traces": "Traces",
+          "no": "—",
+          "tbc": "[À Confirmer]"
+        },
+        "legend": "Contient : la création contient cet allergène. Traces : elle peut contenir des traces. — : non listé.",
+        "other": {
+          "fish": "Poisson",
+          "lupin": "Lupin",
+          "sulphites": "Sulfites",
+          "tbc": "[À Confirmer]"
+        }
+      },
+      "nutrition": {
+        "eyebrow": "Nutrition",
+        "title": "<accent>Valeurs</accent> Nutritionnelles",
+        "note": "Valeurs par 100 g. [Toutes les valeurs à compléter à partir de l'analyse laboratoire ou recette.]",
+        "columns": {
+          "product": "Produit",
+          "portion": "Taille de portion",
+          "energy": "Énergie (kcal / kJ)",
+          "fat": "Matières Grasses",
+          "saturates": "dont saturées",
+          "carbs": "Glucides",
+          "sugars": "dont sucres",
+          "protein": "Protéines",
+          "salt": "Sel"
+        },
+        "tbc": "[À Confirmer]",
+        "grams": "{value} g"
+      },
+      "contact": {
+        "text": "Questions sur les allergènes ? Contactez-nous à [e-mail à confirmer].",
+        "button": "Nous Contacter"
+      }
+    },
+    "notFound": {
+      "code": "404",
+      "title": "Oups, cette page a <accent>Fondu</accent>",
+      "text": "Marcelo la cherche en cuisine, et Milo pense qu'il a peut-être la mangée. Revenons à quelque chose de sucré.",
+      "home": "Retour à l'Accueil",
+      "creations": "Voir Nos Créations",
+      "line": "Chaque moment a sa douceur, même celui-ci.",
+      "imageAlt": "Marcelo et Milo l'air confus en cuisine"
     }
+  },
+  "SiteFooter": {
+    "tagline": "Desserts Artisanaux",
+    "rights": "© {year} Momento. Tous droits réservés.",
+    "createdBy": "Site par",
+    "contact": "Contact",
+    "explore": "Explorer",
+    "follow": "Suivez-nous",
+    "social": {
+      "instagram": "Instagram",
+      "tiktok": "TikTok",
+      "facebook": "Facebook"
+    },
+    "legal": "Légal",
+    "backToTop": "Haut de page"
+  }
 }

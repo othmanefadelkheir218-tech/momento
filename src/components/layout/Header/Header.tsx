@@ -16,6 +16,7 @@ import { useTransitionRouter } from "@/hooks/useTransitionRouter";
 import CostumButton from "../../CostumButton";
 import Magnetic from "../../Magnetic";
 import TransitionLink from "../../TransitionLink";
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 import Nav from "./Nav";
 
 // The previous header (bigger sizes) is kept in ./v1/Header.tsx.
@@ -170,6 +171,11 @@ export default function Header() {
                         >
                             <span className={`block ${NAV_TEXT} leading-none whitespace-nowrap`}>{t("contact")}</span>
                         </CostumButton>
+                    </div>
+
+                    {/* Languages (desktop): after a thin hairline, so they read apart from the links */}
+                    <div className="hidden md:flex items-center md:ml-[clamp(14px,1.4vw,26px)] md:pl-[clamp(14px,1.4vw,26px)] border-l border-burgundy/20 h-6">
+                        <LanguageSwitcher />
                     </div>
                 </div>
             </header>
