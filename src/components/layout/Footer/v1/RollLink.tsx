@@ -1,5 +1,9 @@
 "use client";
 
+// v1 (not used): the footer link whose letters rolled over on hover. Replaced by ../FooterLink.tsx
+// (simple colour change). To switch back: in ../Footer.tsx import RollLink from "./v1/RollLink"
+// and use <RollLink> instead of <FooterLink> (same props).
+
 import { useRef } from "react";
 import TransitionLink from "@/components/TransitionLink";
 import { HoverRollText, type HoverRollTextHandle } from "@/components/ui/HoverRollText";

@@ -126,3 +126,12 @@ body {
 }
 
 
+
+/* FadeIn: content waiting for its entrance stays hidden from the first paint (before the scripts
+   load), instead of showing, disappearing, then fading in. FadeIn sets data-fade="ready" once its
+   animation holds the hidden state. Reduced motion: never hidden. */
+@media (prefers-reduced-motion: no-preference) {
+    [data-fade]:not([data-fade="ready"]) {
+        visibility: hidden;
+    }
+}

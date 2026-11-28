@@ -27,6 +27,9 @@ export default function FadeIn({ children, className = "", delay = 0, stagger }:
         if (!el) return;
         const mm = gsap.matchMedia();
         mm.add("(prefers-reduced-motion: no-preference)", () => {
+            // Already on screen when the page opens (the hero): play now. Waiting for the scroll
+            // would leave the top of the page blank after moving from one page to another.
+            const onScreen = el.getBoundingClientRect().top < window.innerHeight * 0.88;
             gsap.from(stagger ? el.children : el, {
                 autoAlpha: 0,
                 y: 28,
@@ -36,14 +39,18 @@ export default function FadeIn({ children, className = "", delay = 0, stagger }:
                 ease: "power3.out",
                 // clamp(): content at the very end of the page (that can never reach 88% of the
                 // screen) still plays when the page is scrolled to the bottom
-                scrollTrigger: { trigger: el, start: "clamp(top 88%)", once: true },
+                scrollTrigger: onScreen ? undefined : { trigger: el, start: "clamp(top 88%)", once: true },
             });
+            // The tween now holds the hidden start state itself: hand over from the CSS
+            el.dataset.fade = "ready";
         });
         return () => mm.revert();
     }, { scope: ref });
 
     return (
-        <div ref={ref} className={className}>
+        // data-fade: hidden by CSS (globals.css) from the very first paint until the tween takes
+        // over, so the content never shows, blinks out, then fades in while the page loads
+        <div ref={ref} data-fade className={className}>
             {children}
         </div>
     );

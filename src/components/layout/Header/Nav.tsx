@@ -149,11 +149,15 @@ export default function Nav({ isActive, setIsActive }: NavProps) {
         ref={container}
         className="fixed top-0 -right-25 md:-right-26 h-screen w-full md:w-[650px] bg-burgundy backdrop-blur-lg shadow-lg text-white z-30 translate-x-full"
       >
-        {/* Inner Content - Redesigned */}
+        {/* Inner Content - Redesigned
+            overflow-x-hidden: the links slide in from the right, which used to show a horizontal
+            scrollbar at the bottom while they moved. The scrollbars stay hidden (it still scrolls on
+            very short screens); data-lenis-prevent lets that inner scroll work while Lenis is stopped. */}
         <div
-          className="h-full 
+          data-lenis-prevent
+          className="h-full
                 w-[300px]  md:w-full
-                px-10 md:px-20 py-16 flex flex-col justify-between gap-8 box-border relative overflow-y-auto"
+                px-10 md:px-20 py-16 flex flex-col justify-between gap-8 box-border relative overflow-y-auto overflow-x-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {/* Language Switcher - Top Right */}
           {langMenuOpen && (

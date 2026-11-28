@@ -15,7 +15,7 @@ type Props<T extends string> = {
 export default function FilterRow<T extends string>({ label, options, value, onChange }: Props<T>) {
     return (
         <div role="radiogroup" aria-label={label} className="flex flex-wrap items-baseline gap-x-5 gap-y-2">
-            <span className={`${LABEL} w-full sm:w-24 sm:shrink-0`}>{label}</span>
+            <span className={`${LABEL} w-full sm:w-24 sm:shrink-0 xl:w-auto`}>{label}</span>
             {options.map((option) => {
                 const active = option.value === value;
                 return (

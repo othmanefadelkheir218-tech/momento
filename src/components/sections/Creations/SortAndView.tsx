@@ -18,7 +18,8 @@ export default function SortAndView({ sort, view, onSort, onView }: Props) {
     return (
         <div className="flex items-end gap-8">
             <div>
-                <label htmlFor="creation-sort" className={LABEL}>
+                {/* phones: the select speaks for itself, the label is for screen readers only */}
+                <label htmlFor="creation-sort" className={`${LABEL} max-md:sr-only`}>
                     {t("sort")}
                 </label>
                 <select

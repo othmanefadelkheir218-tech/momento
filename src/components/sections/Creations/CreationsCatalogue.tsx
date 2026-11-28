@@ -23,7 +23,7 @@ export default function CreationsCatalogue() {
             {results.length === 0 ? (
                 <NoResults onReset={reset} />
             ) : filters.view === "grid" ? (
-                <ul className="mt-10 grid grid-cols-2 gap-x-5 gap-y-12 sm:grid-cols-3 md:mt-12 md:gap-x-8 xl:grid-cols-4">
+                <ul className="mt-8 grid grid-cols-2 gap-x-5 gap-y-12 sm:grid-cols-3 md:mt-10 md:gap-x-8 xl:grid-cols-4">
                     {results.map((c) => (
                         <li key={c.key}>
                             <CreationCard creation={c} />

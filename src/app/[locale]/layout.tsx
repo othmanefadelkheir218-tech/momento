@@ -110,6 +110,10 @@ export default async function LocaleLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground transition-colors duration-300`}
             >
+                {/* without JavaScript, the FadeIn content (hidden until its entrance) is simply shown */}
+                <noscript>
+                    <style>{`[data-fade]{visibility:visible!important}`}</style>
+                </noscript>
                 <NextIntlClientProvider messages={messages}>
                     {COMING_SOON ? (
                         <main className="min-h-screen">{children}</main>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import ReactLenis, { useLenis } from "lenis/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -18,6 +18,7 @@ if (typeof window !== "undefined") {
  *   after images load and once fonts are ready. Client-side navigation never
  *   fires the window `load` event, so without this the positions stay
  *   measured from a half-loaded page.
+ * - Every new page opens at the top.
  */
 function ScrollSync() {
     const lenis = useLenis();
@@ -39,7 +40,25 @@ function ScrollSync() {
         };
     }, [lenis]);
 
-    // 2. Re-measure when the layout settles
+    // 2. New page: start at the top
+    //    A layout effect, and this component sits before the page in the tree, so it runs BEFORE
+    //    the new page builds its scroll animations. If they were built while the window was still
+    //    scrolled down from the previous page, the "once" fade-ins (FadeIn) would think they were
+    //    already passed and the top of the page would stay invisible until the visitor scrolled.
+    //    Links to an anchor (#…) keep their own position.
+    const firstPage = useRef(true);
+    useLayoutEffect(() => {
+        if (firstPage.current) {
+            firstPage.current = false; // first load / reload: let the browser decide
+            return;
+        }
+        if (window.location.hash) return;
+        lenis?.scrollTo(0, { immediate: true, force: true });
+        window.scrollTo(0, 0);
+        // eslint-disable-next-line react-hooks/exhaustive-deps -- only when the page changes
+    }, [pathname]);
+
+    // 3. Re-measure when the layout settles
     //    Never while the page is moving: a refresh in the middle of a (touch / momentum) scroll
     //    makes the page jump up or down on iPhones. So it waits until the scroll has been still
     //    for a moment. Image loads only count when they really changed the page height (most
